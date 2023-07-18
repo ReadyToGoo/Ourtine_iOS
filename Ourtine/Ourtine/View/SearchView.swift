@@ -15,20 +15,14 @@ import SnapKit
 class SearchView: UIView {
     
     // 상단 커스텀 네비게이션바
-    lazy var navigationBar = Default_NavigationBar()
+    lazy var navigationBar = Search_NavigationBar()
     
-    // 네비게이션 바 아래 검색 서치바
-    lazy var searchBar = { () -> UISearchBar in
-        let searchBar = UISearchBar()
-        searchBar.searchTextField.textColor = .app_UIColor2
-        searchBar.searchBarStyle = .minimal
-        return searchBar
-    }()
+    lazy var segmentControl = CustomSegmentControl(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
     
     // 컴포넌트들 View에 등록
     func inputSubview() {
         self.addSubview(navigationBar)
-        self.addSubview(searchBar)
+        self.addSubview(segmentControl)
     }
     
     // 컴포넌트들 Constraints 설정
@@ -41,13 +35,14 @@ class SearchView: UIView {
             make.right.equalTo(self.safeAreaLayoutGuide)
         }
         
-        
-        //MARK: - searchBar
-        searchBar.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom).offset(30)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.8)
+        segmentControl.snp.makeConstraints { make in
+            make.top.equalTo(navigationBar.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(50)
+            //make.bottom.equalTo(searchResultTableView.snp.top)
         }
+        
         
     }
     

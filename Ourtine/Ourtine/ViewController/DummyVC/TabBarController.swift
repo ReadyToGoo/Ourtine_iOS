@@ -19,21 +19,37 @@ class AppTabBarController: UITabBarController {
         self.tabBar.barTintColor = .systemGray6
         self.tabBar.tintColor = .black
         self.tabBar.isTranslucent = false
+        self.tabBar.backgroundColor = .white
         
-        let firstVC = UINavigationController(rootViewController: MainViewController())
-        firstVC.tabBarItem.title = "Main"
+        let firstVC = UINavigationController(rootViewController: DummyViewController())
+        firstVC.tabBarItem.image = UIImage(systemName: "house")
+        firstVC.tabBarItem.title = "홈"
         
-        let secondVC = UINavigationController(rootViewController: MainViewController())
-        secondVC.tabBarItem.title = "참여"
         
-        let thirdVC = UINavigationController(rootViewController: HabitJoinViewController())
+        let secondVC = UINavigationController(rootViewController: HabitJoinViewController())
+        secondVC.tabBarItem.image = UIImage(systemName: "magnifyingglass")
+        secondVC.tabBarItem.title = "탐색"
+        
+        let thirdVC = UINavigationController(rootViewController: DummyViewController())
+        thirdVC.tabBarItem.image = UIImage(systemName: "map")
         thirdVC.tabBarItem.title = "습관개설"
         
-        let fourthVC = UINavigationController(rootViewController: MainViewController())
+        let fourthVC = UINavigationController(rootViewController: DummyViewController())
+        fourthVC.tabBarItem.image = UIImage(systemName: "person")
         fourthVC.tabBarItem.title = "마이페이지"
         
         // 탭바에 VCs 설정
         viewControllers = [firstVC, secondVC, thirdVC, fourthVC]
+        
+        //self.tabBar.
+        
+//        self.tabBar.snp.makeConstraints { make in
+//            make.width.equalToSuperview()
+//            make.height.equalTo(100)
+//            make.bottom.equalToSuperview()
+//            make.horizontalEdges.equalTo(self.view.snp.horizontalEdges)
+//
+//        }
         
         
     }

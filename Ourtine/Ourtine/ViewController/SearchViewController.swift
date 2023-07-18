@@ -30,9 +30,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         //아래의 코드는 네비게이션 루트 VC에 있어야 커스텀 바랑 같이 안보입니다!
         //self.navigationController?.navigationBar.isHidden = true
         
-        //MARK: - searchBar
-        self.searchView.searchBar.delegate = self
-        
         //MARK: - backBTN
         self.searchView.navigationBar.leftButton.action = #selector(popVC)
         self.searchView.navigationBar.leftButton.target = self
@@ -66,7 +63,7 @@ struct SearchViewController_Preview: PreviewProvider {
         UIViewControllerPreview {
             // Return whatever controller you want to preview
             let TabBarCon = AppTabBarController()
-            TabBarCon.selectedIndex = 2
+            TabBarCon.selectedIndex = 1
             //let ViewController = SearchViewController()
             return TabBarCon
         }

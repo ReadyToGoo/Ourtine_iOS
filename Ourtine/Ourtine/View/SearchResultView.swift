@@ -16,47 +16,8 @@ class SearchResultView: UIView {
     // 상단 커스텀 네비게이션 바 : 검색 결과 뷰 전용
     lazy var navigationBar = Search_NavigationBar()
     
-    // 네비게이션 바 아래 세그먼트 컨트롤 (프로토타입)
-    lazy var segmentControl: UISegmentedControl = {
-        let segment = UISegmentedControl()
-        
-        segment.selectedSegmentTintColor = .clear
-        
-        // 배경 색 제거
-        segment.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
-        //segment.backgroundColor = .systemGray6
-    
-        // Segment 구분 라인 제거
-        //segment.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-        
-        segment.insertSegment(withTitle: "유저 프로필", at: 0, animated: true)
-        
-        segment.insertSegment(withTitle: "습관 검색 결과", at: 1, animated: true)
-        
-        segment.selectedSegmentIndex = 0
-        
-        // 선택 되어 있지 않을때 폰트 및 폰트컬러
-        segment.setTitleTextAttributes([
-            NSAttributedString.Key.foregroundColor: UIColor.black,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .regular)
-        ], for: .normal)
-        
-        // 선택 안했을 때 배경색
-        segment.setBackgroundColor(.white, for: .normal)
-        
-        
-        // 선택 되었을때 폰트 및 폰트컬러
-        segment.setTitleTextAttributes([
-            NSAttributedString.Key.foregroundColor: UIColor.black,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .bold)
-        ], for: .selected)
-        
-        // 선택 했을 때 배경색
-        segment.setBackgroundColor(.systemGray, for: .selected)
-        
-        segment.translatesAutoresizingMaskIntoConstraints = false
-        return segment
-        }()
+    // 네비게이션 바 아래 세그먼트 컨트롤
+    lazy var segmentControl = CustomSegmentControl(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
                 
     // 세그먼트컨트롤 아래 검색 결과 테이블 뷰
     lazy var searchResultTableView: UITableView = {
@@ -72,6 +33,7 @@ class SearchResultView: UIView {
     func inputSubview() {
         addSubview(navigationBar)
         addSubview(segmentControl)
+        self.segmentControl.setBackgroundColor(.gray, for: .normal)
         addSubview(searchResultTableView)
     }
     
@@ -87,7 +49,8 @@ class SearchResultView: UIView {
         
         segmentControl.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom)
-            make.leading.equalToSuperview().offset(15)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
             make.bottom.equalTo(searchResultTableView.snp.top)
         }
         
@@ -95,7 +58,7 @@ class SearchResultView: UIView {
         searchResultTableView.snp.makeConstraints { make in
             make.bottom.equalTo(self.safeAreaLayoutGuide)
             make.horizontalEdges.equalToSuperview()
-            make.top.equalTo(navigationBar.snp.bottom).offset(80)
+            make.top.equalTo(navigationBar.snp.bottom).offset(50)
         }
         
         

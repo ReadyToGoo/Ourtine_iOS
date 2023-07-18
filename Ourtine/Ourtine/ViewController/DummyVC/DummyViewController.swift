@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 /// 임시 뷰입니다
-class MainViewController: UIViewController {
+class DummyViewController: UIViewController {
     
     lazy var cyanBox = { () -> UIView in
         let view = UIView()
@@ -42,11 +42,11 @@ class MainViewController: UIViewController {
 }
 
 import SwiftUI
-struct MainViewController_Preview: PreviewProvider {
+struct DummyViewController_Preview: PreviewProvider {
     static var previews: some View {
         UIViewControllerPreview {
             // Return whatever controller you want to preview
-            let ViewController = MainViewController()
+            let ViewController = DummyViewController()
             return ViewController
         }
     }

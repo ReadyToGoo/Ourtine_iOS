@@ -34,7 +34,7 @@ class Default_NavigationBar: UINavigationBar {
 class Search_NavigationBar: Default_NavigationBar {
     
     let searchBar = UISearchBar()
-    let rightButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"))
+    let rightButton = UIBarButtonItem(title: "취소")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,7 +42,8 @@ class Search_NavigationBar: Default_NavigationBar {
         navItem.rightBarButtonItem = rightButton
         self.setItems([navItem], animated: false)
         
-        searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal) // 서치바 좌측 아이콘 삭제
+        //searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal) // 서치바 좌측 아이콘 삭제
+        self.searchBar.placeholder = " 검색어를 입력하세요"
         self.topItem?.titleView = searchBar // 서치바를 중앙 타이틀뷰로 설정
     }
     
