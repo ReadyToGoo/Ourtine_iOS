@@ -15,16 +15,40 @@ import SnapKit
 class SearchView: UIView {
     
     // 상단 커스텀 네비게이션바
-    lazy var navigationBar = Search_NavigationBar()
+    //lazy var navigationBar = Custom_NavigationBar()
+    lazy var navigationBar: Custom_NavigationBar = {
+        let navBar = Custom_NavigationBar()
+        navBar.addCancelBtn_at_Right()
+        navBar.addSearchBar_at_Center()
+        return navBar
+    }()
     
-    lazy var segmentControl = CustomSegmentControl(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+    // 네비게이션 바 아래 세그먼트 컨트롤
+    lazy var segmentControl = CustomSegmentControl(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 50))
+    
+    // 세그먼트컨트롤 아래 검색 결과 테이블 뷰
+    lazy var recentSearchTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .white
+        return tableView
+    }()
+    
+    //테이블 뷰 위 최근 검색어 라벨
+    lazy var headerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "최근 검색어"
+        label.textColor = .black
+        return label
+    }()
     
     // 컴포넌트들 View에 등록
     func inputSubview() {
         self.addSubview(navigationBar)
         self.addSubview(segmentControl)
+        self.addSubview(headerLabel)
+        self.addSubview(recentSearchTableView)
     }
-    
+        
     // 컴포넌트들 Constraints 설정
     func setConstraint() {
         
@@ -35,15 +59,29 @@ class SearchView: UIView {
             make.right.equalTo(self.safeAreaLayoutGuide)
         }
         
+        //MARK: - segmentControl
         segmentControl.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.height.equalTo(50)
-            //make.bottom.equalTo(searchResultTableView.snp.top)
+            //make.height.equalTo(CustomSegmentControl.selfHeight)
+            make.height.equalTo(0)
         }
         
+        //MARK: - SearchResultTableView
+        recentSearchTableView.snp.makeConstraints { make in
+            make.height.equalTo(300)
+            make.horizontalEdges.equalToSuperview()
+            make.top.equalTo(headerLabel.snp.bottom)
+        }
         
+        //MARK: - headerLabel
+        headerLabel.snp.makeConstraints {
+            $0.top.equalTo(segmentControl.snp.bottom)
+            $0.leading.equalToSuperview().offset(15)
+            $0.height.equalTo(50)
+        }
+    
     }
     
     // View를 처음 가져올 때 초기화 코드

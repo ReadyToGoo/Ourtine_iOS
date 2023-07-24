@@ -10,7 +10,7 @@ import UIKit
 
 /// 습관 초기 뷰컨트롤러에서 넘어온 습관 검색 뷰컨트롤러 입니다.
 /// 습관 초기 VC(test) -> SearchViewController -> SearchResultViewController
-class SearchViewController: UIViewController, UISearchBarDelegate {
+class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
     // searchView 등록
     let searchView: SearchView = {
@@ -30,11 +30,45 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         //아래의 코드는 네비게이션 루트 VC에 있어야 커스텀 바랑 같이 안보입니다!
         //self.navigationController?.navigationBar.isHidden = true
         
+        //MARK: - navigationBar의 searchBar 연결
+        self.searchView.navigationBar.searchBar.delegate = self
+        
+        //MARK: - SearchResultTableView 연결
+        self.searchView.recentSearchTableView.delegate = self
+        self.searchView.recentSearchTableView.dataSource = self
+        
+        //MARK: - tableViewCell 파일 register
+        self.searchView.recentSearchTableView.register(RecentSearchTableViewCell.self, forCellReuseIdentifier: RecentSearchTableViewCell.identifier)
+        
         //MARK: - backBTN
         self.searchView.navigationBar.leftButton.action = #selector(popVC)
         self.searchView.navigationBar.leftButton.target = self
         
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Dummy_SearchText.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RecentSearchTableViewCell.identifier, for: indexPath) as? RecentSearchTableViewCell else { return UITableViewCell() }
+        
+        // 넘기기 전에 cell에 데이터 넘겨줍니다
+        cell.getTextData(data: Dummy_SearchText[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //print(Dummy_SearchText[indexPath.row].content)
+        
+        let nextVC = SearchResultViewController()
+        nextVC.searchResultView.navigationBar.searchBar.text = Dummy_SearchText[indexPath.row].content
+        self.navigationController?.pushViewController(nextVC, animated: true)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기
     @objc func popVC() {
@@ -61,11 +95,8 @@ import SwiftUI
 struct SearchViewController_Preview: PreviewProvider {
     static var previews: some View {
         UIViewControllerPreview {
-            // Return whatever controller you want to preview
-            let TabBarCon = AppTabBarController()
-            TabBarCon.selectedIndex = 1
-            //let ViewController = SearchViewController()
-            return TabBarCon
+            let ViewController = SearchViewController()
+            return ViewController
         }
     }
 }

@@ -26,6 +26,11 @@
 		881C06212A62E64F00184AFA /* SearchedUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881C06202A62E64F00184AFA /* SearchedUserProfile.swift */; };
 		881C06232A62E65B00184AFA /* SearchedHabitProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881C06222A62E65B00184AFA /* SearchedHabitProfile.swift */; };
 		88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */; };
+		88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCCAE82A6A5D21003C3F15 /* RecentSearchTableViewCell.swift */; };
+		88DCCAEB2A6A5FB4003C3F15 /* SearchedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCCAEA2A6A5FB4003C3F15 /* SearchedText.swift */; };
+		88DCCAF32A6AF0AD003C3F15 /* SheetPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCCAF22A6AF0AD003C3F15 /* SheetPresentationController.swift */; };
+		88DCCAF72A6AF43C003C3F15 /* BottomSheetView(lofi).swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCCAF62A6AF43C003C3F15 /* BottomSheetView(lofi).swift */; };
+		88E2B9B42A6BBF170039CF68 /* DeviceScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E2B9B32A6BBF170039CF68 /* DeviceScreenSize.swift */; };
 		B64993152A5D3EDC0061C47E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64993142A5D3EDC0061C47E /* AppDelegate.swift */; };
 		B64993172A5D3EDC0061C47E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64993162A5D3EDC0061C47E /* SceneDelegate.swift */; };
 		B64993192A5D3EDC0061C47E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64993182A5D3EDC0061C47E /* ViewController.swift */; };
@@ -54,6 +59,11 @@
 		881C06202A62E64F00184AFA /* SearchedUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedUserProfile.swift; sourceTree = "<group>"; };
 		881C06222A62E65B00184AFA /* SearchedHabitProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedHabitProfile.swift; sourceTree = "<group>"; };
 		88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControlView.swift; sourceTree = "<group>"; };
+		88DCCAE82A6A5D21003C3F15 /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
+		88DCCAEA2A6A5FB4003C3F15 /* SearchedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedText.swift; sourceTree = "<group>"; };
+		88DCCAF22A6AF0AD003C3F15 /* SheetPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresentationController.swift; sourceTree = "<group>"; };
+		88DCCAF62A6AF43C003C3F15 /* BottomSheetView(lofi).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BottomSheetView(lofi).swift"; sourceTree = "<group>"; };
+		88E2B9B32A6BBF170039CF68 /* DeviceScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceScreenSize.swift; sourceTree = "<group>"; };
 		B64993112A5D3EDC0061C47E /* Ourtine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ourtine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64993142A5D3EDC0061C47E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B64993162A5D3EDC0061C47E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				881C06242A62E66100184AFA /* DummyModel */,
+				88E2B9B32A6BBF170039CF68 /* DeviceScreenSize.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -97,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				881C06122A61E17B00184AFA /* DummyVC */,
+				88DCCAF22A6AF0AD003C3F15 /* SheetPresentationController.swift */,
 				881C05ED2A5FF8C900184AFA /* SearchViewController.swift */,
 				881C05FB2A61560000184AFA /* SearchResultViewController.swift */,
 			);
@@ -137,6 +149,7 @@
 			children = (
 				881C06202A62E64F00184AFA /* SearchedUserProfile.swift */,
 				881C06222A62E65B00184AFA /* SearchedHabitProfile.swift */,
+				88DCCAEA2A6A5FB4003C3F15 /* SearchedText.swift */,
 			);
 			path = DummyModel;
 			sourceTree = "<group>";
@@ -148,7 +161,9 @@
 				881C05F92A61545200184AFA /* NavigationBar.swift */,
 				881C06142A62803900184AFA /* UserProfileTableViewCell.swift */,
 				881C06182A62A65B00184AFA /* HabitProfileTableViewCell.swift */,
+				88DCCAE82A6A5D21003C3F15 /* RecentSearchTableViewCell.swift */,
 				88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */,
+				88DCCAF62A6AF43C003C3F15 /* BottomSheetView(lofi).swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -264,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				881C06052A6178F600184AFA /* HabitJoinVIewController.swift in Sources */,
+				88DCCAEB2A6A5FB4003C3F15 /* SearchedText.swift in Sources */,
 				881C06172A62826700184AFA /* ProfileImageViews.swift in Sources */,
 				881C06072A617C6200184AFA /* SearchResultView.swift in Sources */,
 				881C06232A62E65B00184AFA /* SearchedHabitProfile.swift in Sources */,
@@ -276,13 +292,17 @@
 				B64993192A5D3EDC0061C47E /* ViewController.swift in Sources */,
 				881C06012A616FB500184AFA /* TabBarController.swift in Sources */,
 				881C06032A61704000184AFA /* DummyViewController.swift in Sources */,
+				88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */,
 				B64993152A5D3EDC0061C47E /* AppDelegate.swift in Sources */,
 				881C05FC2A61560000184AFA /* SearchResultViewController.swift in Sources */,
 				881C06152A62803900184AFA /* UserProfileTableViewCell.swift in Sources */,
 				881C05FA2A61545200184AFA /* NavigationBar.swift in Sources */,
+				88E2B9B42A6BBF170039CF68 /* DeviceScreenSize.swift in Sources */,
 				881C05F82A6147AD00184AFA /* UIView+Preview.swift in Sources */,
+				88DCCAF72A6AF43C003C3F15 /* BottomSheetView(lofi).swift in Sources */,
 				881C05F62A61479600184AFA /* UIViewController+Preview.swift in Sources */,
 				881C05EE2A5FF8C900184AFA /* SearchViewController.swift in Sources */,
+				88DCCAF32A6AF0AD003C3F15 /* SheetPresentationController.swift in Sources */,
 				B64993172A5D3EDC0061C47E /* SceneDelegate.swift in Sources */,
 				881C05FF2A61626500184AFA /* Color+Extension.swift in Sources */,
 			);
