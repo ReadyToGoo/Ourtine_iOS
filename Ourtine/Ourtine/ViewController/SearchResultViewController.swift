@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import SnapKit
 
 /// 습관 검색 뷰컨트롤러에서 넘어온 습관 검색 결과 뷰컨트롤러 입니다.
 /// SearchViewController -> SearchResultViewController -> 프로필 뷰 컨트롤러 (예정)
-class SearchResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SearchResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISheetPresentationControllerDelegate {
     
     /// TableView 내용 전환을 위한 Index 변수입니다.
     /// segmentControl에 의해 변경됩니다.
@@ -45,24 +46,29 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
         
         self.searchResultView.searchResultTableView.register(HabitProfileTableViewCell.self, forCellReuseIdentifier: HabitProfileTableViewCell.identifier)
          
+        //MARK: - filterBTN
+        self.searchResultView.filterBtn.addTarget(self, action: #selector(showFilterOptions), for: .touchDown)
+        
         //MARK: - backBTN
         self.searchResultView.navigationBar.leftButton.action = #selector(popVC)
         self.searchResultView.navigationBar.leftButton.target = self
+        
         //MARK: - searchBTN
-        self.searchResultView.navigationBar.rightButton.action = #selector(Search)
-        self.searchResultView.navigationBar.rightButton.target = self
+        self.searchResultView.navigationBar.cancelButton.action = #selector(Search)
+        self.searchResultView.navigationBar.cancelButton.target = self
+        
+        self.hidesBottomBarWhenPushed = true
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기
     @objc func popVC() {
         self.navigationController?.popViewController(animated: true)
-        //let preVC = SearchViewController()
-        //self.navigationController?.pushViewController(preVC, animated: true)
     }
     
     /// 검색 결과 출력 (예정)
     @objc func Search() {
         print(self.searchResultView.navigationBar.searchBar.text!)
+        
         //검색 결과 나오게하면 될듯 -> Refresh
     }
     
@@ -71,13 +77,51 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
     @objc func changeTableViewContent() {
         let segmentIndex = CGFloat(self.searchResultView.segmentControl.selectedSegmentIndex)
         if segmentIndex == 0 {
-            tableViewIndex = 0
+            
+            self.tableViewIndex = 0
+            self.searchResultView.filterBtn.isHidden = false
+            
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+                self.searchResultView.filterBtn.snp.updateConstraints {
+                    $0.height.equalTo(40)
+                }
+                self.searchResultView.selectedLine.snp.updateConstraints {
+                    $0.leading.equalTo(self.view.frame.width / 6)
+                }
+                self.searchResultView.layoutIfNeeded()
+            })
+
             self.searchResultView.searchResultTableView.reloadData()
+ 
         } else if segmentIndex == 1 {
-            tableViewIndex = 1
+            
+            self.tableViewIndex = 1
+            self.searchResultView.filterBtn.isHidden = true
+            
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+                self.searchResultView.filterBtn.snp.updateConstraints {
+                    $0.height.equalTo(0)
+                }
+                
+                self.searchResultView.selectedLine.snp.updateConstraints {
+                    $0.leading.equalTo(self.view.frame.width / 6 * 4)
+                }
+                self.searchResultView.layoutIfNeeded()
+            })
+            
             self.searchResultView.searchResultTableView.reloadData()
+            
         }
     }
+    
+    /// 필터 버튼 눌러 바텀시트 팝업
+    @objc func showFilterOptions() {
+        
+        let bottomSheet = SheetPresentationController()
+        present(bottomSheet, animated: true, completion: nil)
+    
+    }
+    
     
     /// 테이블 뷰에 표시할 셀 개수 전달 (필수)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,9 +129,9 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
         var rowNum = 5
         
         if tableViewIndex == 0 {
-            rowNum = Dummy_userList.count
-        } else if tableViewIndex == 1 {
             rowNum = Dummy_habitList.count
+        } else if tableViewIndex == 1 {
+            rowNum = Dummy_userList.count
         }
         
         return rowNum
@@ -105,21 +149,37 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
         var r_cell = UITableViewCell()
         
         if tableViewIndex == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: HabitProfileTableViewCell.identifier, for: indexPath) as? HabitProfileTableViewCell else { return UITableViewCell() }
+            
+            // 넘기기 전에 cell에 데이터 넘겨줍니다
+            cell.getHabitData(data: Dummy_habitList[indexPath.row])
+            
+            r_cell = cell
+        }
+        else if tableViewIndex == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: UserProfileTableViewCell.identifier, for: indexPath) as? UserProfileTableViewCell else { return UITableViewCell() }
             
             // 넘기기 전에 cell에 데이터 넘겨줍니다
             cell.getUserData(data: Dummy_userList[indexPath.row])
             r_cell = cell
         }
-        else if tableViewIndex == 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HabitProfileTableViewCell.identifier, for: indexPath) as? HabitProfileTableViewCell else { return UITableViewCell() }
-            
-            // 넘기기 전에 cell에 데이터 넘겨줍니다
-            cell.getHabitData(data: Dummy_habitList[indexPath.row])
-            r_cell = cell
-        }
         
         return r_cell
+    }
+    
+    /// 테이블 뷰에 표시된 셀 선택했을 때
+    /// tableViewIndex에 따라 표시 VC 다르게 전달
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //print(indexPath.row)
+        if tableViewIndex == 0 {
+//            let nextVC = HabitProfileViewController()
+//            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+        else if tableViewIndex == 1 {
+            
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
                                                     
 }

@@ -12,6 +12,7 @@ import SnapKit
 /// 해당 셀은 searchResultTableView안에 표시됩니다.
 class UserProfileTableViewCell: UITableViewCell {
     
+    //셀의 기본 높이와 identifier입니다.
     static let cellHeight:CGFloat = 80
     static let identifier:String = "UserProfileTableViewCell"
     
