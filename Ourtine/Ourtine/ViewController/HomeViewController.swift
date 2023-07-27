@@ -35,7 +35,7 @@ class HomeViewController: UIViewController {
         ].forEach {view.addSubview($0)}
         
         // phraseView
-        let text = "\(tempUserName)님,\n \(tempUserHabit) 시작해보아요!"
+        let text = "\(tempUserName), \n" + "\(postPositionText(tempUserHabit)) 시작해보아요!"
         if let phraseView = phraseView as? HomeTextBoxView {
             phraseView.text = text
         }
@@ -49,6 +49,19 @@ class HomeViewController: UIViewController {
             make.top.equalToSuperview().offset(62)
             make.centerX.equalToSuperview()
         }
+    }
+    
+    func postPositionText(_ word: String)->String {
+        guard let lastText = word.last else { return word }
+        let unicodeVal = UnicodeScalar(String(lastText))?.value
+        
+        guard let value = unicodeVal else { return word }
+        if (value < 0xAC00 || value > 0xD7A3) { return word }
+        let last = ( value - 0xAC00 ) % 28
+        let str = last > 0 ? "을" : "를"
+        
+        return word+str
+        
     }
     
 
