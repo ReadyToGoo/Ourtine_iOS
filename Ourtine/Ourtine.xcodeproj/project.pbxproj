@@ -37,6 +37,7 @@
 		B649931E2A5D3EDC0061C47E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B649931D2A5D3EDC0061C47E /* Assets.xcassets */; };
 		B64993212A5D3EDC0061C47E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B649931F2A5D3EDC0061C47E /* LaunchScreen.storyboard */; };
 		B649932A2A5D41E40061C47E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B64993292A5D41E40061C47E /* SnapKit */; };
+		B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283332A7260B9007FE619 /* CarouselViewController.swift */; };
 		B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */; };
 		B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D584A12A720DE4008862AC /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		B649931D2A5D3EDC0061C47E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B64993202A5D3EDC0061C47E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B64993222A5D3EDC0061C47E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6C283332A7260B9007FE619 /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextBoxView.swift; sourceTree = "<group>"; };
 		B6D584A12A720DE4008862AC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +119,7 @@
 				881C05ED2A5FF8C900184AFA /* SearchViewController.swift */,
 				881C05FB2A61560000184AFA /* SearchResultViewController.swift */,
 				B6D584A12A720DE4008862AC /* HomeViewController.swift */,
+				B6C283332A7260B9007FE619 /* CarouselViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				881C06212A62E64F00184AFA /* SearchedUserProfile.swift in Sources */,
 				B64993192A5D3EDC0061C47E /* ViewController.swift in Sources */,
 				881C06012A616FB500184AFA /* TabBarController.swift in Sources */,
+				B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */,
 				881C06032A61704000184AFA /* DummyViewController.swift in Sources */,
 				88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */,
 				B64993152A5D3EDC0061C47E /* AppDelegate.swift in Sources */,
