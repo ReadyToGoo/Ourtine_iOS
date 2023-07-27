@@ -37,6 +37,7 @@
 		B649931E2A5D3EDC0061C47E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B649931D2A5D3EDC0061C47E /* Assets.xcassets */; };
 		B64993212A5D3EDC0061C47E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B649931F2A5D3EDC0061C47E /* LaunchScreen.storyboard */; };
 		B649932A2A5D41E40061C47E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B64993292A5D41E40061C47E /* SnapKit */; };
+		B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		B649931D2A5D3EDC0061C47E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B64993202A5D3EDC0061C47E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B64993222A5D3EDC0061C47E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextBoxView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				881C06252A63A4BD00184AFA /* Reusable */,
 				881C05F22A61461D00184AFA /* SearchView.swift */,
 				881C06062A617C6200184AFA /* SearchResultView.swift */,
+				B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				881C06072A617C6200184AFA /* SearchResultView.swift in Sources */,
 				881C06232A62E65B00184AFA /* SearchedHabitProfile.swift in Sources */,
 				881C061F2A62D94500184AFA /* UIComponents+setBackgroundColor.swift in Sources */,
+				B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */,
 				881C06192A62A65B00184AFA /* HabitProfileTableViewCell.swift in Sources */,
 				88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */,
 				881C05F32A61461D00184AFA /* SearchView.swift in Sources */,
