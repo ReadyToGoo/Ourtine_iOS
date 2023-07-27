@@ -24,6 +24,18 @@ class HomeViewController: UIViewController {
         return phraseView
     }()
     
+    // TimeView
+    private let timeView: UIView = {
+        let timeView = HomeTextBoxView()
+        timeView.translatesAutoresizingMaskIntoConstraints = false
+        
+        timeView.text = "00:00:12"
+        timeView.label.textColor = .white
+        timeView.size = CGSize(width: 358, height: 124)
+        
+        return timeView
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +43,8 @@ class HomeViewController: UIViewController {
         
         // addSubview
         [
-            phraseView
+            phraseView,
+            timeView
         ].forEach {view.addSubview($0)}
         
         // phraseView
@@ -47,6 +60,12 @@ class HomeViewController: UIViewController {
         // phraseView
         phraseView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(62)
+            make.centerX.equalToSuperview()
+        }
+        
+        // timeView
+        timeView.snp.makeConstraints { make in
+            make.top.equalTo(phraseView.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
         }
     }
