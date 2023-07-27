@@ -21,7 +21,7 @@ class AppTabBarController: UITabBarController {
         self.tabBar.isTranslucent = false
         self.tabBar.backgroundColor = .white
         
-        let firstVC = UINavigationController(rootViewController: DummyViewController())
+        let firstVC = UINavigationController(rootViewController: HomeViewController())
         firstVC.tabBarItem.image = UIImage(systemName: "house")
         firstVC.tabBarItem.title = "홈"
         

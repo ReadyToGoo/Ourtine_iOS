@@ -27,10 +27,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = AppTabBarController()
         
         // navigationController 사용시
-        //let navigationController = UINavigationController(rootViewController: viewController)
+        let navigationController = UINavigationController(rootViewController: viewController)
         
         // 일반 경우는 viewController, navigation으로 열면 navigationController
-        window?.rootViewController = HomeViewController()
+        window?.rootViewController = navigationController
         
         // 화면에 띄우기
         window?.makeKeyAndVisible()
