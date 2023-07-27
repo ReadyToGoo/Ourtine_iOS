@@ -45,21 +45,33 @@ class HomeViewController: UIViewController {
         return button
     }()
     
+    
+    // startBtnTapped
     @objc func buttonTapped(_sender: UITapGestureRecognizer) {
         let vc = ViewController()
         self.navigationController?.pushViewController(vc, animated: false)
         print("Move to Starting Habit View")
     }
     
+    // carousel
+    private lazy var carouselViewController: CarouselViewController = {
+        let carouselVC = CarouselViewController()
+        carouselVC.view.translatesAutoresizingMaskIntoConstraints = false
+        return carouselVC
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orange
         
-        // addSubview
+        // addSubview, addChild
+        addChild(carouselViewController)
+        
         [
             phraseView,
             timeView,
-            startBtn
+            startBtn,
+            (carouselViewController.view)
         ].forEach {view.addSubview($0)}
         
         // phraseView
@@ -73,6 +85,11 @@ class HomeViewController: UIViewController {
         startBtn.addGestureRecognizer(tapGestureRecognizer)
         
         setConstraints()
+        
+        // carousel
+        carouselViewController.didMove(toParent: self)
+        
+
     }
     
     
@@ -94,6 +111,16 @@ class HomeViewController: UIViewController {
             make.top.equalTo(timeView.snp.bottom).offset(57)
             make.centerX.equalToSuperview()
         }
+        
+        // carousel
+        carouselViewController.view.snp.makeConstraints { make in
+            make.top.equalTo(startBtn.snp.bottom).offset(135)
+            make.leading.equalTo(view.snp.leading).offset(18)
+            make.trailing.equalTo(view.snp.trailing)
+            make.height.equalTo(152)
+        }
+        
+        
     }
     
     func postPositionText(_ word: String)->String {
