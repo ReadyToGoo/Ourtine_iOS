@@ -8,6 +8,15 @@
 import UIKit
 
 class CarouselViewController: UIViewController {
+    private var items = [
+        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card1"),
+        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card2"),
+        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card3"),
+        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card4"),
+        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card5"),
+        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card6")
+    ]
+    
     private enum Const {
         static let itemSize = CGSize(width: 108, height: 152)
         static let itemSpacing = 14.9
@@ -38,7 +47,7 @@ class CarouselViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.backgroundColor = .clear
         view.clipsToBounds = true
-        view.register(CardCell.self, forCellWithReuseIdentifier: CardCell.id)
+        view.register(CardViewCell.self, forCellWithReuseIdentifier: CardViewCell.id)
         view.isPagingEnabled = false
         view.contentInsetAdjustmentBehavior = .never
         view.contentInset = Const.collectionViewContentInset
@@ -48,22 +57,23 @@ class CarouselViewController: UIViewController {
         return view
     }()
     
-    private var items = [UIColor(.blue), UIColor(.brown), UIColor(.gray), UIColor(.green)]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.addSubview(self.collectionView)
-        
-        NSLayoutConstraint.activate([
-            self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            self.collectionView.heightAnchor.constraint(equalToConstant: Const.itemSize.height),
-            self.collectionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-        ])
-        
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        
+        setConstraints()
+    }
+    
+    private func setConstraints() {
+        self.collectionView.snp.makeConstraints { make in
+            make.left.right.centerY.equalToSuperview()
+            make.height.equalTo(Const.itemSize.height)
+        }
     }
     
 }
@@ -74,8 +84,9 @@ extension CarouselViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.id, for: indexPath) as! CardCell
-        cell.prepare(color: self.items[indexPath.item])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardViewCell.id, for: indexPath) as! CardViewCell
+        let item = self.items[indexPath.item]
+        cell.prepare(image: item.image, text: item.title)
         
         return cell
     }
@@ -87,42 +98,6 @@ extension CarouselViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth = Const.itemSize.width + Const.itemSpacing
         let index = round(scrolledOffsetX / cellWidth)
         targetContentOffset.pointee = CGPoint(x: index * cellWidth - scrollView.contentInset.left, y: scrollView.contentInset.top)
-    }
-}
-
-final class CardCell: UICollectionViewCell {
-    static let id = "CardCell"
-    
-    private var myView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder: ) has not been implemented")
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.contentView.addSubview(self.myView)
-        
-        self.myView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        self.prepare(color: nil)
-    }
-    
-    func prepare(color: UIColor?) {
-        self.myView.backgroundColor = color
     }
 }
 
