@@ -36,6 +36,20 @@ class HomeViewController: UIViewController {
         return timeView
     }()
     
+    // startBtn
+    private let startBtn: UIView = {
+        let button = HomeTextBoxView()
+        button.text = "시작하기"
+        button.size = CGSize(width: 358, height: 60)
+        
+        return button
+    }()
+    
+    @objc func buttonTapped(_sender: UITapGestureRecognizer) {
+        let vc = ViewController()
+        self.navigationController?.pushViewController(vc, animated: false)
+        print("Move to Starting Habit View")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +58,8 @@ class HomeViewController: UIViewController {
         // addSubview
         [
             phraseView,
-            timeView
+            timeView,
+            startBtn
         ].forEach {view.addSubview($0)}
         
         // phraseView
@@ -53,8 +68,13 @@ class HomeViewController: UIViewController {
             phraseView.text = text
         }
         
+        // startBtn
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.buttonTapped(_sender:)))
+        startBtn.addGestureRecognizer(tapGestureRecognizer)
+        
         setConstraints()
     }
+    
     
     private func setConstraints() {
         // phraseView
@@ -66,6 +86,12 @@ class HomeViewController: UIViewController {
         // timeView
         timeView.snp.makeConstraints { make in
             make.top.equalTo(phraseView.snp.bottom).offset(40)
+            make.centerX.equalToSuperview()
+        }
+        
+        // startBtn
+        startBtn.snp.makeConstraints { make in
+            make.top.equalTo(timeView.snp.bottom).offset(57)
             make.centerX.equalToSuperview()
         }
     }
