@@ -89,7 +89,7 @@ class SearchView: UIView {
         super.init(frame: frame)
         inputSubview()
         setConstraint()
-        backgroundColor = .white // 안해주면 배경이 투명색!
+        self.backgroundColor = .white // 안해주면 배경이 투명색!
         
     }
     

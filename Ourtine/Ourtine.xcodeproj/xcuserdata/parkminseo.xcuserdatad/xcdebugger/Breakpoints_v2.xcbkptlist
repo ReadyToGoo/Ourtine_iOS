@@ -222,8 +222,8 @@
             filePath = "Ourtine/View/SearchResultView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "setConstraint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -274,6 +274,163 @@
             endingLineNumber = "65"
             landmarkName = "init?(coder:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DA8666C5-532C-48FB-8BAD-295C596F2F8C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ourtine/Model/MemberModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8"
+            endingLineNumber = "8"
+            landmarkName = "MemberModel"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "29440C2E-A59C-4509-8B61-0D4D0FE2042F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ourtine/View/Reusable/HabitCardCollectionViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "503E151D-191F-48C8-8C6A-5A77D4F1F77C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ourtine/View/Reusable/HorizontalPickerView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7AD21CC1-7611-45EE-AABB-D7C62A36BB6A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ourtine/View/Reusable/HorizontalPickerView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "7AD21CC1-7611-45EE-AABB-D7C62A36BB6A - ca34af021e2c7463"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ourtine.HorizontalPickerViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Ourtine.HorizontalPickerViewController"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/View/Reusable/HorizontalPickerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "7AD21CC1-7611-45EE-AABB-D7C62A36BB6A - f95c76d66352fba2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ourtine.HorizontalPickerViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Ourtine.HorizontalPickerViewController"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/View/Reusable/HorizontalPickerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "7AD21CC1-7611-45EE-AABB-D7C62A36BB6A - e011c88f06fe6c7d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ourtine.HorizontalPickerViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Ourtine.HorizontalPickerViewController&gt;"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/View/Reusable/HorizontalPickerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "7AD21CC1-7611-45EE-AABB-D7C62A36BB6A - d0fb40a9c02d8ff8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ourtine.HorizontalPickerViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Ourtine.HorizontalPickerViewController&gt;"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/View/Reusable/HorizontalPickerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "7AD21CC1-7611-45EE-AABB-D7C62A36BB6A - 445a9ca7288631d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ourtine.HorizontalPickerViewController.__deallocating_deinit"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/View/Reusable/HorizontalPickerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D6170CD0-D1B4-4AFB-8F92-E39DF596895C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ourtine/ViewController/HabitDiscoverViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "HabitDiscoverViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

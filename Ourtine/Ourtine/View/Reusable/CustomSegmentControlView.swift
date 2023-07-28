@@ -7,11 +7,21 @@
 
 import UIKit
 
+
 /// 검색 테이블을 스위칭할 세그먼트 컨트롤입니다.
+/// ! 선언 시에 세그먼트 아이템들을 등록해줘야 합니다!
 class CustomSegmentControl: UISegmentedControl {
     
     //세그먼트의 디폴트 높이입니다.
     static let selfHeight = 50.0
+    
+    /// 세그먼트 아이템 등록 함수
+    /// String 배열로 받습니다.
+    func addItems(_ items: [String]) {
+        for (index, item) in items.enumerated() {
+                insertSegment(withTitle: item, at: index, animated: false)
+        }
+    }
     
     
     override init(frame: CGRect) {
@@ -27,8 +37,8 @@ class CustomSegmentControl: UISegmentedControl {
         self.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
         
         // Segment 요소 추가
-        self.insertSegment(withTitle: "습관 찾기", at: 0, animated: true)
-        self.insertSegment(withTitle: "유저 닉네임", at: 1, animated: true)
+//        self.insertSegment(withTitle: "습관 찾기", at: 0, animated: true)
+//        self.insertSegment(withTitle: "유저 닉네임", at: 1, animated: true)
         
         // 디폴트로 선택된 segment
         self.selectedSegmentIndex = 0
@@ -52,7 +62,7 @@ class CustomSegmentControl: UISegmentedControl {
         // 선택 했을 때 배경색
         //self.setBackgroundColor(.systemGray, for: .selected)
         
-        self.translatesAutoresizingMaskIntoConstraints = false
+        //self.translatesAutoresizingMaskIntoConstraints = false
     }
 
     required init?(coder: NSCoder) {
@@ -66,10 +76,11 @@ import SwiftUI
 struct CustomSegmentControlView_Preview: PreviewProvider {
     static var previews: some View {
         UIViewPreview {
-            let navBar = CustomSegmentControl(frame: CGRect(x: 0, y: 0, width: 184, height: CustomSegmentControl.selfHeight))
+            let navBar = CustomSegmentControl(frame: CGRect(x: 0, y: 0, width: 500, height: CustomSegmentControl.selfHeight))
+            navBar.addItems(["습관 찾기", "유저 닉네임"])
             return navBar
         }
-        .frame(width: 184, height: CustomSegmentControl.selfHeight, alignment: .center)
+        .frame(width: 500, height: CustomSegmentControl.selfHeight, alignment: .center)
         .previewLayout(.sizeThatFits)
 
     }

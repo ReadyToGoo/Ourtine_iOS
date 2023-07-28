@@ -14,7 +14,7 @@ import SnapKit
 /// ! ViewController : SearchViewResultController
 class SearchResultView: UIView {
     
-    // 세그먼트에 표시될 선택한 아이템 강조선입니다.
+    // 세그먼트에 표시될 선택한 아이템 강조선 너비입니다.
     let selectedLinewidth = screenWidth / 6
     
     // 상단 커스텀 네비게이션 바 : 검색 결과 뷰 전용
@@ -57,6 +57,7 @@ class SearchResultView: UIView {
     // 컴포넌트들 View에 등록
     func inputSubview() {
         addSubview(navigationBar)
+        segmentControl.addItems(["습관 찾기", "유저 닉네임"])
         addSubview(segmentControl)
         addSubview(selectedLine)
         addSubview(searchResultTableView)
@@ -113,7 +114,7 @@ class SearchResultView: UIView {
         super.init(frame: frame)
         inputSubview()
         setConstraint()
-        backgroundColor = .white
+        self.backgroundColor = .white
         
     }
     
