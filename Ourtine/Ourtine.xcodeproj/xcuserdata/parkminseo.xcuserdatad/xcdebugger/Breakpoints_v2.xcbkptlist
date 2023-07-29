@@ -302,8 +302,8 @@
             filePath = "Ourtine/View/Reusable/HabitCardCollectionViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -421,16 +421,189 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "D6170CD0-D1B4-4AFB-8F92-E39DF596895C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ourtine/ViewController/HabitDiscoverViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
             landmarkName = "HabitDiscoverViewController"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "D6170CD0-D1B4-4AFB-8F92-E39DF596895C - 1d97d36d3705621c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ourtine.HabitDiscoverViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Ourtine.HabitDiscoverViewController"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/ViewController/HabitDiscoverViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "D6170CD0-D1B4-4AFB-8F92-E39DF596895C - 65b5059c375d0e85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ourtine.HabitDiscoverViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Ourtine.HabitDiscoverViewController"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/ViewController/HabitDiscoverViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "D6170CD0-D1B4-4AFB-8F92-E39DF596895C - 3392ff289402908e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ourtine.HabitDiscoverViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Ourtine.HabitDiscoverViewController&gt;"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/ViewController/HabitDiscoverViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "D6170CD0-D1B4-4AFB-8F92-E39DF596895C - 5eed935ca66117f0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ourtine.HabitDiscoverViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Ourtine.HabitDiscoverViewController&gt;"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/ViewController/HabitDiscoverViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "D6170CD0-D1B4-4AFB-8F92-E39DF596895C - f9a2ed75e5ea74af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ourtine.HabitDiscoverViewController.__deallocating_deinit"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/ViewController/HabitDiscoverViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E859F11E-D193-4427-B599-69CA89D88F45"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ourtine/ViewController/HabitDiscoverViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "collectionView(_:numberOfItemsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AFDDB312-E2F9-408D-B923-78D04AF5C209"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ourtine/ViewController/HabitDiscoverViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "666078A4-166A-4EB4-9D1A-174852C820F3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ourtine/View/HabitDiscoverView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "setConstraints()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A3DFD28B-DCE2-4E8D-87D6-969C17B86BB4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ourtine/View/HabitDiscoverView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "setConstraints()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A3DFD28B-DCE2-4E8D-87D6-969C17B86BB4 - ad79b68ec107900f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ourtine.HabitDiscoverView.setConstraints() -&gt; ()"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/View/HabitDiscoverView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "A3DFD28B-DCE2-4E8D-87D6-969C17B86BB4 - 6fa51e21a97955c0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SnapKit.ConstraintMaker) -&gt; () in Ourtine.HabitDiscoverView.setConstraints() -&gt; ()"
+                  moduleName = "Ourtine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parkminseo/My%20Development%20Storage/Swift_Programming/OurTine/ReadyToGo_iOS/Ourtine/Ourtine/View/HabitDiscoverView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

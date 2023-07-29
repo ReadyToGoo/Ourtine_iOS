@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 /// habitSegmentCollectionView의 Cell 입니다
+/// ViewController : HabitDiscoverViewController
 final class HorizontalPickerViewCell: UICollectionViewCell {
     /// Cell identifier
     static let identifier = String(describing: HorizontalPickerViewCell.self)

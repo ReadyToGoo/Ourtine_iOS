@@ -12,6 +12,7 @@ import SnapKit
 /// ! MVC 구현은 Model / View / ViewController로 분리해서 구현했습니다.
 /// ! 해당 뷰는 View에 해당하며 레이아웃에 해당하는 것들만 설정했습니다.
 /// ! ViewController : HabitDiscoverViewController
+/// ! CollectionView가 여러개 겹쳐있습니다.
 class HabitDiscoverScrollView: UIScrollView {
     
     lazy var habitProfileView = HabitDiscoverView()
@@ -24,7 +25,7 @@ class HabitDiscoverScrollView: UIScrollView {
         habitProfileView.snp.makeConstraints {
             $0.edges.equalTo(self.contentLayoutGuide)
             $0.width.equalTo(self.frameLayoutGuide)
-            $0.height.equalTo(1200)
+            $0.height.equalTo(1200) // 나중에 스크롤 뷰 높이 동적 높이 or 고정갑 확정내기
         }
     
     }
@@ -38,7 +39,7 @@ class HabitDiscoverScrollView: UIScrollView {
 
 class HabitDiscoverView: UIView {
     
-    // 상단 3점 설정 바 (아마도 검색하기랑 합쳐질듯)
+    // 상단 바
     lazy var topBar: Custom_NavigationBar = {
         let bar = Custom_NavigationBar()
         bar.hideBackBtn_at_Left()
@@ -78,12 +79,24 @@ class HabitDiscoverView: UIView {
         
         return collectionView
     }()
+    
+    // 습관 카드 Collection View
+    lazy var habitCardCollectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.width * 2), collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = .white
+        collectionView.isScrollEnabled = false
+        return collectionView
+    }()
 
     
     // 컴포넌트들 View에 등록
     func inputSubview() {
         self.addSubview(memberCVHeader)
         self.addSubview(memberCollectionView)
+        self.addSubview(habitCardCollectionView)
         self.addSubview(habitSegmentCollectionView)
         self.addSubview(topBar)
         
@@ -117,6 +130,14 @@ class HabitDiscoverView: UIView {
             $0.width.equalTo(self.frame.width)
             $0.height.equalTo(40)
             $0.top.equalTo(memberCollectionView.snp.bottom).offset(15)
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        //MARK: - habitCardCollectionView
+        habitCardCollectionView.snp.makeConstraints {
+            $0.width.equalTo(self.frame.width)
+            $0.height.equalTo(800)
+            $0.top.equalTo(memberCollectionView.snp.bottom).offset(CustomSegmentControl.selfHeight + 10)
             $0.leading.trailing.equalToSuperview()
         }
         

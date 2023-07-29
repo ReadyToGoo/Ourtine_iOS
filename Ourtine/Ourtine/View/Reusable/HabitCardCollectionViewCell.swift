@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 
+/// HabitCardCollectionView에 표시될 cell입니다.
+/// ViewController : HabitDiscoverViewController
 class HabitCardCollectionViewCell: UICollectionViewCell {
     
     static let cellHeight = 200.0
@@ -15,28 +17,36 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
     
     static let identifier:String = "HabitCardCollectionViewCell"
     
+    var cardData = HabitCardModel(nil, "카테고리", "습관명", "유저 닉네임")
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "카테고리"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 20)
         return label
     }()
     
     lazy var frontImage: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "bell")
-        view.backgroundColor = .gray
+        view.image = getResizedSymbolImage(UIImage(systemName: "square.text.square")!, width: HabitCardCollectionViewCell.cellWidth, height: HabitCardCollectionViewCell.cellHeight)
+        view.layer.opacity = 0.3
         return view
     }()
     
     lazy var habitName: UILabel = {
         let label = UILabel()
         label.text = "습관명"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 15)
         return label
     }()
     
     lazy var userName: UILabel = {
         let label = UILabel()
         label.text = "유저 닉네임"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 15)
         return label
     }()
     
@@ -44,9 +54,9 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
     private func addViews() {
         self.backgroundColor = .white // 셀 배경 흰색
         self.addSubview(frontImage)
-        frontImage.addSubview(titleLabel)
-        frontImage.addSubview(habitName)
-        frontImage.addSubview(userName)
+        self.addSubview(titleLabel)
+        self.addSubview(habitName)
+        self.addSubview(userName)
     }
     
     // 컴포넌트 Constraints
@@ -56,32 +66,41 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
         
-//        titleLabel.snp.makeConstraints {
-//
-//        }
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(20)
+        }
+        
+        habitName.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-50)
+            $0.leading.equalTo(titleLabel)
+        }
+        
+        userName.snp.makeConstraints {
+            $0.top.equalTo(habitName.snp.bottom)
+            $0.leading.equalTo(habitName)
+        }
+        
     }
     
     /// TableViewController에서 Cell data 페칭을 위한 함수
-    func getMemberData(data: MemberModel) {
-        //        self.memberData = data
-        //        self.fetchData()
+    func getHabitsData(data: HabitCardModel) {
+                self.cardData = data
+                self.fetchData()
     }
     
     /// 셀 컴포넌트 요소에 데이터 페칭
     private func fetchData() {
-        //        self.userName.text = self.memberData.name
-        //        self.userImage.setImage(image: nil) // 나중에 URL로 다시 작업
-        //        if self.memberData.badge != nil {
-        //            //badge 이미지 설정해야함
-        //            self.userBadge.isHidden = false
-        //        }
-        //        else if self.memberData.badge == nil{
-        //            self.userBadge.isHidden = true
+        //self.frontImage.image = self.cardData.image
+        self.titleLabel.text = self.cardData.title
+        self.habitName.text = self.cardData.habitName
+        self.userName.text = self.cardData.userName
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        addViews()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -97,6 +116,7 @@ struct HabitCardCollectionViewCell_Preview: PreviewProvider {
         UIViewPreview {
             let cell = HabitCardCollectionViewCell()
             //cell.getMemberData(data: MemberModel("Crown", nil, "Test"))
+            cell.getHabitsData(data: Dummy_habitCards[0])
             return cell
         }
         .previewLayout(.fixed(width: HabitCardCollectionViewCell.cellWidth, height: CGFloat(HabitCardCollectionViewCell.cellHeight)))

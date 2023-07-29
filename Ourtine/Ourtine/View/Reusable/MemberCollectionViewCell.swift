@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 
+/// memberCollectionView의 cell입니다.
+/// ViewController : HabitDiscoverViewController
 class MemberCollectionViewCell: UICollectionViewCell {
     
     static let cellHeight = 120.0
