@@ -10,6 +10,7 @@ import SnapKit
 
 /// 유저 검색 결과를 표시할 테이블뷰 셀
 /// 해당 셀은 searchResultTableView안에 표시됩니다.
+/// ViewController : SearchResultView
 class UserProfileTableViewCell: UITableViewCell {
     
     //셀의 기본 높이와 identifier입니다.

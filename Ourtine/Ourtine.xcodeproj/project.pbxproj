@@ -25,12 +25,17 @@
 		881C061F2A62D94500184AFA /* UIComponents+setBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881C061E2A62D94500184AFA /* UIComponents+setBackgroundColor.swift */; };
 		881C06212A62E64F00184AFA /* SearchedUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881C06202A62E64F00184AFA /* SearchedUserProfile.swift */; };
 		881C06232A62E65B00184AFA /* SearchedHabitProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881C06222A62E65B00184AFA /* SearchedHabitProfile.swift */; };
+		881D5FC52A742CC100603548 /* HabitAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D5FC42A742CC100603548 /* HabitAlarmView.swift */; };
+		881D5FC72A742D0E00603548 /* HabitAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D5FC62A742D0E00603548 /* HabitAlarmViewController.swift */; };
+		881D5FC92A742EDF00603548 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D5FC82A742EDF00603548 /* AlarmTableViewCell.swift */; };
+		881D5FCB2A74324200603548 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D5FCA2A74324200603548 /* AlarmModel.swift */; };
 		88371A722A702C650056BB5A /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A712A702C650056BB5A /* MemberModel.swift */; };
 		88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */; };
 		88371A762A702D840056BB5A /* HabitDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A752A702D840056BB5A /* HabitDiscoverViewController.swift */; };
 		884835892A7109A000B73E28 /* HabitCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835882A7109A000B73E28 /* HabitCategory.swift */; };
 		8848358F2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848358E2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift */; };
 		884835932A715D6F00B73E28 /* HorizontalPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835922A715D6F00B73E28 /* HorizontalPickerViewCell.swift */; };
+		885026172A73C1D100974094 /* HabitCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885026162A73C1D100974094 /* HabitCardModel.swift */; };
 		88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */; };
 		88DA7EB12A6F6C300011AF43 /* HabitDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA7EB02A6F6C300011AF43 /* HabitDiscoverView.swift */; };
 		88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCCAE82A6A5D21003C3F15 /* RecentSearchTableViewCell.swift */; };
@@ -70,12 +75,17 @@
 		881C061E2A62D94500184AFA /* UIComponents+setBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIComponents+setBackgroundColor.swift"; sourceTree = "<group>"; };
 		881C06202A62E64F00184AFA /* SearchedUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedUserProfile.swift; sourceTree = "<group>"; };
 		881C06222A62E65B00184AFA /* SearchedHabitProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedHabitProfile.swift; sourceTree = "<group>"; };
+		881D5FC42A742CC100603548 /* HabitAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitAlarmView.swift; sourceTree = "<group>"; };
+		881D5FC62A742D0E00603548 /* HabitAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitAlarmViewController.swift; sourceTree = "<group>"; };
+		881D5FC82A742EDF00603548 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		881D5FCA2A74324200603548 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		88371A712A702C650056BB5A /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		88371A752A702D840056BB5A /* HabitDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDiscoverViewController.swift; sourceTree = "<group>"; };
 		884835882A7109A000B73E28 /* HabitCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCategory.swift; sourceTree = "<group>"; };
 		8848358E2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		884835922A715D6F00B73E28 /* HorizontalPickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerViewCell.swift; sourceTree = "<group>"; };
+		885026162A73C1D100974094 /* HabitCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardModel.swift; sourceTree = "<group>"; };
 		88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControlView.swift; sourceTree = "<group>"; };
 		88DA7EB02A6F6C300011AF43 /* HabitDiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDiscoverView.swift; sourceTree = "<group>"; };
 		88DCCAE82A6A5D21003C3F15 /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -125,6 +135,7 @@
 				881C05F22A61461D00184AFA /* SearchView.swift */,
 				881C06062A617C6200184AFA /* SearchResultView.swift */,
 				88DA7EB02A6F6C300011AF43 /* HabitDiscoverView.swift */,
+				881D5FC42A742CC100603548 /* HabitAlarmView.swift */,
 				B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */,
 			);
 			path = View;
@@ -138,6 +149,7 @@
 				881C05ED2A5FF8C900184AFA /* SearchViewController.swift */,
 				881C05FB2A61560000184AFA /* SearchResultViewController.swift */,
 				88371A752A702D840056BB5A /* HabitDiscoverViewController.swift */,
+				881D5FC62A742D0E00603548 /* HabitAlarmViewController.swift */,
 				B6D584A12A720DE4008862AC /* HomeViewController.swift */,
 				B6C283332A7260B9007FE619 /* CarouselViewController.swift */,
 			);
@@ -181,6 +193,8 @@
 				88DCCAEA2A6A5FB4003C3F15 /* SearchedText.swift */,
 				88371A712A702C650056BB5A /* MemberModel.swift */,
 				884835882A7109A000B73E28 /* HabitCategory.swift */,
+				885026162A73C1D100974094 /* HabitCardModel.swift */,
+				881D5FCA2A74324200603548 /* AlarmModel.swift */,
 				B6C283412A72C7C1007FE619 /* CarouselItem.swift */,
 			);
 			path = DummyModel;
@@ -191,14 +205,13 @@
 			children = (
 				881C06162A62826700184AFA /* ProfileImageViews.swift */,
 				881C05F92A61545200184AFA /* NavigationBar.swift */,
-				88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */,
-				88DCCAF62A6AF43C003C3F15 /* BottomSheetView(lofi).swift */,
 				881C06142A62803900184AFA /* UserProfileTableViewCell.swift */,
 				881C06182A62A65B00184AFA /* HabitProfileTableViewCell.swift */,
 				88DCCAE82A6A5D21003C3F15 /* RecentSearchTableViewCell.swift */,
 				88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */,
 				8848358E2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift */,
 				884835922A715D6F00B73E28 /* HorizontalPickerViewCell.swift */,
+				881D5FC82A742EDF00603548 /* AlarmTableViewCell.swift */,
 				88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */,
 				88DCCAF62A6AF43C003C3F15 /* BottomSheetView(lofi).swift */,
 				B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */,
@@ -327,14 +340,17 @@
 				881C06192A62A65B00184AFA /* HabitProfileTableViewCell.swift in Sources */,
 				B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */,
 				88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */,
+				881D5FC72A742D0E00603548 /* HabitAlarmViewController.swift in Sources */,
 				881C05F32A61461D00184AFA /* SearchView.swift in Sources */,
 				88371A722A702C650056BB5A /* MemberModel.swift in Sources */,
 				881C061B2A62AB3C00184AFA /* UIImage(SFSymbols)+resize.swift in Sources */,
 				881C06212A62E64F00184AFA /* SearchedUserProfile.swift in Sources */,
 				B64993192A5D3EDC0061C47E /* ViewController.swift in Sources */,
 				881C06012A616FB500184AFA /* TabBarController.swift in Sources */,
+				881D5FC92A742EDF00603548 /* AlarmTableViewCell.swift in Sources */,
 				B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */,
 				881C06032A61704000184AFA /* DummyViewController.swift in Sources */,
+				881D5FCB2A74324200603548 /* AlarmModel.swift in Sources */,
 				88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */,
 				B64993152A5D3EDC0061C47E /* AppDelegate.swift in Sources */,
 				881C05FC2A61560000184AFA /* SearchResultViewController.swift in Sources */,
@@ -342,11 +358,13 @@
 				881C06152A62803900184AFA /* UserProfileTableViewCell.swift in Sources */,
 				B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */,
 				881C05FA2A61545200184AFA /* NavigationBar.swift in Sources */,
+				885026172A73C1D100974094 /* HabitCardModel.swift in Sources */,
 				88E2B9B42A6BBF170039CF68 /* DeviceScreenSize.swift in Sources */,
 				884835932A715D6F00B73E28 /* HorizontalPickerViewCell.swift in Sources */,
 				881C05F82A6147AD00184AFA /* UIView+Preview.swift in Sources */,
 				88DCCAF72A6AF43C003C3F15 /* BottomSheetView(lofi).swift in Sources */,
 				B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */,
+				881D5FC52A742CC100603548 /* HabitAlarmView.swift in Sources */,
 				881C05F62A61479600184AFA /* UIViewController+Preview.swift in Sources */,
 				881C05EE2A5FF8C900184AFA /* SearchViewController.swift in Sources */,
 				88DA7EB12A6F6C300011AF43 /* HabitDiscoverView.swift in Sources */,

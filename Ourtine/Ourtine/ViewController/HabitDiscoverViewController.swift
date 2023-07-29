@@ -8,8 +8,11 @@
 import UIKit
 import SnapKit
 
+/// 습관 탐색 메인 페이지 뷰 컨트롤러입니다.
+/// AppTabBarController -> HabitDiscoverViewController
 class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
     
+    // habitSegment를 위한 데이터
     var habitSegmentCV_data: [String] = []
     var habitSegmentCV_selectedCellIndexPath: IndexPath?
     
@@ -19,8 +22,8 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
     // view 로드할 때 habitProfileView로 가져오기
     override func loadView() {
         super.loadView()
-        //view = habitProfileScrollView
-        view.backgroundColor = .white
+        view = habitProfileScrollView
+        //view.backgroundColor = .gray
     }
     
     // 상단 서치바 누르면 검색창으로 이동
@@ -33,16 +36,10 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 기본 네비게이션 바 보이지 않게
         self.navigationController?.navigationBar.isHidden = true
         
-        // habitProfileScrollView 설정
-        view.addSubview(habitProfileScrollView)
-        habitProfileScrollView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide) // safe area에 맞춰서 상단에 배치됩니다.
-            make.left.right.equalToSuperview() // 좌우 양쪽에 꽉 차게 설정합니다.
-            make.bottom.equalToSuperview() // 아래쪽에 꽉 차게 설정합니다.
-        }
-        
+        // 스크롤뷰 delegate 위임 / 안 쓸 듯
         self.habitProfileScrollView.delegate = self
         
         //MARK: - topBar의 searchBar 연결
@@ -54,7 +51,10 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
         //MARK: - habitSegmentCollectionViewCell 파일 register
         self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.register(HorizontalPickerViewCell.self, forCellWithReuseIdentifier: HorizontalPickerViewCell.identifier)
         
-        //MARK: - memberTableView 연결
+        //MARK: - habitCardCollectionView 파일 register
+        self.habitProfileScrollView.habitProfileView.habitCardCollectionView.register(HabitCardCollectionViewCell.self, forCellWithReuseIdentifier: HabitCardCollectionViewCell.identifier)
+        
+        //MARK: - memberCollectionView 연결
         self.habitProfileScrollView.habitProfileView.memberCollectionView.delegate = self
         self.habitProfileScrollView.habitProfileView.memberCollectionView.dataSource = self
         
@@ -62,14 +62,24 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
         self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.dataSource = self
         self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.delegate = self
         
+        //MARK: - habitCardCollectionView 연결
+        self.habitProfileScrollView.habitProfileView.habitCardCollectionView.dataSource = self
+        self.habitProfileScrollView.habitProfileView.habitCardCollectionView.delegate = self
+        
         //MARK: - habitSegmentCollectionView 초기 설정
         setUp_habitCV_Data()
         DispatchQueue.main.async {
             self.habitCV_select(row: 0)
         }
-
-        //headerViewYPosition = self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.frame.origin.y
-
+        
+        //MARK: - backBTN
+        self.habitProfileScrollView.habitProfileView.topBar.alarmButton.action = #selector(pushVC)
+        self.habitProfileScrollView.habitProfileView.topBar.alarmButton.target = self
+        
+    }
+    
+    @objc func pushVC() {
+        self.navigationController?.pushViewController(HabitAlarmViewController(), animated: true)
     }
     
     /// habitSegmentCV의 데이터를 페칭합니다.
@@ -79,7 +89,7 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
         }
     }
     
-    // 최초 Y좌표는 지정값이 아닌 계산된 동적값이어야 합ㅂ니다 수정필
+    // 최초 Y좌표는 지정값이 아닌 계산된 동적값이어야 합니다 추후 수정필요
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
             // collectionView의 초기 Y 좌표를 설정합니다.
             let habitCV_initialYPosition: CGFloat = 240 // 예시로 Y 좌표를 200으로 설정합니다.
@@ -115,8 +125,12 @@ extension HabitDiscoverViewController: UICollectionViewDelegate, UICollectionVie
             return Dummy_memberList.count
         }
         // habitSegmentCollectionView일 때
-        else if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
             return habitSegmentCV_data.count
+        }
+        // habitCardCollectionView일 때
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
+            return Dummy_habitCards.count
         }
         // 예외 상황
         return 0
@@ -131,12 +145,21 @@ extension HabitDiscoverViewController: UICollectionViewDelegate, UICollectionVie
             return cell
         }
         // habitSegmentCollectionView일 때
-        else if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: HorizontalPickerViewCell.identifier,
                 for: indexPath
             ) as? HorizontalPickerViewCell else { return UICollectionViewCell() }
             cell.configure(with: habitSegmentCV_data[indexPath.row])
+            return cell
+        }
+        // habitCardCollectionView일 때
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: HabitCardCollectionViewCell.identifier,
+                for: indexPath
+            ) as? HabitCardCollectionViewCell else { return UICollectionViewCell() }
+            cell.getHabitsData(data: Dummy_habitCards[indexPath.row])
             return cell
         }
         // 예외 상황
@@ -148,31 +171,57 @@ extension HabitDiscoverViewController: UICollectionViewDelegate, UICollectionVie
         // memberCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.memberCollectionView {
             // 멤버 셀 눌렀을 때 동작
+            print("member \(indexPath.row) selected")
         }
         // habitSegmentCollectionView일 때
-        else if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
             habitCV_select(row: indexPath.row)
         }
+        // habitCardCollectionView일 때
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
+            // 습관 카드 셀 눌렀을 때 동작
+            print("habit card \(indexPath.row) selected")
+        }
+        
         
     }
-    
 }
 
 /// CollectionView의  FlowLayout 상속 내용입니다
 extension HabitDiscoverViewController: UICollectionViewDelegateFlowLayout {
+    
+    // CollectionView들의 좌우 여백 조정
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            var topBottomPadding: CGFloat = 0
+            let leftPadding: CGFloat = 10
+            let rightPadding: CGFloat = 10
+            
+            if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
+                topBottomPadding = 10
+            }
+
+            return UIEdgeInsets(top: topBottomPadding, left: leftPadding, bottom: topBottomPadding, right: rightPadding)
+        }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // memberCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.memberCollectionView {
             return CGSize(width: 80, height: collectionView.frame.height)
         }
         // habitSegmentCollectionView일 때
-        else if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
             return CGSize(
                 width: self.view.frame.width / 4,
                 height: 40
             )
         }
-        
+        // habitCardCollectionView일 때
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
+            return CGSize(
+                width: self.view.frame.width / 2 - 20,
+                height: self.view.frame.width / 2 - 20
+            )
+        }
         return CGSize()
     }
 }
