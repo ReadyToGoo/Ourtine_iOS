@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8800A4852A776886004714AD /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8800A4842A776886004714AD /* KakaoSDKAuth */; };
+		8800A4872A776886004714AD /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 8800A4862A776886004714AD /* KakaoSDKUser */; };
 		881C05EE2A5FF8C900184AFA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881C05ED2A5FF8C900184AFA /* SearchViewController.swift */; };
 		881C05F32A61461D00184AFA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881C05F22A61461D00184AFA /* SearchView.swift */; };
 		881C05F62A61479600184AFA /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881C05F52A61479600184AFA /* UIViewController+Preview.swift */; };
@@ -57,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8800A4822A7767F6004714AD /* Ourtine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ourtine.entitlements; sourceTree = "<group>"; };
 		881C05ED2A5FF8C900184AFA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		881C05F22A61461D00184AFA /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		881C05F52A61479600184AFA /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
@@ -113,6 +116,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B649932A2A5D41E40061C47E /* SnapKit in Frameworks */,
+				8800A4852A776886004714AD /* KakaoSDKAuth in Frameworks */,
+				8800A4872A776886004714AD /* KakaoSDKUser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +243,7 @@
 		B64993132A5D3EDC0061C47E /* Ourtine */ = {
 			isa = PBXGroup;
 			children = (
+				8800A4822A7767F6004714AD /* Ourtine.entitlements */,
 				881C05EF2A61439300184AFA /* Model */,
 				881C05F02A61439900184AFA /* View */,
 				881C05F12A6143A400184AFA /* ViewController */,
@@ -271,6 +277,8 @@
 			name = Ourtine;
 			packageProductDependencies = (
 				B64993292A5D41E40061C47E /* SnapKit */,
+				8800A4842A776886004714AD /* KakaoSDKAuth */,
+				8800A4862A776886004714AD /* KakaoSDKUser */,
 			);
 			productName = Ourtine;
 			productReference = B64993112A5D3EDC0061C47E /* Ourtine.app */;
@@ -302,6 +310,7 @@
 			mainGroup = B64993082A5D3EDC0061C47E;
 			packageReferences = (
 				B64993282A5D41E40061C47E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8800A4832A776886004714AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = B64993122A5D3EDC0061C47E /* Products */;
 			projectDirPath = "";
@@ -509,6 +518,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Ourtine/Ourtine.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H278GZ4GQ7;
@@ -536,6 +546,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Ourtine/Ourtine.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H278GZ4GQ7;
@@ -582,6 +593,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8800A4832A776886004714AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		B64993282A5D41E40061C47E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -593,6 +612,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8800A4842A776886004714AD /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8800A4832A776886004714AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		8800A4862A776886004714AD /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8800A4832A776886004714AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
 		B64993292A5D41E40061C47E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B64993282A5D41E40061C47E /* XCRemoteSwiftPackageReference "SnapKit" */;
