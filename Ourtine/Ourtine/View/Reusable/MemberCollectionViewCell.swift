@@ -29,7 +29,7 @@ class MemberCollectionViewCell: UICollectionViewCell {
         return imgView
     }()
     
-    // userImage 생성
+    // userImage 생성 [동그란 이미지]
     private let userImage: UserProfileImageView = {
         let imgView = UserProfileImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imgView.tintColor = .black

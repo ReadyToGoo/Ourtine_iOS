@@ -26,7 +26,8 @@ final class HorizontalPickerViewCell: UICollectionViewCell {
     
     public let underLine: UIView = {
         let line = UIView()
-        line.backgroundColor = .systemOrange
+        line.backgroundColor = .systemOrange.withAlphaComponent(0.8)
+        line.layer.cornerRadius = 2.5
         return line
     }()
 
@@ -36,7 +37,8 @@ final class HorizontalPickerViewCell: UICollectionViewCell {
         
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.left.right.equalToSuperview()
+            $0.height.equalTo(40)
         }
         
         addSubview(underLine)
@@ -61,6 +63,8 @@ final class HorizontalPickerViewCell: UICollectionViewCell {
     /// + 해당 셀이 선택 되었는지에 따라(isSelected: Bool) 밑선을 추가합니다.
     public func configure(with title: String, isSelected: Bool = false) {
         titleLabel.text = title
+        titleLabel.textColor = isSelected ? .systemOrange : .black
+        titleLabel.font = isSelected ? .systemFont(ofSize: 16, weight: .heavy) : .systemFont(ofSize: 15, weight: .medium)
         self.underLine.isHidden = isSelected ? false : true
     }
 }

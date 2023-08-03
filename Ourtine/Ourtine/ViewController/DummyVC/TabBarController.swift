@@ -26,7 +26,7 @@ class AppTabBarController: UITabBarController {
         firstVC.tabBarItem.title = "홈"
         
         
-        let secondVC = UINavigationController(rootViewController: HabitDiscoverViewController())
+        let secondVC = DarkStatusBar_NavigationController(rootViewController: HabitDiscoverViewController())
         secondVC.tabBarItem.image = UIImage(systemName: "magnifyingglass")
         secondVC.tabBarItem.title = "탐색"
         
