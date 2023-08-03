@@ -14,14 +14,15 @@ class HomeViewController: UIViewController {
     let tempUserName = "은지"
     let tempUserHabit = "반려동물 물주기"
     
-    // Habit Phrase View
-    private let phraseView: UIView = {
-        let phraseView = HomeTextBoxView()
-        phraseView.translatesAutoresizingMaskIntoConstraints = false
-        phraseView.backgroundColor = .white
-        phraseView.size = CGSize(width: 358, height: 79.91)
-        
-        return phraseView
+    // Habit Phrase Label
+    private let phraseLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.setLetterSpacing(kernValue: 0.5)
+        return label
     }()
     
     // TimeView
@@ -68,17 +69,16 @@ class HomeViewController: UIViewController {
         addChild(carouselViewController)
         
         [
-            phraseView,
+            phraseLabel,
             timeView,
             startBtn,
             (carouselViewController.view)
         ].forEach {view.addSubview($0)}
         
         // phraseView
-        let text = "\(tempUserName), \n" + "\(postPositionText(tempUserHabit)) 시작해보아요!"
-        if let phraseView = phraseView as? HomeTextBoxView {
-            phraseView.text = text
-        }
+        let text = "\(tempUserName)님, \n" + "\(postPositionText(tempUserHabit)) 시작해봐요!"
+
+        phraseLabel.text = text
         
         // startBtn
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.buttonTapped(_sender:)))
@@ -94,15 +94,15 @@ class HomeViewController: UIViewController {
     
     
     private func setConstraints() {
-        // phraseView
-        phraseView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(62)
-            make.centerX.equalToSuperview()
+        // phraseLabel
+        phraseLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(92)
+            make.leading.equalToSuperview().offset(23.41)
         }
         
         // timeView
         timeView.snp.makeConstraints { make in
-            make.top.equalTo(phraseView.snp.bottom).offset(40)
+            make.top.equalTo(phraseLabel.snp.bottom).offset(71)
             make.centerX.equalToSuperview()
         }
         
@@ -135,6 +135,14 @@ class HomeViewController: UIViewController {
         return word+str
         
     }
-    
+}
 
+import SwiftUI
+struct HomeViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        UIViewControllerPreview {
+            let ViewController = HomeViewController()
+            return ViewController
+        }
+    }
 }
