@@ -59,6 +59,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         // 넘기기 전에 cell에 데이터 넘겨줍니다
         cell.getTextData(data: Dummy_SearchText[indexPath.row])
+        // 셀 선택할 때의 색 없앱니다
+        cell.selectionStyle = .none
         return cell
     }
     

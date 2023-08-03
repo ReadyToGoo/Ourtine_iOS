@@ -12,6 +12,7 @@ import SnapKit
 /// ViewController : HabitDiscoverViewController
 class HabitCardCollectionViewCell: UICollectionViewCell {
     
+    //셀의 기본 크기와 identifier입니다.
     static let cellHeight = 240.0
     static let cellWidth = 200.0
     
@@ -40,7 +41,7 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
     lazy var frontImage: UIImageView = {
         let view = UIImageView()
         //view.image = getResizedSymbolImage(UIImage(systemName: "square.text.square")!, width: HabitCardCollectionViewCell.cellWidth, height: HabitCardCollectionViewCell.cellHeight)
-        view.image = createImageWithColor(color: .systemTeal, size: CGSize(width: 50, height: 50))
+        view.image = createImageWithColor(color: .app_SecondaryColor, size: CGSize(width: 50, height: 50))
         //view.layer.opacity = 0.3
         return view
     }()
@@ -57,14 +58,14 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "습관명"
         label.textColor = .black
-        label.font = .systemFont(ofSize: 20, weight: .medium)
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         return label
     }()
     
     // 사용자 이미지
     lazy var userImage: UserProfileImageView = {
         let image = UserProfileImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        image.setImage(image: createImageWithColor(color: .systemIndigo, size: CGSize(width: 50, height: 50)))
+        image.setImage(image: createImageWithColor(color: .app_SecondaryColor2, size: CGSize(width: 50, height: 50)))
         image.layer.borderColor = UIColor.white.cgColor
         image.layer.borderWidth = 1.0
         return image
@@ -75,7 +76,7 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "유저 닉네임"
         label.textColor = .black
-        label.font = .systemFont(ofSize: 13)
+        label.font = .systemFont(ofSize: 13, weight: .light)
         return label
     }()
     
@@ -181,12 +182,11 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        
+        // CollectionView에서 봤을때, Cell의 음영 효과를 주기 위해 추가합니다.
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = CGSize(width: 3, height: 3)
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.layer.shadowRadius = 4
-
         
         addViews()
         setConstraints()

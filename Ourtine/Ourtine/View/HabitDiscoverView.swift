@@ -32,7 +32,8 @@ class HabitDiscoverScrollView: UIScrollView {
         
         // 얘 넣으면 sticky header가 안됨
         habitProfileView.scrollResetBtn.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.3)
+            $0.width.equalToSuperview().multipliedBy(0.35)
+            $0.height.equalTo(40)
             $0.center.equalToSuperview()
         }
         
@@ -110,8 +111,10 @@ class HabitDiscoverView: UIView {
     lazy var scrollResetBtn: UIButton = {
         let btn = UIButton()
         btn.layer.cornerRadius = 15
-        btn.backgroundColor = .systemOrange.withAlphaComponent(0.9)
+        btn.backgroundColor = .app_SecondaryColor2.withAlphaComponent(0.9)
         btn.setTitle("위로 가기", for: .normal)
+        btn.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+        btn.tintColor = .white
         return btn
     }()
 

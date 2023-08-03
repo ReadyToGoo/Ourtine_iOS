@@ -8,13 +8,15 @@
 import UIKit
 import SnapKit
 
+/// HabitCardCollectionViewCell에 표시될 view입니다.
+/// 글자에 맞추어 라벨 사이즈가 조절됩니다.
 class HabitDescriptionView: UIView {
     
     // 컨테이너뷰
     lazy var titleLabelView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
-        view.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        view.backgroundColor = .app_TertiaryColor
         view.clipsToBounds = false
         return view
     }()
@@ -24,7 +26,7 @@ class HabitDescriptionView: UIView {
         let view = UIImageView()
         view.image = UIImage(systemName: "book")
         view.contentMode = .scaleAspectFit
-        view.tintColor = .darkGray
+        view.tintColor = .app_BrightnessColor80
         return view
     }()
     
@@ -32,14 +34,15 @@ class HabitDescriptionView: UIView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "카테고리"
-        label.textColor = .darkGray
+        label.textColor = .app_BrightnessColor80
         label.font = .systemFont(ofSize: 11)
         label.sizeToFit()
         return label
     }()
     
+    /// 라벨이 대문용 라벨일 경우 속성값을 대문용으로 바꿔주는 함수입니다.
     func configureTitle() {
-        self.titleLabel.font = .systemFont(ofSize: 18)
+        self.titleLabel.font = .systemFont(ofSize: 16)
         
         self.titleImage.snp.updateConstraints {
             $0.leading.equalToSuperview().offset(8)
@@ -55,6 +58,7 @@ class HabitDescriptionView: UIView {
         
     }
     
+    // 라벨 안 이미지가 필요없을 경우 제거하는 함수입니다.
     func removeImage() {
         self.titleImage.snp.updateConstraints {
             $0.width.equalTo(0)
@@ -67,7 +71,6 @@ class HabitDescriptionView: UIView {
         super.init(frame: frame)
         
         self.layer.cornerRadius = 10
-        //self.backgroundColor = .systemGray.withAlphaComponent(0.5)
         self.clipsToBounds = false
         
         titleLabelView.addSubview(titleImage)

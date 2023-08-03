@@ -12,6 +12,7 @@ import SnapKit
 /// ViewController : HabitDiscoverViewController
 class MemberCollectionViewCell: UICollectionViewCell {
     
+    //셀의 기본 높이와 identifier입니다.
     static let cellHeight = 120.0
     static let identifier:String = "MemberCollectionViewCell"
         
@@ -23,9 +24,9 @@ class MemberCollectionViewCell: UICollectionViewCell {
     // userBadge 생성
     private let userBadge: UIImageView = {
         let imgView = UIImageView()
-        imgView.image = getResizedSymbolImage(UIImage(systemName: "crown") ?? UIImage(), width: 20, height: 20)
+        imgView.image = getResizedSymbolImage(UIImage(systemName: "crown.fill") ?? UIImage(), width: 20, height: 20)
         //imgView.setImage(image: UIImage(systemName: "crown"))
-        imgView.tintColor = .brown
+        imgView.tintColor = .app_PrimaryColor
         return imgView
     }()
     

@@ -8,6 +8,7 @@
 import UIKit
 
 /// 네비게이션 바 - 커스텀 네비게이션 바를 위한 재사용 뷰입니다.
+/// add<Component> 함수들을 통해 네비게이션 바 안에 요소 추가가 가능합니다.
 class Custom_NavigationBar: UINavigationBar {
 
     let navItem = UINavigationItem() // 네비게이션 바에 들어갈 Item 리스트입니다.
@@ -65,6 +66,7 @@ class Custom_NavigationBar: UINavigationBar {
         self.shadowImage = UIImage()
         self.barTintColor = .app_UIColor1
         
+        // 좌측 pop버튼만 추가
         self.leftButton.tintColor = .app_ButtonColor1
         navItem.leftBarButtonItem = leftButton
         self.setItems([navItem], animated: true)

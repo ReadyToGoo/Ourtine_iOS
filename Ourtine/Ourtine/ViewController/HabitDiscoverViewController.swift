@@ -90,11 +90,7 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
-    
+    // 화면 푸시
     @objc func pushVC() {
         self.navigationController?.pushViewController(HabitAlarmViewController(), animated: true)
     }
@@ -106,6 +102,7 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
         }
     }
     
+    // 위로 가기 버튼 눌렀을 때 활성화됩니다.
     @objc func tappedResetBtn() {
         self.habitProfileScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         self.habitProfileScrollView.habitProfileView.scrollResetBtn.isHidden = true
@@ -231,8 +228,8 @@ extension HabitDiscoverViewController: UICollectionViewDelegateFlowLayout {
             
             if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
                 topBottomPadding = 10
-                leftPadding = 15
-                rightPadding = 15
+                leftPadding = 16
+                rightPadding = 16
             }
 
             return UIEdgeInsets(top: topBottomPadding, left: leftPadding, bottom: topBottomPadding, right: rightPadding)
@@ -253,11 +250,27 @@ extension HabitDiscoverViewController: UICollectionViewDelegateFlowLayout {
         // habitCardCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
             return CGSize(
-                width: self.view.frame.width / 2 - 20,
+                width: self.view.frame.width / 2 - 25,
                 height: self.view.frame.width / 2 + 20
             )
         }
         return CGSize()
+    }
+    
+    //섹션의 행 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
+            return 12
+        }
+        return 0
+    }
+    
+    //섹션의 열 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
+            return 20
+        }
+        return 8
     }
 }
 
