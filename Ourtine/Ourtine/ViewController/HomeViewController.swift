@@ -38,15 +38,55 @@ class HomeViewController: UIViewController {
         return label
     }()
     
-    // startBtn
-    private let startBtn: UIView = {
-        let button = HomeTextBoxView()
-        button.text = "시작하기"
-        button.size = CGSize(width: 358, height: 60)
+
+    private let startBtn: UIButton = {
+        let width: CGFloat = 156.56
+        let height: CGFloat = 116.72
+
+        let posX: CGFloat = UIScreen.main.bounds.width/2 - width/2
+        let posY: CGFloat = UIScreen.main.bounds.height/2 - height/2
+
+        var config = UIButton.Configuration.filled()
+        
+        // text
+        var text = AttributedString.init("참여하기")
+        text.font = .systemFont(ofSize: 20.0, weight: .bold)
+        text.foregroundColor = .black.withAlphaComponent(0.35)
+        config.attributedTitle = text
+        
+        // image
+        config.image = UIImage(systemName: "play.fill")
+        config.imagePadding = 10
+        config.imagePlacement = .trailing
+        
+        // size
+        config.buttonSize = .small
+        config.contentInsets = NSDirectionalEdgeInsets(top: 19, leading: 30, bottom: 16, trailing: 20)
+        
+        config.baseBackgroundColor = UIColor(.white).withAlphaComponent(0.35)
+        
+        let button = UIButton(configuration: config)
+        
+        // action
+        button.configurationUpdateHandler = { button in
+              var config = button.configuration
+              config?.image = button.isHighlighted ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+              button.configuration = config
+        }
+        
+        // radius
+        button.layer.cornerRadius = 16
+        
+//        button.layer.shadowColor = UIColor.black.cgColor
+//        button.layer.shadowOpacity = 0.25
+//        button.layer.shadowOffset = CGSize(width: 0, height: 10)
+//        button.layer.shadowRadius = 10
+        button.layer.applyFigmaShadow(color: .black, alpha: 0.25, x: 0, y: 10, blur: 10, spread: 4)
+
+
         
         return button
     }()
-    
     
     // startBtnTapped
     @objc func buttonTapped(_sender: UITapGestureRecognizer) {
@@ -64,7 +104,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         
         // addSubview, addChild
         addChild(carouselViewController)
@@ -97,7 +137,7 @@ class HomeViewController: UIViewController {
     private func setConstraints() {
         // phraseLabel
         phraseLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(92)
+            make.top.equalToSuperview().offset(92.16)
             make.leading.equalToSuperview().offset(23.41)
         }
 
@@ -109,7 +149,7 @@ class HomeViewController: UIViewController {
         
         // startBtn
         startBtn.snp.makeConstraints { make in
-            make.top.equalTo(timeLabel.snp.bottom).offset(57)
+            make.top.equalTo(timeLabel.snp.bottom).offset(77.63)
             make.centerX.equalToSuperview()
         }
         
@@ -147,3 +187,4 @@ struct HomeViewController_Preview: PreviewProvider {
         }
     }
 }
+
