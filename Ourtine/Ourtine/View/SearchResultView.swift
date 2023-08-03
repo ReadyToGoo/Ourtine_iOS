@@ -134,7 +134,7 @@ class SearchResultView: UIView {
         searchResultTableView.snp.makeConstraints { make in
             make.bottom.equalTo(self.safeAreaLayoutGuide)
             make.horizontalEdges.equalToSuperview()
-            make.top.equalTo(filterBtn.snp.bottom)
+            make.top.equalTo(segmentControl.snp.bottom)
             
         }
         

@@ -112,7 +112,8 @@ class SearchResultViewController: UIViewController, UISheetPresentationControlle
                 // 레이아웃 업데이트
                 self.searchResultView.layoutIfNeeded()
             })
-
+            
+            // 유저 닉네임 검색 결과 테이블 뷰 숨김
             self.searchResultView.searchResultTableView.isHidden = true
  
         } else if segmentIndex == 1 {
