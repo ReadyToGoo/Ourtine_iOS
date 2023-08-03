@@ -50,11 +50,17 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         return Dummy_SearchText.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RecentSearchTableViewCell.identifier, for: indexPath) as? RecentSearchTableViewCell else { return UITableViewCell() }
         
         // 넘기기 전에 cell에 데이터 넘겨줍니다
         cell.getTextData(data: Dummy_SearchText[indexPath.row])
+        // 셀 선택할 때의 색 없앱니다
+        cell.selectionStyle = .none
         return cell
     }
     

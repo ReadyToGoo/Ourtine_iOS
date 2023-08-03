@@ -23,13 +23,12 @@ class SearchView: UIView {
         return navBar
     }()
     
-    // 네비게이션 바 아래 세그먼트 컨트롤
-    lazy var segmentControl = CustomSegmentControl(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 50))
-    
     // 세그먼트컨트롤 아래 검색 결과 테이블 뷰
     lazy var recentSearchTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .white
+        tableView.separatorInset.left = 15
+        tableView.separatorInset.right = 15
         return tableView
     }()
     
@@ -37,14 +36,14 @@ class SearchView: UIView {
     lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.text = "최근 검색어"
-        label.textColor = .black
+        label.font = .systemFont(ofSize: 15)
+        label.textColor = .gray
         return label
     }()
     
     // 컴포넌트들 View에 등록
     func inputSubview() {
         self.addSubview(navigationBar)
-        self.addSubview(segmentControl)
         self.addSubview(headerLabel)
         self.addSubview(recentSearchTableView)
     }
@@ -59,27 +58,18 @@ class SearchView: UIView {
             make.right.equalTo(self.safeAreaLayoutGuide)
         }
         
-        //MARK: - segmentControl
-        segmentControl.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            //make.height.equalTo(CustomSegmentControl.selfHeight)
-            make.height.equalTo(0)
-        }
-        
         //MARK: - SearchResultTableView
         recentSearchTableView.snp.makeConstraints { make in
-            make.height.equalTo(300)
+            make.bottom.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(headerLabel.snp.bottom)
         }
         
         //MARK: - headerLabel
         headerLabel.snp.makeConstraints {
-            $0.top.equalTo(segmentControl.snp.bottom)
+            $0.top.equalTo(navigationBar.snp.bottom)
             $0.leading.equalToSuperview().offset(15)
-            $0.height.equalTo(50)
+            $0.height.equalTo(40)
         }
     
     }

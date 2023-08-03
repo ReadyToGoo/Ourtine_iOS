@@ -16,6 +16,7 @@ class AppTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .white
         self.tabBar.barTintColor = .white
         self.tabBar.tintColor = .black
         self.tabBar.isTranslucent = true
@@ -26,7 +27,7 @@ class AppTabBarController: UITabBarController {
         firstVC.tabBarItem.title = "홈"
         
         
-        let secondVC = UINavigationController(rootViewController: HabitDiscoverViewController())
+        let secondVC = DarkStatusBar_NavigationController(rootViewController: HabitDiscoverViewController())
         secondVC.tabBarItem.image = UIImage(systemName: "magnifyingglass")
         secondVC.tabBarItem.title = "탐색"
         

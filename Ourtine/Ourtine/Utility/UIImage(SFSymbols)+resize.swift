@@ -17,5 +17,5 @@ func getResizedSymbolImage(_ symbolImage: UIImage, width: CGFloat, height: CGFlo
     let resizedImage = renderer.image { context in
         symbolImage.draw(in: CGRect(origin: .zero, size: size))
     }
-    return resizedImage
+    return resizedImage.withRenderingMode(.alwaysTemplate)
 }

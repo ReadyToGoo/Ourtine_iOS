@@ -45,7 +45,7 @@ class CustomSegmentControl: UISegmentedControl {
         
         // 선택 되어 있지 않을때 폰트 및 폰트컬러
         self.setTitleTextAttributes([
-            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor.app_BrightnessColor60,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .regular)
         ], for: .normal)
         
@@ -55,7 +55,7 @@ class CustomSegmentControl: UISegmentedControl {
         
         // 선택 되었을때 폰트 및 폰트컬러
         self.setTitleTextAttributes([
-            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor.app_PrimaryColor,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .bold)
         ], for: .selected)
         

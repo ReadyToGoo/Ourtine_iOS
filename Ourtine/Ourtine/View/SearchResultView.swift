@@ -15,7 +15,7 @@ import SnapKit
 class SearchResultView: UIView {
     
     // 세그먼트에 표시될 선택한 아이템 강조선 너비입니다.
-    let selectedLinewidth = screenWidth / 6
+    let selectedLinewidth = screenWidth / 3
     
     // 상단 커스텀 네비게이션 바 : 검색 결과 뷰 전용
     //lazy var navigationBar = Custom_NavigationBar()
@@ -29,28 +29,52 @@ class SearchResultView: UIView {
     // 네비게이션 바 아래 세그먼트 컨트롤
     lazy var segmentControl = CustomSegmentControl(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: CustomSegmentControl.selfHeight))
     
+    // 세그먼트 컨트로 밑선
+    lazy var underLine:UIView = {
+        let line = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 3))
+        line.backgroundColor = UIColor.app_SecondaryColor
+        return line
+    }()
+    
+    // 세그먼트 컨트롤 강조선
     lazy var selectedLine: UIView = {
         let line = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 3))
-        line.backgroundColor = UIColor.gray
+        line.backgroundColor = UIColor.app_PrimaryColor
         //line.layer.cornerRadius = 15.0
         return line
     }()
     
-    // 세그먼트컨트롤 아래 검색 결과 테이블 뷰
+    // 세그먼트컨트롤 아래 습관 찾기 콜렉션 뷰
+    lazy var searchResultCollectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.width * 2), collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = .white
+        
+        return collectionView
+    }()
+    
+    // 세그먼트컨트롤 아래 유저 닉네임 테이블 뷰
     lazy var searchResultTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .white
+        tableView.separatorInset.left = 15
+        tableView.separatorInset.right = 15
         return tableView
     }()
     
     // "습관 찾기" 세그먼트 눌렀을 때 테이블 뷰 위에 표시되는 필터링 버튼
     lazy var filterBtn: UIButton = {
-        let btn = UIButton()
+        var config = UIButton.Configuration.filled()
+        config.baseBackgroundColor = .app_SecondaryColor2
+        config.imagePadding = 10
+        config.cornerStyle = .capsule
+        
+        let btn = UIButton(configuration: config)
         btn.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
-        btn.tintColor = .black
-        btn.setTitle("최신순", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+        btn.setTitle("습관 개설 순", for: .normal)
+        btn.setBackgroundColor(.app_SecondaryColor2, for: .normal)
         return btn
     }()
     
@@ -59,9 +83,11 @@ class SearchResultView: UIView {
         addSubview(navigationBar)
         segmentControl.addItems(["습관 찾기", "유저 닉네임"])
         addSubview(segmentControl)
-        addSubview(selectedLine)
+        addSubview(searchResultCollectionView)
         addSubview(searchResultTableView)
         addSubview(filterBtn)
+        addSubview(underLine)
+        addSubview(selectedLine)
     }
     
     // 컴포넌트들 Constraints 설정
@@ -82,12 +108,26 @@ class SearchResultView: UIView {
             make.height.equalTo(CustomSegmentControl.selfHeight)
         }
         
-        //MARK: - selectedLine
-        selectedLine.snp.makeConstraints {
-            $0.width.equalToSuperview().dividedBy(6)
+        //MARK: - underLine
+        underLine.snp.makeConstraints {
+            $0.width.equalToSuperview()
             $0.height.equalTo(3)
             $0.top.equalTo(segmentControl.snp.bottom)
-            $0.leading.equalTo(self.selectedLinewidth)
+        }
+        
+        //MARK: - selectedLine
+        selectedLine.snp.makeConstraints {
+            $0.width.equalTo(self.selectedLinewidth)
+            $0.height.equalTo(3)
+            $0.top.equalTo(segmentControl.snp.bottom)
+            $0.leading.equalToSuperview().offset(self.selectedLinewidth / 4)
+        }
+        
+        // MARK: - SearchResultCollectionView
+        searchResultCollectionView.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalToSuperview()
+            $0.top.equalTo(segmentControl.snp.bottom)
         }
         
         //MARK: - SearchResultTableView
@@ -100,7 +140,7 @@ class SearchResultView: UIView {
         
         //MARK: - SearchResultTableView
         filterBtn.snp.makeConstraints {
-            $0.top.equalTo(segmentControl.snp.bottom).offset(5)
+            $0.top.equalTo(segmentControl.snp.bottom).offset(20)
             $0.trailing.equalToSuperview().offset(-15)
             $0.height.equalTo(40)
         }
