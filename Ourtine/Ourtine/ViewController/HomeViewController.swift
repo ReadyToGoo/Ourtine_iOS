@@ -66,6 +66,8 @@ class HomeViewController: UIViewController {
         config.baseBackgroundColor = UIColor(.white).withAlphaComponent(0.35)
         
         let button = UIButton(configuration: config)
+        button.layer.cornerRadius = 16
+        button.layer.applyFigmaShadow(color: .black, alpha: 0.25, x: 0, y: 10, blur: 10, spread: 4)
         
         // action
         button.configurationUpdateHandler = { button in
@@ -73,17 +75,6 @@ class HomeViewController: UIViewController {
               config?.image = button.isHighlighted ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
               button.configuration = config
         }
-        
-        // radius
-        button.layer.cornerRadius = 16
-        
-//        button.layer.shadowColor = UIColor.black.cgColor
-//        button.layer.shadowOpacity = 0.25
-//        button.layer.shadowOffset = CGSize(width: 0, height: 10)
-//        button.layer.shadowRadius = 10
-        button.layer.applyFigmaShadow(color: .black, alpha: 0.25, x: 0, y: 10, blur: 10, spread: 4)
-
-
         
         return button
     }()
@@ -164,6 +155,7 @@ class HomeViewController: UIViewController {
         
     }
     
+    // 조사 판단 함수
     func postPositionText(_ word: String)->String {
         guard let lastText = word.last else { return word }
         let unicodeVal = UnicodeScalar(String(lastText))?.value

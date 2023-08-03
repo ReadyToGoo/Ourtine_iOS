@@ -6,7 +6,11 @@
 //
 
 import UIKit
-
+/*
+ HOW TO USE
+ : Figma 상의 shadow 설정 그대로 적용하면 됨.
+ button.layer.applyFigmaShadow(color: .black, alpha: 0.25, x: 0, y: 10, blur: 10, spread: 4)
+ */
 extension CALayer {
     func applyFigmaShadow(
         color: UIColor,
