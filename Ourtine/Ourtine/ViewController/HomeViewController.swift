@@ -21,20 +21,21 @@ class HomeViewController: UIViewController {
         label.textColor = .black
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 24, weight: .semibold)
-        label.setLetterSpacing(kernValue: 0.5)
+        label.setLetterSpacing()
         return label
     }()
     
-    // TimeView
-    private let timeView: UIView = {
-        let timeView = HomeTextBoxView()
-        timeView.translatesAutoresizingMaskIntoConstraints = false
+    // TimeLabel
+    private let timeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
-        timeView.text = "00:00:12"
-        timeView.label.textColor = .white
-        timeView.size = CGSize(width: 358, height: 124)
+        label.text = "00:00:12"
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 60, weight: .bold)
+        label.setLetterSpacing()
         
-        return timeView
+        return label
     }()
     
     // startBtn
@@ -70,12 +71,12 @@ class HomeViewController: UIViewController {
         
         [
             phraseLabel,
-            timeView,
+            timeLabel,
             startBtn,
             (carouselViewController.view)
         ].forEach {view.addSubview($0)}
         
-        // phraseView
+        // phraseLabel
         let text = "\(tempUserName)님, \n" + "\(postPositionText(tempUserHabit)) 시작해봐요!"
 
         phraseLabel.text = text
@@ -99,16 +100,16 @@ class HomeViewController: UIViewController {
             make.top.equalToSuperview().offset(92)
             make.leading.equalToSuperview().offset(23.41)
         }
-        
-        // timeView
-        timeView.snp.makeConstraints { make in
+
+        // timeLabel
+        timeLabel.snp.makeConstraints { make in
             make.top.equalTo(phraseLabel.snp.bottom).offset(71)
             make.centerX.equalToSuperview()
         }
         
         // startBtn
         startBtn.snp.makeConstraints { make in
-            make.top.equalTo(timeView.snp.bottom).offset(57)
+            make.top.equalTo(timeLabel.snp.bottom).offset(57)
             make.centerX.equalToSuperview()
         }
         
