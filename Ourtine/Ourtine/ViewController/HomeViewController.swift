@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
         return label
     }()
     
-
+    // startBtn
     private let startBtn: UIButton = {
         let width: CGFloat = 156.56
         let height: CGFloat = 116.72
@@ -146,8 +146,10 @@ class HomeViewController: UIViewController {
         
         // carousel
         carouselViewController.view.snp.makeConstraints { make in
-            make.top.equalTo(startBtn.snp.bottom).offset(135)
-            make.leading.equalTo(view.snp.leading).offset(18)
+//            make.bottom.equalToSuperview().offset(-102.78)
+            make.top.equalTo(startBtn.snp.bottom).offset(135.63)
+//            make.leading.equalTo(view.snp.leading).offset(16)
+            make.leading.equalToSuperview()
             make.trailing.equalTo(view.snp.trailing)
             make.height.equalTo(152)
         }
