@@ -60,6 +60,24 @@ class CardViewCell: UICollectionViewCell {
         return label
     }()
     
+    var circularProgressView: CircularProgressView = {
+        let progressView = CircularProgressView()
+
+        // Set the desired frame for the view
+//        let viewWidth: CGFloat = 63.65
+//        let viewHeight: CGFloat = 63.65
+//        let xPos: CGFloat = (progressView.bounds.width - viewWidth) / 2
+//        let yPos: CGFloat = (progressView.bounds.height - viewHeight) / 2
+//        progressView.frame = CGRect(x: xPos, y: yPos, width: viewWidth, height: viewHeight)
+
+        progressView.progressColor = UIColor.orange
+        progressView.trackColor = UIColor.orange.withAlphaComponent(0.2)
+        
+        progressView.updateProgress(to: 0.5)
+
+        return progressView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -80,7 +98,7 @@ class CardViewCell: UICollectionViewCell {
         habitImageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
 //            make.height.equalTo(cardView.snp.height).multipliedBy(0.45)
-            make.height.equalTo(69.19)
+            make.height.equalTo(72)
         }
         
         cardView.addSubview(habitNameLabel)
@@ -109,6 +127,20 @@ class CardViewCell: UICollectionViewCell {
 //            make.trailing.equalToSuperview().offset(-8.1)
             make.leading.equalTo(crownBadge.snp.trailing).offset(2)
             make.bottom.equalTo(crownBadge.snp.bottom)
+        }
+        
+        cardView.addSubview(circularProgressView)
+
+        circularProgressView.snp.makeConstraints { make in
+//            make.centerX.equalToSuperview() // Center horizontally
+//            make.leading.equalTo(habitImageView.center)
+//            make.centerY.equalTo(habitImageView.snp.bottom).offset(8) // Center vertically
+//            make.height.width.equalTo(60)
+//            make.center.equalTo(cardView)
+//            make.leading.equalToSuperview().offset(62.18)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-8.35)
+            make.size.equalTo(60)
         }
     }
     

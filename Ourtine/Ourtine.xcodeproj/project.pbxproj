@@ -56,6 +56,7 @@
 		B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283332A7260B9007FE619 /* CarouselViewController.swift */; };
 		B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */; };
 		B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283412A72C7C1007FE619 /* CarouselItem.swift */; };
+		B6CAF8822A7CB2C700448673 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CAF8812A7CB2C700448673 /* CircularProgressView.swift */; };
 		B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */; };
 		B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D584A12A720DE4008862AC /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -110,6 +111,7 @@
 		B6C283332A7260B9007FE619 /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		B6C283412A72C7C1007FE619 /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
+		B6CAF8812A7CB2C700448673 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextBoxView.swift; sourceTree = "<group>"; };
 		B6D584A12A720DE4008862AC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,6 +228,7 @@
 				88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */,
 				88DCCAF62A6AF43C003C3F15 /* BottomSheetView(lofi).swift */,
 				B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */,
+				B6CAF8812A7CB2C700448673 /* CircularProgressView.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				885026172A73C1D100974094 /* HabitCardModel.swift in Sources */,
 				88E2B9B42A6BBF170039CF68 /* DeviceScreenSize.swift in Sources */,
 				884835932A715D6F00B73E28 /* HorizontalPickerViewCell.swift in Sources */,
+				B6CAF8822A7CB2C700448673 /* CircularProgressView.swift in Sources */,
 				881C05F82A6147AD00184AFA /* UIView+Preview.swift in Sources */,
 				88DCCAF72A6AF43C003C3F15 /* BottomSheetView(lofi).swift in Sources */,
 				B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */,
