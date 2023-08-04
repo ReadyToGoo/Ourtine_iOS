@@ -9,17 +9,17 @@ import UIKit
 
 class CarouselViewController: UIViewController {
     private var items = [
-        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card1"),
-        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card2"),
-        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card3"),
-        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card4"),
-        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card5"),
-        CarouselItem(image: UIImage(systemName: "heart.fill"), title: "Card6")
+        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "아침마다 책 읽기"),
+        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "아침마다 책 읽고 또 읽고"),
+        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "이불정리는 필수! 이불정리 꼭 합시당..!"),
+        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card4"),
+        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card5"),
+        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card6")
     ]
     
     private enum Const {
         static let itemSize = CGSize(width: 108, height: 152)
-        static let itemSpacing = 14.9
+        static let itemSpacing = 9.12
         
 //        static var insetX: CGFloat {
 //            (UIScreen.main.bounds.width - Self.itemSize.width) / 2.0
@@ -53,7 +53,8 @@ class CarouselViewController: UIViewController {
         view.contentInset = Const.collectionViewContentInset
         view.decelerationRate = .fast
         view.translatesAutoresizingMaskIntoConstraints = false
-        
+//        view.layer.applyFigmaShadow(color: .black, alpha: 0.25, x: 0, y: 4, blur: 20, spread: 0)
+
         return view
     }()
     
