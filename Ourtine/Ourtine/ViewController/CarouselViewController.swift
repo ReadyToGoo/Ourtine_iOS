@@ -9,9 +9,9 @@ import UIKit
 
 class CarouselViewController: UIViewController {
     private var items = [
-        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card1"),
-        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card2"),
-        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card3"),
+        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "아침마다 책 읽기"),
+        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "아침마다 책 읽고 또 읽고"),
+        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "이불정리는 필수! 이불정리 꼭 합시당..!"),
         CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card4"),
         CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card5"),
         CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card6")

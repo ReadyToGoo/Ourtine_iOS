@@ -20,6 +20,7 @@ class CircularProgressView: UIView {
         let smallFont = UIFont.systemFont(ofSize: 12, weight: .medium)
         attributedString.addAttribute(.font, value: smallFont, range: NSRange(location: 2, length: 1))
         label.attributedText = attributedString
+        label.textColor = .orange
         
         return label
     }()

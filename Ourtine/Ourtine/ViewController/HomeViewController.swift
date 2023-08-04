@@ -51,7 +51,7 @@ class HomeViewController: UIViewController {
         // text
         var text = AttributedString.init("참여하기")
         text.font = .systemFont(ofSize: 20.0, weight: .bold)
-        text.foregroundColor = .black.withAlphaComponent(0.35)
+        text.foregroundColor = .black.withAlphaComponent(1)
         config.attributedTitle = text
         
         // image
@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
         config.buttonSize = .small
         config.contentInsets = NSDirectionalEdgeInsets(top: 19, leading: 30, bottom: 16, trailing: 20)
         
-        config.baseBackgroundColor = UIColor(.white).withAlphaComponent(0.35)
+        config.baseBackgroundColor = UIColor(.white).withAlphaComponent(0.6)
         
         let button = UIButton(configuration: config)
         button.layer.cornerRadius = 16

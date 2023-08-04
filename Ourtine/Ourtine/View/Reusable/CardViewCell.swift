@@ -35,10 +35,18 @@ class CardViewCell: UICollectionViewCell {
     }()
     
     private let habitNameLabel: UILabel = {
-        let label = UILabel()
+        let label = PaddingLabel(withInsets: 6, 6, 8, 8)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 13, weight: .medium)
         label.textColor = .white
+//        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        
+        label.backgroundColor = .white.withAlphaComponent(0.2)
+        label.layer.masksToBounds = true
+        label.numberOfLines = 2
+        label.layer.cornerRadius = 16
+        
         
         return label
     }()
@@ -104,7 +112,8 @@ class CardViewCell: UICollectionViewCell {
         cardView.addSubview(habitNameLabel)
         habitNameLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(13.38)
+            make.width.equalTo(95)
+            make.top.equalToSuperview().offset(8)
         }
         
         cardView.addSubview(crownBadge)
@@ -171,3 +180,40 @@ class CardViewCell: UICollectionViewCell {
 //
 //    }
 //}
+
+import UIKit
+
+class PaddingLabel: UILabel {
+    
+    var topInset: CGFloat
+    var bottomInset: CGFloat
+    var leftInset: CGFloat
+    var rightInset: CGFloat
+    
+    required init(withInsets top: CGFloat, _ bottom: CGFloat, _ left: CGFloat, _ right: CGFloat) {
+        self.topInset = top
+        self.bottomInset = bottom
+        self.leftInset = left
+        self.rightInset = right
+        super.init(frame: CGRect.zero)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
+        super.drawText(in: rect.inset(by: insets))
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        get {
+            var contentSize = super.intrinsicContentSize
+            contentSize.height += topInset + bottomInset
+            contentSize.width += leftInset + rightInset
+            return contentSize
+        }
+    }
+    
+}
