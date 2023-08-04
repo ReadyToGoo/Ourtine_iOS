@@ -86,11 +86,28 @@ class HomeViewController: UIViewController {
         print("Move to Starting Habit View")
     }
     
+    // timeline
+    private lazy var timelineViewController: TimelineViewController = {
+        let timelineVC = TimelineViewController()
+        timelineVC.view.translatesAutoresizingMaskIntoConstraints = false
+        return timelineVC
+    }()
+    
+    
     // carousel
     private lazy var carouselViewController: CarouselViewController = {
         let carouselVC = CarouselViewController()
         carouselVC.view.translatesAutoresizingMaskIntoConstraints = false
         return carouselVC
+    }()
+    
+    private let tempView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.35)
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
+        return view
     }()
     
     override func viewDidLoad() {
@@ -99,12 +116,15 @@ class HomeViewController: UIViewController {
         
         // addSubview, addChild
         addChild(carouselViewController)
+        addChild(timelineViewController)
         
         [
             phraseLabel,
             timeLabel,
             startBtn,
-            (carouselViewController.view)
+            (carouselViewController.view),
+            tempView,
+            (timelineViewController.view)
         ].forEach {view.addSubview($0)}
         
         // phraseLabel
@@ -120,6 +140,9 @@ class HomeViewController: UIViewController {
         
         // carousel
         carouselViewController.didMove(toParent: self)
+        
+        //
+        timelineViewController.didMove(toParent: self)
         
 
     }
@@ -144,17 +167,28 @@ class HomeViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
+        // timeline
+        timelineViewController.view.snp.makeConstraints { make in
+            make.top.equalTo(startBtn.snp.bottom).offset(32.16)
+//            make.height.equalTo(78)
+            make.leading.trailing.equalToSuperview()
+        }
+        
         // carousel
         carouselViewController.view.snp.makeConstraints { make in
 //            make.bottom.equalToSuperview().offset(-102.78)
             make.top.equalTo(startBtn.snp.bottom).offset(135.63)
 //            make.leading.equalTo(view.snp.leading).offset(16)
-            make.leading.equalToSuperview()
-            make.trailing.equalTo(view.snp.trailing)
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(152)
         }
         
-        
+        tempView.snp.makeConstraints { make in
+            make.top.equalTo(startBtn.snp.bottom).offset(32.61)
+            make.leading.equalToSuperview().offset(15)
+            make.trailing.equalToSuperview().offset(-15)
+            make.height.equalTo(84.31)
+        }
     }
     
     // 조사 판단 함수
