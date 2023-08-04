@@ -61,6 +61,7 @@
 		B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */; };
 		B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283412A72C7C1007FE619 /* CarouselItem.swift */; };
 		B6CAF8822A7CB2C700448673 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CAF8812A7CB2C700448673 /* CircularProgressView.swift */; };
+		B6CAF8842A7CCFD200448673 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CAF8832A7CCFD200448673 /* TimelineViewController.swift */; };
 		B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */; };
 		B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D584A12A720DE4008862AC /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -120,6 +121,7 @@
 		B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		B6C283412A72C7C1007FE619 /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
 		B6CAF8812A7CB2C700448673 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		B6CAF8832A7CCFD200448673 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextBoxView.swift; sourceTree = "<group>"; };
 		B6D584A12A720DE4008862AC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +174,7 @@
 				B6D584A12A720DE4008862AC /* HomeViewController.swift */,
 				B6C283332A7260B9007FE619 /* CarouselViewController.swift */,
 				883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */,
+				B6CAF8832A7CCFD200448673 /* TimelineViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */,
 				B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */,
 				881C06192A62A65B00184AFA /* HabitProfileTableViewCell.swift in Sources */,
+				B6CAF8842A7CCFD200448673 /* TimelineViewController.swift in Sources */,
 				B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */,
 				88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */,
 				882AC3BD2A78348A002AD232 /* UIImage+onlyColor.swift in Sources */,
