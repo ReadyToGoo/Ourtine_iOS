@@ -22,8 +22,14 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
     // view 로드할 때 habitProfileView로 가져오기
     override func loadView() {
         super.loadView()
-        view = habitProfileScrollView
-        //view.backgroundColor = .gray
+        //view = habitProfileScrollView
+        view.backgroundColor = .white
+        view.addSubview(habitProfileScrollView)
+        
+        habitProfileScrollView.snp.makeConstraints {
+            $0.top.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalToSuperview()
+        }
     }
     
     // 상단 서치바 누르면 검색창으로 이동
@@ -38,6 +44,9 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
         
         // 기본 네비게이션 바 보이지 않게
         self.navigationController?.navigationBar.isHidden = true
+        
+        // 위로 가기 버튼 보이지 않게
+        self.habitProfileScrollView.habitProfileView.scrollResetBtn.isHidden = true
         
         // 스크롤뷰 delegate 위임 / 안 쓸 듯
         self.habitProfileScrollView.delegate = self
@@ -76,8 +85,12 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
         self.habitProfileScrollView.habitProfileView.topBar.alarmButton.action = #selector(pushVC)
         self.habitProfileScrollView.habitProfileView.topBar.alarmButton.target = self
         
+        // MARK: - 위로가기 버튼
+        self.habitProfileScrollView.habitProfileView.scrollResetBtn.addTarget(self, action: #selector(tappedResetBtn), for: .touchDown)
+        
     }
     
+    // 화면 푸시
     @objc func pushVC() {
         self.navigationController?.pushViewController(HabitAlarmViewController(), animated: true)
     }
@@ -89,30 +102,41 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
         }
     }
     
+    // 위로 가기 버튼 눌렀을 때 활성화됩니다.
+    @objc func tappedResetBtn() {
+        self.habitProfileScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        self.habitProfileScrollView.habitProfileView.scrollResetBtn.isHidden = true
+    }
+    
     // 최초 Y좌표는 지정값이 아닌 계산된 동적값이어야 합니다 추후 수정필요
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView == self.habitProfileScrollView {
             // collectionView의 초기 Y 좌표를 설정합니다.
-            let habitCV_initialYPosition: CGFloat = 240 // 예시로 Y 좌표를 200으로 설정합니다.
+            let habitCV_initialYPosition: CGFloat = 190 //(self.habitCV_Y ?? 180) + 10
             // 스크롤된 거리를 계산합니다.
             let yOffset = scrollView.contentOffset.y
-
             
-        if yOffset > 0 {
-            self.habitProfileScrollView.habitProfileView.topBar.frame.origin.y = yOffset
-        } else {
-            self.habitProfileScrollView.habitProfileView.topBar.frame.origin.y = 0
-        }
-        
-        // collectionView가 상단에 고정되어야 하는 지점까지 스크롤 되었을 때, 상단에 고정시킵니다.
-        if yOffset > habitCV_initialYPosition - self.habitProfileScrollView.habitProfileView.topBar.bounds.height  {
-                self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.frame.origin.y = yOffset + self.habitProfileScrollView.habitProfileView.topBar.bounds.height
+            if yOffset > 0 {
+                self.habitProfileScrollView.habitProfileView.topBar.frame.origin.y = yOffset
             } else {
-                // 초기 위치보다 위로 스크롤 되었을 때는 초기 위치로 이동시킵니다.
-                self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.frame.origin.y = habitCV_initialYPosition
+                self.habitProfileScrollView.habitProfileView.topBar.frame.origin.y = 0
+            }
+        
+            // collectionView가 상단에 고정되어야 하는 지점까지 스크롤 되었을 때, 상단에 고정시킵니다.
+            // 이때 yOffset과
+            if yOffset > habitCV_initialYPosition - self.habitProfileScrollView.habitProfileView.topBar.bounds.height {
+                self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.frame.origin.y = yOffset + self.habitProfileScrollView.habitProfileView.topBar.bounds.height
+                self.habitProfileScrollView.habitProfileView.scrollResetBtn.frame.origin.y = yOffset + screenHeight * 0.8 - 20
+                self.habitProfileScrollView.habitProfileView.scrollResetBtn.isHidden = false
+                } else {
+                    // 초기 위치보다 위로 스크롤 되었을 때는 초기 위치로 이동시킵니다.
+                    self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.frame.origin.y = habitCV_initialYPosition
+                    
+                    self.habitProfileScrollView.habitProfileView.scrollResetBtn.isHidden = true
+                }
             }
         }
-    
-    
 }
 
 /// CollectionView의 Delegate와 DataSource 상속 내용입니다
@@ -150,7 +174,13 @@ extension HabitDiscoverViewController: UICollectionViewDelegate, UICollectionVie
                 withReuseIdentifier: HorizontalPickerViewCell.identifier,
                 for: indexPath
             ) as? HorizontalPickerViewCell else { return UICollectionViewCell() }
-            cell.configure(with: habitSegmentCV_data[indexPath.row])
+            
+            if indexPath == self.habitSegmentCV_selectedCellIndexPath {
+                cell.configure(with: habitSegmentCV_data[indexPath.row], isSelected: true)
+            }
+            else {
+                cell.configure(with: habitSegmentCV_data[indexPath.row])
+            }
             return cell
         }
         // habitCardCollectionView일 때
@@ -193,11 +223,13 @@ extension HabitDiscoverViewController: UICollectionViewDelegateFlowLayout {
     // CollectionView들의 좌우 여백 조정
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
             var topBottomPadding: CGFloat = 0
-            let leftPadding: CGFloat = 10
-            let rightPadding: CGFloat = 10
+            var leftPadding: CGFloat = 10
+            var rightPadding: CGFloat = 10
             
             if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
                 topBottomPadding = 10
+                leftPadding = 16
+                rightPadding = 16
             }
 
             return UIEdgeInsets(top: topBottomPadding, left: leftPadding, bottom: topBottomPadding, right: rightPadding)
@@ -211,18 +243,34 @@ extension HabitDiscoverViewController: UICollectionViewDelegateFlowLayout {
         // habitSegmentCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
             return CGSize(
-                width: self.view.frame.width / 4,
+                width: self.view.frame.width / 4.5,
                 height: 40
             )
         }
         // habitCardCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
             return CGSize(
-                width: self.view.frame.width / 2 - 20,
-                height: self.view.frame.width / 2 - 20
+                width: self.view.frame.width / 2 - 25,
+                height: self.view.frame.width / 2 + 20
             )
         }
         return CGSize()
+    }
+    
+    //섹션의 행 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
+            return 12
+        }
+        return 0
+    }
+    
+    //섹션의 열 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
+            return 20
+        }
+        return 8
     }
 }
 
@@ -280,7 +328,7 @@ struct HabitDiscoverViewController_Preview: PreviewProvider {
             return navigationController
         }
         //.previewLayout(.fixed(width: 400, height: 1200))
-        .preferredColorScheme(.dark)
+        //.preferredColorScheme(.dark)
         //.previewDevice("iPhone 8")
     }
 }

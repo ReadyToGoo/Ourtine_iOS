@@ -28,13 +28,12 @@ class RecentSearchTableViewCell: UITableViewCell {
     // 우측 화살표 버튼 생성
     private let deleteButton: UIButton = {
         let button = UIButton()
-        let deleteImg = getResizedSymbolImage(UIImage(systemName: "x.circle")!, width: 20, height: 20)
         
         button.frame.size = CGSize(width:30, height: 30)
-        button.setImage(deleteImg, for: .normal)
+        button.setImage(UIImage(systemName: "x.circle"), for: .normal)
     
         button.setTitle(nil, for: .normal)
-        button.tintColor = .gray
+        button.tintColor = .lightGray.withAlphaComponent(0.5)
         
         return button
     }()

@@ -46,13 +46,13 @@ class UserProfileTableViewCell: UITableViewCell {
     // 우측 화살표 버튼 생성
     private let chevronButton: UIButton = {
         let button = UIButton()
-        let chevronImg = getResizedSymbolImage(UIImage(systemName: "chevron.right")!, width: 15, height: 15)
+        let chevronImg = getResizedSymbolImage(UIImage(systemName: "chevron.right")!, width: 15, height: 25)
         
         button.frame.size = CGSize(width:30, height: 30)
         button.setImage(chevronImg, for: .normal)
     
         button.setTitle(nil, for: .normal)
-        button.tintColor = .gray
+        button.tintColor = .app_BrightnessColor60
         return button
     }()
     
@@ -75,23 +75,23 @@ class UserProfileTableViewCell: UITableViewCell {
     // 컴포넌트 Constraints
     private func setConstraints(){
         userImage.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
-            make.leading.equalToSuperview().offset(15)
+            make.width.height.equalTo(60)
+            make.leading.equalToSuperview().offset(10)
             make.centerY.equalToSuperview()
         }
         userName.snp.makeConstraints { make in
-            make.leading.equalTo(userImage.snp.trailing).offset(15)
+            make.leading.equalTo(userImage.snp.trailing).offset(10)
             make.centerY.equalTo(userImage.snp.centerY)
         }
         chevronButton.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
+            make.width.height.equalTo(60)
             make.trailing.equalToSuperview().offset(10)
             make.centerY.equalToSuperview()
         }
-        followLabel.snp.makeConstraints { make in
-            make.trailing.equalTo(chevronButton.snp.leading)
-            make.centerY.equalTo(chevronButton.snp.centerY)
-        }
+//        followLabel.snp.makeConstraints { make in
+//            make.trailing.equalTo(chevronButton.snp.leading)
+//            make.centerY.equalTo(chevronButton.snp.centerY)
+//        }
     }
     
     /// TableViewController에서 Cell data 페칭을 위한 함수

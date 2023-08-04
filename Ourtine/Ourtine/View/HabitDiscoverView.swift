@@ -17,6 +17,8 @@ class HabitDiscoverScrollView: UIScrollView {
     
     lazy var habitProfileView = HabitDiscoverView()
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
@@ -25,8 +27,16 @@ class HabitDiscoverScrollView: UIScrollView {
         habitProfileView.snp.makeConstraints {
             $0.edges.equalTo(self.contentLayoutGuide)
             $0.width.equalTo(self.frameLayoutGuide)
-            $0.height.equalTo(1200) // 나중에 스크롤 뷰 높이 동적 높이 or 고정갑 확정내기
+            $0.height.equalTo(1200) // 나중에 스크롤 뷰 높이 동적 높이 or 고정값 확정내기
         }
+        
+        // 얘 넣으면 sticky header가 안됨
+        habitProfileView.scrollResetBtn.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.35)
+            $0.height.equalTo(40)
+            $0.center.equalToSuperview()
+        }
+        
     
     }
     
@@ -34,7 +44,7 @@ class HabitDiscoverScrollView: UIScrollView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+        
 }
 
 class HabitDiscoverView: UIView {
@@ -75,9 +85,16 @@ class HabitDiscoverView: UIView {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = .white
-        
+    
+        collectionView.backgroundColor = .white.withAlphaComponent(0.8)
         return collectionView
+    }()
+    
+    // 습관 카테고리 CollectionView 밑선
+    lazy var line_UnderSegmentCollectionView: UIView = {
+        let line = UIView()
+        line.backgroundColor = .gray
+        return line
     }()
     
     // 습관 카드 Collection View
@@ -90,36 +107,47 @@ class HabitDiscoverView: UIView {
         collectionView.isScrollEnabled = false
         return collectionView
     }()
+    
+    lazy var scrollResetBtn: UIButton = {
+        let btn = UIButton()
+        btn.layer.cornerRadius = 15
+        btn.backgroundColor = .app_SecondaryColor2.withAlphaComponent(0.9)
+        btn.setTitle("위로 가기", for: .normal)
+        btn.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+        btn.tintColor = .white
+        return btn
+    }()
 
     
     // 컴포넌트들 View에 등록
     func inputSubview() {
-        self.addSubview(memberCVHeader)
+        //self.addSubview(memberCVHeader)
         self.addSubview(memberCollectionView)
         self.addSubview(habitCardCollectionView)
+        self.addSubview(line_UnderSegmentCollectionView)
         self.addSubview(habitSegmentCollectionView)
         self.addSubview(topBar)
-        
+        self.addSubview(scrollResetBtn)
     }
     
     func setConstraints() {
         
         //MARK: - TopBar
         topBar.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide)
-            $0.left.equalTo(self.safeAreaLayoutGuide)
-            $0.right.equalTo(self.safeAreaLayoutGuide)
+            $0.top.left.right.equalTo(self.safeAreaLayoutGuide)
         }
         
         //MARK: - memberCollectionView HeaderLabel
-        memberCVHeader.snp.makeConstraints {
-            $0.top.equalTo(topBar.snp.bottom).offset(15)
-            $0.leading.equalToSuperview().offset(15)
-        }
+//        memberCVHeader.snp.makeConstraints {
+//            $0.top.equalTo(topBar.snp.bottom).offset(15)
+//            $0.leading.equalToSuperview().offset(15)
+//            $0.height.equalTo(0)
+//        }
         
         //MARK: - memberCollectionView
         memberCollectionView.snp.makeConstraints {
-            $0.top.equalTo(memberCVHeader.snp.bottom).offset(15)
+            //$0.top.equalTo(memberCVHeader.snp.bottom).offset(15)
+            $0.top.equalTo(topBar.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
             $0.width.equalToSuperview()
             $0.height.equalTo(120)
@@ -127,16 +155,21 @@ class HabitDiscoverView: UIView {
         
         //MARK: - habitSegmentCollectionView
         habitSegmentCollectionView.snp.makeConstraints {
-            $0.width.equalTo(self.frame.width)
             $0.height.equalTo(40)
-            $0.top.equalTo(memberCollectionView.snp.bottom).offset(15)
+            $0.top.equalTo(memberCollectionView.snp.bottom).offset(5)
             $0.leading.trailing.equalToSuperview()
         }
         
+        //MARK: - underline
+//        line_UnderSegmentCollectionView.snp.makeConstraints {
+//            $0.top.equalTo(habitSegmentCollectionView.snp.bottom).offset(-2)
+//            $0.leading.trailing.equalToSuperview()
+//            $0.height.equalTo(1)
+//        }
+        
         //MARK: - habitCardCollectionView
         habitCardCollectionView.snp.makeConstraints {
-            $0.width.equalTo(self.frame.width)
-            $0.height.equalTo(800)
+            $0.height.equalTo(1000)
             $0.top.equalTo(memberCollectionView.snp.bottom).offset(CustomSegmentControl.selfHeight + 10)
             $0.leading.trailing.equalToSuperview()
         }

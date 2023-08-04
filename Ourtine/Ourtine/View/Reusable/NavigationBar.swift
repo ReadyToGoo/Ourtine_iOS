@@ -8,6 +8,7 @@
 import UIKit
 
 /// 네비게이션 바 - 커스텀 네비게이션 바를 위한 재사용 뷰입니다.
+/// add<Component> 함수들을 통해 네비게이션 바 안에 요소 추가가 가능합니다.
 class Custom_NavigationBar: UINavigationBar {
 
     let navItem = UINavigationItem() // 네비게이션 바에 들어갈 Item 리스트입니다.
@@ -19,7 +20,7 @@ class Custom_NavigationBar: UINavigationBar {
     
     lazy var cancelButton = UIBarButtonItem(title: "취소") // 네비게이션 취소 버튼
     
-    lazy var alarmButton = UIBarButtonItem(image: UIImage(systemName: "bell.fill")) // 네비게이션 알람 버튼
+    lazy var alarmButton = UIBarButtonItem(image: UIImage(systemName: "bell")) // 네비게이션 알람 버튼
     
     
     
@@ -30,7 +31,7 @@ class Custom_NavigationBar: UINavigationBar {
         self.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "검색어를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]) // 중앙 텍스트필드 플레이스홀더 틴팅
         self.searchBar.searchTextPositionAdjustment = UIOffset(horizontal: 10, vertical: 0) // 중앙 텍스트필드 위치 조정
         self.searchBar.searchTextField.textColor = .black // 텍스트필드 입력한 글자 색 변경
-//        self.searchBar.searchTextField.backgroundColor = .white // 서치바 배경색 변경
+        self.searchBar.searchTextField.backgroundColor = .gray.withAlphaComponent(0.1) // 서치바 배경색 변경
         self.topItem?.titleView = searchBar // 서치바를 중앙 타이틀뷰로 설정
     }
     
@@ -65,6 +66,7 @@ class Custom_NavigationBar: UINavigationBar {
         self.shadowImage = UIImage()
         self.barTintColor = .app_UIColor1
         
+        // 좌측 pop버튼만 추가
         self.leftButton.tintColor = .app_ButtonColor1
         navItem.leftBarButtonItem = leftButton
         self.setItems([navItem], animated: true)
