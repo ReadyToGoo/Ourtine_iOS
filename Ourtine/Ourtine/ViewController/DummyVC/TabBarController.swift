@@ -31,7 +31,7 @@ class AppTabBarController: UITabBarController {
         secondVC.tabBarItem.image = UIImage(systemName: "magnifyingglass")
         secondVC.tabBarItem.title = "탐색"
         
-        let thirdVC = UINavigationController(rootViewController: DummyViewController())
+        let thirdVC = UINavigationController(rootViewController: HabitCreate_chooseTypeViewController())
         thirdVC.tabBarItem.image = UIImage(systemName: "map")
         thirdVC.tabBarItem.title = "습관개설"
         
