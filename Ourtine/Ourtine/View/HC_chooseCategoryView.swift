@@ -69,7 +69,7 @@ class HabitCreate_chooseCategoryView: UIView {
         categoryCollectionView.snp.makeConstraints {
             $0.top.equalTo(topLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview() //left.right
-            $0.bottom.equalTo(nextBtn.snp.top).offset(-20)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
         
         nextBtn.snp.makeConstraints {

@@ -21,6 +21,19 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
     ///셀 데이터
     var cellData = HC_Category("습관 이름")
     
+    // 셀 내부에서 사용되는 gotChosen 속성 - 해당 셀이 선택되었는지
+    var gotChosen: Bool = false {
+        didSet {
+            print(gotChosen)
+            updateCellState(isSelected: gotChosen)
+//            if gotChosen {
+//                updateCellState(isSelected: gotChosen)
+//            } else {
+//
+//            }
+        }
+    }
+    
     ///셀 텍스트
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -38,11 +51,20 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
         return view
     }()
     
+    /// 셀 강조뷰
+    lazy var highlightView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .app_PrimaryColor.withAlphaComponent(0.2)
+        view.layer.cornerRadius = 8.0
+        return view
+    }()
+    
     // 셀에 컴포넌트 요소 등록
     private func addViews() {
         self.backgroundColor = .clear // 셀 배경 흰색
-        categoryView.addSubview(titleLabel)
         self.addSubview(categoryView)
+        self.addSubview(highlightView)
+        self.addSubview(titleLabel)
     }
     
     // 컴포넌트 Constraints
@@ -54,6 +76,10 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
+        
+        highlightView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     /// Cell data 페칭을 위한 함수
@@ -61,6 +87,8 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
                 self.cellData = data
                 self.fetchData()
     }
+    
+    
     
     /// 셀 컴포넌트 요소에 데이터 페칭
     private func fetchData() {
@@ -72,6 +100,18 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
         super.init(frame: frame)
         addViews()
         setConstraints()
+        
+        self.highlightView.isHidden = true
+    }
+    
+    func updateCellState(isSelected: Bool) {
+        if isSelected {
+            self.highlightView.isHidden = false
+        }
+        else {
+            self.highlightView.isHidden = true
+        }
+        self.layoutIfNeeded()
     }
     
     required init?(coder: NSCoder) {

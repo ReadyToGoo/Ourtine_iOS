@@ -16,7 +16,7 @@ class HabitCreateFlowButton: UIButton {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 8.0
         self.setTitleColor(.white, for: .normal)
-        self.setBackgroundColor(.systemIndigo, for: .normal)
+        self.setBackgroundColor(.app_PrimaryColor, for: .normal)
         self.setBackgroundColor(.gray, for: .disabled)
     }
     

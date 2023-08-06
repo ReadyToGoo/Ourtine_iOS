@@ -14,6 +14,7 @@ class HabitCreate_introduceViewController: UIViewController {
     // 카메라와 앨범에 사용할 UIImagePickerController입니다
     let imagePickerController = UIImagePickerController()
     
+    
     // view 로드할 때 searchView로 가져오기
     override func loadView() {
         super.loadView()
@@ -23,17 +24,19 @@ class HabitCreate_introduceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // 다음버튼 비활성화
         self.HC_introduceView.nextBtn.isEnabled = false
         
+        // 사진 보관함 여는 Menu UIAction
         let photoLib = UIAction(
             title: "사진 보관함",
             image: UIImage(systemName: "photo.on.rectangle"),
             handler: { _ in
                 self.handlePhotoLibrary()
-                
             })
         
+        // 카메라 여는 Menu UIAction
         let camera = UIAction(
             title: "사진 찍기",
             image: UIImage(systemName: "camera"),
@@ -41,6 +44,7 @@ class HabitCreate_introduceViewController: UIViewController {
                 self.handleCamera()
             })
         
+        // 사진 첨부 버튼에 UIMenu 추가하기
         self.HC_introduceView.addImageButton.menu = UIMenu(
             title: "",
             image: nil,
@@ -49,6 +53,7 @@ class HabitCreate_introduceViewController: UIViewController {
             children: [photoLib, camera]
         )
         
+        // MARK: - 사진 첨부 버튼 잠깐 눌러도 바로 UIMenu 나오게 -> default는 길게 눌러야함
         self.HC_introduceView.addImageButton.showsMenuAsPrimaryAction = true
         
         //MARK: - nextBTN
@@ -60,25 +65,27 @@ class HabitCreate_introduceViewController: UIViewController {
         
     }
     
+    /// UIImagePickerController관련 카메라 설정 함수 + 카메라 present
     private func handleCamera() {
         self.imagePickerController.delegate = self
         self.imagePickerController.sourceType = .camera
-        self.imagePickerController.allowsEditing = true
+        //self.imagePickerController.allowsEditing = true
         // 카메라 presenting
         present(self.imagePickerController, animated: true)
         
     }
     
+    /// UIImagePickerController관련 앨범 설정 함수 + 앨범 present
     private func handlePhotoLibrary() {
-        
         self.imagePickerController.delegate = self
         self.imagePickerController.sourceType = .photoLibrary
         // 앨범 presenting
         present(self.imagePickerController, animated: true)
     }
     
+    /// 다음 ViewController 넘어가기
     @objc func nextVC() {
-        self.navigationController?.pushViewController(HabitCreate_chooseScheduleViewController(), animated: true)
+        self.navigationController?.pushViewController(HabitCreate_chooseTimeViewController(), animated: true)
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기
@@ -103,7 +110,7 @@ extension HabitCreate_introduceViewController: UIImagePickerControllerDelegate &
         picker.dismiss(animated: true)
     }
     
-    /// 취소를 눌렀을 때
+    /// 취소를 눌렀을 때 - 앨범과 카메라 취소 방식 같음
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("취소")
         picker.dismiss(animated: true)

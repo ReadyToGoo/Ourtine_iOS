@@ -77,6 +77,8 @@ extension HabitCreate_chooseCategoryViewController: UICollectionViewDelegate, UI
         // memberCollectionView일 때
         print("눌렀네요 \(indexPath.row)번 셀")
         self.HC_chooseCategory_View.nextBtn.isEnabled = true
+        let cell = collectionView.cellForItem(at: indexPath) as? HabitCreateCategoryCVCell
+        cell?.gotChosen.toggle()
     }
 }
 
