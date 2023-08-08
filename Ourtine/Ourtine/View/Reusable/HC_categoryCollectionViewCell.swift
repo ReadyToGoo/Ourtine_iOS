@@ -26,11 +26,6 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
         didSet {
             print(gotChosen)
             updateCellState(isSelected: gotChosen)
-//            if gotChosen {
-//                updateCellState(isSelected: gotChosen)
-//            } else {
-//
-//            }
         }
     }
     
@@ -44,9 +39,10 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
     }()
     
     /// 셀 배경뷰
-    lazy var categoryView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .gray
+    lazy var categoryView: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = .app_SecondaryColor
+        view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 8.0
         return view
     }()
@@ -54,8 +50,10 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
     /// 셀 강조뷰
     lazy var highlightView: UIView = {
         let view = UIView()
-        view.backgroundColor = .app_PrimaryColor.withAlphaComponent(0.2)
+        view.backgroundColor = .app_BrightnessColor60.withAlphaComponent(0.2)
         view.layer.cornerRadius = 8.0
+        view.layer.borderColor = UIColor.app_PrimaryColor.cgColor
+        view.layer.borderWidth = 2
         return view
     }()
     
@@ -107,9 +105,11 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
     func updateCellState(isSelected: Bool) {
         if isSelected {
             self.highlightView.isHidden = false
+            self.titleLabel.textColor = .app_PrimaryColor
         }
         else {
             self.highlightView.isHidden = true
+            self.titleLabel.textColor = .white
         }
         self.layoutIfNeeded()
     }

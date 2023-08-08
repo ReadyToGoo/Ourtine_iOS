@@ -46,6 +46,23 @@ class HabiCreate_chooseDateView: UIView {
         return label
     }()
     
+    /// 달력 이미지
+    lazy var calendarImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: "calendar")
+        view.tintColor = .app_BrightnessColor100
+        return view
+    }()
+    
+    /// 기간 라벨
+    lazy var dateLabel : UILabel = {
+        let label = UILabel()
+        label.text = "기간"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 20, weight: .heavy)
+        return label
+    }()
+    
     ///시작 시간 왼쪽 오른쪽 라벨 +  버튼
     lazy var startDateView = UIView()
     
@@ -77,9 +94,9 @@ class HabiCreate_chooseDateView: UIView {
         }()
     
     /// 구분선
-    lazy var lineView : UIView = {
+    lazy var lineView1 : UIView = {
         let line = UIView()
-        line.backgroundColor = UIColor.app_BrightnessColor100
+        line.backgroundColor = UIColor.app_BrightnessColor40
         return line
     }()
     
@@ -112,6 +129,13 @@ class HabiCreate_chooseDateView: UIView {
             btn.tintColor = .app_BrightnessColor40
            return btn
         }()
+    
+    /// 구분선
+    lazy var lineView2 : UIView = {
+        let line = UIView()
+        line.backgroundColor = UIColor.app_BrightnessColor40
+        return line
+    }()
     
     lazy var noticeLabel: UILabel = {
         let label = UILabel()
@@ -148,7 +172,10 @@ class HabiCreate_chooseDateView: UIView {
         [
             navigationBar,
             topLabel,
-            lineView,
+            calendarImage,
+            dateLabel,
+            lineView1,
+            lineView2,
             startDateView,
             startDatePicker,
             endDateView,
@@ -166,12 +193,23 @@ class HabiCreate_chooseDateView: UIView {
         
         topLabel.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom).offset(15)
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        calendarImage.snp.makeConstraints {
+            $0.top.equalTo(topLabel.snp.bottom).offset(50)
             $0.leading.equalToSuperview().offset(20)
+            $0.size.equalTo(dateLabel.snp.height)
+        }
+        
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(topLabel.snp.bottom).offset(50)
+            $0.leading.equalTo(calendarImage.snp.trailing).offset(5)
         }
         
         // MARK: - 시작시간 라인
         startDateView.snp.makeConstraints {
-            $0.top.equalTo(topLabel.snp.bottom).offset(20)
+            $0.top.equalTo(dateLabel.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.85)
             $0.height.equalTo(30)
@@ -193,18 +231,18 @@ class HabiCreate_chooseDateView: UIView {
             }
         
         // MARK: - 중간 구분선
-        lineView.snp.makeConstraints {
+        lineView1.snp.makeConstraints {
             $0.height.equalTo(2)
-            $0.width.equalTo(startDateView)
+            $0.width.equalToSuperview()
             $0.top.equalTo(startDateView.snp.bottom).offset(5)
             $0.centerX.equalTo(startDateView)
         }
         
         // MARK: - 시작일 피커
         startDatePicker.snp.makeConstraints {
-            $0.width.equalTo(lineView)
+            $0.width.equalTo(lineView1)
             $0.height.equalTo(0)
-            $0.top.equalTo(lineView.snp.bottom)
+            $0.top.equalTo(lineView1.snp.bottom)
             $0.centerX.equalToSuperview()
         }
         
@@ -232,23 +270,32 @@ class HabiCreate_chooseDateView: UIView {
                 $0.trailing.equalTo(endDate_btn).offset(-25)
             }
         
+        
+        
+        lineView2.snp.makeConstraints {
+            $0.height.equalTo(2)
+            $0.width.equalToSuperview()
+            $0.top.equalTo(endDateView.snp.bottom).offset(5)
+            $0.centerX.equalTo(startDateView)
+        }
+        
         // MARK: - 종료일 피커
         endDatePicker.snp.makeConstraints {
-            $0.width.equalTo(lineView)
+            $0.width.equalTo(lineView1)
             $0.height.equalTo(0)
             $0.top.equalTo(endDateView.snp.bottom)
             $0.centerX.equalToSuperview()
         }
         
         noticeLabel.snp.makeConstraints {
-            $0.top.equalTo(endDatePicker.snp.bottom).offset(30)
-            $0.leading.equalTo(endDatePicker)
+            $0.top.equalTo(endDatePicker.snp.bottom).offset(20)
+            $0.leading.equalTo(endDatePicker).offset(20)
         }
         
         nextBtn.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide ).multipliedBy(0.95)
             $0.width.equalToSuperview().multipliedBy(0.8)
-            $0.height.equalTo(40)
+            $0.height.equalTo(50)
             $0.centerX.equalToSuperview()
         }
     }
