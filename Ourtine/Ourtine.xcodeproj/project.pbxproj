@@ -84,6 +84,7 @@
 		B6CAF8842A7CCFD200448673 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CAF8832A7CCFD200448673 /* TimelineViewController.swift */; };
 		B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */; };
 		B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D584A12A720DE4008862AC /* HomeViewController.swift */; };
+		B6D87A582A8290EE0099005E /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D87A572A8290EE0099005E /* WaitingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +165,7 @@
 		B6CAF8832A7CCFD200448673 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextBoxView.swift; sourceTree = "<group>"; };
 		B6D584A12A720DE4008862AC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B6D87A572A8290EE0099005E /* WaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				88FE2D332A7ED46600C475A7 /* HC_chooseTimeViewController.swift */,
 				88804CCB2A7FFBBF00562E35 /* HC_chooseDateViewController.swift */,
 				88E653982A80155D00ABF9D9 /* HC_memberCountViewController.swift */,
+				B6D87A572A8290EE0099005E /* WaitingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */,
 				882AC3BD2A78348A002AD232 /* UIImage+onlyColor.swift in Sources */,
 				881D5FC72A742D0E00603548 /* HabitAlarmViewController.swift in Sources */,
+				B6D87A582A8290EE0099005E /* WaitingViewController.swift in Sources */,
 				88E653992A80155D00ABF9D9 /* HC_memberCountViewController.swift in Sources */,
 				881C05F32A61461D00184AFA /* SearchView.swift in Sources */,
 				88371A722A702C650056BB5A /* MemberModel.swift in Sources */,
