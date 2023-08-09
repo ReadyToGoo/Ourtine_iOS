@@ -20,6 +20,7 @@ class HabitCreate_chooseTypeView: UIView {
         return nav
     }()
     
+    /// 뷰 타이틀
     lazy var topLabel : UILabel = {
         let label = UILabel()
         label.text = "어떤 방식으로\n함께 습관을 만들고 싶나요?"
@@ -29,40 +30,65 @@ class HabitCreate_chooseTypeView: UIView {
         return label
     }()
     
+    /// Private 들어가는 뷰
+    lazy var view_private : UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        // tag를 선택 지표로 활용합니다
+        view.tag = 0
+        view.layer.cornerRadius = 8
+        view.layer.borderWidth = 4
+        view.layer.borderColor = UIColor.app_SecondaryColor2.cgColor
+        return view
+    }()
+    
+    /// private 사람 아이콘 이미지
     lazy var imageView_private : UIImageView = {
-        let label = UILabel()
-        label.text = "private"
-        label.textColor = .black
-        
         let view = UIImageView()
-        view.backgroundColor = .gray
-        view.tag = 10
-        view.addSubview(label)
-        label.snp.makeConstraints {
-            $0.center.equalToSuperview()
-        }
-        
+        view.image = UIImage(named: "singlePerson")?.withRenderingMode(.alwaysTemplate)
+        view.tintColor = .app_SecondaryColor2
         return view
     }()
     
+    /// "Private" 라벨
+    lazy var titleLabel_private : UILabel = {
+        let label = UILabel()
+        label.text = "Private"
+        label.textColor = .app_SecondaryColor2
+        label.font = .systemFont(ofSize: 30, weight: .bold)
+        return label
+    }()
+    
+    /// Public 들어가는 뷰
+    lazy var view_public : UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.tag = 1 // tag를 선택 지표로 활용합니다
+        view.layer.cornerRadius = 8
+        view.layer.borderWidth = 4
+        view.layer.borderColor = UIColor.app_SecondaryColor2.cgColor
+        return view
+    }()
+    
+    /// Public 사람 아이콘 이미지
     lazy var imageView_public : UIImageView = {
-        let label = UILabel()
-        label.text = "public"
-        label.textColor = .black
-        
         let view = UIImageView()
-        view.backgroundColor = .gray
-        view.tag = 20
-        
-        view.addSubview(label)
-        label.snp.makeConstraints {
-            $0.center.equalToSuperview()
-        }
-        
+        view.image = UIImage(named: "doublePerson")?.withRenderingMode(.alwaysTemplate)
+        view.tintColor = .app_SecondaryColor2
         return view
     }()
     
-    lazy var label_private : UILabel = {
+    /// "Public" 라벨
+    lazy var titleLabel_public : UILabel = {
+        let label = UILabel()
+        label.text = "Public"
+        label.textColor = .app_SecondaryColor2
+        label.font = .systemFont(ofSize: 30, weight: .bold)
+        return label
+    }()
+    
+    /// private 뷰 밑 설명 라벨
+    lazy var contentLabel_private : UILabel = {
         let label = UILabel()
         label.text = "나는 내 친구와 좀 더 편하게 습관을 형성하고 싶어요"
         label.numberOfLines = 0
@@ -71,7 +97,8 @@ class HabitCreate_chooseTypeView: UIView {
         return label
     }()
     
-    lazy var label_public : UILabel = {
+    /// public 뷰 밑 설명 라벨
+    lazy var contentLabel_public : UILabel = {
         let label = UILabel()
         label.text = "나는 모르는 사람들과 서로 자극받으며 습관을 형성하고 싶어요"
         label.numberOfLines = 0
@@ -80,30 +107,31 @@ class HabitCreate_chooseTypeView: UIView {
         return label
     }()
     
+    /// 다음 버튼
     lazy var nextBtn: HabitCreateFlowButton = {
         let btn = HabitCreateFlowButton()
         btn.setTitle("다음", for: .normal)
         return btn
     }()
     
-    lazy var highlightBox: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.layer.borderWidth = 3.0
-        view.layer.borderColor = UIColor.blue.cgColor
-        view.isHidden = true
-        return view
-    }()
-    
     func addSubviews(){
+        [
+            imageView_private,
+            titleLabel_private
+        ].forEach {view_private.addSubview($0)}
+        
+        [
+            imageView_public,
+            titleLabel_public,
+        ].forEach {view_public.addSubview($0)}
+        
         [
             navigationBar,
             topLabel,
-            imageView_private,
-            imageView_public,
-            label_private,
-            label_public,
-            highlightBox,
+            view_private,
+            view_public,
+            contentLabel_private,
+            contentLabel_public,
             nextBtn
         ].forEach {self.addSubview($0)}
     }
@@ -116,47 +144,66 @@ class HabitCreate_chooseTypeView: UIView {
         
         topLabel.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom).offset(15)
-            $0.leading.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(30)
         }
         
         
-        imageView_private.snp.makeConstraints {
+        view_private.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.4)
-            $0.height.equalToSuperview().multipliedBy(0.35)
+            $0.height.equalToSuperview().multipliedBy(0.25)
             $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(25)
+        }
+        
+        imageView_private.snp.makeConstraints {
+            $0.height.equalTo(60)
+            $0.width.equalTo(50)
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-15)
+        }
+        
+        titleLabel_private.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-20)
+        }
+        
+        view_public.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.4)
+            $0.height.equalToSuperview().multipliedBy(0.25)
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-25)
         }
         
         imageView_public.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.4)
-            $0.height.equalToSuperview().multipliedBy(0.35)
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.height.equalTo(60)
+            $0.width.equalTo(70)
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-15)
         }
         
-        label_private.snp.makeConstraints {
-            $0.width.equalTo(imageView_private)
+        titleLabel_public.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-20)
+        }
+        
+        contentLabel_private.snp.makeConstraints {
+            $0.width.equalTo(view_private)
             $0.height.equalTo(100)
-            $0.top.equalTo(imageView_private.snp.bottom).offset(10)
-            $0.centerX.equalTo(imageView_private)
+            $0.top.equalTo(view_private.snp.bottom).offset(10)
+            $0.centerX.equalTo(view_private)
         }
         
-        label_public.snp.makeConstraints {
-            $0.width.equalTo(imageView_public)
+        contentLabel_public.snp.makeConstraints {
+            $0.width.equalTo(view_public)
             $0.height.equalTo(100)
-            $0.top.equalTo(imageView_public.snp.bottom).offset(10)
-            $0.centerX.equalTo(imageView_public)
-        }
-        
-        highlightBox.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.size.equalTo(imageView_private)
+            $0.top.equalTo(view_public.snp.bottom).offset(10)
+            $0.centerX.equalTo(view_public)
         }
         
         nextBtn.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide ).multipliedBy(0.95)
             $0.width.equalToSuperview().multipliedBy(0.8)
-            $0.height.equalTo(40)
+            $0.height.equalTo(50)
             $0.centerX.equalToSuperview()
         }
     }

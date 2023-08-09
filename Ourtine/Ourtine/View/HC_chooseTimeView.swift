@@ -15,7 +15,7 @@ class HabiCreate_chooseTimeView: UIView {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .wheels // 굴려서 시간정하는 타입
         picker.datePickerMode = .time   // 시간 설정
-        //picker.locale = Locale(identifier: "ko-KR") // 기본 위치 한국으로
+        picker.locale = Locale(identifier: "ko-KR") // 기본 위치 한국으로
         picker.timeZone = .autoupdatingCurrent // 시간대 반영
         return picker
     }()
@@ -24,7 +24,7 @@ class HabiCreate_chooseTimeView: UIView {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .wheels // 굴려서 시간정하는 타입
         picker.datePickerMode = .time   // 시간 설정
-        //picker.locale = Locale(identifier: "ko-KR") // 기본 위치 한국으로
+        picker.locale = Locale(identifier: "ko-KR") // 기본 위치 한국으로
         picker.timeZone = .autoupdatingCurrent // 시간대 반영
         return picker
     }()
@@ -53,10 +53,18 @@ class HabiCreate_chooseTimeView: UIView {
         return label
     }()
     
+    /// 시계 이미지
+    lazy var clockImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: "clock")
+        view.tintColor = .app_BrightnessColor100
+        return view
+    }()
+    
     /// #시간대 라벨
     lazy var timeLabel : UILabel = {
         let label = UILabel()
-        label.text = "#시간대"
+        label.text = "시간"
         label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .heavy)
         return label
@@ -77,7 +85,7 @@ class HabiCreate_chooseTimeView: UIView {
         /// 시간 라벨
         lazy var startTimeLabel_main : UILabel = {
             let label = UILabel()
-            label.text = "AM 00시 00분"
+            label.text = "오전 00시 00분"
             label.textColor = .black
             label.font = .systemFont(ofSize: 15, weight: .medium)
             return label
@@ -92,10 +100,10 @@ class HabiCreate_chooseTimeView: UIView {
            return btn
         }()
     
-    /// 구분선
-    lazy var lineView : UIView = {
+    /// 구분선 1
+    lazy var lineView1 : UIView = {
         let line = UIView()
-        line.backgroundColor = UIColor.app_BrightnessColor100
+        line.backgroundColor = UIColor.app_BrightnessColor40
         return line
     }()
     
@@ -114,7 +122,7 @@ class HabiCreate_chooseTimeView: UIView {
         /// 시간 라벨
         lazy var endTimeLabel_main : UILabel = {
             let label = UILabel()
-            label.text = "PM 00시 00분"
+            label.text = "오전 00시 00분"
             label.textColor = .black
             label.font = .systemFont(ofSize: 15, weight: .medium)
             return label
@@ -129,13 +137,28 @@ class HabiCreate_chooseTimeView: UIView {
            return btn
         }()
     
+    /// 구분선 2
+    lazy var lineView2 : UIView = {
+        let line = UIView()
+        line.backgroundColor = UIColor.app_BrightnessColor40
+        return line
+    }()
+    
     /// 요일 라벨 + 요일 스택
     lazy var dayView = UIView()
-    
+        
+        /// 달력 이미지
+        lazy var calenderImage: UIImageView = {
+            let view = UIImageView()
+            view.image = UIImage(systemName: "calendar")
+            view.tintColor = .app_BrightnessColor100
+            return view
+        }()
+        
         /// #요일 라벨
         lazy var dateLabel : UILabel = {
             let label = UILabel()
-            label.text = "#요일"
+            label.text = "요일"
             label.textColor = .black
             label.font = .systemFont(ofSize: 20, weight: .heavy)
             return label
@@ -155,42 +178,49 @@ class HabiCreate_chooseTimeView: UIView {
             lazy var monBtn: ColorToggleButton = {
                 let btn = ColorToggleButton()
                 btn.setTitle("월", for: .normal)
+                btn.addBorder()
                 return btn
             }()
             
             lazy var tueBtn: ColorToggleButton = {
                 let btn = ColorToggleButton()
                 btn.setTitle("화", for: .normal)
+                btn.addBorder()
                 return btn
             }()
             
             lazy var wedBtn: ColorToggleButton = {
                 let btn = ColorToggleButton()
                 btn.setTitle("수", for: .normal)
+                btn.addBorder()
                 return btn
             }()
         
             lazy var thuBtn: ColorToggleButton = {
                 let btn = ColorToggleButton()
                 btn.setTitle("목", for: .normal)
+                btn.addBorder()
                 return btn
             }()
             
             lazy var friBtn: ColorToggleButton = {
                 let btn = ColorToggleButton()
                 btn.setTitle("금", for: .normal)
+                btn.addBorder()
                 return btn
             }()
             
             lazy var satBtn: ColorToggleButton = {
                 let btn = ColorToggleButton()
                 btn.setTitle("토", for: .normal)
+                btn.addBorder()
                 return btn
             }()
         
             lazy var sunBtn: ColorToggleButton = {
                 let btn = ColorToggleButton()
                 btn.setTitle("일", for: .normal)
+                btn.addBorder()
                 return btn
             }()
     
@@ -226,6 +256,7 @@ class HabiCreate_chooseTimeView: UIView {
         ].forEach { self.dayStack.addArrangedSubview($0)}
         
         [
+            calenderImage,
             dateLabel,
             dayStack
         ].forEach { self.dayView.addSubview($0)}
@@ -234,8 +265,10 @@ class HabiCreate_chooseTimeView: UIView {
             navigationBar,
             topLabel,
             secondLabel,
+            clockImage,
             timeLabel,
-            lineView,
+            lineView1,
+            lineView2,
             startTimeView,
             startTimePicker,
             endTimeView,
@@ -253,7 +286,7 @@ class HabiCreate_chooseTimeView: UIView {
         
         topLabel.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom).offset(15)
-            $0.leading.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(30)
         }
         
         secondLabel.snp.makeConstraints {
@@ -261,14 +294,20 @@ class HabiCreate_chooseTimeView: UIView {
             $0.leading.equalTo(topLabel)
         }
         
+        clockImage.snp.makeConstraints {
+            $0.top.equalTo(secondLabel.snp.bottom).offset(40)
+            $0.leading.equalToSuperview().offset(20)
+            $0.size.equalTo(timeLabel.snp.height)
+        }
+        
         timeLabel.snp.makeConstraints {
             $0.top.equalTo(secondLabel.snp.bottom).offset(40)
-            $0.leading.equalTo(topLabel)
+            $0.leading.equalTo(clockImage.snp.trailing).offset(5)
         }
         
         // MARK: - 시작시간 라인
         startTimeView.snp.makeConstraints {
-            $0.top.equalTo(timeLabel.snp.bottom).offset(20)
+            $0.top.equalTo(clockImage.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.85)
             $0.height.equalTo(30)
@@ -290,18 +329,18 @@ class HabiCreate_chooseTimeView: UIView {
             }
         
         // MARK: - 중간 구분선
-        lineView.snp.makeConstraints {
+        lineView1.snp.makeConstraints {
             $0.height.equalTo(2)
-            $0.width.equalTo(startTimeView)
+            $0.width.equalToSuperview()
             $0.top.equalTo(startTimeView.snp.bottom).offset(5)
             $0.centerX.equalTo(startTimeView)
         }
         
         // MARK: - 시작 시간 피커
         startTimePicker.snp.makeConstraints {
-            $0.width.equalTo(lineView)
+            $0.width.equalTo(lineView1)
             $0.height.equalTo(0)
-            $0.top.equalTo(lineView.snp.bottom)
+            $0.top.equalTo(lineView1.snp.bottom)
             $0.centerX.equalToSuperview()
         }
         
@@ -329,9 +368,17 @@ class HabiCreate_chooseTimeView: UIView {
                 $0.trailing.equalTo(endTime_btn).offset(-25)
             }
         
+        // 밑 구분선
+        lineView2.snp.makeConstraints {
+            $0.height.equalTo(2)
+            $0.width.equalToSuperview()
+            $0.top.equalTo(endTimeView.snp.bottom).offset(5)
+            $0.centerX.equalTo(startTimeView)
+        }
+        
         // MARK: - 종료 시간 피커
         endTimePicker.snp.makeConstraints {
-            $0.width.equalTo(lineView)
+            $0.width.equalTo(lineView1)
             $0.height.equalTo(0)
             $0.top.equalTo(endTimeView.snp.bottom)
             $0.centerX.equalToSuperview()
@@ -344,23 +391,29 @@ class HabiCreate_chooseTimeView: UIView {
             $0.width.equalToSuperview()
             $0.height.equalToSuperview().multipliedBy(0.4)
         }
-        
-            dateLabel.snp.makeConstraints {
+            
+            calenderImage.snp.makeConstraints {
                 $0.leading.equalToSuperview().offset(20)
+                $0.top.equalToSuperview().offset(20)
+                $0.size.equalTo(timeLabel.snp.height)
+            }
+            
+            dateLabel.snp.makeConstraints {
+                $0.leading.equalTo(calenderImage.snp.trailing).offset(5)
                 $0.top.equalToSuperview().offset(20)
             }
             
             dayStack.snp.makeConstraints{
                 $0.height.equalTo(50)
                 $0.width.equalToSuperview().multipliedBy(0.85)
-                $0.top.equalTo(dateLabel.snp.bottom).offset(40)
+                $0.top.equalTo(dateLabel.snp.bottom).offset(30)
                 $0.centerX.equalToSuperview()
             }
         
         nextBtn.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide ).multipliedBy(0.95)
             $0.width.equalToSuperview().multipliedBy(0.8)
-            $0.height.equalTo(40)
+            $0.height.equalTo(50)
             $0.centerX.equalToSuperview()
         }
     }

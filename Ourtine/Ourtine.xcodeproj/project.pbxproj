@@ -46,6 +46,13 @@
 		88804CCC2A7FFBBF00562E35 /* HC_chooseDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CCB2A7FFBBF00562E35 /* HC_chooseDateViewController.swift */; };
 		88A64C0F2A7A733E00292ED6 /* CALayer+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */; };
 		88A64C112A7A8CA600292ED6 /* HabitDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A64C102A7A8CA600292ED6 /* HabitDescView.swift */; };
+		88BDD3242A82B27C0082A961 /* HC_selectFriednsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD3232A82B27C0082A961 /* HC_selectFriednsView.swift */; };
+		88BDD3262A82B3180082A961 /* HC_selectFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD3252A82B3180082A961 /* HC_selectFriendsViewController.swift */; };
+		88BDD3282A82B84D0082A961 /* HC_MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD3272A82B84D0082A961 /* HC_MemberCollectionViewCell.swift */; };
+		88BDD32A2A82BE770082A961 /* HC_noFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD3292A82BE770082A961 /* HC_noFriendsView.swift */; };
+		88BDD32C2A82BEA40082A961 /* HC_noFriednsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD32B2A82BEA40082A961 /* HC_noFriednsViewController.swift */; };
+		88BDD32E2A82C3760082A961 /* HC_finalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD32D2A82C3760082A961 /* HC_finalView.swift */; };
+		88BDD3302A82C3AD0082A961 /* HC_finalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD32F2A82C3AD0082A961 /* HC_finalViewController.swift */; };
 		88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */; };
 		88DA7EB12A6F6C300011AF43 /* HabitDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA7EB02A6F6C300011AF43 /* HabitDiscoverView.swift */; };
 		88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCCAE82A6A5D21003C3F15 /* RecentSearchTableViewCell.swift */; };
@@ -84,8 +91,6 @@
 		B6CAF8842A7CCFD200448673 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CAF8832A7CCFD200448673 /* TimelineViewController.swift */; };
 		B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */; };
 		B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D584A12A720DE4008862AC /* HomeViewController.swift */; };
-		B6D87A582A8290EE0099005E /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D87A572A8290EE0099005E /* WaitingViewController.swift */; };
-		B6D87A5C2A83EEE60099005E /* WaitingMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D87A5B2A83EEE60099005E /* WaitingMemberCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +132,13 @@
 		88804CCB2A7FFBBF00562E35 /* HC_chooseDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_chooseDateViewController.swift; sourceTree = "<group>"; };
 		88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addBorder.swift"; sourceTree = "<group>"; };
 		88A64C102A7A8CA600292ED6 /* HabitDescView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDescView.swift; sourceTree = "<group>"; };
+		88BDD3232A82B27C0082A961 /* HC_selectFriednsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_selectFriednsView.swift; sourceTree = "<group>"; };
+		88BDD3252A82B3180082A961 /* HC_selectFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_selectFriendsViewController.swift; sourceTree = "<group>"; };
+		88BDD3272A82B84D0082A961 /* HC_MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_MemberCollectionViewCell.swift; sourceTree = "<group>"; };
+		88BDD3292A82BE770082A961 /* HC_noFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_noFriendsView.swift; sourceTree = "<group>"; };
+		88BDD32B2A82BEA40082A961 /* HC_noFriednsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_noFriednsViewController.swift; sourceTree = "<group>"; };
+		88BDD32D2A82C3760082A961 /* HC_finalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_finalView.swift; sourceTree = "<group>"; };
+		88BDD32F2A82C3AD0082A961 /* HC_finalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_finalViewController.swift; sourceTree = "<group>"; };
 		88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControlView.swift; sourceTree = "<group>"; };
 		88DA7EB02A6F6C300011AF43 /* HabitDiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDiscoverView.swift; sourceTree = "<group>"; };
 		88DCCAE82A6A5D21003C3F15 /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -166,8 +178,6 @@
 		B6CAF8832A7CCFD200448673 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextBoxView.swift; sourceTree = "<group>"; };
 		B6D584A12A720DE4008862AC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		B6D87A572A8290EE0099005E /* WaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
-		B6D87A5B2A83EEE60099005E /* WaitingMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +218,9 @@
 				88FE2D232A7ED3EF00C475A7 /* HC_chooseTimeView.swift */,
 				88804CC92A7FFACD00562E35 /* HC_chooseDateView.swift */,
 				88E653962A80151A00ABF9D9 /* HC_memberCountView.swift */,
+				88BDD3232A82B27C0082A961 /* HC_selectFriednsView.swift */,
+				88BDD3292A82BE770082A961 /* HC_noFriendsView.swift */,
+				88BDD32D2A82C3760082A961 /* HC_finalView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,7 +247,9 @@
 				88FE2D332A7ED46600C475A7 /* HC_chooseTimeViewController.swift */,
 				88804CCB2A7FFBBF00562E35 /* HC_chooseDateViewController.swift */,
 				88E653982A80155D00ABF9D9 /* HC_memberCountViewController.swift */,
-				B6D87A572A8290EE0099005E /* WaitingViewController.swift */,
+				88BDD3252A82B3180082A961 /* HC_selectFriendsViewController.swift */,
+				88BDD32B2A82BEA40082A961 /* HC_noFriednsViewController.swift */,
+				88BDD32F2A82C3AD0082A961 /* HC_finalViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -308,8 +323,8 @@
 				B6CAF8812A7CB2C700448673 /* CircularProgressView.swift */,
 				88FE2D2B2A7ED44300C475A7 /* HabitCreateFlowButton.swift */,
 				88FE2D2C2A7ED44300C475A7 /* HC_categoryCollectionViewCell.swift */,
+				88BDD3272A82B84D0082A961 /* HC_MemberCollectionViewCell.swift */,
 				88804CC52A7F9EBD00562E35 /* ColorToggleButton.swift */,
-				B6D87A5B2A83EEE60099005E /* WaitingMemberCollectionViewCell.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -435,10 +450,10 @@
 				881C06072A617C6200184AFA /* SearchResultView.swift in Sources */,
 				88FE2D282A7ED3EF00C475A7 /* HC_chooseTypeView.swift in Sources */,
 				881C06232A62E65B00184AFA /* SearchedHabitProfile.swift in Sources */,
+				88BDD3282A82B84D0082A961 /* HC_MemberCollectionViewCell.swift in Sources */,
 				881C061F2A62D94500184AFA /* UIComponents+setBackgroundColor.swift in Sources */,
 				88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */,
 				88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */,
-				B6D87A5C2A83EEE60099005E /* WaitingMemberCollectionViewCell.swift in Sources */,
 				88FE2D362A7ED46600C475A7 /* HC_chooseTypeViewController.swift in Sources */,
 				B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */,
 				881C06192A62A65B00184AFA /* HabitProfileTableViewCell.swift in Sources */,
@@ -448,7 +463,6 @@
 				88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */,
 				882AC3BD2A78348A002AD232 /* UIImage+onlyColor.swift in Sources */,
 				881D5FC72A742D0E00603548 /* HabitAlarmViewController.swift in Sources */,
-				B6D87A582A8290EE0099005E /* WaitingViewController.swift in Sources */,
 				88E653992A80155D00ABF9D9 /* HC_memberCountViewController.swift in Sources */,
 				881C05F32A61461D00184AFA /* SearchView.swift in Sources */,
 				88371A722A702C650056BB5A /* MemberModel.swift in Sources */,
@@ -471,12 +485,15 @@
 				88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */,
 				88A64C0F2A7A733E00292ED6 /* CALayer+addBorder.swift in Sources */,
 				88FE2D352A7ED46600C475A7 /* HC_introduceViewController.swift in Sources */,
+				88BDD32E2A82C3760082A961 /* HC_finalView.swift in Sources */,
+				88BDD3262A82B3180082A961 /* HC_selectFriendsViewController.swift in Sources */,
 				88E653972A80151A00ABF9D9 /* HC_memberCountView.swift in Sources */,
 				B64993152A5D3EDC0061C47E /* AppDelegate.swift in Sources */,
 				881C05FC2A61560000184AFA /* SearchResultViewController.swift in Sources */,
 				88371A762A702D840056BB5A /* HabitDiscoverViewController.swift in Sources */,
 				881C06152A62803900184AFA /* UserProfileTableViewCell.swift in Sources */,
 				B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */,
+				88BDD32C2A82BEA40082A961 /* HC_noFriednsViewController.swift in Sources */,
 				881C05FA2A61545200184AFA /* NavigationBar.swift in Sources */,
 				88FE2D382A7ED46600C475A7 /* HC_chooseTimeViewController.swift in Sources */,
 				88FE2D4F2A7EF18F00C475A7 /* LoginViewController.swift in Sources */,
@@ -490,9 +507,12 @@
 				88DCCAF72A6AF43C003C3F15 /* BottomSheetView(lofi).swift in Sources */,
 				B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */,
 				881D5FC52A742CC100603548 /* HabitAlarmView.swift in Sources */,
+				88BDD32A2A82BE770082A961 /* HC_noFriendsView.swift in Sources */,
+				88BDD3242A82B27C0082A961 /* HC_selectFriednsView.swift in Sources */,
 				88804CCC2A7FFBBF00562E35 /* HC_chooseDateViewController.swift in Sources */,
 				881C05F62A61479600184AFA /* UIViewController+Preview.swift in Sources */,
 				881C05EE2A5FF8C900184AFA /* SearchViewController.swift in Sources */,
+				88BDD3302A82C3AD0082A961 /* HC_finalViewController.swift in Sources */,
 				88DA7EB12A6F6C300011AF43 /* HabitDiscoverView.swift in Sources */,
 				88DCCAF32A6AF0AD003C3F15 /* SheetPresentationController.swift in Sources */,
 				B63C63B02A7B4ACB00AF09CA /* LetterSpacing.swift in Sources */,

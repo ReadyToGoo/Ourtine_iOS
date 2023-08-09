@@ -41,8 +41,8 @@ class HabitCreate_memberCountView: UIView {
     lazy var thirdLabel : UILabel = {
         let label = UILabel()
         label.text = "*최대 6명"
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 13, weight: .medium)
+        label.textColor = .app_PrimaryColor
+        label.font = .systemFont(ofSize: 15, weight: .medium)
         return label
     }()
     
@@ -50,15 +50,15 @@ class HabitCreate_memberCountView: UIView {
     lazy var textField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
-        textField.textColor = .app_BrightnessColor100
-        textField.font = .systemFont(ofSize: 25)
+        textField.textColor = .app_PrimaryColor
+        textField.font = .systemFont(ofSize: 35, weight: .medium)
         return textField
     }()
     
     /// 텍스트필드 아랫줄
     lazy var lineView: UIView = {
         let line = UIView()
-        line.backgroundColor = .app_BrightnessColor100
+        line.backgroundColor = .app_PrimaryColor
         return line
     }()
     
@@ -100,7 +100,7 @@ class HabitCreate_memberCountView: UIView {
         
         topLabel.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom).offset(15)
-            $0.leading.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(30)
         }
         
         secondLabel.snp.makeConstraints {
@@ -109,21 +109,20 @@ class HabitCreate_memberCountView: UIView {
         }
         
         thirdLabel.snp.makeConstraints {
-            $0.top.equalTo(secondLabel.snp.bottom)
+            $0.top.equalTo(secondLabel.snp.bottom).offset(5)
             $0.leading.equalTo(topLabel)
         }
         
         textField.snp.makeConstraints {
             $0.top.equalTo(thirdLabel.snp.bottom).offset(20)
             $0.leading.equalTo(topLabel)
-            $0.height.equalTo(50)
-            $0.width.equalTo(70)
+            $0.size.equalTo(40)
         }
         
         lineView.snp.makeConstraints {
             $0.bottom.equalTo(textField)
             $0.horizontalEdges.equalTo(textField)
-            $0.height.equalTo(1)
+            $0.height.equalTo(2)
         }
         
         countLabel.snp.makeConstraints {
@@ -135,7 +134,7 @@ class HabitCreate_memberCountView: UIView {
         nextBtn.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide ).multipliedBy(0.95)
             $0.width.equalToSuperview().multipliedBy(0.8)
-            $0.height.equalTo(40)
+            $0.height.equalTo(50)
             $0.centerX.equalToSuperview()
         }
     }

@@ -1,44 +1,52 @@
 //
-//  HC_chooseCategoryView.swift
+//  HC_finalView.swift
 //  Ourtine
 //
-//  Created by 박민서 on 2023/07/31.
+//  Created by 박민서 on 2023/08/09.
 //
 
 import UIKit
 import SnapKit
 
-class HabitCreate_chooseCategoryView: UIView {
+class HabitCreate_finalView: UIView {
     
-    // lazy = 이 친구가 호출될때 생성되는 애
-    // 그냥 var로만 선언하게되면 앱을 처음 킬때 얘네를 다불러와요
     lazy var navigationBar : Custom_NavigationBar = {
         let nav = Custom_NavigationBar()
         return nav
     }()
     
+    /// 타이틀
     lazy var topLabel : UILabel = {
         let label = UILabel()
-        label.text = "습관 카테고리를 선택해볼까요?"
-        label.textColor = .black
+        let attributedText = NSMutableAttributedString(string: "[새벽6시에 잠들기]\n초대장을 발송했어요!")
+        attributedText.addAttribute(.foregroundColor, value: UIColor.app_PrimaryColor, range: NSRange(location: 0, length: 12))
+        label.attributedText = attributedText
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 25, weight: .heavy)
         return label
     }()
     
-    lazy var categoryCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .vertical
-        
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.width), collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = .clear
-        //collectionView.isScrollEnabled = false
-        return collectionView
+    /// 드릴게요 라벨
+    lazy var bottomLabel: UILabel = {
+        let label = UILabel()
+        label.text = "친구가 응답하면 알람을 드릴게요!"
+        label.font = .systemFont(ofSize: 18, weight: .medium)
+        return label
     }()
     
-    lazy var nextBtn: HabitCreateFlowButton = {
+    /// 축하이미지
+    lazy var celebrationImage: UIImageView = {
+        let view = UIImageView()
+        //view.image = ""ASDF
+        view.backgroundColor = .app_PrimaryColor2
+        return view
+    }()
+    
+    
+    
+    lazy var okBtn: HabitCreateFlowButton = {
         let btn = HabitCreateFlowButton()
-        btn.setTitle("다음", for: .normal)
+        btn.setTitle("네, 알겠어요", for: .normal)
         return btn
     }()
     
@@ -48,8 +56,9 @@ class HabitCreate_chooseCategoryView: UIView {
         [
             navigationBar,
             topLabel,
-            categoryCollectionView,
-            nextBtn
+            celebrationImage,
+            bottomLabel,
+            okBtn
         ].forEach {self.addSubview($0)}
         
     }
@@ -66,13 +75,19 @@ class HabitCreate_chooseCategoryView: UIView {
             $0.leading.equalToSuperview().offset(30)
         }
         
-        categoryCollectionView.snp.makeConstraints {
-            $0.top.equalTo(topLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview() //left.right
-            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+        celebrationImage.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(200)
+            $0.height.equalTo(300)
         }
         
-        nextBtn.snp.makeConstraints {
+        bottomLabel.snp.makeConstraints {
+            $0.top.equalTo(celebrationImage.snp.bottom).offset(70)
+            $0.centerX.equalToSuperview()
+        }
+        
+        okBtn.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide ).multipliedBy(0.95)
             $0.width.equalToSuperview().multipliedBy(0.8)
             $0.height.equalTo(50)
@@ -98,11 +113,11 @@ class HabitCreate_chooseCategoryView: UIView {
 }
 
 import SwiftUI
-struct HabitCreate_chooseCategoryView_Preview: PreviewProvider {
+struct HabitCreate_finalView_Preview: PreviewProvider {
     static var previews: some View {
         UIViewControllerPreview {
             // Return whatever controller you want to preview
-            let ViewController = HabitCreate_chooseCategoryViewController()
+            let ViewController = HabitCreate_finalViewController()
             return ViewController
         }
     }
