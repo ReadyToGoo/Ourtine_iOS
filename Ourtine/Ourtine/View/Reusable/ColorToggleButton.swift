@@ -48,6 +48,7 @@ class ColorToggleButton: UIButton {
             // 선택 취소할 때
             self.isOn = false
             self.setBackgroundColor(self.normalColor, for: .normal)
+            self.layer.borderColor = UIColor.app_BrightnessColor40.cgColor
             
             // 이미지 있는 경우
             if self.isImageIn {
@@ -58,6 +59,7 @@ class ColorToggleButton: UIButton {
             //선택할 때
             self.isOn = true
             self.setBackgroundColor(self.selectedColor, for: .normal)
+            self.layer.borderColor = UIColor.app_PrimaryColor.cgColor
             
             // 이미지 있는 경우
             if self.isImageIn {
@@ -71,5 +73,11 @@ class ColorToggleButton: UIButton {
         self.normalImage = normal ?? UIImage()
         self.selectedImage = selected ?? UIImage()
         self.setImage(self.normalImage, for: .normal)
+    }
+    
+    func addBorder() {
+        self.layer.borderWidth = 1.0
+        self.layer.cornerRadius = 8.0
+        self.layer.borderColor = UIColor.app_BrightnessColor40.cgColor
     }
 }

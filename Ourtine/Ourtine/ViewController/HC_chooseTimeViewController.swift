@@ -31,6 +31,7 @@ class HabitCreate_chooseTimeViewController: UIViewController {
         
 
         self.HC_chooseTimeView.nextBtn.isEnabled = false
+        self.HC_chooseTimeView.lineView2.isHidden = true
         
         // MARK: - 시작 시간 버튼
         self.HC_chooseTimeView.startTime_btn.addTarget(self, action: #selector(showTimePicker), for: .touchUpInside)
@@ -77,6 +78,7 @@ class HabitCreate_chooseTimeViewController: UIViewController {
         if sender.isOn {
             
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.HC_chooseTimeView.lineView2.isHidden = false
                 timePicker.isHidden = false
                 timePicker.snp.updateConstraints {
                     $0.height.equalTo(timePicker.intrinsicContentSize.height)
@@ -88,6 +90,7 @@ class HabitCreate_chooseTimeViewController: UIViewController {
         // 피커뷰 닫혔을 때
         else {
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.HC_chooseTimeView.lineView2.isHidden = true
                 timePicker.isHidden = true
                 timePicker.snp.updateConstraints {
                     $0.height.equalTo(0)
@@ -116,7 +119,12 @@ class HabitCreate_chooseTimeViewController: UIViewController {
         }
         
         //라벨의 text 설정
-        label.text = sender.date.toString(format: "a hh시 mm분")
+        let inputText = sender.date.toString(format: "a hh시 mm분")
+        
+        let attributedText = NSMutableAttributedString(string: inputText)
+        attributedText.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 2))
+        attributedText.addAttribute(.foregroundColor, value: UIColor.app_PrimaryColor, range: NSRange(location: 2, length: 8))
+        label.attributedText = attributedText
     }
     
     /// 요일 버튼들에 setDays()함수를 target설정합니다.

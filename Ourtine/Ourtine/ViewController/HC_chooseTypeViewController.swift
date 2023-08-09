@@ -11,6 +11,39 @@ class HabitCreate_chooseTypeViewController: UIViewController {
     
     let HC_chooseTypeView = HabitCreate_chooseTypeView()
     
+    /// 선택한 이미지 인덱스
+    /// 이미지 선택하면 색이 바뀝니다
+    var chosenImageIndex: Int = -1 {
+        didSet {
+            // private 탭
+            if chosenImageIndex == 0 {
+                self.HC_chooseTypeView.view_private.backgroundColor = UIColor.app_PrimaryColor
+                self.HC_chooseTypeView.view_private.layer.borderColor = UIColor.app_PrimaryColor.cgColor
+                self.HC_chooseTypeView.imageView_private.tintColor = .app_BrightnessColor0
+                self.HC_chooseTypeView.titleLabel_private.textColor = .app_BrightnessColor0
+                
+                self.HC_chooseTypeView.view_public.backgroundColor = UIColor.app_BrightnessColor0
+                self.HC_chooseTypeView.view_public.layer.borderColor = UIColor.app_SecondaryColor2.cgColor
+                self.HC_chooseTypeView.imageView_public.tintColor = .app_SecondaryColor2
+                self.HC_chooseTypeView.titleLabel_public.textColor = .app_SecondaryColor2
+            }
+            // public 탭
+            else if chosenImageIndex == 1 {
+                self.HC_chooseTypeView.view_public.backgroundColor = UIColor.app_PrimaryColor
+                self.HC_chooseTypeView.view_public.layer.borderColor = UIColor.app_PrimaryColor.cgColor
+                self.HC_chooseTypeView.imageView_public.tintColor = .app_BrightnessColor0
+                self.HC_chooseTypeView.titleLabel_public.textColor = .app_BrightnessColor0
+                
+                
+                self.HC_chooseTypeView.view_private.backgroundColor = UIColor.app_BrightnessColor0
+                self.HC_chooseTypeView.view_private.layer.borderColor = UIColor.app_SecondaryColor2.cgColor
+                self.HC_chooseTypeView.imageView_private.tintColor = .app_SecondaryColor2
+                self.HC_chooseTypeView.titleLabel_private.textColor = .app_SecondaryColor2
+            }
+            
+        }
+    }
+    
     // view 로드할 때 searchView로 가져오기
     override func loadView() {
         super.loadView()
@@ -26,10 +59,10 @@ class HabitCreate_chooseTypeViewController: UIViewController {
         self.HC_chooseTypeView.nextBtn.isEnabled = false
         
         //MARK: - ImageTapGesture setting
-        self.HC_chooseTypeView.imageView_private.isUserInteractionEnabled = true
-        self.HC_chooseTypeView.imageView_public.isUserInteractionEnabled = true
-        self.HC_chooseTypeView.imageView_private.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapImage)))
-        self.HC_chooseTypeView.imageView_public.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapImage)))
+        self.HC_chooseTypeView.view_private.isUserInteractionEnabled = true
+        self.HC_chooseTypeView.view_public.isUserInteractionEnabled = true
+        self.HC_chooseTypeView.view_private.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapImage)))
+        self.HC_chooseTypeView.view_public.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapImage)))
         
         //MARK: - nextBTN
         self.HC_chooseTypeView.nextBtn.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
@@ -41,9 +74,11 @@ class HabitCreate_chooseTypeViewController: UIViewController {
     }
     
     @objc func tapImage(_ sender: UITapGestureRecognizer) {
-        if let imageview = sender.view as? UIImageView {
-            print("chosen image's tag is \(imageview.tag)")
+        if let view = sender.view {
+            print("chosen image's tag is \(view.tag)")
             print("button enabled")
+            self.chosenImageIndex = view.tag
+            print(chosenImageIndex)
             self.HC_chooseTypeView.nextBtn.isEnabled = true
         }
     }

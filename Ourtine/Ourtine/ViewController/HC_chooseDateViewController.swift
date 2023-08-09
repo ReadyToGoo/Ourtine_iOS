@@ -27,6 +27,7 @@ class HabitCreate_chooseDateViewController: UIViewController {
         
 
         self.HC_chooseDateView.nextBtn.isEnabled = false
+        self.HC_chooseDateView.lineView2.isHidden = true
         
         // MARK: - 시작 시간 버튼
         self.HC_chooseDateView.startDate_btn.addTarget(self, action: #selector(showTimePicker), for: .touchUpInside)
@@ -66,6 +67,7 @@ class HabitCreate_chooseDateViewController: UIViewController {
         if sender.isOn {
             
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.HC_chooseDateView.lineView2.isHidden = false
                 datePicker.isHidden = false
                 datePicker.snp.updateConstraints {
                     //$0.height.equalTo(datePicker.intrinsicContentSize.height)
@@ -78,6 +80,7 @@ class HabitCreate_chooseDateViewController: UIViewController {
         // 피커뷰 닫혔을 때
         else {
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.HC_chooseDateView.lineView2.isHidden = true
                 datePicker.isHidden = true
                 datePicker.snp.updateConstraints {
                     $0.height.equalTo(0)
@@ -104,9 +107,13 @@ class HabitCreate_chooseDateViewController: UIViewController {
             label = self.HC_chooseDateView.endDateLabel_main
             self.didSet_endDate = true
         }
-        
         //라벨의 text 설정
-        label.text = sender.date.toString(format: "yyyy.MM.dd")
+        let inputText = sender.date.toString(format: "yyyy.MM.dd")
+        
+        let attributedText = NSMutableAttributedString(string: inputText)
+        attributedText.addAttribute(.foregroundColor, value: UIColor.app_PrimaryColor, range: NSRange(location: 0, length: 10))
+        label.attributedText = attributedText
+        
         //테스트용 
         checkSet()
     }

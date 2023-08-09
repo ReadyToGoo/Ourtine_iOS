@@ -85,19 +85,29 @@ extension HabitCreate_chooseCategoryViewController: UICollectionViewDelegate, UI
 /// CollectionView의  FlowLayout 상속 내용입니다
 extension HabitCreate_chooseCategoryViewController: UICollectionViewDelegateFlowLayout {
     
-    // CollectionView들의 좌우 여백 조정
+    // CollectionView의 좌우 여백 조정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        var topBottomPadding: CGFloat = 10
-        let leftPadding: CGFloat = 10
-        let rightPadding: CGFloat = 10
+        var topBottomPadding: CGFloat = 30
+        let leftPadding: CGFloat = 15
+        let rightPadding: CGFloat = 15
 
-        return UIEdgeInsets(top: topBottomPadding, left: leftPadding, bottom: topBottomPadding, right: rightPadding)
+        return UIEdgeInsets(top: topBottomPadding, left: leftPadding, bottom: 10, right: rightPadding)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: self.HC_chooseCategory_View.frame.width/2 - 20, height: self.HC_chooseCategory_View.frame.width/3)
+        return CGSize(width: self.HC_chooseCategory_View.frame.width/2 - 20, height: self.HC_chooseCategory_View.frame.width/4)
     }
+    
+//    //섹션의 행 간격
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 15
+//    }
+//
+//    //섹션의 열 간격
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 8
+//    }
 }
 
 import SwiftUI

@@ -23,7 +23,5 @@ let Dummy_HC_Categories: [HC_Category] = [
     HC_Category("카테고리5"),
     HC_Category("카테고리6"),
     HC_Category("카테고리7"),
-    HC_Category("카테고리8"),
-    HC_Category("카테고리9"),
-    HC_Category("카테고리10")
+    HC_Category("카테고리8")
 ]

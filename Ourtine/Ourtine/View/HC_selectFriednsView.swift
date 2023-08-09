@@ -1,14 +1,14 @@
 //
-//  HC_chooseCategoryView.swift
+//  HC_selectFriednsView.swift
 //  Ourtine
 //
-//  Created by 박민서 on 2023/07/31.
+//  Created by 박민서 on 2023/08/09.
 //
 
 import UIKit
 import SnapKit
 
-class HabitCreate_chooseCategoryView: UIView {
+class HabitCreate_selectFriednsView: UIView {
     
     // lazy = 이 친구가 호출될때 생성되는 애
     // 그냥 var로만 선언하게되면 앱을 처음 킬때 얘네를 다불러와요
@@ -17,13 +17,40 @@ class HabitCreate_chooseCategoryView: UIView {
         return nav
     }()
     
+    /// 타이틀
     lazy var topLabel : UILabel = {
         let label = UILabel()
-        label.text = "습관 카테고리를 선택해볼까요?"
+        label.text = "어떤 친구와 함께 습관을\n만들고 싶나요?"
         label.textColor = .black
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 25, weight: .heavy)
         return label
+    }()
+    
+    /// 서브타이틀
+    lazy var secondLabel : UILabel = {
+        let label = UILabel()
+        label.text = "*최대 6명"
+        label.textColor = .app_PrimaryColor
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        return label
+    }()
+    
+    /// x 명 선택중 라벨
+    lazy var countLabel : UIButton = {
+        let btn = UIButton(configuration: UIButton.Configuration.plain())
+        btn.setBackgroundColor(.clear, for: .normal)
+        
+        //라벨의 text 설정
+        let inputText = "0 명 선택 중"
+        
+        let attributedText = NSMutableAttributedString(string: inputText)
+        attributedText.addAttribute(.foregroundColor, value: UIColor.app_PrimaryColor, range: NSRange(location: 0, length: 2))
+        attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .bold), range: NSRange(location: 0, length: 2))
+        attributedText.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 2, length: 6))
+        btn.setAttributedTitle(attributedText, for: .normal)
+        
+        return btn
     }()
     
     lazy var categoryCollectionView: UICollectionView = {
@@ -38,7 +65,7 @@ class HabitCreate_chooseCategoryView: UIView {
     
     lazy var nextBtn: HabitCreateFlowButton = {
         let btn = HabitCreateFlowButton()
-        btn.setTitle("다음", for: .normal)
+        btn.setTitle("습관 개설하기", for: .normal)
         return btn
     }()
     
@@ -48,7 +75,9 @@ class HabitCreate_chooseCategoryView: UIView {
         [
             navigationBar,
             topLabel,
+            secondLabel,
             categoryCollectionView,
+            countLabel,
             nextBtn
         ].forEach {self.addSubview($0)}
         
@@ -66,8 +95,19 @@ class HabitCreate_chooseCategoryView: UIView {
             $0.leading.equalToSuperview().offset(30)
         }
         
+        secondLabel.snp.makeConstraints {
+            $0.top.equalTo(topLabel.snp.bottom).offset(5)
+            $0.leading.equalTo(topLabel)
+            
+        }
+        
+        countLabel.snp.makeConstraints {
+            $0.top.equalTo(secondLabel.snp.bottom).offset(30)
+            $0.centerX.equalToSuperview()
+        }
+        
         categoryCollectionView.snp.makeConstraints {
-            $0.top.equalTo(topLabel.snp.bottom).offset(20)
+            $0.top.equalTo(countLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview() //left.right
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
@@ -98,11 +138,11 @@ class HabitCreate_chooseCategoryView: UIView {
 }
 
 import SwiftUI
-struct HabitCreate_chooseCategoryView_Preview: PreviewProvider {
+struct HabitCreate_selectFriednsView_Preview: PreviewProvider {
     static var previews: some View {
         UIViewControllerPreview {
             // Return whatever controller you want to preview
-            let ViewController = HabitCreate_chooseCategoryViewController()
+            let ViewController = HabitCreate_selectFriednsViewController()
             return ViewController
         }
     }
