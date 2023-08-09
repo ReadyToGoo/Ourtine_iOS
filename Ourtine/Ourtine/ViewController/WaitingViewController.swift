@@ -37,6 +37,15 @@ class WaitingViewController: UIViewController {
         return label
     }()
     
+    // memberPhrase
+    private let memberPhrase: UILabel = {
+        let label = UILabel()
+        label.text = "먼저 입장한 친구들"
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = .black
+        return label
+    }()
+    
     // layout
     private let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -90,7 +99,8 @@ class WaitingViewController: UIViewController {
         [
             habitPhrase,
             leftSecond,
-            memberCollectionView
+            memberCollectionView,
+            memberPhrase
         ].forEach {view.addSubview($0)}
         
 
@@ -126,7 +136,12 @@ class WaitingViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(148.34)
-            
+        }
+        
+        // memberPhrase
+        memberPhrase.snp.makeConstraints { make in
+            make.top.equalTo(memberCollectionView.snp.top).offset(8)
+            make.leading.equalTo(memberCollectionView.snp.leading).offset(16)
         }
     }
     
