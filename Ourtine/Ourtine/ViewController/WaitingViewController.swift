@@ -18,7 +18,7 @@ class WaitingViewController: UIViewController {
     private let habitPhrase: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = .app_SecondaryColor
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 28, weight: .semibold)
@@ -82,6 +82,7 @@ class WaitingViewController: UIViewController {
             } else {
                 timer.invalidate()
                 self.updateView()
+                self.leftSecond.text = ""
             }
         }
     }
@@ -89,11 +90,11 @@ class WaitingViewController: UIViewController {
     // 카운트다운 완료시 화면 전환 함수
     @objc func updateView() {
         let vc = ViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: false)
     }
 
     override func viewDidLoad() {
-        view.backgroundColor = .orange
+        view.backgroundColor = .app_PrimaryColor
         super.viewDidLoad()
         
         [
@@ -105,12 +106,12 @@ class WaitingViewController: UIViewController {
         
 
         // phraseLabel
-        let text = "\(tempUserName)님, \n" + "\(postPositionText(tempUserHabit)) 시작해봐요!"
+        let text = "\(tempUserName)님, \(postPositionText(tempUserHabit))\n시작해봐요!"
         habitPhrase.text = text
+        habitPhrase.halfTextColorChange(fullText: text, changeText: postPositionText(tempUserHabit))
         
         // memberCollectionView
         self.memberCollectionView.dataSource = self
-//        self.memberCollectionView.delegate = self
         
         // Setting
         startCountDown()
@@ -160,6 +161,16 @@ extension WaitingViewController: UICollectionViewDataSource {
         
 //        cell.prepare(image: UIImage(named: ), text: <#T##String?#>)
         return cell
+    }
+}
+
+extension UILabel {
+    func halfTextColorChange (fullText: String, changeText: String) {
+        let originalString: NSString = fullText as NSString
+        let range = (originalString).range(of: changeText)
+        let attribute = NSMutableAttributedString.init(string: fullText)
+        attribute.addAttribute(.foregroundColor, value: UIColor.white, range: range)
+        self.attributedText = attribute
     }
 }
 
