@@ -85,6 +85,7 @@
 		B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */; };
 		B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D584A12A720DE4008862AC /* HomeViewController.swift */; };
 		B6D87A582A8290EE0099005E /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D87A572A8290EE0099005E /* WaitingViewController.swift */; };
+		B6D87A5C2A83EEE60099005E /* WaitingMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D87A5B2A83EEE60099005E /* WaitingMemberCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -166,6 +167,7 @@
 		B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextBoxView.swift; sourceTree = "<group>"; };
 		B6D584A12A720DE4008862AC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B6D87A572A8290EE0099005E /* WaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
+		B6D87A5B2A83EEE60099005E /* WaitingMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +309,7 @@
 				88FE2D2B2A7ED44300C475A7 /* HabitCreateFlowButton.swift */,
 				88FE2D2C2A7ED44300C475A7 /* HC_categoryCollectionViewCell.swift */,
 				88804CC52A7F9EBD00562E35 /* ColorToggleButton.swift */,
+				B6D87A5B2A83EEE60099005E /* WaitingMemberCollectionViewCell.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				881C061F2A62D94500184AFA /* UIComponents+setBackgroundColor.swift in Sources */,
 				88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */,
 				88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */,
+				B6D87A5C2A83EEE60099005E /* WaitingMemberCollectionViewCell.swift in Sources */,
 				88FE2D362A7ED46600C475A7 /* HC_chooseTypeViewController.swift in Sources */,
 				B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */,
 				881C06192A62A65B00184AFA /* HabitProfileTableViewCell.swift in Sources */,

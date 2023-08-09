@@ -14,8 +14,8 @@ class WaitingViewController: UIViewController {
     let tempUserName = "은지"
     let tempUserHabit = "반려동물 물주기"
 
-    // Habit Phrase Label
-    private let phraseLabel: UILabel = {
+    // Habit Phrase Label: 습관 문구
+    private let habitPhrase: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
@@ -26,6 +26,7 @@ class WaitingViewController: UIViewController {
         return label
     }()
     
+    // leftSecond: 남은 시간 카운트다운
     private let leftSecond: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +37,31 @@ class WaitingViewController: UIViewController {
         return label
     }()
     
+    // layout
+    private let flowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 32
+        layout.itemSize = CGSize(width: 72, height: 96)
+        return layout
+    }()
+    
+    // collectionView
+    private lazy var memberCollectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.isScrollEnabled = true
+        view.showsHorizontalScrollIndicator = false
+        view.showsVerticalScrollIndicator = false
+        view.contentInset = .zero
+        view.backgroundColor = .white.withAlphaComponent(0.6)
+        view.clipsToBounds = true
+        view.register(WaitingMemberCollectionViewCell.self, forCellWithReuseIdentifier: "WaitingMemberCell")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    
+    // 카운트다운 함수
     func startCountDown() {
         var leftTime = 5
         
@@ -51,6 +77,7 @@ class WaitingViewController: UIViewController {
         }
     }
     
+    // 카운트다운 완료시 화면 전환 함수
     @objc func updateView() {
         let vc = ViewController()
         navigationController?.pushViewController(vc, animated: true)
@@ -61,34 +88,64 @@ class WaitingViewController: UIViewController {
         super.viewDidLoad()
         
         [
-            phraseLabel,
-            leftSecond
+            habitPhrase,
+            leftSecond,
+            memberCollectionView
         ].forEach {view.addSubview($0)}
         
 
         // phraseLabel
         let text = "\(tempUserName)님, \n" + "\(postPositionText(tempUserHabit)) 시작해봐요!"
-        phraseLabel.text = text
+        habitPhrase.text = text
         
+        // memberCollectionView
+        self.memberCollectionView.dataSource = self
+//        self.memberCollectionView.delegate = self
+        
+        // Setting
         startCountDown()
         setConstraints()
     }
     
+    // Layout Constraint
     private func setConstraints() {
-        // phraseLabel
-        phraseLabel.snp.makeConstraints { make in
+        // habitPhrase
+        habitPhrase.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(108.67)
             make.centerX.equalToSuperview()
         }
         
         // leftSecond
         leftSecond.snp.makeConstraints { make in
-            make.top.equalTo(phraseLabel.snp.bottom).offset(150.4)
+            make.top.equalTo(habitPhrase.snp.bottom).offset(150.4)
             make.centerX.equalToSuperview()
+        }
+        
+        // memberCollectionView
+        memberCollectionView.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(148.34)
+            
         }
     }
     
+}
 
+extension WaitingViewController: UICollectionViewDataSource {
+    // numOfCell
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Dummy_memberList.count
+    }
+    
+    // contentOfCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WaitingMemberCollectionViewCell.id, for: indexPath) as? WaitingMemberCollectionViewCell else { return UICollectionViewCell() }
+        cell.getMemberData(data: Dummy_memberList[indexPath.row])
+        
+//        cell.prepare(image: UIImage(named: ), text: <#T##String?#>)
+        return cell
+    }
 }
 
 import SwiftUI
