@@ -81,7 +81,7 @@ class HomeViewController: UIViewController {
     
     // startBtnTapped
     @objc func buttonTapped(_sender: UITapGestureRecognizer) {
-        let vc = ViewController()
+        let vc = WaitingViewController()
         self.navigationController?.pushViewController(vc, animated: false)
         print("Move to Starting Habit View")
     }
@@ -190,20 +190,20 @@ class HomeViewController: UIViewController {
             make.height.equalTo(84.31)
         }
     }
+}
+
+// 조사 판단 함수
+func postPositionText(_ word: String)->String {
+    guard let lastText = word.last else { return word }
+    let unicodeVal = UnicodeScalar(String(lastText))?.value
     
-    // 조사 판단 함수
-    func postPositionText(_ word: String)->String {
-        guard let lastText = word.last else { return word }
-        let unicodeVal = UnicodeScalar(String(lastText))?.value
-        
-        guard let value = unicodeVal else { return word }
-        if (value < 0xAC00 || value > 0xD7A3) { return word }
-        let last = ( value - 0xAC00 ) % 28
-        let str = last > 0 ? "을" : "를"
-        
-        return word+str
-        
-    }
+    guard let value = unicodeVal else { return word }
+    if (value < 0xAC00 || value > 0xD7A3) { return word }
+    let last = ( value - 0xAC00 ) % 28
+    let str = last > 0 ? "을" : "를"
+    
+    return word+str
+    
 }
 
 import SwiftUI

@@ -91,6 +91,8 @@
 		B6CAF8842A7CCFD200448673 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CAF8832A7CCFD200448673 /* TimelineViewController.swift */; };
 		B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */; };
 		B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D584A12A720DE4008862AC /* HomeViewController.swift */; };
+		B6D87A602A8408780099005E /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D87A5F2A8408780099005E /* WaitingViewController.swift */; };
+		B6D87A622A8408850099005E /* WaitingMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D87A612A8408850099005E /* WaitingMemberCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +180,8 @@
 		B6CAF8832A7CCFD200448673 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		B6D5849F2A720C16008862AC /* HomeTextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextBoxView.swift; sourceTree = "<group>"; };
 		B6D584A12A720DE4008862AC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B6D87A5F2A8408780099005E /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
+		B6D87A612A8408850099005E /* WaitingMemberCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +232,7 @@
 		881C05F12A6143A400184AFA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B6D87A5F2A8408780099005E /* WaitingViewController.swift */,
 				881C06122A61E17B00184AFA /* DummyVC */,
 				88DCCAF22A6AF0AD003C3F15 /* SheetPresentationController.swift */,
 				881C05ED2A5FF8C900184AFA /* SearchViewController.swift */,
@@ -307,6 +312,7 @@
 		881C06252A63A4BD00184AFA /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
+				B6D87A612A8408850099005E /* WaitingMemberCollectionViewCell.swift */,
 				881C06162A62826700184AFA /* ProfileImageViews.swift */,
 				881C05F92A61545200184AFA /* NavigationBar.swift */,
 				881C06142A62803900184AFA /* UserProfileTableViewCell.swift */,
@@ -483,6 +489,7 @@
 				881C06032A61704000184AFA /* DummyViewController.swift in Sources */,
 				881D5FCB2A74324200603548 /* AlarmModel.swift in Sources */,
 				88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */,
+				B6D87A602A8408780099005E /* WaitingViewController.swift in Sources */,
 				88A64C0F2A7A733E00292ED6 /* CALayer+addBorder.swift in Sources */,
 				88FE2D352A7ED46600C475A7 /* HC_introduceViewController.swift in Sources */,
 				88BDD32E2A82C3760082A961 /* HC_finalView.swift in Sources */,
@@ -498,6 +505,7 @@
 				88FE2D382A7ED46600C475A7 /* HC_chooseTimeViewController.swift in Sources */,
 				88FE2D4F2A7EF18F00C475A7 /* LoginViewController.swift in Sources */,
 				88804CC62A7F9EBD00562E35 /* ColorToggleButton.swift in Sources */,
+				B6D87A622A8408850099005E /* WaitingMemberCollectionViewCell.swift in Sources */,
 				885026172A73C1D100974094 /* HabitCardModel.swift in Sources */,
 				88FE2D502A7EF18F00C475A7 /* SetUsernameViewController.swift in Sources */,
 				88E2B9B42A6BBF170039CF68 /* DeviceScreenSize.swift in Sources */,
