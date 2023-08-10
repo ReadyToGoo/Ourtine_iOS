@@ -22,6 +22,7 @@ class HabitCreate_finalViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view = HC_final_View
+        HabitCreateFlowManager.shared.printself()
     }
     
     // 뷰 로딩된 후에 한번만
@@ -78,6 +79,7 @@ class HabitCreate_finalViewController: UIViewController {
     
     @objc func nextVC(_ sender: UIButton) {
 //        self.navigationController?.pushViewController(HabitCreate_introduceViewController(), animated: true)
+        print("습관 프로필 호출")
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기

@@ -24,7 +24,7 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
     // 셀 내부에서 사용되는 gotChosen 속성 - 해당 셀이 선택되었는지
     var gotChosen: Bool = false {
         didSet {
-            print(gotChosen)
+            //print(gotChosen)
             updateCellState(isSelected: gotChosen)
         }
     }

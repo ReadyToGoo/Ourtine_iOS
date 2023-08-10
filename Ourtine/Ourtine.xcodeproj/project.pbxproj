@@ -32,6 +32,7 @@
 		881D5FC92A742EDF00603548 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D5FC82A742EDF00603548 /* AlarmTableViewCell.swift */; };
 		881D5FCB2A74324200603548 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D5FCA2A74324200603548 /* AlarmModel.swift */; };
 		882AC3BD2A78348A002AD232 /* UIImage+onlyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC3BC2A78348A002AD232 /* UIImage+onlyColor.swift */; };
+		882B757A2A84EFFC000B3943 /* HabitInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B75792A84EFFC000B3943 /* HabitInfoModel.swift */; };
 		883461A12A79576B00F6519D /* DarkStatusBar_NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */; };
 		88371A722A702C650056BB5A /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A712A702C650056BB5A /* MemberModel.swift */; };
 		88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */; };
@@ -44,6 +45,7 @@
 		88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC72A7FE3D900562E35 /* Date + Extension.swift */; };
 		88804CCA2A7FFACD00562E35 /* HC_chooseDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC92A7FFACD00562E35 /* HC_chooseDateView.swift */; };
 		88804CCC2A7FFBBF00562E35 /* HC_chooseDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CCB2A7FFBBF00562E35 /* HC_chooseDateViewController.swift */; };
+		888FB2A62A84177100930987 /* FlowDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888FB2A52A84177100930987 /* FlowDataManager.swift */; };
 		88A64C0F2A7A733E00292ED6 /* CALayer+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */; };
 		88A64C112A7A8CA600292ED6 /* HabitDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A64C102A7A8CA600292ED6 /* HabitDescView.swift */; };
 		88BDD3242A82B27C0082A961 /* HC_selectFriednsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD3232A82B27C0082A961 /* HC_selectFriednsView.swift */; };
@@ -120,6 +122,7 @@
 		881D5FC82A742EDF00603548 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		881D5FCA2A74324200603548 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		882AC3BC2A78348A002AD232 /* UIImage+onlyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+onlyColor.swift"; sourceTree = "<group>"; };
+		882B75792A84EFFC000B3943 /* HabitInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInfoModel.swift; sourceTree = "<group>"; };
 		883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkStatusBar_NavigationController.swift; sourceTree = "<group>"; };
 		88371A712A702C650056BB5A /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +135,7 @@
 		88804CC72A7FE3D900562E35 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		88804CC92A7FFACD00562E35 /* HC_chooseDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_chooseDateView.swift; sourceTree = "<group>"; };
 		88804CCB2A7FFBBF00562E35 /* HC_chooseDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_chooseDateViewController.swift; sourceTree = "<group>"; };
+		888FB2A52A84177100930987 /* FlowDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowDataManager.swift; sourceTree = "<group>"; };
 		88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addBorder.swift"; sourceTree = "<group>"; };
 		88A64C102A7A8CA600292ED6 /* HabitDescView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDescView.swift; sourceTree = "<group>"; };
 		88BDD3232A82B27C0082A961 /* HC_selectFriednsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_selectFriednsView.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 			children = (
 				881C06242A62E66100184AFA /* DummyModel */,
 				88E2B9B32A6BBF170039CF68 /* DeviceScreenSize.swift */,
+				888FB2A52A84177100930987 /* FlowDataManager.swift */,
+				882B75792A84EFFC000B3943 /* HabitInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -461,7 +467,9 @@
 				88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */,
 				88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */,
 				88FE2D362A7ED46600C475A7 /* HC_chooseTypeViewController.swift in Sources */,
+				882B757A2A84EFFC000B3943 /* HabitInfoModel.swift in Sources */,
 				B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */,
+				888FB2A62A84177100930987 /* FlowDataManager.swift in Sources */,
 				881C06192A62A65B00184AFA /* HabitProfileTableViewCell.swift in Sources */,
 				88FE2D2A2A7ED3EF00C475A7 /* HC_chooseCategoryView.swift in Sources */,
 				B6CAF8842A7CCFD200448673 /* TimelineViewController.swift in Sources */,

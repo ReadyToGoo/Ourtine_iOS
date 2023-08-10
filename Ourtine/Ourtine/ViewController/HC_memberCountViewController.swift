@@ -11,11 +11,14 @@ class HabitCreate_memberCountViewController: UIViewController {
     
     let HC_memberCountView = HabitCreate_memberCountView()
     
+    // MARK: - HCFlowData에 저장되는 값잆니다.
+    var memberCount: Int?
+    
     // view 로드할 때 searchView로 가져오기
     override func loadView() {
         super.loadView()
         view = HC_memberCountView
-        
+        HabitCreateFlowManager.shared.printself()
     }
     
     override func viewDidLoad() {
@@ -37,8 +40,45 @@ class HabitCreate_memberCountViewController: UIViewController {
         
     }
     
+    /// 해당 페이지의 조건을 만족했는지 확인합니다
+    private func checkToGO() {
+        
+        guard let count = self.memberCount else {
+            print("memberCount에 값이 없습니다")
+            return }
+        
+        if count > 0 && count <= 6 {
+            self.HC_memberCountView.nextBtn.isEnabled = true
+        }
+        else {
+            self.HC_memberCountView.nextBtn.isEnabled = false
+        }
+        
+    }
+    
+    /// 해당 페이지에서 저장된 데이터를 flowdata로 보내고, 제대로 저장됐는지 확인합니다.
+    private func saveToFlowData() -> Bool {
+        
+        // 습관 생성 플로우의 데이터를 저장
+        if let count = self.memberCount {
+            HabitCreateFlowManager.shared.habitInformation.habitMemberNum = count
+        }
+
+        // 싱글톤 클래스 객체에 값이 저장되면 넘어가도록 guarding
+        guard (HabitCreateFlowManager.shared.habitInformation.habitMemberNum != nil ) else {
+            print("HabitCreateFlowManager.shared.habitInformation.habitMemberNum에 값이 저장되지 않았습니다. 다시 시도해주세요")
+            return false
+        }
+        
+        return true
+    }
+    
     @objc func nextVC() {
-        self.navigationController?.pushViewController(HabitCreate_chooseCategoryViewController(), animated: true)
+        
+        // 데이터 저장 실패 시 push X
+        guard saveToFlowData() else { return }
+        
+        self.navigationController?.pushViewController(HabitCreate_selectFriednsViewController(), animated: true)
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기
@@ -51,14 +91,14 @@ class HabitCreate_memberCountViewController: UIViewController {
 extension HabitCreate_memberCountViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = textField.text {
-            self.HC_memberCountView.nextBtn.isEnabled = true
-        }
+        ///최신 상태의 텍스트
+        let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        self.memberCount = Int(newText!) ?? -1
+        
+        checkToGO()
         return true
     }
-    
 }
-
 
 import SwiftUI
 struct HabitCreate_memberCountViewController_Preview: PreviewProvider {

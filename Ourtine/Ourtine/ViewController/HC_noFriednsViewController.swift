@@ -15,6 +15,7 @@ class HabitCreate_noFriednsViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view = HC_noFriends_View
+        HabitCreateFlowManager.shared.printself()
     }
     
     // 뷰 로딩된 후에 한번만
@@ -37,13 +38,17 @@ class HabitCreate_noFriednsViewController: UIViewController {
     @objc func nextVC(_ sender: UIButton) {
         
         if sender == self.HC_noFriends_View.goPublicBtn {
-            print("public")
+            //print("public")
+            HabitCreateFlowManager.shared.habitInformation.habitType = .publicType
+            
+            self.navigationController?.pushViewController(HabitCreate_finalViewController(), animated: true)
         }
         
         if sender == self.HC_noFriends_View.laterBtn {
-            print("later")
+            //print("later")
+            self.navigationController?.popToRootViewController(animated: true)
         }
-//        self.navigationController?.pushViewController(HabitCreate_introduceViewController(), animated: true)
+
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기

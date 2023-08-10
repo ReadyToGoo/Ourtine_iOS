@@ -12,14 +12,15 @@ class HabitCreate_chooseDateViewController: UIViewController {
     
     let HC_chooseDateView = HabiCreate_chooseDateView()
     
-    var didSet_startDate: Bool = false
-    var didSet_endDate: Bool = false
+    // MARK: - HCFlowData에 저장되는 값잆니다.
+    var startDate: Date?
+    var endDate: Date?
     
     // view 로드할 때 searchView로 가져오기
     override func loadView() {
         super.loadView()
         view = HC_chooseDateView
-        
+        HabitCreateFlowManager.shared.printself()
     }
     
     override func viewDidLoad() {
@@ -100,12 +101,12 @@ class HabitCreate_chooseDateViewController: UIViewController {
         // 시작 시간 피커에서 정했을 때
         if sender == self.HC_chooseDateView.startDatePicker {
             label = self.HC_chooseDateView.startDateLabel_main
-            self.didSet_startDate = true
+            self.startDate = sender.date
         }
         // 종료 시간 피커에서 정했을 때
         if sender == self.HC_chooseDateView.endDatePicker {
             label = self.HC_chooseDateView.endDateLabel_main
-            self.didSet_endDate = true
+            self.endDate = sender.date
         }
         //라벨의 text 설정
         let inputText = sender.date.toString(format: "yyyy.MM.dd")
@@ -115,18 +116,47 @@ class HabitCreate_chooseDateViewController: UIViewController {
         label.attributedText = attributedText
         
         //테스트용 
-        checkSet()
+        checkToGO()
     }
     
-    /// 필수 요건을 만족했는지 확인하는 함수
-    private func checkSet() {
-        if self.didSet_endDate && self.didSet_startDate {
+    
+    
+    /// 해당 페이지의 조건을 만족했는지 확인합니다
+    private func checkToGO() {
+        
+        if let _ = self.startDate, let _ = self.endDate {
             self.HC_chooseDateView.nextBtn.isEnabled = true
         }
+        else {
+            self.HC_chooseDateView.nextBtn.isEnabled = false
+        }
+        
+    }
+    
+    /// 해당 페이지에서 저장된 데이터를 flowdata로 보내고, 제대로 저장됐는지 확인합니다.
+    private func saveToFlowData() -> Bool {
+        
+        // 습관 생성 플로우의 데이터를 저장
+        if let startDate = self.startDate, let endDate = self.endDate {
+            HabitCreateFlowManager.shared.habitInformation.habitDate.startDate = startDate
+            HabitCreateFlowManager.shared.habitInformation.habitDate.endDate = endDate
+        }
+        
+        // 싱글톤 클래스 객체에 값이 저장되면 넘어가도록 guarding
+        guard (HabitCreateFlowManager.shared.habitInformation.habitDate.startDate != nil && HabitCreateFlowManager.shared.habitInformation.habitDate.endDate != nil ) else {
+            print("HabitCreateFlowManager.shared.habitInformation.habitDate에 값이 저장되지 않았습니다. 다시 시도해주세요")
+            return false
+        }
+        
+        return true
     }
     
     
     @objc func nextVC() {
+        
+        // 데이터 저장 실패 시 push X
+        guard saveToFlowData() else { return }
+        
         self.navigationController?.pushViewController(HabitCreate_memberCountViewController(), animated: true)
     }
     

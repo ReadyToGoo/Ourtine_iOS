@@ -12,18 +12,16 @@ class HabitCreate_chooseTimeViewController: UIViewController {
     
     let HC_chooseTimeView = HabiCreate_chooseTimeView()
     
-    // 필수 조건들 만족했는지 확인
-    var didSet_startTime: Bool = false
-    var didSet_endTime: Bool = false
-    var didSet_Date: Bool = false
-    
+    // MARK: - HCFlowData에 저장되는 값잆니다.
+    var startTime: Date?
+    var endTime: Date?
     var dateSet = Set<String>()
     
     // view 로드할 때 searchView로 가져오기
     override func loadView() {
         super.loadView()
         view = HC_chooseTimeView
-        
+        HabitCreateFlowManager.shared.printself()
     }
     
     override func viewDidLoad() {
@@ -110,12 +108,12 @@ class HabitCreate_chooseTimeViewController: UIViewController {
         // 시작 시간 피커에서 정했을 때
         if sender == self.HC_chooseTimeView.startTimePicker {
             label = self.HC_chooseTimeView.startTimeLabel_main
-            self.didSet_startTime = true
+            self.startTime = sender.date
         }
         // 종료 시간 피커에서 정했을 때
         if sender == self.HC_chooseTimeView.endTimePicker {
             label = self.HC_chooseTimeView.endTimeLabel_main
-            self.didSet_endTime = true
+            self.endTime = sender.date
         }
         
         //라벨의 text 설정
@@ -125,6 +123,7 @@ class HabitCreate_chooseTimeViewController: UIViewController {
         attributedText.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 2))
         attributedText.addAttribute(.foregroundColor, value: UIColor.app_PrimaryColor, range: NSRange(location: 2, length: 8))
         label.attributedText = attributedText
+        checkToGO() // 조건 체크
     }
     
     /// 요일 버튼들에 setDays()함수를 target설정합니다.
@@ -170,31 +169,54 @@ class HabitCreate_chooseTimeViewController: UIViewController {
         
         // 취소되었을 경우, 반환할 요일 리스트에 해당 요일을 삭제합니다.
         if sender.isOn{
-            print("\(dayInstance) 삭제")
+            //print("\(dayInstance) 삭제")
             self.dateSet.remove(dayInstance)
-            self.didSet_Date = false
         }
         // 선택되었을 경우, 반환할 요일 리스트에 해당 요일을 추가합니다.
         else {
-            print("\(dayInstance) 추가")
+            //print("\(dayInstance) 추가")
             self.dateSet.insert(dayInstance)
-            self.didSet_Date = true
         }
         
-        // 테스트용 코드
-        checkSet()
+        // 해당 페이지의 조건을 만족했는지 확인합니다
+        checkToGO()
     }
     
-    /// 필수 요건을 만족했는지 확인하는 함수
-    private func checkSet() {
-        if self.didSet_Date && self.didSet_endTime && self.didSet_startTime {
+    /// 해당 페이지의 조건을 만족했는지 확인합니다
+    private func checkToGO() {
+        
+        if let _ = self.startTime, let _ = self.endTime, !self.dateSet.isEmpty {
             self.HC_chooseTimeView.nextBtn.isEnabled = true
         }
+        else {
+            self.HC_chooseTimeView.nextBtn.isEnabled = false
+        }
+    }
+    
+    /// 해당 페이지에서 저장된 데이터를 flowdata로 보내고, 제대로 저장됐는지 확인합니다.
+    private func saveToFlowData() -> Bool {
+        
+        // 습관 생성 플로우의 데이터를 저장
+        if let startTime = self.startTime, let endTime = self.endTime {
+            HabitCreateFlowManager.shared.habitInformation.habitTime.startTime = startTime
+            HabitCreateFlowManager.shared.habitInformation.habitTime.endTime = endTime
+            HabitCreateFlowManager.shared.habitInformation.habitTime.days = Array(dateSet)
+        }
+        
+        // 싱글톤 클래스 객체에 값이 저장되면 넘어가도록 guarding
+        guard (HabitCreateFlowManager.shared.habitInformation.habitTime.startTime != nil && HabitCreateFlowManager.shared.habitInformation.habitTime.endTime != nil && HabitCreateFlowManager.shared.habitInformation.habitTime.days != nil ) else {
+            print("HabitCreateFlowManager.shared.habitInformation.habitTime에 값이 저장되지 않았습니다. 다시 시도해주세요")
+            return false
+        }
+        
+        return true
     }
     
     /// 다음 뷰컨트롤러로 이동
     @objc func nextVC() {
-        print(self.dateSet)
+        // 데이터 저장 실패 시 push X
+        guard saveToFlowData() else { return }
+        
         self.navigationController?.pushViewController(HabitCreate_chooseDateViewController(), animated: true)
     }
     
