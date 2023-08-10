@@ -32,6 +32,7 @@
 		881D5FC92A742EDF00603548 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D5FC82A742EDF00603548 /* AlarmTableViewCell.swift */; };
 		881D5FCB2A74324200603548 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D5FCA2A74324200603548 /* AlarmModel.swift */; };
 		882AC3BD2A78348A002AD232 /* UIImage+onlyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC3BC2A78348A002AD232 /* UIImage+onlyColor.swift */; };
+		882B757A2A84EFFC000B3943 /* HabitInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B75792A84EFFC000B3943 /* HabitInfoModel.swift */; };
 		883461A12A79576B00F6519D /* DarkStatusBar_NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */; };
 		88371A722A702C650056BB5A /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A712A702C650056BB5A /* MemberModel.swift */; };
 		88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */; };
@@ -121,6 +122,7 @@
 		881D5FC82A742EDF00603548 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		881D5FCA2A74324200603548 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		882AC3BC2A78348A002AD232 /* UIImage+onlyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+onlyColor.swift"; sourceTree = "<group>"; };
+		882B75792A84EFFC000B3943 /* HabitInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInfoModel.swift; sourceTree = "<group>"; };
 		883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkStatusBar_NavigationController.swift; sourceTree = "<group>"; };
 		88371A712A702C650056BB5A /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				881C06242A62E66100184AFA /* DummyModel */,
 				88E2B9B32A6BBF170039CF68 /* DeviceScreenSize.swift */,
 				888FB2A52A84177100930987 /* FlowDataManager.swift */,
+				882B75792A84EFFC000B3943 /* HabitInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */,
 				88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */,
 				88FE2D362A7ED46600C475A7 /* HC_chooseTypeViewController.swift in Sources */,
+				882B757A2A84EFFC000B3943 /* HabitInfoModel.swift in Sources */,
 				B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */,
 				888FB2A62A84177100930987 /* FlowDataManager.swift in Sources */,
 				881C06192A62A65B00184AFA /* HabitProfileTableViewCell.swift in Sources */,

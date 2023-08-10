@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 class SignUpFlowManager {
     static let shared = SignUpFlowManager()
@@ -19,79 +18,37 @@ class SignUpFlowManager {
 class HabitCreateFlowManager {
     static let shared = HabitCreateFlowManager()
     
-    /// 습관 정보 구조체입니다
-    var habitInformation: HabitInfo?
+
+    /// 습관 정보 객체입니다
+    var habitInformation = HabitInfo()
     
-    /// 습관 정보 최상위 구조체입니다
-    struct HabitInfo {
-        var habitType: HabitType?
-        var habitCategory: [String]?
-        var habitIntroduction: HabitIntroduction?
-        
-        /// 습관 소개 구조체입니다
-        struct HabitIntroduction {
-            var title: String?
-            var hashtag: String?
-            var image: UIImage?
-            var description: String?
-        }
-        
-        var habitTime: HabitTime?
-        
-        /// 습관 시간 구조체입니다
-        struct HabitTime {
-            var startTime: Date?
-            var endTime: Date?
-            var days: [String]?
-        }
-        
-        var habitDate: HabitDate?
-        
-        /// 습관 날짜 구조체입니다
-        struct HabitDate {
-            var startDate: Date?
-            var endDate: Date?
-        }
-        
-        var habitMemberNum: Int?
+    /// 디버깅용
+    func printself() {
+        print(self.habitInformation)
     }
     
     /// 구조체 초기화 함수 입니다. 구조체 내의 모든 구조체 내의 내용이 nil로 초기화됩니다.
     func resetAll() {
-        habitInformation?.reset()
+        habitInformation.reset()
     }
 }
 
-/// 습관의 종류를 반환하는 enum입니다
-enum HabitType {
-    case privateType
-    case publicType
-    
-    /// 각 타입의 문자열을 반환합니다.
-    var stringValue: String {
-            switch self {
-            case .privateType:
-                return "public"
-            case .publicType:
-                return "private"
-            }
-        }
-}
 
 
-extension HabitCreateFlowManager.HabitInfo {
+
+extension HabitInfo {
     /// 구조체 초기화 함수 입니다.
      mutating func reset() {
         habitType = nil
         habitCategory = nil
-        habitIntroduction?.reset()
-        habitTime?.reset()
-        habitDate?.reset()
+        habitIntroduction.reset()
+        habitTime.reset()
+        habitDate.reset()
         habitMemberNum = nil
     }
 }
 
-extension HabitCreateFlowManager.HabitInfo.HabitIntroduction {
+extension HabitInfo.HabitIntroduction {
     /// 구조체 초기화 함수 입니다.
      mutating func reset() {
         title = nil
@@ -101,7 +58,7 @@ extension HabitCreateFlowManager.HabitInfo.HabitIntroduction {
     }
 }
 
-extension HabitCreateFlowManager.HabitInfo.HabitTime {
+extension HabitInfo.HabitTime {
     /// 구조체 초기화 함수 입니다.
      mutating func reset() {
         startTime = nil
@@ -110,7 +67,7 @@ extension HabitCreateFlowManager.HabitInfo.HabitTime {
     }
 }
 
-extension HabitCreateFlowManager.HabitInfo.HabitDate {
+extension HabitInfo.HabitDate {
     /// 구조체 초기화 함수 입니다.
     mutating func reset() {
         startDate = nil
