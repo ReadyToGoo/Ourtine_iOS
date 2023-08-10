@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import SnapKit
 
 class ParticipatingViewController: UIViewController {
+    
+    let participantNum = 4
     
     // Dummy Data
     let tempUserName = "은지"
@@ -86,6 +89,17 @@ class ParticipatingViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: false)
     }
     
+    // members
+    private let memberCollectionView: ParticipatingMemberCollectionView = {
+        // Create CollectionView Layer
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 52
+        layout.minimumLineSpacing = 52
+        let collectionView = ParticipatingMemberCollectionView(collectionViewLayout: layout)
+        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+    
     // camerBtn
     private let cameraBtn: UIButton = {
         var config = UIButton.Configuration.filled()
@@ -117,9 +131,11 @@ class ParticipatingViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         view.backgroundColor = .app_PrimaryColor
         
+        addChild(memberCollectionView)
         [
             habitPhrase,
             countDownLabel,
+            memberCollectionView.view,
             cameraBtn
         ].forEach {view.addSubview($0)}
 
@@ -128,6 +144,9 @@ class ParticipatingViewController: UIViewController {
         let text = "\(tempUserName)님, \(postPositionText(tempUserHabit))\n오늘도 활기차게!"
         habitPhrase.text = text
         habitPhrase.halfTextColorChange(fullText: text, changeText: postPositionText(tempUserHabit))
+        
+        // memberCollectionView
+        memberCollectionView.didMove(toParent: self)
         
         startCountDown()
         setConstraints()
@@ -151,6 +170,33 @@ class ParticipatingViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
+        // memberCollectionView
+//        memberCollectionView.view.snp.makeConstraints { make in
+//            make.centerY.equalTo(view.snp.centerY).offset(54.91)
+//            make.centerX.equalToSuperview()
+//            if participantNum == 2 {
+//                make.trailing.leading.equalTo(59)
+//                make.height.equalTo(138)
+//            } else if participantNum < 5 {
+//                make.trailing.leading.equalTo(59)
+//                make.height.equalTo(300)
+//            } else {
+//                make.trailing.leading.equalTo(31)
+//                make.height.equalTo(256)
+//            }
+//        }
+        
+        // memberCollectionView
+        memberCollectionView.view.snp.makeConstraints { make in
+            make.top.equalTo(countDownLabel.snp.bottom).offset(54.91)
+            make.centerX.equalToSuperview()
+            make.leading.greaterThanOrEqualToSuperview().offset(16)
+            make.trailing.lessThanOrEqualToSuperview().offset(-16)
+            make.width.equalToSuperview().offset(-32).priority(.low)
+            make.height.equalTo(256) // Adjust the initial height
+        }
+        
+        
         // cameraBtn
         cameraBtn.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-26.81)
@@ -161,6 +207,7 @@ class ParticipatingViewController: UIViewController {
 }
 
 import SwiftUI
+import SnapKit
 struct ParticipatingViewController_Preview: PreviewProvider {
     static var previews: some View {
         UIViewControllerPreview {
