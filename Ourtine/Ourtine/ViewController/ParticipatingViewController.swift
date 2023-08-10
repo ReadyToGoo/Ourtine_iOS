@@ -86,14 +86,41 @@ class ParticipatingViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: false)
     }
     
+    // camerBtn
+    private let cameraBtn: UIButton = {
+        var config = UIButton.Configuration.filled()
+        config.baseBackgroundColor = .white.withAlphaComponent(0.4)
+        config.background.cornerRadius = 16
+        // TODO: Change image as HIFI Icon
+        config.image = UIImage(systemName: "camera")?.withTintColor(.white)
+        config.contentInsets = NSDirectionalEdgeInsets(top: 18, leading: 67.5, bottom: 18, trailing: 67.5)
+        
+        let button = UIButton(configuration: config)
+        return button
+    }()
+    
+    @objc func cameraBtnTapped() {
+        // TODO: Change Connected ViewController
+        let vc = ViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
+    }
+    
+    @objc func cameraCloseBtnTapped() {
+        // TODO: Need Fix
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
         view.backgroundColor = .app_PrimaryColor
         
         [
             habitPhrase,
-            countDownLabel
+            countDownLabel,
+            cameraBtn
         ].forEach {view.addSubview($0)}
 
 
@@ -104,6 +131,11 @@ class ParticipatingViewController: UIViewController {
         
         startCountDown()
         setConstraints()
+        setupUI()
+    }
+    
+    private func setupUI() {
+        cameraBtn.addTarget(self, action: #selector(cameraBtnTapped), for: .touchUpInside)
     }
     
     private func setConstraints() {
@@ -113,9 +145,15 @@ class ParticipatingViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        // timerLabel
+        // countDownLabel
         countDownLabel.snp.makeConstraints { make in
             make.top.equalTo(habitPhrase.snp.bottom).offset(63.5)
+            make.centerX.equalToSuperview()
+        }
+        
+        // cameraBtn
+        cameraBtn.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-26.81)
             make.centerX.equalToSuperview()
         }
     }
