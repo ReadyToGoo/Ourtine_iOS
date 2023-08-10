@@ -8,6 +8,39 @@
 import UIKit
 import SnapKit
 
+class HabitCreate_introduceScrollView: UIScrollView {
+    
+    lazy var HC_introduceView = HabitCreate_introduceView()
+    
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = .white
+        self.addSubview(HC_introduceView)
+        
+        HC_introduceView.snp.makeConstraints {
+            $0.edges.equalTo(self.contentLayoutGuide)
+            $0.width.equalTo(self.frameLayoutGuide)
+            $0.height.equalTo(900) // 나중에 스크롤 뷰 높이 동적 높이 or 고정값 확정내기
+        }
+
+        HC_introduceView.nextBtn.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide ).multipliedBy(0.95)
+            $0.width.equalToSuperview().multipliedBy(0.8)
+            $0.height.equalTo(50)
+            $0.centerX.equalToSuperview()
+        }
+    
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+        
+}
+
 class HabitCreate_introduceView: UIView {
     
     lazy var navigationBar : Custom_NavigationBar = {
@@ -197,7 +230,7 @@ class HabitCreate_introduceView: UIView {
         
         addImageButton.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.8)
-            $0.height.equalTo(180)
+            $0.height.equalTo(220)
             $0.top.equalTo(hashtagTextField.snp.bottom).offset(60)
             $0.centerX.equalToSuperview()
         }
@@ -214,12 +247,12 @@ class HabitCreate_introduceView: UIView {
             $0.top.equalTo(contentTextView.snp.bottom).offset(5)
         }
         
-        nextBtn.snp.makeConstraints {
-            $0.bottom.equalTo(self.safeAreaLayoutGuide ).multipliedBy(0.95)
-            $0.width.equalToSuperview().multipliedBy(0.8)
-            $0.height.equalTo(50)
-            $0.centerX.equalToSuperview()
-        }
+//        nextBtn.snp.makeConstraints {
+//            $0.bottom.equalTo(self.safeAreaLayoutGuide ).multipliedBy(0.95)
+//            $0.width.equalToSuperview().multipliedBy(0.8)
+//            $0.height.equalTo(50)
+//            $0.centerX.equalToSuperview()
+//        }
     }
     
     override init(frame: CGRect) {

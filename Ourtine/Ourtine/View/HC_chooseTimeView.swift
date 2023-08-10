@@ -170,7 +170,7 @@ class HabiCreate_chooseTimeView: UIView {
             stack.axis = .horizontal
             //stack.distribution = .equalSpacing
             stack.distribution = .fillEqually
-            stack.spacing = 10
+            stack.spacing = 15
             stack.backgroundColor = .white
             return stack
         }()
@@ -404,7 +404,7 @@ class HabiCreate_chooseTimeView: UIView {
             }
             
             dayStack.snp.makeConstraints{
-                $0.height.equalTo(50)
+                $0.height.equalTo(40)
                 $0.width.equalToSuperview().multipliedBy(0.85)
                 $0.top.equalTo(dateLabel.snp.bottom).offset(30)
                 $0.centerX.equalToSuperview()
