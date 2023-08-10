@@ -153,7 +153,10 @@ class HabitCreate_introduceViewController: UIViewController {
         // 데이터 저장 실패 시 push X
         guard saveToFlowData() else { return }
 
-        self.navigationController?.pushViewController(HabitCreate_chooseTimeViewController(), animated: true)
+        let viewController = HabitCreate_chooseTimeViewController()
+        viewController.hidesBottomBarWhenPushed = true // 탭 바 숨기기 설정
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기
@@ -169,10 +172,14 @@ extension HabitCreate_introduceViewController: UIImagePickerControllerDelegate &
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             // 이미지 설정하는 코드
-            print("이미지 설정")
+            //print("이미지 설정")
             // 임시저장 변수에 이미지 저장
             self.introductionImage = image
             self.HC_introScrollView.HC_introduceView.addImageButton.setImage(image, for: .normal)
+            self.HC_introScrollView.HC_introduceView.addImageButton.imageView?.snp.makeConstraints {
+                $0.edges.equalTo(self.HC_introScrollView.HC_introduceView.addImageButton)
+            }
+            //self.HC_introScrollView.HC_introduceView.addImageButton.setBackgroundImage(image, for: .normal)
             checkToGO() // 조건 체크
             
         } else {

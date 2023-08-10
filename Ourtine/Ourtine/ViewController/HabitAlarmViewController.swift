@@ -47,7 +47,7 @@ class HabitAlarmViewController: UIViewController, UITableViewDataSource, UITable
 extension HabitAlarmViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Dummy_alarmModels.count
+        return 0 //Dummy_alarmModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

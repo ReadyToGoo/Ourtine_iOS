@@ -29,10 +29,26 @@ class HabitAlarmView: UIView {
         return title
     }()
     
+    // 알람 벨 이미지
+    lazy var bellImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: "bell")
+        view.tintColor = .app_BrightnessColor60
+        return view
+    }()
+    
+    // "아직 알림이 없어요" 라벨
+    lazy var bellLabel: UILabel = {
+        let label = UILabel()
+        label.text = "아직 알림이 없어요"
+        label.textColor = .app_BrightnessColor60
+        return label
+    }()
+    
     //  알람 내용 테이블 뷰
     lazy var alarmTableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .clear
         return tableView
     }()
     
@@ -40,6 +56,8 @@ class HabitAlarmView: UIView {
     func inputSubview() {
         self.addSubview(navigationBar)
         navigationBar.addSubview(titleLabel)
+        self.addSubview(bellImage)
+        self.addSubview(bellLabel)
         self.addSubview(alarmTableView)
     }
         
@@ -56,6 +74,17 @@ class HabitAlarmView: UIView {
             make.top.equalTo(self.safeAreaLayoutGuide)
             make.left.equalTo(self.safeAreaLayoutGuide)
             make.right.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        // MARK: - 알람 없을때 표시
+        bellImage.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(80)
+        }
+        
+        bellLabel.snp.makeConstraints {
+            $0.top.equalTo(bellImage.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
         }
         
         //MARK: - SearchResultTableView

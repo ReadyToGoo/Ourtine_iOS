@@ -17,6 +17,7 @@ class HabitCreate_chooseTypeView: UIView {
     /// 커스텀 네비게이션바
     lazy var navigationBar : Custom_NavigationBar = {
         let nav = Custom_NavigationBar()
+        nav.setItems(nil, animated: false) // 디자인 분 컨펌받기
         return nav
     }()
     

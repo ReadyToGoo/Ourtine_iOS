@@ -124,7 +124,13 @@ class HabitCreate_chooseDateViewController: UIViewController {
     /// 해당 페이지의 조건을 만족했는지 확인합니다
     private func checkToGO() {
         
-        if let _ = self.startDate, let _ = self.endDate {
+        if let startDate = self.startDate, let endDate = self.endDate {
+            // 일주일 미만이면 가드
+            guard isExceedsOneWeek(date1: startDate, date2: endDate) else {
+                self.HC_chooseDateView.nextBtn.isEnabled = false
+                return
+            }
+            
             self.HC_chooseDateView.nextBtn.isEnabled = true
         }
         else {
@@ -157,12 +163,27 @@ class HabitCreate_chooseDateViewController: UIViewController {
         // 데이터 저장 실패 시 push X
         guard saveToFlowData() else { return }
         
-        self.navigationController?.pushViewController(HabitCreate_memberCountViewController(), animated: true)
+        let viewController = HabitCreate_memberCountViewController()
+        viewController.hidesBottomBarWhenPushed = true // 탭 바 숨기기 설정
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기
     @objc func popVC() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    /// 선택 날짜들이 일주일 미만인지 확인합니다.
+    private func isExceedsOneWeek(date1: Date, date2: Date) -> Bool {
+        let calendar = Calendar.current
+            let components = calendar.dateComponents([.day], from: date1, to: date2)
+            
+            if let dayDifference = components.day, dayDifference < 7 {
+                return false
+            }
+            
+            return true
     }
 }
 

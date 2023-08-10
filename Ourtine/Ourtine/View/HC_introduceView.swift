@@ -113,7 +113,7 @@ class HabitCreate_introduceView: UIView {
         
         var titleContainer = AttributeContainer()
         titleContainer.font = UIFont.boldSystemFont(ofSize: 10)
-        
+
         var config = UIButton.Configuration.bordered()
         config.image = UIImage(systemName: "camera") // 이미지 설정
         config.baseForegroundColor = .app_BrightnessColor60
@@ -122,7 +122,7 @@ class HabitCreate_introduceView: UIView {
         config.imagePlacement = .top //이미지 위치
         config.baseBackgroundColor = UIColor.white //버튼 배경색
         config.attributedTitle = AttributedString("사진을 첨부해 보세요!", attributes: titleContainer)
-        
+
         let btn = UIButton(configuration: config)
         btn.setTitleColor(.app_BrightnessColor40, for: .normal)
         btn.backgroundColor = .white
@@ -131,6 +131,7 @@ class HabitCreate_introduceView: UIView {
         btn.layer.borderWidth = 1
         btn.clipsToBounds = true // 사진 선택으로 배경사진이 바뀔 때 테두리에 잘리게
         btn.imageView?.contentMode = .scaleAspectFill // 배경 사진이 바뀔 때 비율 유지하게
+        
         return btn
     }()
     
