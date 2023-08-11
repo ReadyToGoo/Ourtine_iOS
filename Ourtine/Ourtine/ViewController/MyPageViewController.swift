@@ -13,15 +13,17 @@ import UIKit
 class MyPageViewController: UIViewController {
     
     // searchView 등록
-    let searchView: MyPageView = {
-        let searchView = MyPageView()
-        return searchView
-    }()
+    let myPageView = MyPageView()
+    
+    let dummy_habitCounts = [1,2,3,4,5,6,3]
+    
+    // 선택된 감정 셀
+    var selectedFeelingCellIndex: Int?
     
     // view 로드할 때 searchView로 가져오기
     override func loadView() {
         super.loadView()
-        view = searchView
+        view = myPageView
         
     }
     
@@ -30,10 +32,76 @@ class MyPageViewController: UIViewController {
         //아래의 코드는 네비게이션 루트 VC에 있어야 커스텀 바랑 같이 안보입니다!
         self.navigationController?.navigationBar.isHidden = true
         
-        //MARK: - backBTN
-        self.searchView.navigationBar.leftButton.action = #selector(popVC)
-        self.searchView.navigationBar.leftButton.target = self
+        // 위클리로그 작성하기 탭
+        self.myPageView.logTapView.isUserInteractionEnabled = true
+        self.myPageView.logTapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goWeeklyLogVC)))
         
+        fetchDotsCount(stackView: self.myPageView.logStackView)
+        addCellActions(stackView: self.myPageView.feelingStackView)
+    }
+    
+    @objc func goWeeklyLogVC() {
+        print("위클리로그 화면 전환")
+    }
+    
+    private func fetchDotsCount(stackView: UIStackView) {
+        for (index, subView) in stackView.arrangedSubviews.enumerated() {
+            if let cell = subView as? WeeklyStatusStackCell {
+                cell.habitCount = dummy_habitCounts[index]
+            }
+        }
+    }
+    
+    
+    private func addCellActions(stackView: UIStackView) {
+        for subView in stackView.arrangedSubviews {
+            if let cell = subView as? WeeklyFeelingStackCell {
+                cell.isUserInteractionEnabled = true
+                cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectCell)))
+            }
+        }
+    }
+    
+
+    @objc func selectCell(_ sender: UITapGestureRecognizer) {
+        let cellIndex: Int?
+        guard let cell = sender.view as? WeeklyFeelingStackCell else { return }
+            
+        switch cell.descLabel.text {
+            
+        case "매우 좋아요":
+            cellIndex = 0
+        case "좋아요":
+            cellIndex = 1
+        case "괜찮아요":
+            cellIndex = 2
+        case "별로에요":
+            cellIndex = 3
+        case "매우 별로에요":
+            cellIndex = 4
+        default:
+            cellIndex = nil
+            
+        }
+        
+        guard let cellIndex = cellIndex else { return }
+        updateFeelingStack(index: cellIndex)
+        cell.gotChosen.toggle()
+        
+    }
+    
+    func updateFeelingStack(index: Int) {
+        // 전에 선택한 인덱스 없으면 인덱스 저장하고 리턴
+        guard let precedeIndex = self.selectedFeelingCellIndex else {
+            self.selectedFeelingCellIndex = index
+            return
+        }
+        // 셀을 타입캐스팅
+        let targetCell = self.myPageView.feelingStackView.arrangedSubviews[precedeIndex] as! WeeklyFeelingStackCell
+        //해당 셀 토글
+        targetCell.gotChosen.toggle()
+        // 선택한 인덱스 바꾸기
+        self.selectedFeelingCellIndex = index
     }
     
     
@@ -41,20 +109,6 @@ class MyPageViewController: UIViewController {
     @objc func popVC() {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    /// SearchView의 searchBar 컴포넌트에 Action을 추가합니다.
-    /// Action :  nextVC로 push (현재) / API에서 데이터 호출 후 nextVC에 전달 (예정)
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            if let searchText = searchBar.text {
-                // 필요한 처리를 수행합니다.
-                // 검색 결과 표시, 서버에 검색 요청 등
-
-                // 반환 값을 사용하거나 다른 함수에 전달합니다.
-                let nextVC = SearchResultViewController()
-                nextVC.searchResultView.navigationBar.searchBar.text = searchText
-                self.navigationController?.pushViewController(nextVC, animated: true)
-            }
-        }
 
 }
 

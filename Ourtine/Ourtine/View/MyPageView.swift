@@ -33,9 +33,7 @@ class MyPageView: UIView {
         let smallFont = UIFont.systemFont(ofSize: 18, weight: .light)
         attributedText.addAttribute(.font, value: smallFont, range: NSRange(location: attributedText.length - 2, length: 2))
         
-//        attributedText.addAttribute(.foregroundColor, value: UIColor.app_PrimaryColor, range: NSRange(location: attributedText.length - 1, length: 1))
         label.attributedText = attributedText
-        //label.font = .systemFont(ofSize: 25, weight: .heavy)
         return label
     }()
     
@@ -135,8 +133,6 @@ class MyPageView: UIView {
         return label
     }()
     
-    
-    
     // 라벨 캡슐
     lazy var labelCapsule2: UIView = {
         let view = UIView()
@@ -173,8 +169,196 @@ class MyPageView: UIView {
         return label
     }()
     
+    // 중간 라인
+    lazy var lineView: UIView = {
+        let line = UIView()
+        line.backgroundColor = .app_BrightnessColor40
+        return line
+    }()
+    
+    // 중간 바 위클리 로그 라벨
+    lazy var weeklyLogLabel: UILabel = {
+        let label = UILabel()
+        let attributedText = NSMutableAttributedString(string: "Weekly-Log")
+        
+        let bigFont = UIFont.systemFont(ofSize: 22, weight: .medium)
+        attributedText.addAttribute(.font, value: bigFont, range: NSRange(location: 0, length: attributedText.length))
+        
+        label.attributedText = attributedText
+        return label
+    }()
+    
+    // 인증 현황, 위클리 로그 작성 라벨
+    lazy var statusLabel: UILabel = {
+        let label = UILabel()
+        let attributedText = NSMutableAttributedString(string: "인증 현황\n위클리로그 작성하기")
+        
+        let bigFont = UIFont.systemFont(ofSize: 18, weight: .medium)
+        attributedText.addAttribute(.font, value: bigFont, range: NSRange(location: 0, length: 5))
+        
+        let smallFont = UIFont.systemFont(ofSize: 16, weight: .light)
+        attributedText.addAttribute(.font, value: smallFont, range: NSRange(location: 5, length: 11  ))
+        attributedText.addAttribute(.foregroundColor, value: UIColor.app_BrightnessColor60, range: NSRange(location: 5, length: 11  ))
+        
+        label.attributedText = attributedText
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    // > 버튼 이미지
+    lazy var btnImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: "chevron.right")
+        view.tintColor = .app_BrightnessColor60
+        return view
+    }()
+    
+    // 탭 제스처가 적용되는 뷰
+    lazy var logTapView = UIView()
+    
+    // 요일별 습관 보이는 스택뷰
+    lazy var logStackView: UIStackView = {
+        let view = UIStackView()
+        view.layer.borderColor = UIColor.app_PrimaryColor.cgColor
+        view.layer.cornerRadius = 15
+        view.layer.borderWidth = 2
+        view.clipsToBounds = true
+        
+        view.axis = .horizontal
+        view.spacing = 2
+        view.distribution = .fillProportionally
+        
+        view.backgroundColor = .app_SecondaryColor
+        return view
+    }()
+    
+        // 요일 스택 셀
+        lazy var monCell: WeeklyStatusStackCell = {
+            let cell = WeeklyStatusStackCell()
+            cell.dayLabel.text = "월"
+            return cell
+        }()
+        
+        // 요일 스택 셀
+        lazy var tueCell: WeeklyStatusStackCell = {
+            let cell = WeeklyStatusStackCell()
+            cell.dayLabel.text = "화"
+            return cell
+        }()
+        
+        // 요일 스택 셀
+        lazy var wedCell: WeeklyStatusStackCell = {
+            let cell = WeeklyStatusStackCell()
+            cell.dayLabel.text = "수"
+            return cell
+        }()
+        
+        // 요일 스택 셀
+        lazy var thuCell: WeeklyStatusStackCell = {
+            let cell = WeeklyStatusStackCell()
+            cell.dayLabel.text = "목"
+            return cell
+        }()
+        
+        // 요일 스택 셀
+        lazy var friCell: WeeklyStatusStackCell = {
+            let cell = WeeklyStatusStackCell()
+            cell.dayLabel.text = "금"
+            return cell
+        }()
+        
+        // 요일 스택 셀
+        lazy var satCell: WeeklyStatusStackCell = {
+            let cell = WeeklyStatusStackCell()
+            cell.dayLabel.text = "토"
+            return cell
+        }()
+        
+        // 요일 스택 셀
+        lazy var sunCell: WeeklyStatusStackCell = {
+            let cell = WeeklyStatusStackCell()
+            cell.dayLabel.text = "일"
+            return cell
+        }()
+    
+    // 이번주 감정 라벨
+    lazy var feelingLabel: UILabel = {
+        let label = UILabel()
+        let attributedText = NSMutableAttributedString(string: "이번주 감정")
+        
+        let bigFont = UIFont.systemFont(ofSize: 18, weight: .medium)
+        attributedText.addAttribute(.font, value: bigFont, range: NSRange(location: 0, length: 6))
+        
+        label.attributedText = attributedText
+        return label
+    }()
+    
+    // 이번주 감정 보이는 스택뷰
+    lazy var feelingStackView: UIStackView = {
+        let view = UIStackView()
+        view.layer.borderColor = UIColor.app_PrimaryColor.cgColor
+        view.layer.cornerRadius = 15
+        view.layer.borderWidth = 0
+        
+        view.axis = .horizontal
+        view.spacing = 2
+        view.distribution = .fillProportionally
+        
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+        lazy var firstFeelingCell: WeeklyFeelingStackCell = {
+            let cell = WeeklyFeelingStackCell()
+            cell.getCellData(image: UIImage(named: "feeling1") ?? UIImage(), text: "매우 좋아요", count: 13)
+            return cell
+        }()
+        
+        lazy var secondFeelingCell: WeeklyFeelingStackCell = {
+            let cell = WeeklyFeelingStackCell()
+            cell.getCellData(image: UIImage(named: "feeling2") ?? UIImage(), text: "좋아요", count: 16)
+            return cell
+        }()
+        
+        lazy var thirdFeelingCell: WeeklyFeelingStackCell = {
+            let cell = WeeklyFeelingStackCell()
+            cell.getCellData(image: UIImage(named: "feeling3") ?? UIImage(), text: "괜찮아요", count: 4)
+            return cell
+        }()
+        
+        lazy var fourthFeelingCell: WeeklyFeelingStackCell = {
+            let cell = WeeklyFeelingStackCell()
+            cell.getCellData(image: UIImage(named: "feeling4") ?? UIImage(), text: "별로에요", count: 2)
+            return cell
+        }()
+        
+        lazy var fifthFeelingCell: WeeklyFeelingStackCell = {
+            let cell = WeeklyFeelingStackCell()
+            cell.getCellData(image: UIImage(named: "feeling5") ?? UIImage(), text: "매우 별로에요", count: 0)
+            return cell
+        }()
+    
     // 컴포넌트들 View에 등록
     func inputSubview() {
+        
+        [
+            monCell,
+            tueCell,
+            wedCell,
+            thuCell,
+            friCell,
+            satCell,
+            sunCell
+        ].forEach { logStackView.addArrangedSubview($0)}
+        
+        [
+            firstFeelingCell,
+            secondFeelingCell,
+            thirdFeelingCell,
+            fourthFeelingCell,
+            fifthFeelingCell
+        ].forEach { feelingStackView.addArrangedSubview($0)}
+        
         [
             navigationBar,
             nameLabel,
@@ -190,7 +374,15 @@ class MyPageView: UIView {
             labelCapsule1,
             labelCapsule2,
             participateRateLabel,
-            habitCountLabel
+            habitCountLabel,
+            lineView,
+            weeklyLogLabel,
+            statusLabel,
+            btnImage,
+            logTapView,
+            logStackView,
+            feelingLabel,
+            feelingStackView
         ].forEach {self.addSubview($0)}
     }
         
@@ -217,17 +409,17 @@ class MyPageView: UIView {
         profileImage.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)
             $0.top.equalTo(navigationBar.snp.bottom).offset(10)
-            $0.size.equalTo(100)
+            $0.size.equalTo(120)
         }
         
         followingNum.snp.makeConstraints {
-            $0.leading.equalTo(profileImage.snp.trailing).offset(50)
+            $0.leading.equalTo(profileImage.snp.trailing).offset(35)
             $0.top.equalTo(profileImage).offset(10)
         }
         
         followingLabel.snp.makeConstraints {
             $0.centerX.equalTo(followingNum)
-            $0.top.equalTo(followingNum.snp.bottom).offset(10)
+            $0.top.equalTo(followingNum.snp.bottom).offset(3)
         }
         
         followerNum.snp.makeConstraints {
@@ -237,7 +429,7 @@ class MyPageView: UIView {
         
         followerLabel.snp.makeConstraints {
             $0.centerX.equalTo(followerNum)
-            $0.top.equalTo(followerNum.snp.bottom).offset(10)
+            $0.top.equalTo(followerNum.snp.bottom).offset(3)
         }
         
         contentLabel.snp.makeConstraints {
@@ -253,7 +445,7 @@ class MyPageView: UIView {
         }
         
         participateLabel.snp.makeConstraints {
-            $0.top.equalTo(profileImage.snp.bottom).offset(50)
+            $0.top.equalTo(profileImage.snp.bottom).offset(30)
             $0.centerX.equalToSuperview().offset(-80)
         }
         
@@ -264,7 +456,7 @@ class MyPageView: UIView {
         }
         
         habitLabel.snp.makeConstraints {
-            $0.top.equalTo(profileImage.snp.bottom).offset(50)
+            $0.top.equalTo(profileImage.snp.bottom).offset(30)
             $0.centerX.equalToSuperview().offset(80)
         }
         
@@ -277,6 +469,52 @@ class MyPageView: UIView {
             $0.top.equalTo(labelCapsule2.snp.bottom).offset(10)
             $0.centerX.equalTo(labelCapsule2)
         }
+        
+        lineView.snp.makeConstraints {
+            $0.top.equalTo(habitCountLabel.snp.bottom).offset(10)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(1)
+        }
+        
+        weeklyLogLabel.snp.makeConstraints {
+            $0.top.equalTo(lineView.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(20)
+        }
+        
+        statusLabel.snp.makeConstraints {
+            $0.top.equalTo(weeklyLogLabel.snp.bottom).offset(20)
+            $0.leading.equalTo(weeklyLogLabel).offset(10)
+        }
+        
+        btnImage.snp.makeConstraints {
+            $0.bottom.equalTo(statusLabel)
+            $0.leading.equalTo(statusLabel.snp.trailing).offset(5)
+        }
+        
+        logTapView.snp.makeConstraints {
+            $0.top.leading.equalTo(statusLabel)
+            $0.bottom.trailing.equalTo(btnImage)
+        }
+        
+        logStackView.snp.makeConstraints {
+            $0.height.equalTo(100)
+            $0.top.equalTo(logTapView.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalTo(-20)
+        }
+        
+        feelingLabel.snp.makeConstraints {
+            $0.top.equalTo(logStackView.snp.bottom).offset(20)
+            $0.leading.equalTo(statusLabel)
+        }
+        
+        feelingStackView.snp.makeConstraints {
+            $0.top.equalTo(feelingLabel.snp.bottom).offset(10)
+            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(140)
+        }
+        
         
     
     }

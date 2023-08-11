@@ -36,6 +36,8 @@
 		882B757E2A862A6A000B3943 /* UIImage + CircularCrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B757D2A862A6A000B3943 /* UIImage + CircularCrop.swift */; };
 		882B75802A863644000B3943 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B757F2A863644000B3943 /* MyPageView.swift */; };
 		882B75822A863961000B3943 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B75812A863961000B3943 /* MyPageViewController.swift */; };
+		882B75842A865ABF000B3943 /* WeeklyStatusStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B75832A865ABF000B3943 /* WeeklyStatusStackCell.swift */; };
+		882B75862A865ACD000B3943 /* WeeklyFeelingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B75852A865ACD000B3943 /* WeeklyFeelingCell.swift */; };
 		883461A12A79576B00F6519D /* DarkStatusBar_NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */; };
 		88371A722A702C650056BB5A /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A712A702C650056BB5A /* MemberModel.swift */; };
 		88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */; };
@@ -134,6 +136,8 @@
 		882B757D2A862A6A000B3943 /* UIImage + CircularCrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + CircularCrop.swift"; sourceTree = "<group>"; };
 		882B757F2A863644000B3943 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		882B75812A863961000B3943 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		882B75832A865ABF000B3943 /* WeeklyStatusStackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStatusStackCell.swift; sourceTree = "<group>"; };
+		882B75852A865ACD000B3943 /* WeeklyFeelingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyFeelingCell.swift; sourceTree = "<group>"; };
 		883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkStatusBar_NavigationController.swift; sourceTree = "<group>"; };
 		88371A712A702C650056BB5A /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -361,6 +365,8 @@
 				88BDD3272A82B84D0082A961 /* HC_MemberCollectionViewCell.swift */,
 				88804CC52A7F9EBD00562E35 /* ColorToggleButton.swift */,
 				B6927E332A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift */,
+				882B75832A865ABF000B3943 /* WeeklyStatusStackCell.swift */,
+				882B75852A865ACD000B3943 /* WeeklyFeelingCell.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -512,6 +518,8 @@
 				881C06212A62E64F00184AFA /* SearchedUserProfile.swift in Sources */,
 				B64993192A5D3EDC0061C47E /* ViewController.swift in Sources */,
 				881C06012A616FB500184AFA /* TabBarController.swift in Sources */,
+				882B75842A865ABF000B3943 /* WeeklyStatusStackCell.swift in Sources */,
+				882B75862A865ACD000B3943 /* WeeklyFeelingCell.swift in Sources */,
 				883461A12A79576B00F6519D /* DarkStatusBar_NavigationController.swift in Sources */,
 				881D5FC92A742EDF00603548 /* AlarmTableViewCell.swift in Sources */,
 				B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */,
