@@ -302,7 +302,7 @@ class MyPageView: UIView {
         
         view.axis = .horizontal
         view.spacing = 2
-        view.distribution = .fillProportionally
+        view.distribution = .fillEqually
         
         view.backgroundColor = .clear
         return view
