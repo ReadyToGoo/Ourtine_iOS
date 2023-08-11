@@ -41,7 +41,11 @@ class HabitCreate_noFriednsViewController: UIViewController {
             //print("public")
             HabitCreateFlowManager.shared.habitInformation.habitType = .publicType
             
-            self.navigationController?.pushViewController(HabitCreate_finalViewController(), animated: true)
+            let viewController = HabitCreate_finalViewController()
+            viewController.hidesBottomBarWhenPushed = true // 탭 바 숨기기 설정
+            viewController.isPrivate = false
+            
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
         
         if sender == self.HC_noFriends_View.laterBtn {

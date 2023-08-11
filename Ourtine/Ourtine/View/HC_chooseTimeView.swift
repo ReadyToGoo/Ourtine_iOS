@@ -170,7 +170,7 @@ class HabiCreate_chooseTimeView: UIView {
             stack.axis = .horizontal
             //stack.distribution = .equalSpacing
             stack.distribution = .fillEqually
-            stack.spacing = 10
+            stack.spacing = 15
             stack.backgroundColor = .white
             return stack
         }()
@@ -330,7 +330,7 @@ class HabiCreate_chooseTimeView: UIView {
         
         // MARK: - 중간 구분선
         lineView1.snp.makeConstraints {
-            $0.height.equalTo(2)
+            $0.height.equalTo(1)
             $0.width.equalToSuperview()
             $0.top.equalTo(startTimeView.snp.bottom).offset(5)
             $0.centerX.equalTo(startTimeView)
@@ -370,7 +370,7 @@ class HabiCreate_chooseTimeView: UIView {
         
         // 밑 구분선
         lineView2.snp.makeConstraints {
-            $0.height.equalTo(2)
+            $0.height.equalTo(1)
             $0.width.equalToSuperview()
             $0.top.equalTo(endTimeView.snp.bottom).offset(5)
             $0.centerX.equalTo(startTimeView)
@@ -404,7 +404,7 @@ class HabiCreate_chooseTimeView: UIView {
             }
             
             dayStack.snp.makeConstraints{
-                $0.height.equalTo(50)
+                $0.height.equalTo(40)
                 $0.width.equalToSuperview().multipliedBy(0.85)
                 $0.top.equalTo(dateLabel.snp.bottom).offset(30)
                 $0.centerX.equalToSuperview()

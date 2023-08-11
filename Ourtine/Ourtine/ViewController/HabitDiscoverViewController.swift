@@ -270,7 +270,7 @@ extension HabitDiscoverViewController: UICollectionViewDelegateFlowLayout {
         if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
             return 20
         }
-        return 8
+        return 30
     }
 }
 

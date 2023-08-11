@@ -80,6 +80,7 @@ class HabitCreate_finalViewController: UIViewController {
     @objc func nextVC(_ sender: UIButton) {
 //        self.navigationController?.pushViewController(HabitCreate_introduceViewController(), animated: true)
         print("습관 프로필 호출")
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기

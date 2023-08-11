@@ -10,7 +10,7 @@ import UIKit
 class HabitCreate_introduceViewController: UIViewController {
     
     //HC_introduceViewController의 전체화면 View입니다
-    let HC_introduceView = HabitCreate_introduceView()
+    let HC_introScrollView = HabitCreate_introduceScrollView()
     // 카메라와 앨범에 사용할 UIImagePickerController입니다
     let imagePickerController = UIImagePickerController()
     
@@ -21,7 +21,7 @@ class HabitCreate_introduceViewController: UIViewController {
     // view 로드할 때 searchView로 가져오기
     override func loadView() {
         super.loadView()
-        view = HC_introduceView
+        view = HC_introScrollView
         HabitCreateFlowManager.shared.printself()
     }
     
@@ -29,7 +29,7 @@ class HabitCreate_introduceViewController: UIViewController {
         super.viewDidLoad()
         
         // 다음버튼 비활성화
-        self.HC_introduceView.nextBtn.isEnabled = false
+        self.HC_introScrollView.HC_introduceView.nextBtn.isEnabled = false
         
         // 사진 보관함 여는 Menu UIAction
         let photoLib = UIAction(
@@ -48,7 +48,7 @@ class HabitCreate_introduceViewController: UIViewController {
             })
         
         // 사진 첨부 버튼에 UIMenu 추가하기
-        self.HC_introduceView.addImageButton.menu = UIMenu(
+        self.HC_introScrollView.HC_introduceView.addImageButton.menu = UIMenu(
             title: "",
             image: nil,
             identifier: nil,
@@ -57,21 +57,21 @@ class HabitCreate_introduceViewController: UIViewController {
         )
         
         // MARK: - 사진 첨부 버튼 잠깐 눌러도 바로 UIMenu 나오게 -> default는 길게 눌러야함
-        self.HC_introduceView.addImageButton.showsMenuAsPrimaryAction = true
+        self.HC_introScrollView.HC_introduceView.addImageButton.showsMenuAsPrimaryAction = true
         
         // MARK: - 텍스트필드 델레게이트
-        self.HC_introduceView.titleTextField.delegate = self
-        self.HC_introduceView.hashtagTextField.delegate = self
+        self.HC_introScrollView.HC_introduceView.titleTextField.delegate = self
+        self.HC_introScrollView.HC_introduceView.hashtagTextField.delegate = self
         
         // MARK: - 텍스트 뷰 델레게이트
-        self.HC_introduceView.contentTextView.delegate = self
+        self.HC_introScrollView.HC_introduceView.contentTextView.delegate = self
         
         //MARK: - nextBTN
-        self.HC_introduceView.nextBtn.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
+        self.HC_introScrollView.HC_introduceView.nextBtn.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
         
         //MARK: - backBTN
-        self.HC_introduceView.navigationBar.leftButton.action = #selector(popVC)
-        self.HC_introduceView.navigationBar.leftButton.target = self
+        self.HC_introScrollView.HC_introduceView.navigationBar.leftButton.action = #selector(popVC)
+        self.HC_introScrollView.HC_introduceView.navigationBar.leftButton.target = self
         
     }
     
@@ -96,14 +96,14 @@ class HabitCreate_introduceViewController: UIViewController {
     /// 해당 페이지의 조건을 만족했는지 확인합니다
     private func checkToGO() {
         
-        let titleText = self.HC_introduceView.titleTextField.text
-        let hashtagText = self.HC_introduceView.hashtagTextField.text
-        let descText = self.HC_introduceView.contentTextView.text
+        let titleText = self.HC_introScrollView.HC_introduceView.titleTextField.text
+        let hashtagText = self.HC_introScrollView.HC_introduceView.hashtagTextField.text
+        let descText = self.HC_introScrollView.HC_introduceView.contentTextView.text
         
         // 텍스트 다 채웠는지 확인
         guard titleText != "" && hashtagText != "" && descText != ""
         else {
-            self.HC_introduceView.nextBtn.isEnabled = false
+            self.HC_introScrollView.HC_introduceView.nextBtn.isEnabled = false
             //print("텍스트가 설정되지 않았습니다.")
             return
         }
@@ -111,12 +111,12 @@ class HabitCreate_introduceViewController: UIViewController {
         // 이미지 설정되었는지 확인
         guard let titleImage = self.introductionImage
         else {
-            self.HC_introduceView.nextBtn.isEnabled = false
+            self.HC_introScrollView.HC_introduceView.nextBtn.isEnabled = false
             //print("이미지가 설정되지 않았습니다.")
             return
         }
         
-        self.HC_introduceView.nextBtn.isEnabled = true
+        self.HC_introScrollView.HC_introduceView.nextBtn.isEnabled = true
     }
     
     /// 해당 페이지에서 저장된 데이터를 flowdata로 보내고, 제대로 저장됐는지 확인합니다.
@@ -125,9 +125,9 @@ class HabitCreate_introduceViewController: UIViewController {
 //        // 습관 생성 플로우의 데이터를 저장
 //        let selectedArr = Array(self.selectedCategorySet)
 //        HabitCreateFlowManager.shared.habitInformation.habitCategory = selectedArr
-        let titleText = self.HC_introduceView.titleTextField.text
-        let hashtagText = self.HC_introduceView.hashtagTextField.text
-        let descText = self.HC_introduceView.contentTextView.text
+        let titleText = self.HC_introScrollView.HC_introduceView.titleTextField.text
+        let hashtagText = self.HC_introScrollView.HC_introduceView.hashtagTextField.text
+        let descText = self.HC_introScrollView.HC_introduceView.contentTextView.text
         guard let titleImage = self.introductionImage else { return false }
         
         HabitCreateFlowManager.shared.habitInformation.habitIntroduction.title = titleText
@@ -153,7 +153,10 @@ class HabitCreate_introduceViewController: UIViewController {
         // 데이터 저장 실패 시 push X
         guard saveToFlowData() else { return }
 
-        self.navigationController?.pushViewController(HabitCreate_chooseTimeViewController(), animated: true)
+        let viewController = HabitCreate_chooseTimeViewController()
+        viewController.hidesBottomBarWhenPushed = true // 탭 바 숨기기 설정
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기
@@ -169,10 +172,14 @@ extension HabitCreate_introduceViewController: UIImagePickerControllerDelegate &
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             // 이미지 설정하는 코드
-            print("이미지 설정")
+            //print("이미지 설정")
             // 임시저장 변수에 이미지 저장
             self.introductionImage = image
-            self.HC_introduceView.addImageButton.setImage(image, for: .normal)
+            self.HC_introScrollView.HC_introduceView.addImageButton.setImage(image, for: .normal)
+            self.HC_introScrollView.HC_introduceView.addImageButton.imageView?.snp.makeConstraints {
+                $0.edges.equalTo(self.HC_introScrollView.HC_introduceView.addImageButton)
+            }
+            //self.HC_introScrollView.HC_introduceView.addImageButton.setBackgroundImage(image, for: .normal)
             checkToGO() // 조건 체크
             
         } else {
@@ -201,31 +208,31 @@ extension HabitCreate_introduceViewController: UITextFieldDelegate, UITextViewDe
         let count = (newText?.count ?? 0)
         
         // 제목 텍스트필드인 경우
-        if textField == self.HC_introduceView.titleTextField {
-            self.HC_introduceView.textCount1.text = "\(count)/20" // 현재 텍스트 카운트 업데이트
+        if textField == self.HC_introScrollView.HC_introduceView.titleTextField {
+            self.HC_introScrollView.HC_introduceView.textCount1.text = "\(count)/20" // 현재 텍스트 카운트 업데이트
             if count >= 20 {    // 20자가 넘으면
-                self.HC_introduceView.textCount1.text = "20/20"
+                self.HC_introScrollView.HC_introduceView.textCount1.text = "20/20"
                 let maxIndex = (newText?.index(newText!.startIndex, offsetBy: 19))! //최대 인덱스
                 let newString = newText?.substring(to: maxIndex) //최대 인덱스 서브스트링
-                self.HC_introduceView.textCount1.textColor = .red
-                self.HC_introduceView.titleTextField.text = newString
+                self.HC_introScrollView.HC_introduceView.textCount1.textColor = .red
+                self.HC_introScrollView.HC_introduceView.titleTextField.text = newString
                 return true
             }
-            self.HC_introduceView.textCount1.textColor = .app_BrightnessColor40
+            self.HC_introScrollView.HC_introduceView.textCount1.textColor = .app_BrightnessColor40
         }
         
         // 해쉬태그 텍스트필드인 경우
-        if textField == self.HC_introduceView.hashtagTextField {
-            self.HC_introduceView.textCount2.text = "\(count)/8" // 현재 텍스트 카운트 업데이트
+        if textField == self.HC_introScrollView.HC_introduceView.hashtagTextField {
+            self.HC_introScrollView.HC_introduceView.textCount2.text = "\(count)/8" // 현재 텍스트 카운트 업데이트
             if count >= 8 {    // 20자가 넘으면
-                self.HC_introduceView.textCount2.text = "8/8"
+                self.HC_introScrollView.HC_introduceView.textCount2.text = "8/8"
                 let maxIndex = (newText?.index(newText!.startIndex, offsetBy: 7))! //최대 인덱스
                 let newString = newText?.substring(to: maxIndex) //최대 인덱스 서브스트링
-                self.HC_introduceView.textCount2.textColor = .red
-                self.HC_introduceView.hashtagTextField.text = newString
+                self.HC_introScrollView.HC_introduceView.textCount2.textColor = .red
+                self.HC_introScrollView.HC_introduceView.hashtagTextField.text = newString
                 return true
             }
-            self.HC_introduceView.textCount2.textColor = .app_BrightnessColor40
+            self.HC_introScrollView.HC_introduceView.textCount2.textColor = .app_BrightnessColor40
         }
        
         // 각 텍스트 필드에서 최대 조건에 걸리지 않은 경우
@@ -242,18 +249,18 @@ extension HabitCreate_introduceViewController: UITextFieldDelegate, UITextViewDe
         let count = (newText.count ?? 0)
         
         // 해쉬태그 텍스트필드인 경우
-        if textView == self.HC_introduceView.contentTextView {
-            self.HC_introduceView.textCount3.text = "\(count)/50" // 현재 텍스트 카운트 업데이트
+        if textView == self.HC_introScrollView.HC_introduceView.contentTextView {
+            self.HC_introScrollView.HC_introduceView.textCount3.text = "\(count)/50" // 현재 텍스트 카운트 업데이트
             if count >= 50 {    // 50자가 넘으면
-                self.HC_introduceView.textCount3.text = "50/50"
+                self.HC_introScrollView.HC_introduceView.textCount3.text = "50/50"
                 let maxIndex = (newText.index(newText.startIndex, offsetBy: 49)) //최대 인덱스
                 let newString = newText.substring(to: maxIndex)
-                self.HC_introduceView.textCount3.textColor = .red
-                self.HC_introduceView.contentTextView.text = newString
+                self.HC_introScrollView.HC_introduceView.textCount3.textColor = .red
+                self.HC_introScrollView.HC_introduceView.contentTextView.text = newString
                 return true
             }
             
-            self.HC_introduceView.textCount3.textColor = .app_BrightnessColor40
+            self.HC_introScrollView.HC_introduceView.textCount3.textColor = .app_BrightnessColor40
         }
         
         checkToGO() // 조건 체크

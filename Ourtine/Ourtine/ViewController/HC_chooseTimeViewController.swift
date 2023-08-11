@@ -217,7 +217,10 @@ class HabitCreate_chooseTimeViewController: UIViewController {
         // 데이터 저장 실패 시 push X
         guard saveToFlowData() else { return }
         
-        self.navigationController?.pushViewController(HabitCreate_chooseDateViewController(), animated: true)
+        let viewController = HabitCreate_chooseDateViewController()
+        viewController.hidesBottomBarWhenPushed = true // 탭 바 숨기기 설정
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기
