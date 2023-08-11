@@ -35,7 +35,7 @@ class AppTabBarController: UITabBarController {
         thirdVC.tabBarItem.image = UIImage(systemName: "map")
         thirdVC.tabBarItem.title = "습관개설"
         
-        let fourthVC = UINavigationController(rootViewController: DummyViewController())
+        let fourthVC = UINavigationController(rootViewController: MyPageViewController())
         fourthVC.tabBarItem.image = UIImage(systemName: "person")
         fourthVC.tabBarItem.title = "마이페이지"
         
