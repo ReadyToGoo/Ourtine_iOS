@@ -33,6 +33,7 @@
 		881D5FCB2A74324200603548 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D5FCA2A74324200603548 /* AlarmModel.swift */; };
 		882AC3BD2A78348A002AD232 /* UIImage+onlyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC3BC2A78348A002AD232 /* UIImage+onlyColor.swift */; };
 		882B757A2A84EFFC000B3943 /* HabitInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B75792A84EFFC000B3943 /* HabitInfoModel.swift */; };
+		882B757E2A862A6A000B3943 /* UIImage + CircularCrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B757D2A862A6A000B3943 /* UIImage + CircularCrop.swift */; };
 		883461A12A79576B00F6519D /* DarkStatusBar_NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */; };
 		88371A722A702C650056BB5A /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A712A702C650056BB5A /* MemberModel.swift */; };
 		88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */; };
@@ -128,6 +129,7 @@
 		881D5FCA2A74324200603548 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		882AC3BC2A78348A002AD232 /* UIImage+onlyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+onlyColor.swift"; sourceTree = "<group>"; };
 		882B75792A84EFFC000B3943 /* HabitInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInfoModel.swift; sourceTree = "<group>"; };
+		882B757D2A862A6A000B3943 /* UIImage + CircularCrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + CircularCrop.swift"; sourceTree = "<group>"; };
 		883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkStatusBar_NavigationController.swift; sourceTree = "<group>"; };
 		88371A712A702C650056BB5A /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				88804CC72A7FE3D900562E35 /* Date + Extension.swift */,
 				B6927E2F2A8534D500B8BC4F /* StringHalfColor.swift */,
 				B6927E352A8575D100B8BC4F /* PaddingLabel.swift */,
+				882B757D2A862A6A000B3943 /* UIImage + CircularCrop.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */,
 				B6D87A602A8408780099005E /* WaitingViewController.swift in Sources */,
 				88A64C0F2A7A733E00292ED6 /* CALayer+addBorder.swift in Sources */,
+				882B757E2A862A6A000B3943 /* UIImage + CircularCrop.swift in Sources */,
 				88FE2D352A7ED46600C475A7 /* HC_introduceViewController.swift in Sources */,
 				88BDD32E2A82C3760082A961 /* HC_finalView.swift in Sources */,
 				88BDD3262A82B3180082A961 /* HC_selectFriendsViewController.swift in Sources */,

@@ -14,7 +14,7 @@ class UserProfileImageView: UIImageView {
     /// 유저 프로필 이미지 설정
     func setImage(image: UIImage?) {
 //        self.image = image ?? UIImage(systemName: "person.circle")
-        self.image = image ?? UIImage(named: "habitBackgroundExample")
+        self.image = image ?? UIImage(named: "habitBackgroundExample")?.circularCropped()
     }
     
     override init(frame: CGRect) {
