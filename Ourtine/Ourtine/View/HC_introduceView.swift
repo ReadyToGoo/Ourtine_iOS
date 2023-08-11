@@ -230,7 +230,7 @@ class HabitCreate_introduceView: UIView {
         
         
         addImageButton.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.8)
+            $0.width.equalToSuperview().multipliedBy(0.9)
             $0.height.equalTo(220)
             $0.top.equalTo(hashtagTextField.snp.bottom).offset(60)
             $0.centerX.equalToSuperview()

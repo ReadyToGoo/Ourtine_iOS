@@ -214,14 +214,14 @@ class HabitCreate_chooseTypeView: UIView {
         contentLabel_private.snp.makeConstraints {
             $0.width.equalTo(view_private)
             $0.height.equalTo(100)
-            $0.top.equalTo(view_private.snp.bottom).offset(10)
+            $0.top.equalTo(view_private.snp.bottom).offset(-10)
             $0.centerX.equalTo(view_private)
         }
         
         contentLabel_public.snp.makeConstraints {
             $0.width.equalTo(view_public)
             $0.height.equalTo(100)
-            $0.top.equalTo(view_public.snp.bottom).offset(10)
+            $0.top.equalTo(view_public.snp.bottom).offset(-10)
             $0.centerX.equalTo(view_public)
         }
         

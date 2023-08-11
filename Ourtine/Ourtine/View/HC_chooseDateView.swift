@@ -232,7 +232,7 @@ class HabiCreate_chooseDateView: UIView {
         
         // MARK: - 중간 구분선
         lineView1.snp.makeConstraints {
-            $0.height.equalTo(2)
+            $0.height.equalTo(1)
             $0.width.equalToSuperview()
             $0.top.equalTo(startDateView.snp.bottom).offset(5)
             $0.centerX.equalTo(startDateView)
@@ -273,7 +273,7 @@ class HabiCreate_chooseDateView: UIView {
         
         
         lineView2.snp.makeConstraints {
-            $0.height.equalTo(2)
+            $0.height.equalTo(1)
             $0.width.equalToSuperview()
             $0.top.equalTo(endDateView.snp.bottom).offset(5)
             $0.centerX.equalTo(startDateView)

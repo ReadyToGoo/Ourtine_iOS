@@ -50,6 +50,7 @@ class ColorToggleButton: UIButton {
             self.isOn = false
             self.setBackgroundColor(self.normalColor, for: .normal)
             self.setTitleColor(.black, for: .normal)
+            self.titleLabel?.font = .systemFont(ofSize: 18, weight: .light)
             
             // 이미지 있는 경우
             if self.isImageIn {
@@ -61,6 +62,7 @@ class ColorToggleButton: UIButton {
             self.isOn = true
             self.setBackgroundColor(self.selectedColor, for: .normal)
             self.setTitleColor(.white, for: .normal)
+            self.titleLabel?.font = .systemFont(ofSize: 18, weight: .heavy)
             
             // 이미지 있는 경우
             if self.isImageIn {

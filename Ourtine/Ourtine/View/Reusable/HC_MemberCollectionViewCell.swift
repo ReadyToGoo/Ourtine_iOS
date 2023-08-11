@@ -52,7 +52,7 @@ class HC_MemberCollectionViewCell: UICollectionViewCell {
         let view = UIView()
         view.layer.cornerRadius = 40
         view.clipsToBounds = true
-        view.backgroundColor = .app_BrightnessColor60.withAlphaComponent(0.2)
+        view.backgroundColor = .app_BrightnessColor60.withAlphaComponent(0.4)
         view.layer.borderColor = UIColor.app_PrimaryColor.cgColor
         view.layer.borderWidth = 3
         return view
