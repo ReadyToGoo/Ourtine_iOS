@@ -20,6 +20,9 @@ class MyPageViewController: UIViewController {
     // 선택된 감정 셀
     var selectedFeelingCellIndex: Int?
     
+    // 오늘의 요일 인덱스 (월부터 0)
+    var todayIndex: Int?
+    
     // view 로드할 때 searchView로 가져오기
     override func loadView() {
         super.loadView()
@@ -31,6 +34,9 @@ class MyPageViewController: UIViewController {
         super.viewDidLoad()
         //아래의 코드는 네비게이션 루트 VC에 있어야 커스텀 바랑 같이 안보입니다!
         self.navigationController?.navigationBar.isHidden = true
+        
+        // 오늘 요일 인덱스 가져오기
+        todayIndex = getTodayDate()
         
         // 위클리로그 작성하기 탭
         self.myPageView.logTapView.isUserInteractionEnabled = true
@@ -48,7 +54,30 @@ class MyPageViewController: UIViewController {
         for (index, subView) in stackView.arrangedSubviews.enumerated() {
             if let cell = subView as? WeeklyStatusStackCell {
                 cell.habitCount = dummy_habitCounts[index]
+                
+                if index == todayIndex {
+                    cell.dayLabel.textColor = .app_PrimaryColor
+                    for i in cell.dotsList {
+                        let dot = i as UIImageView
+                        dot.image = createImageWithColor(color: .app_PrimaryColor, size: CGSize(width: 13, height: 13))?.circularCropped()
+                    }
+                }
             }
+        }
+    }
+    
+    // Calendar의 weekday는 일요일(1)부터 시작하여 토요일(7)까지 입니다.
+    /// 오늘의 요일을 int index로 반환하는 함수입니다. 월요일 부터 0입니다.
+    private func getTodayDate()-> Int? {
+        let calendar = Calendar.current
+        let today = Date()
+
+        if let weekdayIndex = calendar.dateComponents([.weekday], from: today).weekday {
+            let adjustedWeekdayIndex = (weekdayIndex + 5) % 7
+            return adjustedWeekdayIndex
+        } else {
+            print("오늘의 요일을 가져올 수 없습니다.")
+            return nil
         }
     }
     

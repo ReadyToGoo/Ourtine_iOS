@@ -63,7 +63,7 @@ class MyPageView: UIView {
     // 팔로잉 라벨
     lazy var followingLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 15, weight: .light)
         label.text = "팔로잉"
         label.textColor = .black
         return label
@@ -81,7 +81,7 @@ class MyPageView: UIView {
     // 팔로워 라벨
     lazy var followerLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 15, weight: .light)
         label.text = "팔로워"
         label.textColor = .black
         return label
@@ -90,7 +90,7 @@ class MyPageView: UIView {
     // 다짐 라벨
     lazy var contentLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 15, weight: .light)
         label.text = "하루의 시작을 활기차게 해보고자 아워틴을 깔게 되었습니다!"
         label.numberOfLines = 0
         label.textColor = .black
@@ -504,7 +504,7 @@ class MyPageView: UIView {
         }
         
         feelingLabel.snp.makeConstraints {
-            $0.top.equalTo(logStackView.snp.bottom).offset(20)
+            $0.top.equalTo(logStackView.snp.bottom).offset(40)
             $0.leading.equalTo(statusLabel)
         }
         

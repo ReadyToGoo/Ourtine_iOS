@@ -10,7 +10,7 @@ import SnapKit
 
 class WeeklyStatusStackCell: UIView {
     
-    var dotsList: [UIView] = []
+    var dotsList: [UIImageView] = []
     
     var habitCount: Int = 0 {
         didSet {
