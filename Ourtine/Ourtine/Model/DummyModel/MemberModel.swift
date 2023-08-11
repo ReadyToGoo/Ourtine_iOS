@@ -31,3 +31,11 @@ let Dummy_memberList: [MemberModel] = [
     MemberModel("Crown", nil, "name11"),
     MemberModel(nil, nil, "name12")
 ]
+
+let Dummy_participatingMemberList: [MemberModel] = [
+    MemberModel("Crown", "habitBackgroundExample", "name1"),
+    MemberModel(nil, nil, "name2"),
+    MemberModel("Crown", nil, "name3"),
+    MemberModel(nil, nil, "name4")
+
+]

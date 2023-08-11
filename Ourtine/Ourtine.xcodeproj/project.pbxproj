@@ -33,6 +33,7 @@
 		881D5FCB2A74324200603548 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D5FCA2A74324200603548 /* AlarmModel.swift */; };
 		882AC3BD2A78348A002AD232 /* UIImage+onlyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882AC3BC2A78348A002AD232 /* UIImage+onlyColor.swift */; };
 		882B757A2A84EFFC000B3943 /* HabitInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B75792A84EFFC000B3943 /* HabitInfoModel.swift */; };
+		882B757E2A862A6A000B3943 /* UIImage + CircularCrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B757D2A862A6A000B3943 /* UIImage + CircularCrop.swift */; };
 		883461A12A79576B00F6519D /* DarkStatusBar_NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */; };
 		88371A722A702C650056BB5A /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A712A702C650056BB5A /* MemberModel.swift */; };
 		88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */; };
@@ -86,6 +87,11 @@
 		B649931E2A5D3EDC0061C47E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B649931D2A5D3EDC0061C47E /* Assets.xcassets */; };
 		B64993212A5D3EDC0061C47E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B649931F2A5D3EDC0061C47E /* LaunchScreen.storyboard */; };
 		B649932A2A5D41E40061C47E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B64993292A5D41E40061C47E /* SnapKit */; };
+		B6927E2E2A85344200B8BC4F /* ParticipatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E2D2A85344200B8BC4F /* ParticipatingViewController.swift */; };
+		B6927E302A8534D500B8BC4F /* StringHalfColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E2F2A8534D500B8BC4F /* StringHalfColor.swift */; };
+		B6927E322A85528300B8BC4F /* ParticipatingMemberCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E312A85528300B8BC4F /* ParticipatingMemberCollectionView.swift */; };
+		B6927E342A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E332A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift */; };
+		B6927E362A8575D100B8BC4F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E352A8575D100B8BC4F /* PaddingLabel.swift */; };
 		B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283332A7260B9007FE619 /* CarouselViewController.swift */; };
 		B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */; };
 		B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283412A72C7C1007FE619 /* CarouselItem.swift */; };
@@ -123,6 +129,7 @@
 		881D5FCA2A74324200603548 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		882AC3BC2A78348A002AD232 /* UIImage+onlyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+onlyColor.swift"; sourceTree = "<group>"; };
 		882B75792A84EFFC000B3943 /* HabitInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInfoModel.swift; sourceTree = "<group>"; };
+		882B757D2A862A6A000B3943 /* UIImage + CircularCrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + CircularCrop.swift"; sourceTree = "<group>"; };
 		883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkStatusBar_NavigationController.swift; sourceTree = "<group>"; };
 		88371A712A702C650056BB5A /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		88371A732A702D4A0056BB5A /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -177,6 +184,11 @@
 		B649931D2A5D3EDC0061C47E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B64993202A5D3EDC0061C47E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B64993222A5D3EDC0061C47E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6927E2D2A85344200B8BC4F /* ParticipatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingViewController.swift; sourceTree = "<group>"; };
+		B6927E2F2A8534D500B8BC4F /* StringHalfColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHalfColor.swift; sourceTree = "<group>"; };
+		B6927E312A85528300B8BC4F /* ParticipatingMemberCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingMemberCollectionView.swift; sourceTree = "<group>"; };
+		B6927E332A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingMemberViewCell.swift; sourceTree = "<group>"; };
+		B6927E352A8575D100B8BC4F /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		B6C283332A7260B9007FE619 /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		B6C283412A72C7C1007FE619 /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
@@ -231,6 +243,7 @@
 				88BDD3232A82B27C0082A961 /* HC_selectFriednsView.swift */,
 				88BDD3292A82BE770082A961 /* HC_noFriendsView.swift */,
 				88BDD32D2A82C3760082A961 /* HC_finalView.swift */,
+				B6927E312A85528300B8BC4F /* ParticipatingMemberCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +274,7 @@
 				88BDD3252A82B3180082A961 /* HC_selectFriendsViewController.swift */,
 				88BDD32B2A82BEA40082A961 /* HC_noFriednsViewController.swift */,
 				88BDD32F2A82C3AD0082A961 /* HC_finalViewController.swift */,
+				B6927E2D2A85344200B8BC4F /* ParticipatingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -285,6 +299,9 @@
 				B63C63AF2A7B4ACB00AF09CA /* LetterSpacing.swift */,
 				B63C63B12A7B5C0E00AF09CA /* FigmaShadow.swift */,
 				88804CC72A7FE3D900562E35 /* Date + Extension.swift */,
+				B6927E2F2A8534D500B8BC4F /* StringHalfColor.swift */,
+				B6927E352A8575D100B8BC4F /* PaddingLabel.swift */,
+				882B757D2A862A6A000B3943 /* UIImage + CircularCrop.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -337,6 +354,7 @@
 				88FE2D2C2A7ED44300C475A7 /* HC_categoryCollectionViewCell.swift */,
 				88BDD3272A82B84D0082A961 /* HC_MemberCollectionViewCell.swift */,
 				88804CC52A7F9EBD00562E35 /* ColorToggleButton.swift */,
+				B6927E332A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -491,14 +509,17 @@
 				883461A12A79576B00F6519D /* DarkStatusBar_NavigationController.swift in Sources */,
 				881D5FC92A742EDF00603548 /* AlarmTableViewCell.swift in Sources */,
 				B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */,
+				B6927E322A85528300B8BC4F /* ParticipatingMemberCollectionView.swift in Sources */,
 				88FE2D292A7ED3EF00C475A7 /* HC_introduceView.swift in Sources */,
 				B63C63B22A7B5C0F00AF09CA /* FigmaShadow.swift in Sources */,
 				88FE2D272A7ED3EF00C475A7 /* HC_chooseTimeView.swift in Sources */,
+				B6927E302A8534D500B8BC4F /* StringHalfColor.swift in Sources */,
 				881C06032A61704000184AFA /* DummyViewController.swift in Sources */,
 				881D5FCB2A74324200603548 /* AlarmModel.swift in Sources */,
 				88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */,
 				B6D87A602A8408780099005E /* WaitingViewController.swift in Sources */,
 				88A64C0F2A7A733E00292ED6 /* CALayer+addBorder.swift in Sources */,
+				882B757E2A862A6A000B3943 /* UIImage + CircularCrop.swift in Sources */,
 				88FE2D352A7ED46600C475A7 /* HC_introduceViewController.swift in Sources */,
 				88BDD32E2A82C3760082A961 /* HC_finalView.swift in Sources */,
 				88BDD3262A82B3180082A961 /* HC_selectFriendsViewController.swift in Sources */,
@@ -508,7 +529,10 @@
 				88371A762A702D840056BB5A /* HabitDiscoverViewController.swift in Sources */,
 				881C06152A62803900184AFA /* UserProfileTableViewCell.swift in Sources */,
 				B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */,
+				B6927E362A8575D100B8BC4F /* PaddingLabel.swift in Sources */,
 				88BDD32C2A82BEA40082A961 /* HC_noFriednsViewController.swift in Sources */,
+				B6927E2E2A85344200B8BC4F /* ParticipatingViewController.swift in Sources */,
+				B6927E342A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift in Sources */,
 				881C05FA2A61545200184AFA /* NavigationBar.swift in Sources */,
 				88FE2D382A7ED46600C475A7 /* HC_chooseTimeViewController.swift in Sources */,
 				88FE2D4F2A7EF18F00C475A7 /* LoginViewController.swift in Sources */,

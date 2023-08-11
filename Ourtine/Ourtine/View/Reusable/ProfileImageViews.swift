@@ -13,7 +13,8 @@ class UserProfileImageView: UIImageView {
     
     /// 유저 프로필 이미지 설정
     func setImage(image: UIImage?) {
-        self.image = image ?? UIImage(systemName: "person.circle")
+//        self.image = image ?? UIImage(systemName: "person.circle")
+        self.image = image ?? UIImage(named: "habitBackgroundExample")?.circularCropped()
     }
     
     override init(frame: CGRect) {
@@ -22,7 +23,8 @@ class UserProfileImageView: UIImageView {
         setImage(image: nil)
 
         self.contentMode = .scaleAspectFill // 이미지 비율 유지, UIImageView를 꽉 채우도록 이미지가 크롭됩니다.
-        self.layer.cornerRadius = 25 // 이미지 뷰의 모서리를 둥글게 설정
+//        self.layer.cornerRadius = 25 // 이미지 뷰의 모서리를 둥글게 설정
+        self.layer.cornerRadius = self.frame.height/2
         self.clipsToBounds = true // 이미지 뷰의 모서리 둥글게 설정 시 이미지를 잘라내도록 설정
         
         //self.backgroundColor = .app_TestColor2

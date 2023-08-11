@@ -89,7 +89,7 @@ class WaitingViewController: UIViewController {
     
     // 카운트다운 완료시 화면 전환 함수
     @objc func updateView() {
-        let vc = ViewController()
+        let vc = ParticipatingViewController()
         navigationController?.pushViewController(vc, animated: false)
     }
 
@@ -145,7 +145,6 @@ class WaitingViewController: UIViewController {
             make.leading.equalTo(memberCollectionView.snp.leading).offset(16)
         }
     }
-    
 }
 
 extension WaitingViewController: UICollectionViewDataSource {
@@ -161,16 +160,6 @@ extension WaitingViewController: UICollectionViewDataSource {
         
 //        cell.prepare(image: UIImage(named: ), text: <#T##String?#>)
         return cell
-    }
-}
-
-extension UILabel {
-    func halfTextColorChange (fullText: String, changeText: String) {
-        let originalString: NSString = fullText as NSString
-        let range = (originalString).range(of: changeText)
-        let attribute = NSMutableAttributedString.init(string: fullText)
-        attribute.addAttribute(.foregroundColor, value: UIColor.white, range: range)
-        self.attributedText = attribute
     }
 }
 
