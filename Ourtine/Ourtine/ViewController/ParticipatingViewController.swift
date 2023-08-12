@@ -9,16 +9,21 @@ import UIKit
 import SnapKit
 
 class ParticipatingViewController: UIViewController, CameraDelegate {
-    
+
     // CameraDelegate
+    
     func didCaptureImage(_ image: UIImage) {
-        // image 저장
+        // TODO: Save image in Server
+    }
+    
+    func didCaptureVideo(at url: URL) {
+        // TODO: Save video in Server
     }
     
     func cameraAuthorizationStatus(_ isAuthroized: Bool) {
         if !isAuthroized {
             // TODO: AlertSetting
-//            showAlertGoToSetting()
+            showAlertGoToSetting()
         }
     }
     
@@ -65,7 +70,7 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         
         // TODO: get targetTime using API
         // TODO: Test시 -> 상황에 따라 TargetTime 변경
-        let targetTime = "00:00:59"
+        let targetTime = "20:10:59"
         
         if let targetTime = dateFormatter.date(from: targetTime) {
             let currentTime = Date()
@@ -82,7 +87,6 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
             if timeInterval <= 0 {
                 countDownLabel.text = ""
                 countDownTimer?.invalidate()
-                // TODO: Move To VotingView
                 self.updateView()
             } else {
                 let hours = Int(timeInterval) / 3600
@@ -126,12 +130,7 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
     }()
     
     @objc func cameraBtnTapped() {
-        cameraManager.openCamera(from: self)
-    }
-    
-    @objc func cameraCloseBtnTapped() {
-        // TODO: Need Fix
-        dismiss(animated: true, completion: nil)
+        cameraManager.openCamera(from: self, captureVideo: true)
     }
     
     override func viewDidLoad() {

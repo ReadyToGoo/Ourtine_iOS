@@ -7,9 +7,11 @@
 
 import UIKit
 import AVFoundation
+import Photos
 
 protocol CameraDelegate: AnyObject {
     func didCaptureImage (_ image: UIImage)
+    func didCaptureVideo (at url: URL)
     func cameraAuthorizationStatus (_ isAuthroized: Bool)
 }
 
@@ -31,13 +33,25 @@ class CameraManager: NSObject, UIImagePickerControllerDelegate, UINavigationCont
         }
     }
     
-    func openCamera(from viewController: UIViewController) {
+    // Camera Setting
+    func openCamera(from viewController: UIViewController, captureVideo: Bool = true) {
         let pickerController = UIImagePickerController()
         pickerController.sourceType = .camera
-        pickerController.mediaTypes = ["public.image"]
+        pickerController.showsCameraControls = true
+        
+        if captureVideo {
+            // take Video
+            pickerController.mediaTypes = ["public.movie"]
+        } else {
+            // take photo
+            pickerController.cameraCaptureMode = .photo
+            pickerController.mediaTypes = ["public.image"]
+        }
+       
         pickerController.allowsEditing = false
         pickerController.delegate = self
         viewController.present(pickerController, animated: true)
+        
     }
     
     // UIImagePickerControllerDelegate methods
@@ -45,12 +59,39 @@ class CameraManager: NSObject, UIImagePickerControllerDelegate, UINavigationCont
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
     ) {
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-            picker.dismiss(animated: true)
-            return
+        if let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
+            delegate?.didCaptureVideo(at: videoURL)
+            saveVideoToAlbum(videoURL)
+        } else if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            delegate?.didCaptureImage(image)
+            saveImageToAlbum(image)
         }
-        delegate?.didCaptureImage(image)
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    private func saveImageToAlbum(_ image: UIImage) {
+        PHPhotoLibrary.shared().performChanges({
+            PHAssetChangeRequest.creationRequestForAsset(from: image)
+        }, completionHandler: { success, error in
+            if success {
+                print("Image saved to album successfully")
+            } else if let error = error {
+                print("Error saving image to album: \(error.localizedDescription)")
+            }
+        })
+    }
+    
+    private func saveVideoToAlbum(_ videoURL: URL) {
+        PHPhotoLibrary.shared().performChanges({
+            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: videoURL)
+        }, completionHandler: { success, error in
+            if success {
+                print("Video saved to album successfully")
+            } else if let error = error {
+                print("Error saving video to album: \(error.localizedDescription)")
+            }
+        })
+    }
+    
 }
 
