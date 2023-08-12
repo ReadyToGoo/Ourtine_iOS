@@ -99,6 +99,12 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
         addViews()
         setConstraints()
         
+        //그림자
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowRadius = 3
+        
         self.highlightView.isHidden = true
     }
     

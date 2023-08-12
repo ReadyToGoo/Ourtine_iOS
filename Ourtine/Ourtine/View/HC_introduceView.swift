@@ -8,6 +8,39 @@
 import UIKit
 import SnapKit
 
+class HabitCreate_introduceScrollView: UIScrollView {
+    
+    lazy var HC_introduceView = HabitCreate_introduceView()
+    
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = .white
+        self.addSubview(HC_introduceView)
+        
+        HC_introduceView.snp.makeConstraints {
+            $0.edges.equalTo(self.contentLayoutGuide)
+            $0.width.equalTo(self.frameLayoutGuide)
+            $0.height.equalTo(900) // 나중에 스크롤 뷰 높이 동적 높이 or 고정값 확정내기
+        }
+
+        HC_introduceView.nextBtn.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide ).multipliedBy(0.95)
+            $0.width.equalToSuperview().multipliedBy(0.8)
+            $0.height.equalTo(50)
+            $0.centerX.equalToSuperview()
+        }
+    
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+        
+}
+
 class HabitCreate_introduceView: UIView {
     
     lazy var navigationBar : Custom_NavigationBar = {
@@ -80,7 +113,7 @@ class HabitCreate_introduceView: UIView {
         
         var titleContainer = AttributeContainer()
         titleContainer.font = UIFont.boldSystemFont(ofSize: 10)
-        
+
         var config = UIButton.Configuration.bordered()
         config.image = UIImage(systemName: "camera") // 이미지 설정
         config.baseForegroundColor = .app_BrightnessColor60
@@ -89,7 +122,7 @@ class HabitCreate_introduceView: UIView {
         config.imagePlacement = .top //이미지 위치
         config.baseBackgroundColor = UIColor.white //버튼 배경색
         config.attributedTitle = AttributedString("사진을 첨부해 보세요!", attributes: titleContainer)
-        
+
         let btn = UIButton(configuration: config)
         btn.setTitleColor(.app_BrightnessColor40, for: .normal)
         btn.backgroundColor = .white
@@ -98,6 +131,7 @@ class HabitCreate_introduceView: UIView {
         btn.layer.borderWidth = 1
         btn.clipsToBounds = true // 사진 선택으로 배경사진이 바뀔 때 테두리에 잘리게
         btn.imageView?.contentMode = .scaleAspectFill // 배경 사진이 바뀔 때 비율 유지하게
+        
         return btn
     }()
     
@@ -196,8 +230,8 @@ class HabitCreate_introduceView: UIView {
         
         
         addImageButton.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.8)
-            $0.height.equalTo(180)
+            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.height.equalTo(220)
             $0.top.equalTo(hashtagTextField.snp.bottom).offset(60)
             $0.centerX.equalToSuperview()
         }
@@ -214,12 +248,12 @@ class HabitCreate_introduceView: UIView {
             $0.top.equalTo(contentTextView.snp.bottom).offset(5)
         }
         
-        nextBtn.snp.makeConstraints {
-            $0.bottom.equalTo(self.safeAreaLayoutGuide ).multipliedBy(0.95)
-            $0.width.equalToSuperview().multipliedBy(0.8)
-            $0.height.equalTo(50)
-            $0.centerX.equalToSuperview()
-        }
+//        nextBtn.snp.makeConstraints {
+//            $0.bottom.equalTo(self.safeAreaLayoutGuide ).multipliedBy(0.95)
+//            $0.width.equalToSuperview().multipliedBy(0.8)
+//            $0.height.equalTo(50)
+//            $0.centerX.equalToSuperview()
+//        }
     }
     
     override init(frame: CGRect) {

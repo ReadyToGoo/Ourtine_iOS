@@ -30,7 +30,7 @@ class HabitDiscoverScrollView: UIScrollView {
             $0.height.equalTo(1200) // 나중에 스크롤 뷰 높이 동적 높이 or 고정값 확정내기
         }
         
-        // 얘 넣으면 sticky header가 안됨
+        
         habitProfileView.scrollResetBtn.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.35)
             $0.height.equalTo(40)

@@ -17,6 +17,7 @@ class HabitCreate_chooseTypeView: UIView {
     /// 커스텀 네비게이션바
     lazy var navigationBar : Custom_NavigationBar = {
         let nav = Custom_NavigationBar()
+        nav.setItems(nil, animated: false) // 디자인 분 컨펌받기
         return nav
     }()
     
@@ -39,6 +40,13 @@ class HabitCreate_chooseTypeView: UIView {
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 4
         view.layer.borderColor = UIColor.app_SecondaryColor2.cgColor
+        
+        //그림자
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+        view.layer.shadowRadius = 3
+        
         return view
     }()
     
@@ -67,6 +75,13 @@ class HabitCreate_chooseTypeView: UIView {
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 4
         view.layer.borderColor = UIColor.app_SecondaryColor2.cgColor
+        
+        //그림자
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+        view.layer.shadowRadius = 3
+        
         return view
     }()
     
@@ -90,20 +105,30 @@ class HabitCreate_chooseTypeView: UIView {
     /// private 뷰 밑 설명 라벨
     lazy var contentLabel_private : UILabel = {
         let label = UILabel()
-        label.text = "나는 내 친구와 좀 더 편하게 습관을 형성하고 싶어요"
+        let inputText = "친구들과\n습관 형성하기"
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .black
+        
+        let attributedText = NSMutableAttributedString(string: inputText)
+        attributedText.addAttribute(.foregroundColor, value: UIColor.app_PrimaryColor, range: NSRange(location: 0, length: 3))
+        label.attributedText = attributedText
+        
         return label
     }()
     
     /// public 뷰 밑 설명 라벨
     lazy var contentLabel_public : UILabel = {
         let label = UILabel()
-        label.text = "나는 모르는 사람들과 서로 자극받으며 습관을 형성하고 싶어요"
+        let inputText = "모르는 사람들과\n습관 형성하기"
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .black
+        
+        let attributedText = NSMutableAttributedString(string: inputText)
+        attributedText.addAttribute(.foregroundColor, value: UIColor.app_PrimaryColor, range: NSRange(location: 0, length: 3))
+        label.attributedText = attributedText
+        
         return label
     }()
     
@@ -189,14 +214,14 @@ class HabitCreate_chooseTypeView: UIView {
         contentLabel_private.snp.makeConstraints {
             $0.width.equalTo(view_private)
             $0.height.equalTo(100)
-            $0.top.equalTo(view_private.snp.bottom).offset(10)
+            $0.top.equalTo(view_private.snp.bottom).offset(-10)
             $0.centerX.equalTo(view_private)
         }
         
         contentLabel_public.snp.makeConstraints {
             $0.width.equalTo(view_public)
             $0.height.equalTo(100)
-            $0.top.equalTo(view_public.snp.bottom).offset(10)
+            $0.top.equalTo(view_public.snp.bottom).offset(-10)
             $0.centerX.equalTo(view_public)
         }
         

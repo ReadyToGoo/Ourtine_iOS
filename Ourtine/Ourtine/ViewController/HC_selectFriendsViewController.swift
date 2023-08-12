@@ -75,7 +75,7 @@ class HabitCreate_selectFriednsViewController: UIViewController {
     /// 해당 페이지의 조건을 만족했는지 확인합니다
     private func checkToGO() {
         
-        guard self.chosenMemberSet.count <= 6 || self.chosenMemberSet.count <= memberCountLimit ?? 6  else {
+        guard self.chosenMemberSet.count <= 6 && self.chosenMemberSet.count <= memberCountLimit ?? 6  else {
             print("memberCount가 적합한 수가 아닙니다")
             self.HC_selectFreinds_View.nextBtn.isEnabled = false
             return
@@ -107,7 +107,33 @@ class HabitCreate_selectFriednsViewController: UIViewController {
         // 데이터 저장 실패 시 push X
         guard saveToFlowData() else { return }
         
-        self.navigationController?.pushViewController(HabitCreate_finalViewController(), animated: true)
+        var viewController = UIViewController()
+        
+        // private 설정일때
+        if HabitCreateFlowManager.shared.habitInformation.habitType == .privateType {
+            // 친구가 있냐 없냐로 나누어야하는데, API 연결 필요함
+            // API 없는 현재는 무조건 친구 없는 경우로 갑니다
+            if false { // 친구가 있는 경우
+                // 타입 캐스팅
+                let finalVC = HabitCreate_finalViewController() as HabitCreate_finalViewController
+                finalVC.isPrivate = true
+                viewController = finalVC
+            }
+            else { // 친구가 없는 경우
+                viewController = HabitCreate_noFriednsViewController()
+            }
+        }
+        // public 설정일 때
+        if HabitCreateFlowManager.shared.habitInformation.habitType == .publicType {
+            // 타입 캐스팅
+            let finalVC = HabitCreate_finalViewController() as HabitCreate_finalViewController
+            finalVC.isPrivate = false
+            viewController = finalVC
+        }
+        
+        viewController.hidesBottomBarWhenPushed = true // 탭 바 숨기기 설정
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기
