@@ -89,6 +89,7 @@
 		88FE2D4F2A7EF18F00C475A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D4C2A7EF18E00C475A7 /* LoginViewController.swift */; };
 		88FE2D502A7EF18F00C475A7 /* SetUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D4D2A7EF18F00C475A7 /* SetUsernameViewController.swift */; };
 		88FE2D512A7EF18F00C475A7 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D4E2A7EF18F00C475A7 /* TermsViewController.swift */; };
+		B6394E932A86A2F30040B8FF /* CamerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6394E922A86A2F30040B8FF /* CamerManager.swift */; };
 		B63C63B02A7B4ACB00AF09CA /* LetterSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C63AF2A7B4ACB00AF09CA /* LetterSpacing.swift */; };
 		B63C63B22A7B5C0F00AF09CA /* FigmaShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C63B12A7B5C0E00AF09CA /* FigmaShadow.swift */; };
 		B64993152A5D3EDC0061C47E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64993142A5D3EDC0061C47E /* AppDelegate.swift */; };
@@ -196,6 +197,7 @@
 		88FE2D4C2A7EF18E00C475A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		88FE2D4D2A7EF18F00C475A7 /* SetUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUsernameViewController.swift; sourceTree = "<group>"; };
 		88FE2D4E2A7EF18F00C475A7 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		B6394E922A86A2F30040B8FF /* CamerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerManager.swift; sourceTree = "<group>"; };
 		B63C63AF2A7B4ACB00AF09CA /* LetterSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterSpacing.swift; sourceTree = "<group>"; };
 		B63C63B12A7B5C0E00AF09CA /* FigmaShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaShadow.swift; sourceTree = "<group>"; };
 		B64993112A5D3EDC0061C47E /* Ourtine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ourtine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,6 +320,7 @@
 				881C061A2A62AB3C00184AFA /* UIImage(SFSymbols)+resize.swift */,
 				882AC3BC2A78348A002AD232 /* UIImage+onlyColor.swift */,
 				88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */,
+				B6394E922A86A2F30040B8FF /* CamerManager.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				883461A12A79576B00F6519D /* DarkStatusBar_NavigationController.swift in Sources */,
 				881D5FC92A742EDF00603548 /* AlarmTableViewCell.swift in Sources */,
 				B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */,
+				B6394E932A86A2F30040B8FF /* CamerManager.swift in Sources */,
 				B6927E322A85528300B8BC4F /* ParticipatingMemberCollectionView.swift in Sources */,
 				88FE2D292A7ED3EF00C475A7 /* HC_introduceView.swift in Sources */,
 				B63C63B22A7B5C0F00AF09CA /* FigmaShadow.swift in Sources */,

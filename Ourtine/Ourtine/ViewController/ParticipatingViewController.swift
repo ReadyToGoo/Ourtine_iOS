@@ -8,9 +8,27 @@
 import UIKit
 import SnapKit
 
-class ParticipatingViewController: UIViewController {
+class ParticipatingViewController: UIViewController, CameraDelegate {
+
+    // CameraDelegate
+    
+    func didCaptureImage(_ image: UIImage) {
+        // TODO: Save image in Server
+    }
+    
+    func didCaptureVideo(at url: URL) {
+        // TODO: Save video in Server
+    }
+    
+    func cameraAuthorizationStatus(_ isAuthroized: Bool) {
+        if !isAuthroized {
+            // TODO: AlertSetting
+            showAlertGoToSetting()
+        }
+    }
     
     let participantNum = 4
+    private let cameraManager = CameraManager()
     
     // Dummy Data
     let tempUserName = "은지"
@@ -52,7 +70,7 @@ class ParticipatingViewController: UIViewController {
         
         // TODO: get targetTime using API
         // TODO: Test시 -> 상황에 따라 TargetTime 변경
-        let targetTime = "00:00:59"
+        let targetTime = "20:10:59"
         
         if let targetTime = dateFormatter.date(from: targetTime) {
             let currentTime = Date()
@@ -69,7 +87,6 @@ class ParticipatingViewController: UIViewController {
             if timeInterval <= 0 {
                 countDownLabel.text = ""
                 countDownTimer?.invalidate()
-                // TODO: Move To VotingView
                 self.updateView()
             } else {
                 let hours = Int(timeInterval) / 3600
@@ -113,15 +130,7 @@ class ParticipatingViewController: UIViewController {
     }()
     
     @objc func cameraBtnTapped() {
-        // TODO: Change Connected ViewController
-        let vc = ViewController()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: false, completion: nil)
-    }
-    
-    @objc func cameraCloseBtnTapped() {
-        // TODO: Need Fix
-        dismiss(animated: true, completion: nil)
+        cameraManager.openCamera(from: self, captureVideo: true)
     }
     
     override func viewDidLoad() {
@@ -154,6 +163,8 @@ class ParticipatingViewController: UIViewController {
     
     private func setupUI() {
         cameraBtn.addTarget(self, action: #selector(cameraBtnTapped), for: .touchUpInside)
+        cameraManager.delegate = self
+        cameraManager.checkCameraAuthorization()
     }
     
     private func setConstraints() {
@@ -187,7 +198,37 @@ class ParticipatingViewController: UIViewController {
         }
     }
     
+    func showAlertGoToSetting() {
+        let alertController = UIAlertController(
+          title: "현재 카메라 사용에 대한 접근 권한이 없습니다.",
+          message: "설정 > {앱 이름}탭에서 접근을 활성화 할 수 있습니다.",
+          preferredStyle: .alert
+        )
+        let cancelAlert = UIAlertAction(
+          title: "취소",
+          style: .cancel
+        ) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+          }
+        let goToSettingAlert = UIAlertAction(
+          title: "설정으로 이동하기",
+          style: .default) { _ in
+            guard
+              let settingURL = URL(string: UIApplication.openSettingsURLString),
+              UIApplication.shared.canOpenURL(settingURL)
+            else { return }
+            UIApplication.shared.open(settingURL, options: [:])
+          }
+        [cancelAlert, goToSettingAlert]
+          .forEach(alertController.addAction(_:))
+        DispatchQueue.main.async {
+          self.present(alertController, animated: true) // must be used from main thread only
+        }
+      }
+    
 }
+
+
 
 import SwiftUI
 import SnapKit
