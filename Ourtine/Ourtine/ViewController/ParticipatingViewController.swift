@@ -51,8 +51,8 @@ class ParticipatingViewController: UIViewController {
         dateFormatter.dateFormat = "HH:mm:ss"
         
         // TODO: get targetTime using API
-//        let targetTime = "23:59:59"
-        let targetTime = "23:59:59"
+        // TODO: Test시 -> 상황에 따라 TargetTime 변경
+        let targetTime = "00:00:59"
         
         if let targetTime = dateFormatter.date(from: targetTime) {
             let currentTime = Date()
@@ -60,7 +60,6 @@ class ParticipatingViewController: UIViewController {
             // Convert the times to the Same Date
             // 동일 날짜의 시간 비교할 수 있도록
             let calendar = Calendar.current
-//            let currentComponents = calendar.dateComponents([.hour, .minute, .second], from: currentTime)
             let targetComponents = calendar.dateComponents([.hour, .minute, .second], from: targetTime)
             
             // Calcute Time Difference
@@ -85,7 +84,7 @@ class ParticipatingViewController: UIViewController {
     
     // 카운트다운 완료시 화면 전환 함수
     @objc func updateView() {
-        let vc = ViewController()
+        let vc = VoteViewController()
         navigationController?.pushViewController(vc, animated: false)
     }
     
@@ -169,22 +168,6 @@ class ParticipatingViewController: UIViewController {
             make.top.equalTo(habitPhrase.snp.bottom).offset(63.5)
             make.centerX.equalToSuperview()
         }
-        
-        // memberCollectionView
-//        memberCollectionView.view.snp.makeConstraints { make in
-//            make.centerY.equalTo(view.snp.centerY).offset(54.91)
-//            make.centerX.equalToSuperview()
-//            if participantNum == 2 {
-//                make.trailing.leading.equalTo(59)
-//                make.height.equalTo(138)
-//            } else if participantNum < 5 {
-//                make.trailing.leading.equalTo(59)
-//                make.height.equalTo(300)
-//            } else {
-//                make.trailing.leading.equalTo(31)
-//                make.height.equalTo(256)
-//            }
-//        }
         
         // memberCollectionView
         memberCollectionView.view.snp.makeConstraints { make in
