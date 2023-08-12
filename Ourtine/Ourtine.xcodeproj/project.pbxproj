@@ -102,6 +102,7 @@
 		B6927E322A85528300B8BC4F /* ParticipatingMemberCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E312A85528300B8BC4F /* ParticipatingMemberCollectionView.swift */; };
 		B6927E342A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E332A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift */; };
 		B6927E362A8575D100B8BC4F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E352A8575D100B8BC4F /* PaddingLabel.swift */; };
+		B6BEB58E2A87D7C300A311B8 /* VoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB58D2A87D7C300A311B8 /* VoteViewController.swift */; };
 		B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283332A7260B9007FE619 /* CarouselViewController.swift */; };
 		B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */; };
 		B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283412A72C7C1007FE619 /* CarouselItem.swift */; };
@@ -209,6 +210,7 @@
 		B6927E312A85528300B8BC4F /* ParticipatingMemberCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingMemberCollectionView.swift; sourceTree = "<group>"; };
 		B6927E332A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingMemberViewCell.swift; sourceTree = "<group>"; };
 		B6927E352A8575D100B8BC4F /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		B6BEB58D2A87D7C300A311B8 /* VoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteViewController.swift; sourceTree = "<group>"; };
 		B6C283332A7260B9007FE619 /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		B6C283412A72C7C1007FE619 /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				88DC8BB22A87A927000E242D /* LF_SetUsernameViewController.swift */,
 				88DC8BB12A87A927000E242D /* LF_TermsViewController.swift */,
 				88DC8BB42A87A927000E242D /* ProfileOfUserViewController.swift */,
+				B6BEB58D2A87D7C300A311B8 /* VoteViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				88BDD3302A82C3AD0082A961 /* HC_finalViewController.swift in Sources */,
 				88DA7EB12A6F6C300011AF43 /* HabitDiscoverView.swift in Sources */,
 				88DCCAF32A6AF0AD003C3F15 /* SheetPresentationController.swift in Sources */,
+				B6BEB58E2A87D7C300A311B8 /* VoteViewController.swift in Sources */,
 				B63C63B02A7B4ACB00AF09CA /* LetterSpacing.swift in Sources */,
 				88FE2D2D2A7ED44300C475A7 /* HabitCreateFlowButton.swift in Sources */,
 				88FE2D2E2A7ED44300C475A7 /* HC_categoryCollectionViewCell.swift in Sources */,
@@ -741,7 +745,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ourtine/Ourtine.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H278GZ4GQ7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ourtine/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -769,7 +773,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ourtine/Ourtine.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H278GZ4GQ7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ourtine/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
