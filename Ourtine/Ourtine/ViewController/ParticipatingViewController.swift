@@ -8,9 +8,22 @@
 import UIKit
 import SnapKit
 
-class ParticipatingViewController: UIViewController {
+class ParticipatingViewController: UIViewController, CameraDelegate {
+    
+    // CameraDelegate
+    func didCaptureImage(_ image: UIImage) {
+        // image 저장
+    }
+    
+    func cameraAuthorizationStatus(_ isAuthroized: Bool) {
+        if !isAuthroized {
+            // TODO: AlertSetting
+//            showAlertGoToSetting()
+        }
+    }
     
     let participantNum = 4
+    private let cameraManager = CameraManager()
     
     // Dummy Data
     let tempUserName = "은지"
@@ -114,10 +127,7 @@ class ParticipatingViewController: UIViewController {
     }()
     
     @objc func cameraBtnTapped() {
-        // TODO: Change Connected ViewController
-        let vc = ViewController()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: false, completion: nil)
+        cameraManager.openCamera(from: self)
     }
     
     @objc func cameraCloseBtnTapped() {
@@ -155,6 +165,8 @@ class ParticipatingViewController: UIViewController {
     
     private func setupUI() {
         cameraBtn.addTarget(self, action: #selector(cameraBtnTapped), for: .touchUpInside)
+        cameraManager.delegate = self
+        cameraManager.checkCameraAuthorization()
     }
     
     private func setConstraints() {
@@ -204,7 +216,37 @@ class ParticipatingViewController: UIViewController {
         }
     }
     
+    func showAlertGoToSetting() {
+        let alertController = UIAlertController(
+          title: "현재 카메라 사용에 대한 접근 권한이 없습니다.",
+          message: "설정 > {앱 이름}탭에서 접근을 활성화 할 수 있습니다.",
+          preferredStyle: .alert
+        )
+        let cancelAlert = UIAlertAction(
+          title: "취소",
+          style: .cancel
+        ) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+          }
+        let goToSettingAlert = UIAlertAction(
+          title: "설정으로 이동하기",
+          style: .default) { _ in
+            guard
+              let settingURL = URL(string: UIApplication.openSettingsURLString),
+              UIApplication.shared.canOpenURL(settingURL)
+            else { return }
+            UIApplication.shared.open(settingURL, options: [:])
+          }
+        [cancelAlert, goToSettingAlert]
+          .forEach(alertController.addAction(_:))
+        DispatchQueue.main.async {
+          self.present(alertController, animated: true) // must be used from main thread only
+        }
+      }
+    
 }
+
+
 
 import SwiftUI
 import SnapKit
