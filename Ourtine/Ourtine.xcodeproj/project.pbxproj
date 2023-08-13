@@ -86,9 +86,6 @@
 		88FE2D372A7ED46600C475A7 /* HC_chooseCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D322A7ED46600C475A7 /* HC_chooseCategoryViewController.swift */; };
 		88FE2D382A7ED46600C475A7 /* HC_chooseTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D332A7ED46600C475A7 /* HC_chooseTimeViewController.swift */; };
 		88FE2D3A2A7ED4AD00C475A7 /* HC_Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D392A7ED4AD00C475A7 /* HC_Category.swift */; };
-		88FE2D4F2A7EF18F00C475A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D4C2A7EF18E00C475A7 /* LoginViewController.swift */; };
-		88FE2D502A7EF18F00C475A7 /* SetUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D4D2A7EF18F00C475A7 /* SetUsernameViewController.swift */; };
-		88FE2D512A7EF18F00C475A7 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D4E2A7EF18F00C475A7 /* TermsViewController.swift */; };
 		B6394E932A86A2F30040B8FF /* CamerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6394E922A86A2F30040B8FF /* CamerManager.swift */; };
 		B63C63B02A7B4ACB00AF09CA /* LetterSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C63AF2A7B4ACB00AF09CA /* LetterSpacing.swift */; };
 		B63C63B22A7B5C0F00AF09CA /* FigmaShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C63B12A7B5C0E00AF09CA /* FigmaShadow.swift */; };
@@ -194,9 +191,6 @@
 		88FE2D322A7ED46600C475A7 /* HC_chooseCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_chooseCategoryViewController.swift; sourceTree = "<group>"; };
 		88FE2D332A7ED46600C475A7 /* HC_chooseTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_chooseTimeViewController.swift; sourceTree = "<group>"; };
 		88FE2D392A7ED4AD00C475A7 /* HC_Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_Category.swift; sourceTree = "<group>"; usesTabs = 0; };
-		88FE2D4C2A7EF18E00C475A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		88FE2D4D2A7EF18F00C475A7 /* SetUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUsernameViewController.swift; sourceTree = "<group>"; };
-		88FE2D4E2A7EF18F00C475A7 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		B6394E922A86A2F30040B8FF /* CamerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerManager.swift; sourceTree = "<group>"; };
 		B63C63AF2A7B4ACB00AF09CA /* LetterSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterSpacing.swift; sourceTree = "<group>"; };
 		B63C63B12A7B5C0E00AF09CA /* FigmaShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaShadow.swift; sourceTree = "<group>"; };
@@ -287,9 +281,6 @@
 				B6C283332A7260B9007FE619 /* CarouselViewController.swift */,
 				883461A02A79576B00F6519D /* DarkStatusBar_NavigationController.swift */,
 				B6CAF8832A7CCFD200448673 /* TimelineViewController.swift */,
-				88FE2D4C2A7EF18E00C475A7 /* LoginViewController.swift */,
-				88FE2D4D2A7EF18F00C475A7 /* SetUsernameViewController.swift */,
-				88FE2D4E2A7EF18F00C475A7 /* TermsViewController.swift */,
 				88FE2D312A7ED46600C475A7 /* HC_chooseTypeViewController.swift */,
 				88FE2D322A7ED46600C475A7 /* HC_chooseCategoryViewController.swift */,
 				88FE2D302A7ED46600C475A7 /* HC_introduceViewController.swift */,
@@ -538,7 +529,6 @@
 				881C061B2A62AB3C00184AFA /* UIImage(SFSymbols)+resize.swift in Sources */,
 				88FE2D3A2A7ED4AD00C475A7 /* HC_Category.swift in Sources */,
 				88FE2D372A7ED46600C475A7 /* HC_chooseCategoryViewController.swift in Sources */,
-				88FE2D512A7EF18F00C475A7 /* TermsViewController.swift in Sources */,
 				88A64C112A7A8CA600292ED6 /* HabitDescView.swift in Sources */,
 				881C06212A62E64F00184AFA /* SearchedUserProfile.swift in Sources */,
 				B64993192A5D3EDC0061C47E /* ViewController.swift in Sources */,
@@ -575,11 +565,9 @@
 				B6927E342A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift in Sources */,
 				881C05FA2A61545200184AFA /* NavigationBar.swift in Sources */,
 				88FE2D382A7ED46600C475A7 /* HC_chooseTimeViewController.swift in Sources */,
-				88FE2D4F2A7EF18F00C475A7 /* LoginViewController.swift in Sources */,
 				88804CC62A7F9EBD00562E35 /* ColorToggleButton.swift in Sources */,
 				B6D87A622A8408850099005E /* WaitingMemberCollectionViewCell.swift in Sources */,
 				885026172A73C1D100974094 /* HabitCardModel.swift in Sources */,
-				88FE2D502A7EF18F00C475A7 /* SetUsernameViewController.swift in Sources */,
 				88E2B9B42A6BBF170039CF68 /* DeviceScreenSize.swift in Sources */,
 				88DC8BB72A87A927000E242D /* LF_TermsViewController.swift in Sources */,
 				884835932A715D6F00B73E28 /* HorizontalPickerViewCell.swift in Sources */,

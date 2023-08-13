@@ -17,7 +17,7 @@ class LF_CompletionSigninViewController: UIViewController {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "logo")
+        imageView.image = UIImage(named: "logo2")
         imageView.layer.shadowColor = UIColor.lightGray.cgColor
         imageView.layer.shadowOpacity = 1
         imageView.layer.shadowOffset = CGSize(width: 3, height: 2)
