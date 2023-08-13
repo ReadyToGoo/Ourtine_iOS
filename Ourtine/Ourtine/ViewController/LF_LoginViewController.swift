@@ -81,7 +81,7 @@ class LF_LoginViewController: UIViewController {
         }
         
         let termsTextView = UITextView()
-        termsTextView.text = "시작하기 버튼을 누르면 Ready To Go 이용약관에 동의하는 것으로 간주합니다."
+        termsTextView.text = "시작하기 버튼을 누르면 Ourtine 이용약관에 동의하는 것으로 간주합니다."
         termsTextView.font = UIFont.systemFont(ofSize: 10)
         termsTextView.textColor = UIColor(red: 130/255, green: 130/255, blue: 130/255, alpha: 1.0)
         termsTextView.isEditable = false
