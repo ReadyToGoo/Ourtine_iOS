@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import SnapKit
 
 class StarRateView: UIView {
 
     var starNumber: Int = 5 {
         didSet { bind() }
     }
+    
     var currentStar: Int = 0
 
     private var buttons: [UIButton] = []
@@ -21,6 +23,7 @@ class StarRateView: UIView {
         view.axis = .horizontal
         view.spacing = 12
         view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
 
         return view
     }()
@@ -46,24 +49,21 @@ class StarRateView: UIView {
     func configure() {
         starNumber = 5
         addSubviews()
-        setupLayout()
+        setConstraints()
     }
 
     private func addSubviews() {
         addSubview(stackView)
     }
 
-    private func setupLayout() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+    private func setConstraints() {
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+        }
     }
 
     func bind() {
-        
         for i in 0..<5 {
             let button = UIButton()
             button.setImage(starEmptyImage, for: .normal)
@@ -74,8 +74,7 @@ class StarRateView: UIView {
         }
     }
 
-    @objc
-    private func didTapButton(sender: UIButton) {
+    @objc private func didTapButton(sender: UIButton) {
         let end = sender.tag
 
         for i in 0...end {
