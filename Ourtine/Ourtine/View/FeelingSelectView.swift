@@ -8,7 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol FeelingSelectViewDelegate: AnyObject {
+    func feelingSelectView(_ feelingSelectView: FeelingSelectView, didSelectFeelingIndex index: Int)
+}
+
 class FeelingSelectView: UIView {
+    
+    weak var delegate: FeelingSelectViewDelegate?
 
     var selectedFeelingCellIndex: Int?
 
@@ -72,23 +78,17 @@ class FeelingSelectView: UIView {
         }
     }
 
-//    @objc private func cellTapped(_ sender: UITapGestureRecognizer) {
-//        print("Tapped")
-//        guard let cellIndex = sender.view?.tag else { return }
-//
-//        let selectedCell = feelingCells[cellIndex]
-//        selectedCell.gotChosen.toggle()
-//        updateCellState(isSelected: selectedCell.gotChosen, excludingIndex: cellIndex)
-//    }
     @objc private func cellTapped(_ sender: UITapGestureRecognizer) {
-        print("Tapped")
+//        print("Tapped")
         
         if let cellIndex = sender.view?.tag {
-            print("Cell Index:", cellIndex)
+//            print("Cell Index:", cellIndex)
             
             let selectedCell = feelingCells[cellIndex]
             selectedCell.gotChosen.toggle()
             updateCellState(isSelected: selectedCell.gotChosen, excludingIndex: cellIndex)
+            
+            delegate?.feelingSelectView(self, didSelectFeelingIndex: cellIndex)
         } else {
             print("Failed to get cell index.")
         }

@@ -10,7 +10,18 @@ import UIKit
 class ReviewViewController: UIViewController {
     
     let tempUserHabit = "반려식물 물주기"
-
+    
+    var selectedStarNumber: Int? = 0 {
+        didSet {
+            updateNextBtnState()
+        }
+    }
+    var selectedFeelingIndex: Int? {
+        didSet {
+            updateNextBtnState()
+        }
+    }
+    
     private let firstPhraseLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,10 +67,13 @@ class ReviewViewController: UIViewController {
         config.attributedTitle = titleAttr
         
         let button = UIButton(configuration: config)
+        button.isEnabled = false
         return button
     }()
     
     @objc private func nextBtnTapped() {
+        // TODO: Save selectedStarNumber
+        // TODO: Save selectedFeelingIndex
         let vc = HomeViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -76,6 +90,9 @@ class ReviewViewController: UIViewController {
         
         setUI()
         setConstraint()
+        
+        starRateView.delegate = self
+        feelingView.delegate = self
     }
     
     private func setUI() {
@@ -91,9 +108,14 @@ class ReviewViewController: UIViewController {
         
         self.starRateView.isUserInteractionEnabled = true
         self.feelingView.isUserInteractionEnabled = true
+        
+        nextBtn.addTarget(self, action: #selector(nextBtnTapped), for: .touchUpInside)
+        
     }
-
-
+    
+    private func updateNextBtnState() {
+           nextBtn.isEnabled = selectedStarNumber != 0 && selectedFeelingIndex != nil
+       }
     
     private func setConstraint() {
         firstPhraseLabel.snp.makeConstraints { make in
@@ -124,3 +146,16 @@ class ReviewViewController: UIViewController {
     }
 
 }
+
+extension ReviewViewController: StarRateViewDelegate {
+    func starRateView(_ starRateView: StarRateView, didSelectRating rating: Int) {
+        selectedStarNumber = rating
+    }
+}
+
+extension ReviewViewController: FeelingSelectViewDelegate {
+    func feelingSelectView(_ feelingSelectView: FeelingSelectView, didSelectFeelingIndex index: Int) {
+        selectedFeelingIndex = index
+    }
+}
+

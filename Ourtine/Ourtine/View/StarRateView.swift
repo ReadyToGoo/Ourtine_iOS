@@ -7,8 +7,12 @@
 
 import UIKit
 import SnapKit
-
+protocol StarRateViewDelegate: AnyObject {
+    func starRateView(_ starRateView: StarRateView, didSelectRating rating: Int)
+}
 class StarRateView: UIView {
+    
+    weak var delegate: StarRateViewDelegate?
 
     var starNumber: Int = 5 {
         didSet { bind() }
@@ -87,5 +91,7 @@ class StarRateView: UIView {
         }
 
         currentStar = end + 1
+        
+        delegate?.starRateView(self, didSelectRating: currentStar)
     }
 }
