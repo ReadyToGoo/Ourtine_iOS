@@ -29,11 +29,13 @@ class StarRateView: UIView {
     }()
 
     lazy var starFillImage: UIImage? = {
-        return UIImage(systemName: "star.fill")
+        var image = UIImage(named: "starFilled")
+        return image
     }()
 
     lazy var starEmptyImage: UIImage? = {
-        return UIImage(systemName: "star")
+        var image = UIImage(named: "star")
+        return image
     }()
     
     override init(frame: CGRect) {

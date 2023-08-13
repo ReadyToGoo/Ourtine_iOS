@@ -45,13 +45,33 @@ class ReviewViewController: UIViewController {
         return view
     }()
     
+    private let nextBtn: UIButton = {
+        var config = UIButton.Configuration.filled()
+        config.baseBackgroundColor = .app_PrimaryColor
+        config.background.cornerRadius = 8
+        config.contentInsets = NSDirectionalEdgeInsets(top: 17.5, leading: 149, bottom: 17.5, trailing: 149)
+        
+        var titleAttr = AttributedString.init("다음")
+        titleAttr.font = .systemFont(ofSize: 16, weight: .semibold)
+        config.attributedTitle = titleAttr
+        
+        let button = UIButton(configuration: config)
+        return button
+    }()
+    
+    @objc private func nextBtnTapped() {
+        let vc = HomeViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     override func viewDidLoad() {
         
         [
             firstPhraseLabel,
             secondPhraseLabel,
             starRateView,
-            feelingView
+            feelingView,
+            nextBtn
         ].forEach {view.addSubview($0)}
         
         setUI()
@@ -60,14 +80,14 @@ class ReviewViewController: UIViewController {
     
     private func setUI() {
         // firstPhraseLabel
-        let firstText = "\(postPositionText(tempUserHabit))\n어땠는지 기록해볼까요?"
+        let firstText = "\(tempUserHabit),\n어땠는지 기록해볼까요?"
         firstPhraseLabel.text = firstText
-        firstPhraseLabel.halfTextColorChange(fullText: firstText, changeText: postPositionText(tempUserHabit), color: .app_PrimaryColor)
+        firstPhraseLabel.halfTextColorChange(fullText: firstText, changeText: tempUserHabit, color: .app_PrimaryColor)
         
         // secondPhraseLabel
         let secondText = "\(tempUserHabit),\n하고나니 기분은 어땠나요?"
         secondPhraseLabel.text = secondText
-        secondPhraseLabel.halfTextColorChange(fullText: secondText, changeText: postPositionText(tempUserHabit), color: .app_PrimaryColor)
+        secondPhraseLabel.halfTextColorChange(fullText: secondText, changeText: tempUserHabit, color: .app_PrimaryColor)
         
         self.starRateView.isUserInteractionEnabled = true
         self.feelingView.isUserInteractionEnabled = true
@@ -83,7 +103,6 @@ class ReviewViewController: UIViewController {
         
         starRateView.snp.makeConstraints { make in
             make.top.equalTo(firstPhraseLabel.snp.bottom).offset(44)
-//            make.leading.equalToSuperview().offset(59)
             make.centerX.equalToSuperview()
         }
         
@@ -96,6 +115,11 @@ class ReviewViewController: UIViewController {
             make.top.equalTo(secondPhraseLabel.snp.bottom).offset(44)
             make.centerX.equalToSuperview()
             make.height.equalTo(68)
+        }
+        
+        nextBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-32)
         }
     }
 
