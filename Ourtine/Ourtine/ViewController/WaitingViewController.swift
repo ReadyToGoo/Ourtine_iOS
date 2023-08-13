@@ -89,7 +89,8 @@ class WaitingViewController: UIViewController {
     
     // 카운트다운 완료시 화면 전환 함수
     @objc func updateView() {
-        let vc = ParticipatingViewController()
+//        let vc = ParticipatingViewController()
+        let vc = ReviewViewController()
         navigationController?.pushViewController(vc, animated: false)
     }
 
@@ -108,7 +109,7 @@ class WaitingViewController: UIViewController {
         // phraseLabel
         let text = "\(tempUserName)님, \(postPositionText(tempUserHabit))\n시작해봐요!"
         habitPhrase.text = text
-        habitPhrase.halfTextColorChange(fullText: text, changeText: postPositionText(tempUserHabit))
+        habitPhrase.halfTextColorChange(fullText: text, changeText: postPositionText(tempUserHabit), color: .white)
         
         // memberCollectionView
         self.memberCollectionView.dataSource = self

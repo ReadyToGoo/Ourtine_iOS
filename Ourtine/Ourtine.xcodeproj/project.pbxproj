@@ -104,7 +104,8 @@
 		B6927E342A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E332A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift */; };
 		B6927E362A8575D100B8BC4F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E352A8575D100B8BC4F /* PaddingLabel.swift */; };
 		B6BEB58E2A87D7C300A311B8 /* VoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB58D2A87D7C300A311B8 /* VoteViewController.swift */; };
-		B6BEB5902A890CFF00A311B8 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB58F2A890CFF00A311B8 /* ReviewView.swift */; };
+		B6BEB5922A8923E200A311B8 /* StarRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB5912A8923E200A311B8 /* StarRateView.swift */; };
+		B6BEB5942A892B9800A311B8 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB5932A892B9800A311B8 /* ReviewViewController.swift */; };
 		B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283332A7260B9007FE619 /* CarouselViewController.swift */; };
 		B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */; };
 		B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283412A72C7C1007FE619 /* CarouselItem.swift */; };
@@ -214,7 +215,8 @@
 		B6927E332A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingMemberViewCell.swift; sourceTree = "<group>"; };
 		B6927E352A8575D100B8BC4F /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		B6BEB58D2A87D7C300A311B8 /* VoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteViewController.swift; sourceTree = "<group>"; };
-		B6BEB58F2A890CFF00A311B8 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		B6BEB5912A8923E200A311B8 /* StarRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRateView.swift; sourceTree = "<group>"; };
+		B6BEB5932A892B9800A311B8 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		B6C283332A7260B9007FE619 /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		B6C283412A72C7C1007FE619 /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
@@ -271,7 +273,7 @@
 				88BDD32D2A82C3760082A961 /* HC_finalView.swift */,
 				B6927E312A85528300B8BC4F /* ParticipatingMemberCollectionView.swift */,
 				882B757F2A863644000B3943 /* MyPageView.swift */,
-				B6BEB58F2A890CFF00A311B8 /* ReviewView.swift */,
+				B6BEB5912A8923E200A311B8 /* StarRateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -311,6 +313,7 @@
 				88DC8BB12A87A927000E242D /* LF_TermsViewController.swift */,
 				88DC8BB42A87A927000E242D /* ProfileOfUserViewController.swift */,
 				B6BEB58D2A87D7C300A311B8 /* VoteViewController.swift */,
+				B6BEB5932A892B9800A311B8 /* ReviewViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				B64993192A5D3EDC0061C47E /* ViewController.swift in Sources */,
 				881C06012A616FB500184AFA /* TabBarController.swift in Sources */,
 				882B75842A865ABF000B3943 /* WeeklyStatusStackCell.swift in Sources */,
+				B6BEB5922A8923E200A311B8 /* StarRateView.swift in Sources */,
 				882B75862A865ACD000B3943 /* WeeklyFeelingCell.swift in Sources */,
 				883461A12A79576B00F6519D /* DarkStatusBar_NavigationController.swift in Sources */,
 				881D5FC92A742EDF00603548 /* AlarmTableViewCell.swift in Sources */,
@@ -565,6 +569,7 @@
 				882B757E2A862A6A000B3943 /* UIImage + CircularCrop.swift in Sources */,
 				88FE2D352A7ED46600C475A7 /* HC_introduceViewController.swift in Sources */,
 				88BDD32E2A82C3760082A961 /* HC_finalView.swift in Sources */,
+				B6BEB5942A892B9800A311B8 /* ReviewViewController.swift in Sources */,
 				88BDD3262A82B3180082A961 /* HC_selectFriendsViewController.swift in Sources */,
 				88E653972A80151A00ABF9D9 /* HC_memberCountView.swift in Sources */,
 				B64993152A5D3EDC0061C47E /* AppDelegate.swift in Sources */,
@@ -594,7 +599,6 @@
 				882B75822A863961000B3943 /* MyPageViewController.swift in Sources */,
 				B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */,
 				881D5FC52A742CC100603548 /* HabitAlarmView.swift in Sources */,
-				B6BEB5902A890CFF00A311B8 /* ReviewView.swift in Sources */,
 				88BDD32A2A82BE770082A961 /* HC_noFriendsView.swift in Sources */,
 				88BDD3242A82B27C0082A961 /* HC_selectFriednsView.swift in Sources */,
 				88804CCC2A7FFBBF00562E35 /* HC_chooseDateViewController.swift in Sources */,
