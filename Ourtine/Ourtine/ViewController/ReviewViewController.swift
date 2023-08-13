@@ -39,12 +39,19 @@ class ReviewViewController: UIViewController {
         return view
     }()
     
+    private let feelingView: FeelingSelectView = {
+        let view = FeelingSelectView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
         
         [
             firstPhraseLabel,
             secondPhraseLabel,
-            starRateView
+            starRateView,
+            feelingView
         ].forEach {view.addSubview($0)}
         
         setUI()
@@ -63,7 +70,10 @@ class ReviewViewController: UIViewController {
         secondPhraseLabel.halfTextColorChange(fullText: secondText, changeText: postPositionText(tempUserHabit), color: .app_PrimaryColor)
         
         self.starRateView.isUserInteractionEnabled = true
+        self.feelingView.isUserInteractionEnabled = true
     }
+
+
     
     private func setConstraint() {
         firstPhraseLabel.snp.makeConstraints { make in
@@ -80,6 +90,12 @@ class ReviewViewController: UIViewController {
         secondPhraseLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(359)
             make.leading.equalTo(firstPhraseLabel)
+        }
+        
+        feelingView.snp.makeConstraints { make in
+            make.top.equalTo(secondPhraseLabel.snp.bottom).offset(44)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(68)
         }
     }
 
