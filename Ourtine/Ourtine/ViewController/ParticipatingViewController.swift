@@ -151,7 +151,7 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         // habitPhrase
         let text = "\(tempUserName)님, \(postPositionText(tempUserHabit))\n오늘도 활기차게!"
         habitPhrase.text = text
-        habitPhrase.halfTextColorChange(fullText: text, changeText: postPositionText(tempUserHabit))
+        habitPhrase.halfTextColorChange(fullText: text, changeText: postPositionText(tempUserHabit), color: .white)
         
         // memberCollectionView
         memberCollectionView.didMove(toParent: self)

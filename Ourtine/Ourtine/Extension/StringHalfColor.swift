@@ -8,11 +8,11 @@
 import UIKit
 
 extension UILabel {
-    func halfTextColorChange (fullText: String, changeText: String) {
+    func halfTextColorChange (fullText: String, changeText: String, color: UIColor) {
         let originalString: NSString = fullText as NSString
         let range = (originalString).range(of: changeText)
         let attribute = NSMutableAttributedString.init(string: fullText)
-        attribute.addAttribute(.foregroundColor, value: UIColor.white, range: range)
+        attribute.addAttribute(.foregroundColor, value: color, range: range)
         self.attributedText = attribute
     }
 }
