@@ -87,6 +87,7 @@ class WaitingViewController: UIViewController {
         }
     }
     
+    
     // 카운트다운 완료시 화면 전환 함수
     @objc func updateView() {
 //        let vc = ParticipatingViewController()
@@ -96,6 +97,10 @@ class WaitingViewController: UIViewController {
 
     override func viewDidLoad() {
         view.backgroundColor = .app_PrimaryColor
+        
+        navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        
         super.viewDidLoad()
         
         [
@@ -135,17 +140,18 @@ class WaitingViewController: UIViewController {
         
         // memberCollectionView
         memberCollectionView.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(leftSecond.snp.bottom).offset(223.02)
+            make.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(148.34)
         }
         
         // memberPhrase
         memberPhrase.snp.makeConstraints { make in
-            make.top.equalTo(memberCollectionView.snp.top).offset(8)
+            make.top.equalTo(memberCollectionView.snp.top).offset(12)
             make.leading.equalTo(memberCollectionView.snp.leading).offset(16)
         }
     }
+    
 }
 
 extension WaitingViewController: UICollectionViewDataSource {

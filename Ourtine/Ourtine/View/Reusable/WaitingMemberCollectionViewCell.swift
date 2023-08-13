@@ -39,19 +39,7 @@ class WaitingMemberCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(self.memberName)
         
         setConstraints()
-        
     }
-    
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//
-//        self.prepare(image: nil, text: nil)
-//    }
-    
-//    func prepare(image: UIImage?, text: String?) {
-//        self.memberProfile.image = image
-//        self.memberName.text = text
-//    }
     
     func getMemberData(data: MemberModel) {
         self.memberData = data
@@ -66,7 +54,8 @@ class WaitingMemberCollectionViewCell: UICollectionViewCell {
     private func setConstraints() {
         // memberProfile
         memberProfile.snp.makeConstraints { make in
-            make.top.equalTo(self.contentView.snp.top).offset(13)
+//            make.top.equalTo(self.contentView.snp.top).offset(40.4)
+            make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.height.width.equalTo(72)
         }

@@ -79,6 +79,8 @@ class ReviewViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         [
             firstPhraseLabel,
