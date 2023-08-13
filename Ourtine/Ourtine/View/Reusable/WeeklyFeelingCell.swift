@@ -46,6 +46,17 @@ class WeeklyFeelingStackCell: UIView {
         return label
     }()
     
+    func adjustCellAppearanceForReview() {
+        countLabel.isHidden = true
+        descLabel.font = .systemFont(ofSize: 13, weight: .regular)
+        
+        feelingImage.snp.remakeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(10)
+            $0.width.equalTo(40)
+            $0.height.equalTo(40)
+        }
+    }
     
     // 셀에 컴포넌트 요소 등록
     private func addViews() {
