@@ -104,6 +104,7 @@
 		B6927E342A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E332A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift */; };
 		B6927E362A8575D100B8BC4F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6927E352A8575D100B8BC4F /* PaddingLabel.swift */; };
 		B6BEB58E2A87D7C300A311B8 /* VoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB58D2A87D7C300A311B8 /* VoteViewController.swift */; };
+		B6BEB5902A890CFF00A311B8 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB58F2A890CFF00A311B8 /* ReviewView.swift */; };
 		B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283332A7260B9007FE619 /* CarouselViewController.swift */; };
 		B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */; };
 		B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283412A72C7C1007FE619 /* CarouselItem.swift */; };
@@ -213,6 +214,7 @@
 		B6927E332A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingMemberViewCell.swift; sourceTree = "<group>"; };
 		B6927E352A8575D100B8BC4F /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		B6BEB58D2A87D7C300A311B8 /* VoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteViewController.swift; sourceTree = "<group>"; };
+		B6BEB58F2A890CFF00A311B8 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		B6C283332A7260B9007FE619 /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		B6C283412A72C7C1007FE619 /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				88BDD32D2A82C3760082A961 /* HC_finalView.swift */,
 				B6927E312A85528300B8BC4F /* ParticipatingMemberCollectionView.swift */,
 				882B757F2A863644000B3943 /* MyPageView.swift */,
+				B6BEB58F2A890CFF00A311B8 /* ReviewView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				882B75822A863961000B3943 /* MyPageViewController.swift in Sources */,
 				B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */,
 				881D5FC52A742CC100603548 /* HabitAlarmView.swift in Sources */,
+				B6BEB5902A890CFF00A311B8 /* ReviewView.swift in Sources */,
 				88BDD32A2A82BE770082A961 /* HC_noFriendsView.swift in Sources */,
 				88BDD3242A82B27C0082A961 /* HC_selectFriednsView.swift in Sources */,
 				88804CCC2A7FFBBF00562E35 /* HC_chooseDateViewController.swift in Sources */,
