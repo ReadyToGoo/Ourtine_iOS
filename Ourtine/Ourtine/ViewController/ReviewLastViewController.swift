@@ -40,6 +40,25 @@ class ReviewLastViewController: UIViewController {
         return view
     }()
     
+    private let homeBtn: UIButton = {
+        var config = UIButton.Configuration.filled()
+        config.baseBackgroundColor = .app_PrimaryColor
+        config.background.cornerRadius = 8
+        config.contentInsets = NSDirectionalEdgeInsets(top: 17.5, leading: 149, bottom: 17.5, trailing: 149)
+        
+        var titleAttr = AttributedString.init("홈으로 가기")
+        titleAttr.font = .systemFont(ofSize: 16, weight: .semibold)
+        config.attributedTitle = titleAttr
+        
+        let button = UIButton(configuration: config)
+        return button
+    }()
+    
+    @objc private func homeBtnTapped() {
+        let vc = HomeViewController()
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,13 +82,16 @@ class ReviewLastViewController: UIViewController {
         // starRateView
         starRateView.currentStar = selectedStarNumber ?? 0
         
+        // homeBtn
+        homeBtn.addTarget(self, action: #selector(homeBtnTapped), for: .touchUpInside)
     }
     
     private func addSubviews() {
         [
             phraseLabel,
             feelingImage,
-            starRateView
+            starRateView,
+            homeBtn
         ].forEach({view.addSubview($0)})
     }
     
@@ -88,6 +110,11 @@ class ReviewLastViewController: UIViewController {
         starRateView.snp.makeConstraints { make in
             make.top.equalTo(feelingImage.snp.bottom).offset(32.73)
             make.centerX.equalToSuperview()
+        }
+        
+        homeBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-32)
         }
     }
 
