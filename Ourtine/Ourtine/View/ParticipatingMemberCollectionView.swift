@@ -6,62 +6,77 @@
 //
 
 import UIKit
+import SnapKit
 
-private let reuseIdentifier = ParticipatingMemberViewCell.id
+class ParticipatingMemberCollectionView: UIView {
 
-class ParticipatingMemberCollectionView: UICollectionViewController {
+    private let reuseIdentifier = ParticipatingMemberViewCell.id
+
     var participantNum = Dummy_participatingMemberList.count
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // layout
+    private let flowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 110, height: 138)
+        return layout
+    }()
+
+    // collectionView
+    private lazy var collectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
+        view.isScrollEnabled = true
+        view.showsHorizontalScrollIndicator = false
+        view.showsVerticalScrollIndicator = true
+        view.contentInset = .zero
+        view.backgroundColor = .clear
+        view.clipsToBounds = true
+        view.register(ParticipatingMemberViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+        return view
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .vertical
-        flowLayout.minimumInteritemSpacing = 52
-        flowLayout.minimumLineSpacing = 24
-//        if participantNum < 5 {
-//            flowLayout.itemSize = CGSize(width: 272, height: 300)
-//        } else {
-//            flowLayout.itemSize = CGSize(width: 328, height: 256)
-//        }
+        self.addSubview(self.collectionView)
         
-        collectionView.backgroundColor = .clear
-        collectionView.register(ParticipatingMemberViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        
+        setConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    // Num of Cell
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    private func setConstraints() {
+        collectionView.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.height.equalTo(300)
+                make.width.equalToSuperview()
+            }
+    }
+
+
+}
+
+extension ParticipatingMemberCollectionView: UICollectionViewDataSource, UICollectionViewDelegate {
+    // numOfCell
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return participantNum
     }
-
-    // Cell Content
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    // cellContent
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ParticipatingMemberViewCell else {
             return UICollectionViewCell()
         }
-
-        // Configure the cell
         cell.getMemberData(data: Dummy_participatingMemberList[indexPath.row])
-
+        
         return cell
     }
-    
-    // Cell Size
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: Double
-        let height: Double
-
-        if participantNum < 5 {
-            width = 110
-            height = 138
-        } else {
-            width = 88
-            height = 114
-        }
-
-        return CGSize(width: width, height: height)
-    }
-    
     
     // Top-Bottom Distance Between Cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -71,7 +86,7 @@ class ParticipatingMemberCollectionView: UICollectionViewController {
             return 24
         }
     }
-    
+
     // Left-Right Distance Between Cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         if participantNum < 5 {
@@ -80,4 +95,5 @@ class ParticipatingMemberCollectionView: UICollectionViewController {
             return 32
         }
     }
+    
 }

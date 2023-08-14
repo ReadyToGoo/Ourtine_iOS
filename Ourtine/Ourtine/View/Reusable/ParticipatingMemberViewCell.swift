@@ -23,13 +23,13 @@ class ParticipatingMemberViewCell: UICollectionViewCell {
     }()
     
     private let memberName: UILabel = {
-        let label = PaddingLabel(withInsets: 4, 4, 9.54, 9.54)
+        let label = PaddingLabel(withInsets: 4, 4, 10, 10)
         label.font = .systemFont(ofSize: 13, weight: .regular)
         label.textAlignment = .center
         label.textColor = .black
         label.backgroundColor = .white.withAlphaComponent(0.35)
         label.layer.masksToBounds = true
-        label.layer.cornerRadius = 16
+        label.layer.cornerRadius = 13
         return label
     }()
     

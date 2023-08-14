@@ -56,7 +56,7 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         label.textColor = .white
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 70, weight: .bold)
-        label.text = ""
+        label.text = "00:00:00"
         return label
     }()
     
@@ -106,14 +106,11 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
     }
     
     // members
-    private let memberCollectionView: ParticipatingMemberCollectionView = {
-        // Create CollectionView Layer
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 52
-        layout.minimumLineSpacing = 52
-        let collectionView = ParticipatingMemberCollectionView(collectionViewLayout: layout)
-        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
+    private let memberView: ParticipatingMemberCollectionView = {
+        let view = ParticipatingMemberCollectionView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     // camerBtn
@@ -139,32 +136,29 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         self.tabBarController?.tabBar.isHidden = true
         view.backgroundColor = .app_PrimaryColor
         
-        addChild(memberCollectionView)
         [
             habitPhrase,
             countDownLabel,
-            memberCollectionView.view,
+            memberView,
             cameraBtn
         ].forEach {view.addSubview($0)}
-
-
-        // habitPhrase
-        let text = "\(tempUserName)님, \(postPositionText(tempUserHabit))\n오늘도 활기차게!"
-        habitPhrase.text = text
-        habitPhrase.halfTextColorChange(fullText: text, changeText: postPositionText(tempUserHabit), color: .white)
-        
-        // memberCollectionView
-        memberCollectionView.didMove(toParent: self)
         
         startCountDown()
         setConstraints()
         setupUI()
+        
+        // habitPhrase
+        let text = "\(tempUserName)님, \(postPositionText(tempUserHabit))\n오늘도 활기차게!"
+        habitPhrase.text = text
+        habitPhrase.halfTextColorChange(fullText: text, changeText: postPositionText(tempUserHabit), color: .white)
     }
     
     private func setupUI() {
         cameraBtn.addTarget(self, action: #selector(cameraBtnTapped), for: .touchUpInside)
         cameraManager.delegate = self
         cameraManager.checkCameraAuthorization()
+        view.addSubview(memberView)
+
     }
     
     private func setConstraints() {
@@ -180,16 +174,13 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
             make.centerX.equalToSuperview()
         }
         
-        // memberCollectionView
-        memberCollectionView.view.snp.makeConstraints { make in
-            make.top.equalTo(countDownLabel.snp.bottom).offset(54.91)
+        // memberView
+        memberView.snp.makeConstraints { make in
+            make.top.equalTo(habitPhrase.snp.bottom).offset(228)
             make.centerX.equalToSuperview()
-            make.leading.greaterThanOrEqualToSuperview().offset(16)
-            make.trailing.lessThanOrEqualToSuperview().offset(-16)
-            make.width.equalToSuperview().offset(-32).priority(.low)
-            make.height.equalTo(256) // Adjust the initial height
+            make.width.equalTo(272)
+            make.height.equalTo(300)
         }
-        
         
         // cameraBtn
         cameraBtn.snp.makeConstraints { make in
