@@ -56,7 +56,7 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         label.textColor = .white
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 70, weight: .bold)
-        label.text = ""
+        label.text = "00:00:00"
         return label
     }()
     
@@ -142,19 +142,15 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
             memberView,
             cameraBtn
         ].forEach {view.addSubview($0)}
-
-
-        // habitPhrase
-        let text = "\(tempUserName)님, \(postPositionText(tempUserHabit))\n오늘도 활기차게!"
-        habitPhrase.text = text
-        habitPhrase.halfTextColorChange(fullText: text, changeText: postPositionText(tempUserHabit), color: .white)
-        
-        // memberView
-//        memberCollectionView.didMove(toParent: self)
         
         startCountDown()
         setConstraints()
         setupUI()
+        
+        // habitPhrase
+        let text = "\(tempUserName)님, \(postPositionText(tempUserHabit))\n오늘도 활기차게!"
+        habitPhrase.text = text
+        habitPhrase.halfTextColorChange(fullText: text, changeText: postPositionText(tempUserHabit), color: .white)
     }
     
     private func setupUI() {
@@ -179,15 +175,9 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         }
         
         // memberView
-//        memberView.snp.makeConstraints { make in
-//            make.top.equalTo(countDownLabel.snp.bottom).offset(83.16)
-//            make.centerX.equalToSuperview()
-//        }
         memberView.snp.makeConstraints { make in
-            make.top.equalTo(countDownLabel.snp.bottom).offset(83.16)
+            make.top.equalTo(habitPhrase.snp.bottom).offset(228)
             make.centerX.equalToSuperview()
-            // Add width and height constraints if needed
-            // For example:
             make.width.equalTo(272)
             make.height.equalTo(300)
         }

@@ -43,7 +43,6 @@ class ParticipatingMemberCollectionView: UIView {
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        collectionView.backgroundColor = .red
         
         setConstraints()
     }
