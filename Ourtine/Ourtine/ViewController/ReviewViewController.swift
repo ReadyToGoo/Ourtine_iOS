@@ -74,8 +74,10 @@ class ReviewViewController: UIViewController {
     @objc private func nextBtnTapped() {
         // TODO: Save selectedStarNumber
         // TODO: Save selectedFeelingIndex
-        let vc = HomeViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        let vc = ReviewLastViewController()
+        vc.selectedFeelingIndex = selectedFeelingIndex
+        vc.selectedStarNumber = selectedStarNumber
+        navigationController?.pushViewController(vc, animated: false)
     }
     
     override func viewDidLoad() {
