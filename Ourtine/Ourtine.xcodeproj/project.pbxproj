@@ -104,6 +104,8 @@
 		B6BEB5922A8923E200A311B8 /* StarRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB5912A8923E200A311B8 /* StarRateView.swift */; };
 		B6BEB5942A892B9800A311B8 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB5932A892B9800A311B8 /* ReviewViewController.swift */; };
 		B6BEB5962A89374800A311B8 /* FeelingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB5952A89374800A311B8 /* FeelingSelectView.swift */; };
+		B6BEB59B2A89C85400A311B8 /* ReviewLastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB59A2A89C85400A311B8 /* ReviewLastViewController.swift */; };
+		B6BEB59D2A89DAE900A311B8 /* StaticStarRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BEB59C2A89DAE900A311B8 /* StaticStarRateView.swift */; };
 		B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283332A7260B9007FE619 /* CarouselViewController.swift */; };
 		B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */; };
 		B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C283412A72C7C1007FE619 /* CarouselItem.swift */; };
@@ -213,6 +215,8 @@
 		B6BEB5912A8923E200A311B8 /* StarRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRateView.swift; sourceTree = "<group>"; };
 		B6BEB5932A892B9800A311B8 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		B6BEB5952A89374800A311B8 /* FeelingSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingSelectView.swift; sourceTree = "<group>"; };
+		B6BEB59A2A89C85400A311B8 /* ReviewLastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewLastViewController.swift; sourceTree = "<group>"; };
+		B6BEB59C2A89DAE900A311B8 /* StaticStarRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticStarRateView.swift; sourceTree = "<group>"; };
 		B6C283332A7260B9007FE619 /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		B6C2833F2A72C3AC007FE619 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		B6C283412A72C7C1007FE619 /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
@@ -271,6 +275,7 @@
 				882B757F2A863644000B3943 /* MyPageView.swift */,
 				B6BEB5912A8923E200A311B8 /* StarRateView.swift */,
 				B6BEB5952A89374800A311B8 /* FeelingSelectView.swift */,
+				B6BEB59C2A89DAE900A311B8 /* StaticStarRateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 				88DC8BB42A87A927000E242D /* ProfileOfUserViewController.swift */,
 				B6BEB58D2A87D7C300A311B8 /* VoteViewController.swift */,
 				B6BEB5932A892B9800A311B8 /* ReviewViewController.swift */,
+				B6BEB59A2A89C85400A311B8 /* ReviewLastViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -517,6 +523,7 @@
 				881C06072A617C6200184AFA /* SearchResultView.swift in Sources */,
 				88FE2D282A7ED3EF00C475A7 /* HC_chooseTypeView.swift in Sources */,
 				881C06232A62E65B00184AFA /* SearchedHabitProfile.swift in Sources */,
+				B6BEB59B2A89C85400A311B8 /* ReviewLastViewController.swift in Sources */,
 				88BDD3282A82B84D0082A961 /* HC_MemberCollectionViewCell.swift in Sources */,
 				881C061F2A62D94500184AFA /* UIComponents+setBackgroundColor.swift in Sources */,
 				88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */,
@@ -527,6 +534,7 @@
 				888FB2A62A84177100930987 /* FlowDataManager.swift in Sources */,
 				881C06192A62A65B00184AFA /* HabitProfileTableViewCell.swift in Sources */,
 				88FE2D2A2A7ED3EF00C475A7 /* HC_chooseCategoryView.swift in Sources */,
+				B6BEB59D2A89DAE900A311B8 /* StaticStarRateView.swift in Sources */,
 				B6CAF8842A7CCFD200448673 /* TimelineViewController.swift in Sources */,
 				B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */,
 				88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */,
