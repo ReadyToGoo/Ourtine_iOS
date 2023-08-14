@@ -39,6 +39,7 @@ class ParticipatingMemberViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .blue
         
         self.contentView.addSubview(self.memberProfileBtn)
         self.contentView.addSubview(self.memberName)

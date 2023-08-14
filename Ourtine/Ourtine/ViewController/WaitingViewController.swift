@@ -90,8 +90,8 @@ class WaitingViewController: UIViewController {
     
     // 카운트다운 완료시 화면 전환 함수
     @objc func updateView() {
-//        let vc = ParticipatingViewController()
-        let vc = ReviewViewController()
+        let vc = ParticipatingViewController()
+//        let vc = ReviewViewController()
         navigationController?.pushViewController(vc, animated: false)
     }
 

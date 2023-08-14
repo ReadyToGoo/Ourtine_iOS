@@ -73,7 +73,7 @@ class VoteViewController: UIViewController {
     
     @objc private func voteBtnTapped() {
         // TODO: Change ViewController
-        let vc = HomeViewController()
+        let vc = ReviewViewController()
         navigationController?.pushViewController(vc, animated: false)
     }
     

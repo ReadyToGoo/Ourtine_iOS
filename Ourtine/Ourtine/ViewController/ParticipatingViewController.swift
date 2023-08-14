@@ -106,14 +106,11 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
     }
     
     // members
-    private let memberCollectionView: ParticipatingMemberCollectionView = {
-        // Create CollectionView Layer
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 52
-        layout.minimumLineSpacing = 52
-        let collectionView = ParticipatingMemberCollectionView(collectionViewLayout: layout)
-        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
+    private let memberView: ParticipatingMemberCollectionView = {
+        let view = ParticipatingMemberCollectionView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     // camerBtn
@@ -139,11 +136,10 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         self.tabBarController?.tabBar.isHidden = true
         view.backgroundColor = .app_PrimaryColor
         
-        addChild(memberCollectionView)
         [
             habitPhrase,
             countDownLabel,
-            memberCollectionView.view,
+            memberView,
             cameraBtn
         ].forEach {view.addSubview($0)}
 
@@ -153,8 +149,8 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         habitPhrase.text = text
         habitPhrase.halfTextColorChange(fullText: text, changeText: postPositionText(tempUserHabit), color: .white)
         
-        // memberCollectionView
-        memberCollectionView.didMove(toParent: self)
+        // memberView
+//        memberCollectionView.didMove(toParent: self)
         
         startCountDown()
         setConstraints()
@@ -165,6 +161,8 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         cameraBtn.addTarget(self, action: #selector(cameraBtnTapped), for: .touchUpInside)
         cameraManager.delegate = self
         cameraManager.checkCameraAuthorization()
+        view.addSubview(memberView)
+
     }
     
     private func setConstraints() {
@@ -180,16 +178,19 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
             make.centerX.equalToSuperview()
         }
         
-        // memberCollectionView
-        memberCollectionView.view.snp.makeConstraints { make in
-            make.top.equalTo(countDownLabel.snp.bottom).offset(54.91)
+        // memberView
+//        memberView.snp.makeConstraints { make in
+//            make.top.equalTo(countDownLabel.snp.bottom).offset(83.16)
+//            make.centerX.equalToSuperview()
+//        }
+        memberView.snp.makeConstraints { make in
+            make.top.equalTo(countDownLabel.snp.bottom).offset(83.16)
             make.centerX.equalToSuperview()
-            make.leading.greaterThanOrEqualToSuperview().offset(16)
-            make.trailing.lessThanOrEqualToSuperview().offset(-16)
-            make.width.equalToSuperview().offset(-32).priority(.low)
-            make.height.equalTo(256) // Adjust the initial height
+            // Add width and height constraints if needed
+            // For example:
+            make.width.equalTo(272)
+            make.height.equalTo(300)
         }
-        
         
         // cameraBtn
         cameraBtn.snp.makeConstraints { make in
