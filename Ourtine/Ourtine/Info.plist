@@ -2,12 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>동영상 촬영 및 음성인식을 위하 권한 필요</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>앨범에서 사진 선택</string>
-	<key>NSCameraUsageDescription</key>
-	<string>카메라로 사진 찍기</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>동영상 촬영 및 음성인식을 위하 권한 필요</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>앨범에서 사진 선택</string>
+    <key>NSCameraUsageDescription</key>
+    <string>카메라로 사진 찍기</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>Ourtine</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
