@@ -46,14 +46,6 @@
 		8848358F2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848358E2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift */; };
 		884835932A715D6F00B73E28 /* HorizontalPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835922A715D6F00B73E28 /* HorizontalPickerViewCell.swift */; };
 		885026172A73C1D100974094 /* HabitCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885026162A73C1D100974094 /* HabitCardModel.swift */; };
-		8851EDEC2A8B72B70062D3E4 /* ExtractTokenFromCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EDEB2A8B72B70062D3E4 /* ExtractTokenFromCookie.swift */; };
-		8851EDEE2A8B875D0062D3E4 /* HabitSessionAPI sending Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EDED2A8B875D0062D3E4 /* HabitSessionAPI sending Struct.swift */; };
-		8851EDF02A8B8BE70062D3E4 /* HabitSessionAPI responding Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EDEF2A8B8BE70062D3E4 /* HabitSessionAPI responding Struct.swift */; };
-		8851EDF22A8B95620062D3E4 /* AuthAPI sending Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EDF12A8B95620062D3E4 /* AuthAPI sending Struct.swift */; };
-		8851EDF52A8BA8A10062D3E4 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 8851EDF42A8BA8A10062D3E4 /* SwiftJWT */; };
-		8851EDF72A8BA9CC0062D3E4 /* JWTVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EDF62A8BA9CC0062D3E4 /* JWTVerifier.swift */; };
-		8851EDF92A8BABE00062D3E4 /* ExtractUserInfoFromToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EDF82A8BABE00062D3E4 /* ExtractUserInfoFromToken.swift */; };
-		8851EDFB2A8BEFBF0062D3E4 /* UserAPI sending Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EDFA2A8BEFBF0062D3E4 /* UserAPI sending Struct.swift */; };
 		88804CC62A7F9EBD00562E35 /* ColorToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC52A7F9EBD00562E35 /* ColorToggleButton.swift */; };
 		88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC72A7FE3D900562E35 /* Date + Extension.swift */; };
 		88804CCA2A7FFACD00562E35 /* HC_chooseDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC92A7FFACD00562E35 /* HC_chooseDateView.swift */; };
@@ -83,23 +75,6 @@
 		88E2B9B42A6BBF170039CF68 /* DeviceScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E2B9B32A6BBF170039CF68 /* DeviceScreenSize.swift */; };
 		88E653972A80151A00ABF9D9 /* HC_memberCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E653962A80151A00ABF9D9 /* HC_memberCountView.swift */; };
 		88E653992A80155D00ABF9D9 /* HC_memberCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E653982A80155D00ABF9D9 /* HC_memberCountViewController.swift */; };
-		88F8F0B22A89F57D0095DF43 /* HabitAPI sending Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0AE2A89F57D0095DF43 /* HabitAPI sending Struct.swift */; };
-		88F8F0B32A89F57D0095DF43 /* funcList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0AF2A89F57D0095DF43 /* funcList.swift */; };
-		88F8F0B42A89F57D0095DF43 /* MoyaWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0B02A89F57D0095DF43 /* MoyaWrapper.swift */; };
-		88F8F0B52A89F57D0095DF43 /* HabitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0B12A89F57D0095DF43 /* HabitAPI.swift */; };
-		88F8F0B92A89F5940095DF43 /* tokenStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0B62A89F5940095DF43 /* tokenStruct.swift */; };
-		88F8F0BA2A89F5940095DF43 /* myUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0B72A89F5940095DF43 /* myUserInfo.swift */; };
-		88F8F0BB2A89F5940095DF43 /* HabitAPI responding Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0B82A89F5940095DF43 /* HabitAPI responding Struct.swift */; };
-		88F8F0BE2A89F60B0095DF43 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 88F8F0BD2A89F60B0095DF43 /* Moya */; };
-		88F8F0C32A89FA420095DF43 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0C22A89FA420095DF43 /* AuthAPI.swift */; };
-		88F8F0C62A89FAA30095DF43 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0C52A89FAA30095DF43 /* UserAPI.swift */; };
-		88F8F0C82A89FBCB0095DF43 /* HabitSessionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0C72A89FBCB0095DF43 /* HabitSessionAPI.swift */; };
-		88F8F0CC2A89FBF60095DF43 /* FollowAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0CB2A89FBF60095DF43 /* FollowAPI.swift */; };
-		88F8F0CE2A8A1F0E0095DF43 /* FollowAPI sending Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0CD2A8A1F0E0095DF43 /* FollowAPI sending Struct.swift */; };
-		88F8F0D02A8A202D0095DF43 /* FollowAPI responding Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0CF2A8A202D0095DF43 /* FollowAPI responding Struct.swift */; };
-		88F8F0D22A8A288A0095DF43 /* UserAPI responding Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0D12A8A288A0095DF43 /* UserAPI responding Struct.swift */; };
-		88F8F0D42A8A28BF0095DF43 /* Base Responding Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0D32A8A28BF0095DF43 /* Base Responding Struct.swift */; };
-		88F8F0D62A8AB4700095DF43 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8F0D52A8AB4700095DF43 /* LogInViewController.swift */; };
 		88FE2D272A7ED3EF00C475A7 /* HC_chooseTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D232A7ED3EF00C475A7 /* HC_chooseTimeView.swift */; };
 		88FE2D282A7ED3EF00C475A7 /* HC_chooseTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D242A7ED3EF00C475A7 /* HC_chooseTypeView.swift */; };
 		88FE2D292A7ED3EF00C475A7 /* HC_introduceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D252A7ED3EF00C475A7 /* HC_introduceView.swift */; };
@@ -181,13 +156,6 @@
 		8848358E2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		884835922A715D6F00B73E28 /* HorizontalPickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerViewCell.swift; sourceTree = "<group>"; };
 		885026162A73C1D100974094 /* HabitCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardModel.swift; sourceTree = "<group>"; };
-		8851EDEB2A8B72B70062D3E4 /* ExtractTokenFromCookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractTokenFromCookie.swift; sourceTree = "<group>"; };
-		8851EDED2A8B875D0062D3E4 /* HabitSessionAPI sending Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitSessionAPI sending Struct.swift"; sourceTree = "<group>"; };
-		8851EDEF2A8B8BE70062D3E4 /* HabitSessionAPI responding Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitSessionAPI responding Struct.swift"; sourceTree = "<group>"; };
-		8851EDF12A8B95620062D3E4 /* AuthAPI sending Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthAPI sending Struct.swift"; sourceTree = "<group>"; };
-		8851EDF62A8BA9CC0062D3E4 /* JWTVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTVerifier.swift; sourceTree = "<group>"; };
-		8851EDF82A8BABE00062D3E4 /* ExtractUserInfoFromToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractUserInfoFromToken.swift; sourceTree = "<group>"; };
-		8851EDFA2A8BEFBF0062D3E4 /* UserAPI sending Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAPI sending Struct.swift"; sourceTree = "<group>"; };
 		88804CC52A7F9EBD00562E35 /* ColorToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToggleButton.swift; sourceTree = "<group>"; };
 		88804CC72A7FE3D900562E35 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		88804CC92A7FFACD00562E35 /* HC_chooseDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_chooseDateView.swift; sourceTree = "<group>"; };
@@ -217,22 +185,6 @@
 		88E2B9B32A6BBF170039CF68 /* DeviceScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceScreenSize.swift; sourceTree = "<group>"; };
 		88E653962A80151A00ABF9D9 /* HC_memberCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_memberCountView.swift; sourceTree = "<group>"; };
 		88E653982A80155D00ABF9D9 /* HC_memberCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_memberCountViewController.swift; sourceTree = "<group>"; };
-		88F8F0AE2A89F57D0095DF43 /* HabitAPI sending Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HabitAPI sending Struct.swift"; sourceTree = "<group>"; };
-		88F8F0AF2A89F57D0095DF43 /* funcList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = funcList.swift; sourceTree = "<group>"; };
-		88F8F0B02A89F57D0095DF43 /* MoyaWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaWrapper.swift; sourceTree = "<group>"; };
-		88F8F0B12A89F57D0095DF43 /* HabitAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitAPI.swift; sourceTree = "<group>"; };
-		88F8F0B62A89F5940095DF43 /* tokenStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tokenStruct.swift; sourceTree = "<group>"; };
-		88F8F0B72A89F5940095DF43 /* myUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myUserInfo.swift; sourceTree = "<group>"; };
-		88F8F0B82A89F5940095DF43 /* HabitAPI responding Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HabitAPI responding Struct.swift"; sourceTree = "<group>"; };
-		88F8F0C22A89FA420095DF43 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
-		88F8F0C52A89FAA30095DF43 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
-		88F8F0C72A89FBCB0095DF43 /* HabitSessionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitSessionAPI.swift; sourceTree = "<group>"; };
-		88F8F0CB2A89FBF60095DF43 /* FollowAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowAPI.swift; sourceTree = "<group>"; };
-		88F8F0CD2A8A1F0E0095DF43 /* FollowAPI sending Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FollowAPI sending Struct.swift"; sourceTree = "<group>"; };
-		88F8F0CF2A8A202D0095DF43 /* FollowAPI responding Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FollowAPI responding Struct.swift"; sourceTree = "<group>"; };
-		88F8F0D12A8A288A0095DF43 /* UserAPI responding Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAPI responding Struct.swift"; sourceTree = "<group>"; };
-		88F8F0D32A8A28BF0095DF43 /* Base Responding Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Base Responding Struct.swift"; sourceTree = "<group>"; };
-		88F8F0D52A8AB4700095DF43 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		88FE2D232A7ED3EF00C475A7 /* HC_chooseTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_chooseTimeView.swift; sourceTree = "<group>"; };
 		88FE2D242A7ED3EF00C475A7 /* HC_chooseTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_chooseTypeView.swift; sourceTree = "<group>"; };
 		88FE2D252A7ED3EF00C475A7 /* HC_introduceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_introduceView.swift; sourceTree = "<group>"; };
@@ -283,8 +235,6 @@
 			files = (
 				B649932A2A5D41E40061C47E /* SnapKit in Frameworks */,
 				8800A4852A776886004714AD /* KakaoSDKAuth in Frameworks */,
-				88F8F0BE2A89F60B0095DF43 /* Moya in Frameworks */,
-				8851EDF52A8BA8A10062D3E4 /* SwiftJWT in Frameworks */,
 				8800A4872A776886004714AD /* KakaoSDKUser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +352,6 @@
 				881C06002A616FB500184AFA /* TabBarController.swift */,
 				881C06042A6178F600184AFA /* HabitJoinVIewController.swift */,
 				881C06022A61704000184AFA /* DummyViewController.swift */,
-				88F8F0D52A8AB4700095DF43 /* LogInViewController.swift */,
 			);
 			path = DummyVC;
 			sourceTree = "<group>";
@@ -452,91 +401,6 @@
 			path = Reusable;
 			sourceTree = "<group>";
 		};
-		8851EDEA2A8B728D0062D3E4 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				8851EDEB2A8B72B70062D3E4 /* ExtractTokenFromCookie.swift */,
-				8851EDF82A8BABE00062D3E4 /* ExtractUserInfoFromToken.swift */,
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
-		88F8F0AD2A89F54E0095DF43 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				8851EDEA2A8B728D0062D3E4 /* Utility */,
-				88F8F0BF2A89F99D0095DF43 /* HabitAPI */,
-				88F8F0CA2A89FBEC0095DF43 /* FollowAPI */,
-				88F8F0C92A89FBD10095DF43 /* HabitSessionoAPI */,
-				88F8F0C42A89FA950095DF43 /* UserAPI */,
-				88F8F0C12A89FA2D0095DF43 /* AuthAPI */,
-				88F8F0C02A89F9AB0095DF43 /* Common */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		88F8F0BF2A89F99D0095DF43 /* HabitAPI */ = {
-			isa = PBXGroup;
-			children = (
-				88F8F0B12A89F57D0095DF43 /* HabitAPI.swift */,
-				88F8F0AE2A89F57D0095DF43 /* HabitAPI sending Struct.swift */,
-				88F8F0B82A89F5940095DF43 /* HabitAPI responding Struct.swift */,
-			);
-			path = HabitAPI;
-			sourceTree = "<group>";
-		};
-		88F8F0C02A89F9AB0095DF43 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				88F8F0B72A89F5940095DF43 /* myUserInfo.swift */,
-				88F8F0B02A89F57D0095DF43 /* MoyaWrapper.swift */,
-				88F8F0AF2A89F57D0095DF43 /* funcList.swift */,
-				88F8F0B62A89F5940095DF43 /* tokenStruct.swift */,
-				88F8F0D32A8A28BF0095DF43 /* Base Responding Struct.swift */,
-				8851EDF62A8BA9CC0062D3E4 /* JWTVerifier.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		88F8F0C12A89FA2D0095DF43 /* AuthAPI */ = {
-			isa = PBXGroup;
-			children = (
-				88F8F0C22A89FA420095DF43 /* AuthAPI.swift */,
-				8851EDF12A8B95620062D3E4 /* AuthAPI sending Struct.swift */,
-			);
-			path = AuthAPI;
-			sourceTree = "<group>";
-		};
-		88F8F0C42A89FA950095DF43 /* UserAPI */ = {
-			isa = PBXGroup;
-			children = (
-				88F8F0C52A89FAA30095DF43 /* UserAPI.swift */,
-				8851EDFA2A8BEFBF0062D3E4 /* UserAPI sending Struct.swift */,
-				88F8F0D12A8A288A0095DF43 /* UserAPI responding Struct.swift */,
-			);
-			path = UserAPI;
-			sourceTree = "<group>";
-		};
-		88F8F0C92A89FBD10095DF43 /* HabitSessionoAPI */ = {
-			isa = PBXGroup;
-			children = (
-				88F8F0C72A89FBCB0095DF43 /* HabitSessionAPI.swift */,
-				8851EDED2A8B875D0062D3E4 /* HabitSessionAPI sending Struct.swift */,
-				8851EDEF2A8B8BE70062D3E4 /* HabitSessionAPI responding Struct.swift */,
-			);
-			path = HabitSessionoAPI;
-			sourceTree = "<group>";
-		};
-		88F8F0CA2A89FBEC0095DF43 /* FollowAPI */ = {
-			isa = PBXGroup;
-			children = (
-				88F8F0CB2A89FBF60095DF43 /* FollowAPI.swift */,
-				88F8F0CD2A8A1F0E0095DF43 /* FollowAPI sending Struct.swift */,
-				88F8F0CF2A8A202D0095DF43 /* FollowAPI responding Struct.swift */,
-			);
-			path = FollowAPI;
-			sourceTree = "<group>";
-		};
 		B64993082A5D3EDC0061C47E = {
 			isa = PBXGroup;
 			children = (
@@ -556,7 +420,6 @@
 		B64993132A5D3EDC0061C47E /* Ourtine */ = {
 			isa = PBXGroup;
 			children = (
-				88F8F0AD2A89F54E0095DF43 /* Network */,
 				8800A4822A7767F6004714AD /* Ourtine.entitlements */,
 				881C05EF2A61439300184AFA /* Model */,
 				881C05F02A61439900184AFA /* View */,
@@ -593,8 +456,6 @@
 				B64993292A5D41E40061C47E /* SnapKit */,
 				8800A4842A776886004714AD /* KakaoSDKAuth */,
 				8800A4862A776886004714AD /* KakaoSDKUser */,
-				88F8F0BD2A89F60B0095DF43 /* Moya */,
-				8851EDF42A8BA8A10062D3E4 /* SwiftJWT */,
 			);
 			productName = Ourtine;
 			productReference = B64993112A5D3EDC0061C47E /* Ourtine.app */;
@@ -627,8 +488,6 @@
 			packageReferences = (
 				B64993282A5D41E40061C47E /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8800A4832A776886004714AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
-				88F8F0BC2A89F60B0095DF43 /* XCRemoteSwiftPackageReference "Moya" */,
-				8851EDF32A8BA8A10062D3E4 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
 			);
 			productRefGroup = B64993122A5D3EDC0061C47E /* Products */;
 			projectDirPath = "";
@@ -668,7 +527,6 @@
 				88BDD3282A82B84D0082A961 /* HC_MemberCollectionViewCell.swift in Sources */,
 				881C061F2A62D94500184AFA /* UIComponents+setBackgroundColor.swift in Sources */,
 				88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */,
-				88F8F0BA2A89F5940095DF43 /* myUserInfo.swift in Sources */,
 				88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */,
 				88FE2D362A7ED46600C475A7 /* HC_chooseTypeViewController.swift in Sources */,
 				882B757A2A84EFFC000B3943 /* HabitInfoModel.swift in Sources */,
@@ -683,26 +541,17 @@
 				882AC3BD2A78348A002AD232 /* UIImage+onlyColor.swift in Sources */,
 				881D5FC72A742D0E00603548 /* HabitAlarmViewController.swift in Sources */,
 				88E653992A80155D00ABF9D9 /* HC_memberCountViewController.swift in Sources */,
-				88F8F0B52A89F57D0095DF43 /* HabitAPI.swift in Sources */,
 				881C05F32A61461D00184AFA /* SearchView.swift in Sources */,
-				88F8F0B42A89F57D0095DF43 /* MoyaWrapper.swift in Sources */,
 				88371A722A702C650056BB5A /* MemberModel.swift in Sources */,
 				881C061B2A62AB3C00184AFA /* UIImage(SFSymbols)+resize.swift in Sources */,
 				88FE2D3A2A7ED4AD00C475A7 /* HC_Category.swift in Sources */,
-				8851EDEC2A8B72B70062D3E4 /* ExtractTokenFromCookie.swift in Sources */,
-				88F8F0C82A89FBCB0095DF43 /* HabitSessionAPI.swift in Sources */,
 				88FE2D372A7ED46600C475A7 /* HC_chooseCategoryViewController.swift in Sources */,
 				88A64C112A7A8CA600292ED6 /* HabitDescView.swift in Sources */,
 				881C06212A62E64F00184AFA /* SearchedUserProfile.swift in Sources */,
-				88F8F0D22A8A288A0095DF43 /* UserAPI responding Struct.swift in Sources */,
-				88F8F0D62A8AB4700095DF43 /* LogInViewController.swift in Sources */,
 				B64993192A5D3EDC0061C47E /* ViewController.swift in Sources */,
-				88F8F0B32A89F57D0095DF43 /* funcList.swift in Sources */,
-				8851EDF92A8BABE00062D3E4 /* ExtractUserInfoFromToken.swift in Sources */,
 				881C06012A616FB500184AFA /* TabBarController.swift in Sources */,
 				882B75842A865ABF000B3943 /* WeeklyStatusStackCell.swift in Sources */,
 				B6BEB5922A8923E200A311B8 /* StarRateView.swift in Sources */,
-				8851EDF72A8BA9CC0062D3E4 /* JWTVerifier.swift in Sources */,
 				882B75862A865ACD000B3943 /* WeeklyFeelingCell.swift in Sources */,
 				883461A12A79576B00F6519D /* DarkStatusBar_NavigationController.swift in Sources */,
 				881D5FC92A742EDF00603548 /* AlarmTableViewCell.swift in Sources */,
@@ -714,7 +563,6 @@
 				88FE2D272A7ED3EF00C475A7 /* HC_chooseTimeView.swift in Sources */,
 				B6927E302A8534D500B8BC4F /* StringHalfColor.swift in Sources */,
 				881C06032A61704000184AFA /* DummyViewController.swift in Sources */,
-				88F8F0D42A8A28BF0095DF43 /* Base Responding Struct.swift in Sources */,
 				881D5FCB2A74324200603548 /* AlarmModel.swift in Sources */,
 				88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */,
 				B6D87A602A8408780099005E /* WaitingViewController.swift in Sources */,
@@ -722,17 +570,13 @@
 				882B757E2A862A6A000B3943 /* UIImage + CircularCrop.swift in Sources */,
 				88FE2D352A7ED46600C475A7 /* HC_introduceViewController.swift in Sources */,
 				88BDD32E2A82C3760082A961 /* HC_finalView.swift in Sources */,
-				88F8F0B22A89F57D0095DF43 /* HabitAPI sending Struct.swift in Sources */,
 				B6BEB5942A892B9800A311B8 /* ReviewViewController.swift in Sources */,
 				88BDD3262A82B3180082A961 /* HC_selectFriendsViewController.swift in Sources */,
 				88E653972A80151A00ABF9D9 /* HC_memberCountView.swift in Sources */,
-				88F8F0C32A89FA420095DF43 /* AuthAPI.swift in Sources */,
-				8851EDFB2A8BEFBF0062D3E4 /* UserAPI sending Struct.swift in Sources */,
 				B64993152A5D3EDC0061C47E /* AppDelegate.swift in Sources */,
 				881C05FC2A61560000184AFA /* SearchResultViewController.swift in Sources */,
 				88371A762A702D840056BB5A /* HabitDiscoverViewController.swift in Sources */,
 				881C06152A62803900184AFA /* UserProfileTableViewCell.swift in Sources */,
-				88F8F0B92A89F5940095DF43 /* tokenStruct.swift in Sources */,
 				B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */,
 				B6927E362A8575D100B8BC4F /* PaddingLabel.swift in Sources */,
 				88BDD32C2A82BEA40082A961 /* HC_noFriednsViewController.swift in Sources */,
@@ -740,7 +584,6 @@
 				B6927E342A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift in Sources */,
 				881C05FA2A61545200184AFA /* NavigationBar.swift in Sources */,
 				88FE2D382A7ED46600C475A7 /* HC_chooseTimeViewController.swift in Sources */,
-				8851EDF22A8B95620062D3E4 /* AuthAPI sending Struct.swift in Sources */,
 				88804CC62A7F9EBD00562E35 /* ColorToggleButton.swift in Sources */,
 				B6D87A622A8408850099005E /* WaitingMemberCollectionViewCell.swift in Sources */,
 				B6BEB5962A89374800A311B8 /* FeelingSelectView.swift in Sources */,
@@ -750,7 +593,6 @@
 				884835932A715D6F00B73E28 /* HorizontalPickerViewCell.swift in Sources */,
 				B6CAF8822A7CB2C700448673 /* CircularProgressView.swift in Sources */,
 				88DC8BBA2A87A927000E242D /* ProfileOfUserViewController.swift in Sources */,
-				8851EDF02A8B8BE70062D3E4 /* HabitSessionAPI responding Struct.swift in Sources */,
 				881C05F82A6147AD00184AFA /* UIView+Preview.swift in Sources */,
 				88DC8BBB2A87A927000E242D /* LF_CompletionSigninViewController.swift in Sources */,
 				88DCCAF72A6AF43C003C3F15 /* BottomSheetView(lofi).swift in Sources */,
@@ -760,18 +602,13 @@
 				88BDD32A2A82BE770082A961 /* HC_noFriendsView.swift in Sources */,
 				88BDD3242A82B27C0082A961 /* HC_selectFriednsView.swift in Sources */,
 				88804CCC2A7FFBBF00562E35 /* HC_chooseDateViewController.swift in Sources */,
-				8851EDEE2A8B875D0062D3E4 /* HabitSessionAPI sending Struct.swift in Sources */,
 				88DC8BB82A87A927000E242D /* LF_SetUsernameViewController.swift in Sources */,
 				882B75802A863644000B3943 /* MyPageView.swift in Sources */,
 				881C05F62A61479600184AFA /* UIViewController+Preview.swift in Sources */,
-				88F8F0C62A89FAA30095DF43 /* UserAPI.swift in Sources */,
 				881C05EE2A5FF8C900184AFA /* SearchViewController.swift in Sources */,
 				88DC8BBC2A87A927000E242D /* LF_SelectionOfHBViewController.swift in Sources */,
-				88F8F0BB2A89F5940095DF43 /* HabitAPI responding Struct.swift in Sources */,
-				88F8F0CE2A8A1F0E0095DF43 /* FollowAPI sending Struct.swift in Sources */,
 				88BDD3302A82C3AD0082A961 /* HC_finalViewController.swift in Sources */,
 				88DA7EB12A6F6C300011AF43 /* HabitDiscoverView.swift in Sources */,
-				88F8F0D02A8A202D0095DF43 /* FollowAPI responding Struct.swift in Sources */,
 				88DCCAF32A6AF0AD003C3F15 /* SheetPresentationController.swift in Sources */,
 				B6BEB58E2A87D7C300A311B8 /* VoteViewController.swift in Sources */,
 				B63C63B02A7B4ACB00AF09CA /* LetterSpacing.swift in Sources */,
@@ -781,7 +618,6 @@
 				884835892A7109A000B73E28 /* HabitCategory.swift in Sources */,
 				881C05FF2A61626500184AFA /* Color+Extension.swift in Sources */,
 				8848358F2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift in Sources */,
-				88F8F0CC2A89FBF60095DF43 /* FollowAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -924,9 +760,6 @@
 				DEVELOPMENT_TEAM = H278GZ4GQ7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ourtine/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "카메라로 사진 찍기";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "동영상 촬영 및 음성인식을 위하 권한 필요";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범에서 사진 선택";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -952,12 +785,9 @@
 				CODE_SIGN_ENTITLEMENTS = Ourtine/Ourtine.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H278GZ4GQ7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ourtine/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "카메라로 사진 찍기";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "동영상 촬영 및 음성인식을 위하 권한 필요";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범에서 사진 선택";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1007,22 +837,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		8851EDF32A8BA8A10062D3E4 /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Kitura/Swift-JWT.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-		88F8F0BC2A89F60B0095DF43 /* XCRemoteSwiftPackageReference "Moya" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 15.0.0;
-			};
-		};
 		B64993282A5D41E40061C47E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -1043,16 +857,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8800A4832A776886004714AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
-		};
-		8851EDF42A8BA8A10062D3E4 /* SwiftJWT */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8851EDF32A8BA8A10062D3E4 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
-			productName = SwiftJWT;
-		};
-		88F8F0BD2A89F60B0095DF43 /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 88F8F0BC2A89F60B0095DF43 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
 		};
 		B64993292A5D41E40061C47E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
