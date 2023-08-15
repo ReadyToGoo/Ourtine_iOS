@@ -24,11 +24,19 @@ class DummyViewController: UIViewController {
         return label
     }()
     
+    lazy var testBtn: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .app_PrimaryColor
+        btn.setTitle("TEST", for: .normal)
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.view.addSubview(cyanBox)
         self.view.addSubview(TitleText)
+        self.view.addSubview(testBtn)
         
         cyanBox.snp.makeConstraints { make in
             make.width.height.equalTo(200)
@@ -37,6 +45,30 @@ class DummyViewController: UIViewController {
         TitleText.snp.makeConstraints { make in
             make.center.equalTo(cyanBox.snp.center)
         }
+        testBtn.snp.makeConstraints {
+            $0.top.equalTo(cyanBox.snp.bottom).offset(40)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(cyanBox)
+            $0.height.equalTo(50)
+        }
+        
+        cyanBox.isUserInteractionEnabled = true
+        cyanBox.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openLoginVC)))
+        
+        testBtn.addTarget(self, action: #selector(testGo), for: .touchUpInside)
+    }
+    
+    @objc func openLoginVC() {
+        if let val = UserDefaults.standard.string(forKey: "myToken") {
+            print(val)
+        }
+        
+        let VC = LoginViewController()
+        self.present(VC, animated: true)
+    }
+    
+    @objc func testGo() {
+        usingWrapper()
     }
     
 }
