@@ -19,38 +19,48 @@ class PrimaryViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // 토큰을 영구저장소에서 가져오기
         myInfo.getMyToken()
         
         // 토큰이 존재할 때
         if myInfo.myToken != nil {
-            // 상태 확인
+            
+            // 토큰의 만료 기간 확인
+            guard myInfo.checkMyTokenValidation() == true else {
+                // 로그인 화면 푸쉬
+//                presentVCwithDarkNavCon(LF_LoginViewController.self)
+                presentVCwithDarkNavCon(KakaoLoginViewController.self)
+                return }
+            
+            // 유저 상태 확인
             guard let status = currentUserStatus() else { return }
+            
             // 회원가입 또는 홈화면 진행
             presentVCbyStatus(status: status)
+            
         }
         // 토큰이 존재하지 않을 때
         else {
             // 로그인 화면 푸쉬
-            let VC = DarkStatusBar_NavigationController(rootViewController: LF_LoginViewController())
-            VC.modalPresentationStyle = .fullScreen
-            self.present(VC, animated: false)
+            presentVCwithDarkNavCon(LF_LoginViewController.self)
             
             // 여기 내용은 LF_LoginViewController에 들어가야 하네요
-//            let VC = KakaoLoginViewController()
-//            VC.modalPresentationStyle = .fullScreen
-//            VC.didUserGetToken = { isTrue in
-//                if isTrue == true {
-//                    // 상태 확인
-//                    guard let status = self.currentUserStatus() else { return }
-//                    // 회원가입 또는 홈화면 진행
-//                    self.presentVCbyStatus(status: status)
-//                }
-//            }
-//            self.present(VC, animated: true)
+            let VC = KakaoLoginViewController()
+            VC.modalPresentationStyle = .fullScreen
+            VC.didUserGetToken = { isTrue in
+                if isTrue == true {
+                    // 상태 확인
+                    guard let status = self.currentUserStatus() else { return }
+                    // 회원가입 또는 홈화면 진행
+                    self.presentVCbyStatus(status: status)
+                }
+            }
+            self.present(VC, animated: true)
         }
         
     }
     
+    /// 현재 유저 정보에서 유저status를 반환합니다.
     func currentUserStatus() -> String? {
         if let status = myInfo.mySignUpStatus {
             switch status {
@@ -80,6 +90,7 @@ class PrimaryViewController: UIViewController {
         }
     }
     
+    /// 현재 유저의 Status에 따라 알맞는 화면을 present합니다.
     func presentVCbyStatus(status: String) {
         switch status {
         case "SignUP" :
@@ -87,7 +98,7 @@ class PrimaryViewController: UIViewController {
             VC.modalPresentationStyle = .fullScreen
             self.present(VC, animated: false)
         case "Main" :
-            let VC = DarkStatusBar_NavigationController(rootViewController: AppTabBarController())
+            let VC = AppTabBarController()
             VC.modalPresentationStyle = .fullScreen
             self.present(VC, animated: false)
         default :
@@ -95,6 +106,14 @@ class PrimaryViewController: UIViewController {
             return
         }
     
+    }
+    
+    /// 인자로 받은 ViewController 타입을 통해 해당 VC를 검은색 스테이터스바의 NavigationViewController로 push합니다.
+    func presentVCwithDarkNavCon(_ viewControllerType: UIViewController.Type) {
+        let viewController = viewControllerType.init()
+        let VC = DarkStatusBar_NavigationController(rootViewController: viewController)
+        VC.modalPresentationStyle = .fullScreen
+        self.present(VC, animated: false)
     }
     
 }

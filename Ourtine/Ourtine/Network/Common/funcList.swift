@@ -9,7 +9,7 @@ import Foundation
 import Moya
 import UIKit
 
-///raw하게 쓰는 Moya
+////raw하게 쓰는 Moya
 //func getHabitData() {
 //    let provider = MoyaProvider<HabitsAPI>()
 //    provider.request(.recommend) {
@@ -27,8 +27,8 @@ import UIKit
 
 
 func usingWrapper() {
-    let wrapper = MoyaWrapper<UserAPI>()//(plugins: [TokenPlugin(token: myInfo.myToken)])
-    wrapper.requestSuccessRes(target: .patchMyProfileImage(imageData: UIImage(named: "feeling1")!.pngData()!), instance: data_patchMyProfileImage.self){ result in
+    let wrapper = MoyaWrapper<UserAPI>()
+    wrapper.requestSuccessRes(target: .patchMyGoal(goal: MyGoal(goal: "1주일에 운동 3번하기")), instance: data_patchMyGoal.self){ result in
         switch result {
         case .success(let result):
             print(result)
