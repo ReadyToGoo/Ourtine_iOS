@@ -63,7 +63,7 @@ class DummyViewController: UIViewController {
             print(val)
         }
         
-        let VC = LoginViewController()
+        let VC = KakaoLoginViewController()
         self.present(VC, animated: true)
     }
     

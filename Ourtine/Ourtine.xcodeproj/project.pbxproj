@@ -70,7 +70,8 @@
 		8851EE352A8C22E30062D3E4 /* HabitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE1E2A8C22E30062D3E4 /* HabitAPI.swift */; };
 		8851EE362A8C22E30062D3E4 /* ExtractUserInfoFromToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE202A8C22E30062D3E4 /* ExtractUserInfoFromToken.swift */; };
 		8851EE372A8C22E30062D3E4 /* ExtractTokenFromCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE212A8C22E30062D3E4 /* ExtractTokenFromCookie.swift */; };
-		8851EE392A8C22FA0062D3E4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE382A8C22FA0062D3E4 /* LogInViewController.swift */; };
+		8851EE392A8C22FA0062D3E4 /* KakaoLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE382A8C22FA0062D3E4 /* KakaoLogInViewController.swift */; };
+		8851EE3B2A8CC4CB0062D3E4 /* PrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE3A2A8CC4CB0062D3E4 /* PrimaryViewController.swift */; };
 		88804CC62A7F9EBD00562E35 /* ColorToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC52A7F9EBD00562E35 /* ColorToggleButton.swift */; };
 		88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC72A7FE3D900562E35 /* Date + Extension.swift */; };
 		88804CCA2A7FFACD00562E35 /* HC_chooseDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC92A7FFACD00562E35 /* HC_chooseDateView.swift */; };
@@ -203,7 +204,8 @@
 		8851EE1E2A8C22E30062D3E4 /* HabitAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitAPI.swift; sourceTree = "<group>"; };
 		8851EE202A8C22E30062D3E4 /* ExtractUserInfoFromToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtractUserInfoFromToken.swift; sourceTree = "<group>"; };
 		8851EE212A8C22E30062D3E4 /* ExtractTokenFromCookie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtractTokenFromCookie.swift; sourceTree = "<group>"; };
-		8851EE382A8C22FA0062D3E4 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		8851EE382A8C22FA0062D3E4 /* KakaoLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KakaoLogInViewController.swift; sourceTree = "<group>"; };
+		8851EE3A2A8CC4CB0062D3E4 /* PrimaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryViewController.swift; sourceTree = "<group>"; };
 		88804CC52A7F9EBD00562E35 /* ColorToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToggleButton.swift; sourceTree = "<group>"; };
 		88804CC72A7FE3D900562E35 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		88804CC92A7FFACD00562E35 /* HC_chooseDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_chooseDateView.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				B6BEB58D2A87D7C300A311B8 /* VoteViewController.swift */,
 				B6BEB5932A892B9800A311B8 /* ReviewViewController.swift */,
 				B6BEB59A2A89C85400A311B8 /* ReviewLastViewController.swift */,
+				8851EE3A2A8CC4CB0062D3E4 /* PrimaryViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -402,7 +405,7 @@
 				881C06002A616FB500184AFA /* TabBarController.swift */,
 				881C06042A6178F600184AFA /* HabitJoinVIewController.swift */,
 				881C06022A61704000184AFA /* DummyViewController.swift */,
-				8851EE382A8C22FA0062D3E4 /* LogInViewController.swift */,
+				8851EE382A8C22FA0062D3E4 /* KakaoLogInViewController.swift */,
 			);
 			path = DummyVC;
 			sourceTree = "<group>";
@@ -694,7 +697,7 @@
 				88FE2D372A7ED46600C475A7 /* HC_chooseCategoryViewController.swift in Sources */,
 				88A64C112A7A8CA600292ED6 /* HabitDescView.swift in Sources */,
 				881C06212A62E64F00184AFA /* SearchedUserProfile.swift in Sources */,
-				8851EE392A8C22FA0062D3E4 /* LogInViewController.swift in Sources */,
+				8851EE392A8C22FA0062D3E4 /* KakaoLogInViewController.swift in Sources */,
 				B64993192A5D3EDC0061C47E /* ViewController.swift in Sources */,
 				881C06012A616FB500184AFA /* TabBarController.swift in Sources */,
 				8851EE282A8C22E30062D3E4 /* HabitSessionAPI responding Struct.swift in Sources */,
@@ -727,6 +730,7 @@
 				88E653972A80151A00ABF9D9 /* HC_memberCountView.swift in Sources */,
 				8851EE322A8C22E30062D3E4 /* FollowAPI sending Struct.swift in Sources */,
 				8851EE2B2A8C22E30062D3E4 /* UserAPI.swift in Sources */,
+				8851EE3B2A8CC4CB0062D3E4 /* PrimaryViewController.swift in Sources */,
 				8851EE232A8C22E30062D3E4 /* MoyaWrapper.swift in Sources */,
 				B64993152A5D3EDC0061C47E /* AppDelegate.swift in Sources */,
 				8851EE312A8C22E30062D3E4 /* FollowAPI responding Struct.swift in Sources */,

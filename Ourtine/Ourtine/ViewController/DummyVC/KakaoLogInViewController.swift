@@ -12,7 +12,10 @@ import WebKit
 
 /// 카카오 로그인을 위한 웹뷰 컨트롤러 입니다.
 /// 카카오 로그인 화면 팝업 후 로그인 완료시 dismiss됩니다.
-class LoginViewController : UIViewController, WKNavigationDelegate {
+class KakaoLoginViewController : UIViewController, WKNavigationDelegate {
+    
+    /// KakaoLoginViewController의 didUserGetToken값을 반환하는 클로저입니다.
+    var didUserGetToken: ((Bool?) -> Void)?
     
     var webView: WKWebView!
     
@@ -40,7 +43,7 @@ class LoginViewController : UIViewController, WKNavigationDelegate {
     }
 }
 
-extension LoginViewController {
+extension KakaoLoginViewController {
 
     
     // WKNavigationDelegate 메서드 - 웹 페이지 로딩 상태 변경 시 호출됨
@@ -53,6 +56,7 @@ extension LoginViewController {
                     myInfo.setMyToken(cookieString: cookieString)
                     // 토큰을 처리한 후에 웹 뷰를 닫기
                     
+                    self.didUserGetToken?(true)
                     self.dismissWebView()
                 }
                 //print("Received token value: \(cookieString)")
