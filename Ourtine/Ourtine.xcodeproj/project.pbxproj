@@ -46,6 +46,32 @@
 		8848358F2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848358E2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift */; };
 		884835932A715D6F00B73E28 /* HorizontalPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835922A715D6F00B73E28 /* HorizontalPickerViewCell.swift */; };
 		885026172A73C1D100974094 /* HabitCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885026162A73C1D100974094 /* HabitCardModel.swift */; };
+		8851EE002A8C22AC0062D3E4 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 8851EDFF2A8C22AC0062D3E4 /* Moya */; };
+		8851EE032A8C22C90062D3E4 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 8851EE022A8C22C90062D3E4 /* SwiftJWT */; };
+		8851EE222A8C22E30062D3E4 /* myUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE062A8C22E30062D3E4 /* myUserInfo.swift */; };
+		8851EE232A8C22E30062D3E4 /* MoyaWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE072A8C22E30062D3E4 /* MoyaWrapper.swift */; };
+		8851EE242A8C22E30062D3E4 /* JWTVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE082A8C22E30062D3E4 /* JWTVerifier.swift */; };
+		8851EE252A8C22E30062D3E4 /* tokenStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE092A8C22E30062D3E4 /* tokenStruct.swift */; };
+		8851EE262A8C22E30062D3E4 /* Base Responding Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE0A2A8C22E30062D3E4 /* Base Responding Struct.swift */; };
+		8851EE272A8C22E30062D3E4 /* funcList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE0B2A8C22E30062D3E4 /* funcList.swift */; };
+		8851EE282A8C22E30062D3E4 /* HabitSessionAPI responding Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE0D2A8C22E30062D3E4 /* HabitSessionAPI responding Struct.swift */; };
+		8851EE292A8C22E30062D3E4 /* HabitSessionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE0E2A8C22E30062D3E4 /* HabitSessionAPI.swift */; };
+		8851EE2A2A8C22E30062D3E4 /* HabitSessionAPI sending Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE0F2A8C22E30062D3E4 /* HabitSessionAPI sending Struct.swift */; };
+		8851EE2B2A8C22E30062D3E4 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE112A8C22E30062D3E4 /* UserAPI.swift */; };
+		8851EE2C2A8C22E30062D3E4 /* UserAPI sending Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE122A8C22E30062D3E4 /* UserAPI sending Struct.swift */; };
+		8851EE2D2A8C22E30062D3E4 /* UserAPI responding Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE132A8C22E30062D3E4 /* UserAPI responding Struct.swift */; };
+		8851EE2E2A8C22E30062D3E4 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE152A8C22E30062D3E4 /* AuthAPI.swift */; };
+		8851EE2F2A8C22E30062D3E4 /* AuthAPI sending Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE162A8C22E30062D3E4 /* AuthAPI sending Struct.swift */; };
+		8851EE302A8C22E30062D3E4 /* FollowAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE182A8C22E30062D3E4 /* FollowAPI.swift */; };
+		8851EE312A8C22E30062D3E4 /* FollowAPI responding Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE192A8C22E30062D3E4 /* FollowAPI responding Struct.swift */; };
+		8851EE322A8C22E30062D3E4 /* FollowAPI sending Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE1A2A8C22E30062D3E4 /* FollowAPI sending Struct.swift */; };
+		8851EE332A8C22E30062D3E4 /* HabitAPI sending Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE1C2A8C22E30062D3E4 /* HabitAPI sending Struct.swift */; };
+		8851EE342A8C22E30062D3E4 /* HabitAPI responding Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE1D2A8C22E30062D3E4 /* HabitAPI responding Struct.swift */; };
+		8851EE352A8C22E30062D3E4 /* HabitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE1E2A8C22E30062D3E4 /* HabitAPI.swift */; };
+		8851EE362A8C22E30062D3E4 /* ExtractUserInfoFromToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE202A8C22E30062D3E4 /* ExtractUserInfoFromToken.swift */; };
+		8851EE372A8C22E30062D3E4 /* ExtractTokenFromCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE212A8C22E30062D3E4 /* ExtractTokenFromCookie.swift */; };
+		8851EE392A8C22FA0062D3E4 /* KakaoLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE382A8C22FA0062D3E4 /* KakaoLogInViewController.swift */; };
+		8851EE3B2A8CC4CB0062D3E4 /* PrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851EE3A2A8CC4CB0062D3E4 /* PrimaryViewController.swift */; };
 		88804CC62A7F9EBD00562E35 /* ColorToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC52A7F9EBD00562E35 /* ColorToggleButton.swift */; };
 		88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC72A7FE3D900562E35 /* Date + Extension.swift */; };
 		88804CCA2A7FFACD00562E35 /* HC_chooseDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC92A7FFACD00562E35 /* HC_chooseDateView.swift */; };
@@ -156,6 +182,30 @@
 		8848358E2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		884835922A715D6F00B73E28 /* HorizontalPickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerViewCell.swift; sourceTree = "<group>"; };
 		885026162A73C1D100974094 /* HabitCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardModel.swift; sourceTree = "<group>"; };
+		8851EE062A8C22E30062D3E4 /* myUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myUserInfo.swift; sourceTree = "<group>"; };
+		8851EE072A8C22E30062D3E4 /* MoyaWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaWrapper.swift; sourceTree = "<group>"; };
+		8851EE082A8C22E30062D3E4 /* JWTVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTVerifier.swift; sourceTree = "<group>"; };
+		8851EE092A8C22E30062D3E4 /* tokenStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tokenStruct.swift; sourceTree = "<group>"; };
+		8851EE0A2A8C22E30062D3E4 /* Base Responding Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Base Responding Struct.swift"; sourceTree = "<group>"; };
+		8851EE0B2A8C22E30062D3E4 /* funcList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = funcList.swift; sourceTree = "<group>"; };
+		8851EE0D2A8C22E30062D3E4 /* HabitSessionAPI responding Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HabitSessionAPI responding Struct.swift"; sourceTree = "<group>"; };
+		8851EE0E2A8C22E30062D3E4 /* HabitSessionAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitSessionAPI.swift; sourceTree = "<group>"; };
+		8851EE0F2A8C22E30062D3E4 /* HabitSessionAPI sending Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HabitSessionAPI sending Struct.swift"; sourceTree = "<group>"; };
+		8851EE112A8C22E30062D3E4 /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		8851EE122A8C22E30062D3E4 /* UserAPI sending Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserAPI sending Struct.swift"; sourceTree = "<group>"; };
+		8851EE132A8C22E30062D3E4 /* UserAPI responding Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserAPI responding Struct.swift"; sourceTree = "<group>"; };
+		8851EE152A8C22E30062D3E4 /* AuthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		8851EE162A8C22E30062D3E4 /* AuthAPI sending Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AuthAPI sending Struct.swift"; sourceTree = "<group>"; };
+		8851EE182A8C22E30062D3E4 /* FollowAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowAPI.swift; sourceTree = "<group>"; };
+		8851EE192A8C22E30062D3E4 /* FollowAPI responding Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FollowAPI responding Struct.swift"; sourceTree = "<group>"; };
+		8851EE1A2A8C22E30062D3E4 /* FollowAPI sending Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FollowAPI sending Struct.swift"; sourceTree = "<group>"; };
+		8851EE1C2A8C22E30062D3E4 /* HabitAPI sending Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HabitAPI sending Struct.swift"; sourceTree = "<group>"; };
+		8851EE1D2A8C22E30062D3E4 /* HabitAPI responding Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HabitAPI responding Struct.swift"; sourceTree = "<group>"; };
+		8851EE1E2A8C22E30062D3E4 /* HabitAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitAPI.swift; sourceTree = "<group>"; };
+		8851EE202A8C22E30062D3E4 /* ExtractUserInfoFromToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtractUserInfoFromToken.swift; sourceTree = "<group>"; };
+		8851EE212A8C22E30062D3E4 /* ExtractTokenFromCookie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtractTokenFromCookie.swift; sourceTree = "<group>"; };
+		8851EE382A8C22FA0062D3E4 /* KakaoLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KakaoLogInViewController.swift; sourceTree = "<group>"; };
+		8851EE3A2A8CC4CB0062D3E4 /* PrimaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryViewController.swift; sourceTree = "<group>"; };
 		88804CC52A7F9EBD00562E35 /* ColorToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToggleButton.swift; sourceTree = "<group>"; };
 		88804CC72A7FE3D900562E35 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		88804CC92A7FFACD00562E35 /* HC_chooseDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_chooseDateView.swift; sourceTree = "<group>"; };
@@ -235,6 +285,8 @@
 			files = (
 				B649932A2A5D41E40061C47E /* SnapKit in Frameworks */,
 				8800A4852A776886004714AD /* KakaoSDKAuth in Frameworks */,
+				8851EE002A8C22AC0062D3E4 /* Moya in Frameworks */,
+				8851EE032A8C22C90062D3E4 /* SwiftJWT in Frameworks */,
 				8800A4872A776886004714AD /* KakaoSDKUser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +366,7 @@
 				B6BEB58D2A87D7C300A311B8 /* VoteViewController.swift */,
 				B6BEB5932A892B9800A311B8 /* ReviewViewController.swift */,
 				B6BEB59A2A89C85400A311B8 /* ReviewLastViewController.swift */,
+				8851EE3A2A8CC4CB0062D3E4 /* PrimaryViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -352,6 +405,7 @@
 				881C06002A616FB500184AFA /* TabBarController.swift */,
 				881C06042A6178F600184AFA /* HabitJoinVIewController.swift */,
 				881C06022A61704000184AFA /* DummyViewController.swift */,
+				8851EE382A8C22FA0062D3E4 /* KakaoLogInViewController.swift */,
 			);
 			path = DummyVC;
 			sourceTree = "<group>";
@@ -401,6 +455,91 @@
 			path = Reusable;
 			sourceTree = "<group>";
 		};
+		8851EE042A8C22E30062D3E4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8851EE052A8C22E30062D3E4 /* Common */,
+				8851EE0C2A8C22E30062D3E4 /* HabitSessionoAPI */,
+				8851EE102A8C22E30062D3E4 /* UserAPI */,
+				8851EE142A8C22E30062D3E4 /* AuthAPI */,
+				8851EE172A8C22E30062D3E4 /* FollowAPI */,
+				8851EE1B2A8C22E30062D3E4 /* HabitAPI */,
+				8851EE1F2A8C22E30062D3E4 /* Utility */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8851EE052A8C22E30062D3E4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8851EE062A8C22E30062D3E4 /* myUserInfo.swift */,
+				8851EE072A8C22E30062D3E4 /* MoyaWrapper.swift */,
+				8851EE082A8C22E30062D3E4 /* JWTVerifier.swift */,
+				8851EE092A8C22E30062D3E4 /* tokenStruct.swift */,
+				8851EE0A2A8C22E30062D3E4 /* Base Responding Struct.swift */,
+				8851EE0B2A8C22E30062D3E4 /* funcList.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		8851EE0C2A8C22E30062D3E4 /* HabitSessionoAPI */ = {
+			isa = PBXGroup;
+			children = (
+				8851EE0D2A8C22E30062D3E4 /* HabitSessionAPI responding Struct.swift */,
+				8851EE0E2A8C22E30062D3E4 /* HabitSessionAPI.swift */,
+				8851EE0F2A8C22E30062D3E4 /* HabitSessionAPI sending Struct.swift */,
+			);
+			path = HabitSessionoAPI;
+			sourceTree = "<group>";
+		};
+		8851EE102A8C22E30062D3E4 /* UserAPI */ = {
+			isa = PBXGroup;
+			children = (
+				8851EE112A8C22E30062D3E4 /* UserAPI.swift */,
+				8851EE122A8C22E30062D3E4 /* UserAPI sending Struct.swift */,
+				8851EE132A8C22E30062D3E4 /* UserAPI responding Struct.swift */,
+			);
+			path = UserAPI;
+			sourceTree = "<group>";
+		};
+		8851EE142A8C22E30062D3E4 /* AuthAPI */ = {
+			isa = PBXGroup;
+			children = (
+				8851EE152A8C22E30062D3E4 /* AuthAPI.swift */,
+				8851EE162A8C22E30062D3E4 /* AuthAPI sending Struct.swift */,
+			);
+			path = AuthAPI;
+			sourceTree = "<group>";
+		};
+		8851EE172A8C22E30062D3E4 /* FollowAPI */ = {
+			isa = PBXGroup;
+			children = (
+				8851EE182A8C22E30062D3E4 /* FollowAPI.swift */,
+				8851EE192A8C22E30062D3E4 /* FollowAPI responding Struct.swift */,
+				8851EE1A2A8C22E30062D3E4 /* FollowAPI sending Struct.swift */,
+			);
+			path = FollowAPI;
+			sourceTree = "<group>";
+		};
+		8851EE1B2A8C22E30062D3E4 /* HabitAPI */ = {
+			isa = PBXGroup;
+			children = (
+				8851EE1C2A8C22E30062D3E4 /* HabitAPI sending Struct.swift */,
+				8851EE1D2A8C22E30062D3E4 /* HabitAPI responding Struct.swift */,
+				8851EE1E2A8C22E30062D3E4 /* HabitAPI.swift */,
+			);
+			path = HabitAPI;
+			sourceTree = "<group>";
+		};
+		8851EE1F2A8C22E30062D3E4 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				8851EE202A8C22E30062D3E4 /* ExtractUserInfoFromToken.swift */,
+				8851EE212A8C22E30062D3E4 /* ExtractTokenFromCookie.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		B64993082A5D3EDC0061C47E = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +560,7 @@
 			isa = PBXGroup;
 			children = (
 				8800A4822A7767F6004714AD /* Ourtine.entitlements */,
+				8851EE042A8C22E30062D3E4 /* Network */,
 				881C05EF2A61439300184AFA /* Model */,
 				881C05F02A61439900184AFA /* View */,
 				881C05F12A6143A400184AFA /* ViewController */,
@@ -456,6 +596,8 @@
 				B64993292A5D41E40061C47E /* SnapKit */,
 				8800A4842A776886004714AD /* KakaoSDKAuth */,
 				8800A4862A776886004714AD /* KakaoSDKUser */,
+				8851EDFF2A8C22AC0062D3E4 /* Moya */,
+				8851EE022A8C22C90062D3E4 /* SwiftJWT */,
 			);
 			productName = Ourtine;
 			productReference = B64993112A5D3EDC0061C47E /* Ourtine.app */;
@@ -488,6 +630,8 @@
 			packageReferences = (
 				B64993282A5D41E40061C47E /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8800A4832A776886004714AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				8851EDFE2A8C22AC0062D3E4 /* XCRemoteSwiftPackageReference "Moya" */,
+				8851EE012A8C22C90062D3E4 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
 			);
 			productRefGroup = B64993122A5D3EDC0061C47E /* Products */;
 			projectDirPath = "";
@@ -527,17 +671,22 @@
 				88BDD3282A82B84D0082A961 /* HC_MemberCollectionViewCell.swift in Sources */,
 				881C061F2A62D94500184AFA /* UIComponents+setBackgroundColor.swift in Sources */,
 				88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */,
+				8851EE2E2A8C22E30062D3E4 /* AuthAPI.swift in Sources */,
 				88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */,
 				88FE2D362A7ED46600C475A7 /* HC_chooseTypeViewController.swift in Sources */,
 				882B757A2A84EFFC000B3943 /* HabitInfoModel.swift in Sources */,
 				B6D584A02A720C16008862AC /* HomeTextBoxView.swift in Sources */,
 				888FB2A62A84177100930987 /* FlowDataManager.swift in Sources */,
 				881C06192A62A65B00184AFA /* HabitProfileTableViewCell.swift in Sources */,
+				8851EE2A2A8C22E30062D3E4 /* HabitSessionAPI sending Struct.swift in Sources */,
 				88FE2D2A2A7ED3EF00C475A7 /* HC_chooseCategoryView.swift in Sources */,
 				B6BEB59D2A89DAE900A311B8 /* StaticStarRateView.swift in Sources */,
 				B6CAF8842A7CCFD200448673 /* TimelineViewController.swift in Sources */,
 				B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */,
 				88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */,
+				8851EE292A8C22E30062D3E4 /* HabitSessionAPI.swift in Sources */,
+				8851EE2D2A8C22E30062D3E4 /* UserAPI responding Struct.swift in Sources */,
+				8851EE242A8C22E30062D3E4 /* JWTVerifier.swift in Sources */,
 				882AC3BD2A78348A002AD232 /* UIImage+onlyColor.swift in Sources */,
 				881D5FC72A742D0E00603548 /* HabitAlarmViewController.swift in Sources */,
 				88E653992A80155D00ABF9D9 /* HC_memberCountViewController.swift in Sources */,
@@ -548,16 +697,20 @@
 				88FE2D372A7ED46600C475A7 /* HC_chooseCategoryViewController.swift in Sources */,
 				88A64C112A7A8CA600292ED6 /* HabitDescView.swift in Sources */,
 				881C06212A62E64F00184AFA /* SearchedUserProfile.swift in Sources */,
+				8851EE392A8C22FA0062D3E4 /* KakaoLogInViewController.swift in Sources */,
 				B64993192A5D3EDC0061C47E /* ViewController.swift in Sources */,
 				881C06012A616FB500184AFA /* TabBarController.swift in Sources */,
+				8851EE282A8C22E30062D3E4 /* HabitSessionAPI responding Struct.swift in Sources */,
 				882B75842A865ABF000B3943 /* WeeklyStatusStackCell.swift in Sources */,
 				B6BEB5922A8923E200A311B8 /* StarRateView.swift in Sources */,
 				882B75862A865ACD000B3943 /* WeeklyFeelingCell.swift in Sources */,
+				8851EE342A8C22E30062D3E4 /* HabitAPI responding Struct.swift in Sources */,
 				883461A12A79576B00F6519D /* DarkStatusBar_NavigationController.swift in Sources */,
 				881D5FC92A742EDF00603548 /* AlarmTableViewCell.swift in Sources */,
 				B6C283342A7260B9007FE619 /* CarouselViewController.swift in Sources */,
 				B6394E932A86A2F30040B8FF /* CamerManager.swift in Sources */,
 				B6927E322A85528300B8BC4F /* ParticipatingMemberCollectionView.swift in Sources */,
+				8851EE2C2A8C22E30062D3E4 /* UserAPI sending Struct.swift in Sources */,
 				88FE2D292A7ED3EF00C475A7 /* HC_introduceView.swift in Sources */,
 				B63C63B22A7B5C0F00AF09CA /* FigmaShadow.swift in Sources */,
 				88FE2D272A7ED3EF00C475A7 /* HC_chooseTimeView.swift in Sources */,
@@ -566,19 +719,27 @@
 				881D5FCB2A74324200603548 /* AlarmModel.swift in Sources */,
 				88DCCAE92A6A5D21003C3F15 /* RecentSearchTableViewCell.swift in Sources */,
 				B6D87A602A8408780099005E /* WaitingViewController.swift in Sources */,
+				8851EE252A8C22E30062D3E4 /* tokenStruct.swift in Sources */,
 				88A64C0F2A7A733E00292ED6 /* CALayer+addBorder.swift in Sources */,
+				8851EE222A8C22E30062D3E4 /* myUserInfo.swift in Sources */,
 				882B757E2A862A6A000B3943 /* UIImage + CircularCrop.swift in Sources */,
 				88FE2D352A7ED46600C475A7 /* HC_introduceViewController.swift in Sources */,
 				88BDD32E2A82C3760082A961 /* HC_finalView.swift in Sources */,
 				B6BEB5942A892B9800A311B8 /* ReviewViewController.swift in Sources */,
 				88BDD3262A82B3180082A961 /* HC_selectFriendsViewController.swift in Sources */,
 				88E653972A80151A00ABF9D9 /* HC_memberCountView.swift in Sources */,
+				8851EE322A8C22E30062D3E4 /* FollowAPI sending Struct.swift in Sources */,
+				8851EE2B2A8C22E30062D3E4 /* UserAPI.swift in Sources */,
+				8851EE3B2A8CC4CB0062D3E4 /* PrimaryViewController.swift in Sources */,
+				8851EE232A8C22E30062D3E4 /* MoyaWrapper.swift in Sources */,
 				B64993152A5D3EDC0061C47E /* AppDelegate.swift in Sources */,
+				8851EE312A8C22E30062D3E4 /* FollowAPI responding Struct.swift in Sources */,
 				881C05FC2A61560000184AFA /* SearchResultViewController.swift in Sources */,
 				88371A762A702D840056BB5A /* HabitDiscoverViewController.swift in Sources */,
 				881C06152A62803900184AFA /* UserProfileTableViewCell.swift in Sources */,
 				B6D584A22A720DE4008862AC /* HomeViewController.swift in Sources */,
 				B6927E362A8575D100B8BC4F /* PaddingLabel.swift in Sources */,
+				8851EE262A8C22E30062D3E4 /* Base Responding Struct.swift in Sources */,
 				88BDD32C2A82BEA40082A961 /* HC_noFriednsViewController.swift in Sources */,
 				B6927E2E2A85344200B8BC4F /* ParticipatingViewController.swift in Sources */,
 				B6927E342A8552AD00B8BC4F /* ParticipatingMemberViewCell.swift in Sources */,
@@ -590,7 +751,10 @@
 				885026172A73C1D100974094 /* HabitCardModel.swift in Sources */,
 				88E2B9B42A6BBF170039CF68 /* DeviceScreenSize.swift in Sources */,
 				88DC8BB72A87A927000E242D /* LF_TermsViewController.swift in Sources */,
+				8851EE302A8C22E30062D3E4 /* FollowAPI.swift in Sources */,
 				884835932A715D6F00B73E28 /* HorizontalPickerViewCell.swift in Sources */,
+				8851EE352A8C22E30062D3E4 /* HabitAPI.swift in Sources */,
+				8851EE372A8C22E30062D3E4 /* ExtractTokenFromCookie.swift in Sources */,
 				B6CAF8822A7CB2C700448673 /* CircularProgressView.swift in Sources */,
 				88DC8BBA2A87A927000E242D /* ProfileOfUserViewController.swift in Sources */,
 				881C05F82A6147AD00184AFA /* UIView+Preview.swift in Sources */,
@@ -599,6 +763,7 @@
 				882B75822A863961000B3943 /* MyPageViewController.swift in Sources */,
 				B6C283422A72C7C1007FE619 /* CarouselItem.swift in Sources */,
 				881D5FC52A742CC100603548 /* HabitAlarmView.swift in Sources */,
+				8851EE332A8C22E30062D3E4 /* HabitAPI sending Struct.swift in Sources */,
 				88BDD32A2A82BE770082A961 /* HC_noFriendsView.swift in Sources */,
 				88BDD3242A82B27C0082A961 /* HC_selectFriednsView.swift in Sources */,
 				88804CCC2A7FFBBF00562E35 /* HC_chooseDateViewController.swift in Sources */,
@@ -613,11 +778,14 @@
 				B6BEB58E2A87D7C300A311B8 /* VoteViewController.swift in Sources */,
 				B63C63B02A7B4ACB00AF09CA /* LetterSpacing.swift in Sources */,
 				88FE2D2D2A7ED44300C475A7 /* HabitCreateFlowButton.swift in Sources */,
+				8851EE362A8C22E30062D3E4 /* ExtractUserInfoFromToken.swift in Sources */,
 				88FE2D2E2A7ED44300C475A7 /* HC_categoryCollectionViewCell.swift in Sources */,
+				8851EE2F2A8C22E30062D3E4 /* AuthAPI sending Struct.swift in Sources */,
 				B64993172A5D3EDC0061C47E /* SceneDelegate.swift in Sources */,
 				884835892A7109A000B73E28 /* HabitCategory.swift in Sources */,
 				881C05FF2A61626500184AFA /* Color+Extension.swift in Sources */,
 				8848358F2A713DBE00B73E28 /* HabitCardCollectionViewCell.swift in Sources */,
+				8851EE272A8C22E30062D3E4 /* funcList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,6 +1005,22 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		8851EDFE2A8C22AC0062D3E4 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
+		8851EE012A8C22C90062D3E4 /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-JWT.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		B64993282A5D41E40061C47E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -857,6 +1041,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8800A4832A776886004714AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		8851EDFF2A8C22AC0062D3E4 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8851EDFE2A8C22AC0062D3E4 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		8851EE022A8C22C90062D3E4 /* SwiftJWT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8851EE012A8C22C90062D3E4 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
+			productName = SwiftJWT;
 		};
 		B64993292A5D41E40061C47E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
