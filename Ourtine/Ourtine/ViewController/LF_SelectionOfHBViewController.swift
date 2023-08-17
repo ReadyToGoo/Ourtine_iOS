@@ -15,6 +15,8 @@ class LF_SelectionOfHBViewController: UIViewController, UICollectionViewDelegate
     
     var categories: [HC_Category] = []
     
+    var selectedCategorySet: Set<String> = []
+    
     lazy var navigationBar: Custom_NavigationBar = {
         let nav = Custom_NavigationBar()
         return nav
@@ -77,6 +79,8 @@ class LF_SelectionOfHBViewController: UIViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SignUpFlowManager.shared.printself()
+        nextBtn.addTarget(self, action: #selector(nextBtnTapped), for: .touchUpInside)
         
         addSubviews()
         setConstraints()
@@ -102,6 +106,33 @@ class LF_SelectionOfHBViewController: UIViewController, UICollectionViewDelegate
         )
         
         self.categoryCollectionView.reloadData()
+    }
+    
+    /// 해당 페이지에서 저장된 데이터를 flowdata로 보내고, 제대로 저장됐는지 확인합니다.
+    private func saveToFlowData() -> Bool {
+        
+        // 회원가입 플로우의 데이터를 저장
+        let selectedArr = Array(self.selectedCategorySet)
+        SignUpFlowManager.shared.signUpInformation.habitCategory = selectedArr
+        
+        // 싱글톤 클래스 객체에 값이 저장되면 넘어가도록 guarding
+        guard (SignUpFlowManager.shared.signUpInformation.habitCategory != nil) else {
+            print("SignUpFlowManager.shared.signUpInformation.habitCategory에 값이 저장되지 않았습니다. 다시 시도해주세요")
+            return false
+        }
+        
+        print("저장 성공")
+        return true
+    }
+    
+    @objc private func nextBtnTapped(_ sender: UIButton) {
+        // 코드
+        // 데이터 저장 실패 시 push X
+        guard saveToFlowData() else { return }
+        
+        let viewController = LF_SelectionOfHBViewController()
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func addSubviews() {
@@ -149,6 +180,23 @@ class LF_SelectionOfHBViewController: UIViewController, UICollectionViewDelegate
             $0.height.equalTo(40)
             $0.centerX.equalToSuperview()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //cell 색 바꾸기
+        let cell = collectionView.cellForItem(at: indexPath) as? HabitCreateCategoryCVCell
+        cell?.gotChosen.toggle()
+        
+        // 선택한 카테고리를 리스트에 저장
+        if let text = cell?.titleLabel.text {
+            if self.selectedCategorySet.contains(text) {
+                self.selectedCategorySet.remove(text) // 이미 선택된 경우 삭제
+            }
+            else {
+                self.selectedCategorySet.insert(text) // 선택되지 않은 경우 추가
+            }
+        }
+        
     }
 }
 
