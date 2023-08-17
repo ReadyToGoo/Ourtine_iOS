@@ -155,7 +155,7 @@ class LF_LoginViewController: UIViewController {
     func presentVCbyStatus(status: String) {
         switch status {
         case "SignUP" :
-            let VC = LF_SetUsernameViewController()
+            let VC = DarkStatusBar_NavigationController(rootViewController: LF_SetUsernameViewController())
             VC.modalPresentationStyle = .fullScreen
             self.present(VC, animated: false)
         case "Main" :
