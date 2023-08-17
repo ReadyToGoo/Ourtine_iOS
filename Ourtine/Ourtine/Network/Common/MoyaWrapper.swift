@@ -60,6 +60,8 @@ class MoyaWrapper<Provider : TargetType> : MoyaProvider<Provider> {
                         print("String : \(stringData)")
                     }
                     
+                    print(response.request?.httpBody)
+                    
                 }
                
                 // --- case .success의 본 내용입니다.
@@ -92,6 +94,7 @@ class MoyaWrapper<Provider : TargetType> : MoyaProvider<Provider> {
                         print("response가 JSON 파일이 아닙니다")
                         print("String : \(stringData)")
                     }
+                    print(response.request?.httpBody)
                     completion(.failure(.statusCode(response))) // 함수의 .failure 결과로 반환
                 }//: else
                 

@@ -79,6 +79,7 @@ class LF_SelectionOfHBViewController: UIViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         SignUpFlowManager.shared.printself()
         nextBtn.addTarget(self, action: #selector(nextBtnTapped), for: .touchUpInside)
         

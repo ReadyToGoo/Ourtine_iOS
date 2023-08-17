@@ -25,6 +25,16 @@ class LF_TermsViewController: UIViewController {
         return checkbox
     }()
     
+    lazy var nextButton: UIButton = {
+        let nextButton = UIButton()
+        nextButton.setTitle("다음", for: .normal)
+        nextButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
+        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.backgroundColor = .app_PrimaryColor
+        nextButton.layer.cornerRadius = 8
+        return nextButton
+    }()
+    
     let checkboxTexts = ["전체 동의", "‘Ourtine’ 이용약관에 동의합니다. (필수)", "개인정보 수집/이용에 동의합니다. (필수)", "이벤트 혜택/정보 수신에 동의합니다. (선택)"]
     
     override func viewDidLoad() {
@@ -32,6 +42,8 @@ class LF_TermsViewController: UIViewController {
         
         setupUI()
         setupConstraints()
+        
+        nextButton.addTarget(self, action: #selector(nextButtonTapped(_:)), for: .touchUpInside)
         
         let navigationBarHeight = navigationController?.navigationBar.frame.height ?? 0
         
@@ -127,13 +139,7 @@ class LF_TermsViewController: UIViewController {
             make.height.equalTo(44)
         }
         
-        let nextButton = UIButton()
-        nextButton.setTitle("다음", for: .normal)
-        nextButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
-        nextButton.setTitleColor(.white, for: .normal)
-        nextButton.backgroundColor = .app_PrimaryColor
-        nextButton.layer.cornerRadius = 8
-        nextButton.addTarget(self, action: #selector(nextButtonTapped(_:)), for: .touchUpInside)
+       
         view.addSubview(nextButton)
         
         nextButton.snp.makeConstraints { make in
@@ -168,8 +174,42 @@ class LF_TermsViewController: UIViewController {
         }
     }
     
+    /// 해당 페이지에서 저장된 데이터를 flowdata로 보내고, 제대로 저장됐는지 확인합니다.
+    private func saveToFlowData() -> Bool {
+        
+        var getCheckedIndicies: [Bool] = [false,false,false]
+        
+        for index in 1..<checkboxTexts.count {
+            let checkbox = view.viewWithTag(index) as? UIButton
+            if let isChecked  = checkbox?.isSelected, isChecked == true {
+                getCheckedIndicies[index-1] = true
+            }
+        }
+        
+        // 회원가입 플로우의 데이터를 저장
+        SignUpFlowManager.shared.signUpInformation.agreeList.termsAgreed = getCheckedIndicies[0]
+        SignUpFlowManager.shared.signUpInformation.agreeList.privacyAgreed = getCheckedIndicies[1]
+        SignUpFlowManager.shared.signUpInformation.agreeList.marketingAgreed = getCheckedIndicies[2]
+        
+        // 싱글톤 클래스 객체에 값이 저장되면 넘어가도록 guarding
+        guard (SignUpFlowManager.shared.signUpInformation.agreeList.termsAgreed != nil && SignUpFlowManager.shared.signUpInformation.agreeList.privacyAgreed != nil && SignUpFlowManager.shared.signUpInformation.agreeList.marketingAgreed != nil
+        ) else {
+            print("SignUpFlowManager.shared.signUpInformation.agreeList에 값이 저장되지 않았습니다. 다시 시도해주세요")
+            return false
+        }
+        
+        print("저장 성공")
+        return true
+    }
+    
     @objc private func nextButtonTapped(_ sender: UIButton) {
-        // ...
+        // 코드
+        // 데이터 저장 실패 시 push X
+        guard saveToFlowData() else { return }
+        
+        let viewController = LF_SelectionOfHBViewController()
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc private func viewTermsButtonTapped(_ sender: UIButton) {

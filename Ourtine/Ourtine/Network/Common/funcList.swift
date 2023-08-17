@@ -28,7 +28,7 @@ import UIKit
 
 func usingWrapper() {
     let wrapper = MoyaWrapper<UserAPI>()
-    wrapper.requestSuccessRes(target: .patchMyGoal(goal: MyGoal(goal: "1주일에 운동 3번하기")), instance: data_patchMyGoal.self){ result in
+    wrapper.requestSuccessRes(target: .patchMyProfileImage(imageData: (UIImage(named: "feeling1")?.pngData())!), instance: data_patchMyProfileImage.self){ result in
         switch result {
         case .success(let result):
             print(result)
