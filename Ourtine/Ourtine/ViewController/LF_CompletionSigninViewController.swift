@@ -10,10 +10,27 @@ import SnapKit
 
 class LF_CompletionSigninViewController: UIViewController {
     
+    lazy var nextBtn: UIButton = {
+        let button = UIButton()
+        button.setTitle("네, 좋아요!", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .app_PrimaryColor
+        button.layer.cornerRadius = 8
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let username = "민선"
+        SignUpFlowManager.shared.printself()
+        
+        
+        var username = "민선"
+        
+        if let name = SignUpFlowManager.shared.signUpInformation.nickName {
+            username = name
+        }
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -65,16 +82,6 @@ class LF_CompletionSigninViewController: UIViewController {
             make.top.equalTo(imageView.snp.bottom).offset(-18)
         }
         
-        let nextBtn: UIButton = {
-            let button = UIButton()
-            button.setTitle("네, 좋아요!", for: .normal)
-            button.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
-            button.setTitleColor(.white, for: .normal)
-            button.backgroundColor = .app_PrimaryColor
-            button.layer.cornerRadius = 8
-            return button
-        }()
-        
         view.addSubview(nextBtn)
         
         nextBtn.snp.makeConstraints {
@@ -82,6 +89,33 @@ class LF_CompletionSigninViewController: UIViewController {
             $0.width.equalToSuperview().multipliedBy(0.8)
             $0.height.equalTo(50)
             $0.centerX.equalToSuperview()
+        }
+        
+        nextBtn.addTarget(self, action: #selector(nextBtnTapped), for: .touchUpInside)
+    }
+    
+    @objc private func nextBtnTapped(_ sender: UIButton) {
+        // 코드
+        let signUpData = SignUpFlowManager.shared.signUpInformation
+        signUpRequest(signUpData)
+    }
+    
+    func signUpRequest(_ data : CreatingSignUpInfo) {
+        
+        let inputData = SignUpInfo(favoriteCategoryList: data.habitCategory!, goal: data.resolutionString ?? "...ㅠ", introduce: "", marketingAgreed: data.agreeList.marketingAgreed!, nickname: data.nickName!, privacyAgreed: data.agreeList.privacyAgreed!, termsAgreed: data.agreeList.termsAgreed!)
+        
+        let wrapper = MoyaWrapper<AuthAPI>()
+        wrapper.requestSuccessRes(target: .postSignUp(info: inputData), instance: data_postSignUp.self){ result in
+            switch result {
+            case .success(let result):
+                print(result)
+                
+                let viewController = AppTabBarController()
+                self.navigationController?.pushViewController(viewController, animated: true)
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
 }

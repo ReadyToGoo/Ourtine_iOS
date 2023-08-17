@@ -207,7 +207,7 @@ class LF_TermsViewController: UIViewController {
         // 데이터 저장 실패 시 push X
         guard saveToFlowData() else { return }
         
-        let viewController = LF_SelectionOfHBViewController()
+        let viewController = LF_CompletionSigninViewController()
         
         self.navigationController?.pushViewController(viewController, animated: true)
     }

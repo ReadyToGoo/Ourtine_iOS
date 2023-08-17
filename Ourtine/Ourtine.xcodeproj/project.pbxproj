@@ -103,6 +103,7 @@
 		88E2B9B42A6BBF170039CF68 /* DeviceScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E2B9B32A6BBF170039CF68 /* DeviceScreenSize.swift */; };
 		88E653972A80151A00ABF9D9 /* HC_memberCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E653962A80151A00ABF9D9 /* HC_memberCountView.swift */; };
 		88E653992A80155D00ABF9D9 /* HC_memberCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E653982A80155D00ABF9D9 /* HC_memberCountViewController.swift */; };
+		88F8D1F32A8E635500D73243 /* AuthAPI responding Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F8D1F22A8E635500D73243 /* AuthAPI responding Struct.swift */; };
 		88FE2D272A7ED3EF00C475A7 /* HC_chooseTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D232A7ED3EF00C475A7 /* HC_chooseTimeView.swift */; };
 		88FE2D282A7ED3EF00C475A7 /* HC_chooseTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D242A7ED3EF00C475A7 /* HC_chooseTypeView.swift */; };
 		88FE2D292A7ED3EF00C475A7 /* HC_introduceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D252A7ED3EF00C475A7 /* HC_introduceView.swift */; };
@@ -239,6 +240,7 @@
 		88E2B9B32A6BBF170039CF68 /* DeviceScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceScreenSize.swift; sourceTree = "<group>"; };
 		88E653962A80151A00ABF9D9 /* HC_memberCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_memberCountView.swift; sourceTree = "<group>"; };
 		88E653982A80155D00ABF9D9 /* HC_memberCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_memberCountViewController.swift; sourceTree = "<group>"; };
+		88F8D1F22A8E635500D73243 /* AuthAPI responding Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthAPI responding Struct.swift"; sourceTree = "<group>"; };
 		88FE2D232A7ED3EF00C475A7 /* HC_chooseTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_chooseTimeView.swift; sourceTree = "<group>"; };
 		88FE2D242A7ED3EF00C475A7 /* HC_chooseTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_chooseTypeView.swift; sourceTree = "<group>"; };
 		88FE2D252A7ED3EF00C475A7 /* HC_introduceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_introduceView.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 			children = (
 				8851EE152A8C22E30062D3E4 /* AuthAPI.swift */,
 				8851EE162A8C22E30062D3E4 /* AuthAPI sending Struct.swift */,
+				88F8D1F22A8E635500D73243 /* AuthAPI responding Struct.swift */,
 			);
 			path = AuthAPI;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				885026172A73C1D100974094 /* HabitCardModel.swift in Sources */,
 				88E2B9B42A6BBF170039CF68 /* DeviceScreenSize.swift in Sources */,
 				88DC8BB72A87A927000E242D /* LF_TermsViewController.swift in Sources */,
+				88F8D1F32A8E635500D73243 /* AuthAPI responding Struct.swift in Sources */,
 				8851EE302A8C22E30062D3E4 /* FollowAPI.swift in Sources */,
 				884835932A715D6F00B73E28 /* HorizontalPickerViewCell.swift in Sources */,
 				8851EE352A8C22E30062D3E4 /* HabitAPI.swift in Sources */,

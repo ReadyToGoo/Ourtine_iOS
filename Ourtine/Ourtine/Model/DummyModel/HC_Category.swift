@@ -16,12 +16,12 @@ class HC_Category {
 }
 
 let Dummy_HC_Categories: [HC_Category] = [
-    HC_Category("카테고리1"),
-    HC_Category("카테고리2"),
-    HC_Category("카테고리3"),
-    HC_Category("카테고리4"),
-    HC_Category("카테고리5"),
-    HC_Category("카테고리6"),
-    HC_Category("카테고리7"),
-    HC_Category("카테고리8")
+    HC_Category("운동"),
+    HC_Category("생활습관"),
+    HC_Category("독서"),
+    HC_Category("스터디"),
+    HC_Category("외국어"),
+    HC_Category("취미생활"),
+    HC_Category("돈관리"),
+    HC_Category("커리어")
 ]
