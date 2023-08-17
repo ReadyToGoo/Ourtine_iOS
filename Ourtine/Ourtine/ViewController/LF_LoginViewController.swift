@@ -12,13 +12,14 @@ class LF_LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white // 내가 추가한 부분
         let secondLabel = UILabel()
         secondLabel.text = "더 나은 습관을 위해,\n내게 맞는 습관을 찾으러 가볼까요?"
         secondLabel.font = UIFont.systemFont(ofSize: 21, weight: .semibold)
         secondLabel.textColor = .black
         secondLabel.textAlignment = .center
         secondLabel.numberOfLines = 2
-
+        
         
         self.view.addSubview(secondLabel)
         
@@ -30,7 +31,7 @@ class LF_LoginViewController: UIViewController {
             make.left.equalToSuperview().offset(-5.5)
         }
         
-
+        
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "logo")
@@ -54,7 +55,7 @@ class LF_LoginViewController: UIViewController {
         kakaoBtn.layer.cornerRadius = 20
         
         self.view.addSubview(kakaoBtn)
-        
+        kakaoBtn.addTarget(self, action: #selector(tappedKaKaoLoginBtn), for: .touchUpInside) // 내가 추가한 부분
         
         kakaoBtn.snp.makeConstraints { make in
             make.width.equalTo(277)
@@ -69,8 +70,8 @@ class LF_LoginViewController: UIViewController {
         appleBtn.setTitleColor(UIColor.white, for: .normal)
         appleBtn.backgroundColor = UIColor.black
         appleBtn.layer.cornerRadius = 20
-
-
+        
+        
         self.view.addSubview(appleBtn)
         
         appleBtn.snp.makeConstraints { make in
@@ -88,15 +89,83 @@ class LF_LoginViewController: UIViewController {
         termsTextView.isScrollEnabled = false
         termsTextView.textAlignment = .center
         termsTextView.backgroundColor = UIColor.clear
-
+        
         self.view.addSubview(termsTextView)
-
+        
         
         termsTextView.snp.makeConstraints { make in
             make.centerX.equalTo(appleBtn)
             make.top.equalToSuperview().offset(700)
             make.width.equalTo(375)
         }
+        
+        
+    }//: viewDidLoad()
+    
+    // 카카오 로그인 랜딩
+    @objc func tappedKaKaoLoginBtn() {
+        let VC = KakaoLoginViewController()
+        VC.modalPresentationStyle = .fullScreen
+        VC.didUserGetToken = { isTrue in
+            if isTrue == true {
+                // 상태 확인
+                guard let status = self.currentUserStatus() else {
+                    makeAlert(title: "Login Error", message: "인증되지 않은 상태입니다. 로그인을 다시 진행해주세요.", completion: nil)
+                    return }
+                // 회원가입 또는 홈화면 진행
+                self.presentVCbyStatus(status: status)
+            }
+        }
+        self.present(VC, animated: true)
+    }
+    
+    /// 현재 유저 정보에서 유저status를 반환합니다.
+    func currentUserStatus() -> String? {
+        if let status = myInfo.mySignUpStatus {
+            switch status {
+            case "SIGNUP_PROGRESS" :
+                print("임시 회원가입 진행 유저")
+                return "SignUP"
+            case "NORMAL_ACTIVE" :
+                print("활성화 일반 유저")
+                return "Main"
+            case "NORMAL_INACTIVE" :
+                print("비활성화 일반 유저")
+                return "Main"
+            case "BANNED_ACTIVE" :
+                print("활성화 서비스 차단 유저")
+                return "Main"
+            case "BLOCKED_INACTIVE" :
+                print("비활성화 서비스 차단 유저")
+                return "Main"
+            default :
+                print("인증되지 않은 회원 상태입니다. 로그인을 진행해주세요.")
+                return nil
+            }
+        }
+        else {
+            print("토큰 발급이 제대로 진행되지 않았습니다. 로그인 먼저 진행해주세요.")
+            return nil
+        }
+    }
+    
+    /// 현재 유저의 Status에 따라 알맞는 화면을 present합니다.
+    func presentVCbyStatus(status: String) {
+        switch status {
+        case "SignUP" :
+            let VC = DarkStatusBar_NavigationController(rootViewController: LF_SetUsernameViewController())
+            VC.modalPresentationStyle = .fullScreen
+            self.present(VC, animated: false)
+        case "Main" :
+            let VC = AppTabBarController()
+            VC.modalPresentationStyle = .fullScreen
+            self.present(VC, animated: false)
+        default :
+            print("인증되지 않은 상태입니다")
+            makeAlert(title: "Login Error", message: "인증되지 않은 상태입니다. 로그인을 다시 진행해주세요.", completion: nil)
+            return
+        }
+    
     }
 }
 

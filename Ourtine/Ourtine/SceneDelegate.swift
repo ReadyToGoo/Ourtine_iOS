@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         // 첫 viewController 설정
-        let viewController = AppTabBarController()
+        let viewController = PrimaryViewController()
         
         // navigationController 사용시
         //let navigationController = UINavigationController(rootViewController: viewController)

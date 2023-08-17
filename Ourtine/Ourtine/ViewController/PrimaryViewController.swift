@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-/// 이거 내용이 전부 LF_LoginViewController에 들어가야 합니다..!
 class PrimaryViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -27,13 +26,15 @@ class PrimaryViewController: UIViewController {
             
             // 토큰의 만료 기간 확인
             guard myInfo.checkMyTokenValidation() == true else {
-                // 로그인 화면 푸쉬
-//                presentVCwithDarkNavCon(LF_LoginViewController.self)
-                presentVCwithDarkNavCon(KakaoLoginViewController.self)
+                // 토큰 만료된 경우 로그인 화면 푸쉬
+                presentVCwithDarkNavCon(LF_LoginViewController.self)
                 return }
             
             // 유저 상태 확인
-            guard let status = currentUserStatus() else { return }
+            guard let status = currentUserStatus() else {
+                // 정의되지 않은 상태인 경우 로그인 화면 푸쉬
+                presentVCwithDarkNavCon(LF_LoginViewController.self)
+                return }
             
             // 회원가입 또는 홈화면 진행
             presentVCbyStatus(status: status)
@@ -43,19 +44,6 @@ class PrimaryViewController: UIViewController {
         else {
             // 로그인 화면 푸쉬
             presentVCwithDarkNavCon(LF_LoginViewController.self)
-            
-            // 여기 내용은 LF_LoginViewController에 들어가야 하네요
-            let VC = KakaoLoginViewController()
-            VC.modalPresentationStyle = .fullScreen
-            VC.didUserGetToken = { isTrue in
-                if isTrue == true {
-                    // 상태 확인
-                    guard let status = self.currentUserStatus() else { return }
-                    // 회원가입 또는 홈화면 진행
-                    self.presentVCbyStatus(status: status)
-                }
-            }
-            self.present(VC, animated: true)
         }
         
     }
@@ -85,7 +73,7 @@ class PrimaryViewController: UIViewController {
             }
         }
         else {
-            print("토큰 발급이 제대로 진행되지 않았습니다. 로그인 먼저 진행해주세요.")
+            print("토큰 발급이 제대로 진행되지 않았습니다. 로그인을 진행해주세요.")
             return nil
         }
     }
@@ -102,7 +90,9 @@ class PrimaryViewController: UIViewController {
             VC.modalPresentationStyle = .fullScreen
             self.present(VC, animated: false)
         default :
-            print("인증되지 않은 상태입니다")
+            makeAlert(title: "Status Error", message: "인증되지 않은 상태입니다. 로그인을 다시 진행해주세요.", completion: {
+                self.presentVCwithDarkNavCon(LF_LoginViewController.self)
+            })
             return
         }
     

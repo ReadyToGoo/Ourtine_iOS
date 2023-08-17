@@ -23,8 +23,6 @@ class KakaoLoginViewController : UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        //clearWebViewCache()
-        
         let configuration = WKWebViewConfiguration()
         webView = WKWebView(frame: view.bounds, configuration: configuration)
         webView.navigationDelegate = self
@@ -39,6 +37,7 @@ class KakaoLoginViewController : UIViewController, WKNavigationDelegate {
             webView.load(request)
         }
         
+        // 테스트용 캐시 비우기
 //        clearWebViewCache()
     }
 }

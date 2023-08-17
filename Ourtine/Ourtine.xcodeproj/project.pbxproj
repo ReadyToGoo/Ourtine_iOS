@@ -76,6 +76,7 @@
 		88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC72A7FE3D900562E35 /* Date + Extension.swift */; };
 		88804CCA2A7FFACD00562E35 /* HC_chooseDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CC92A7FFACD00562E35 /* HC_chooseDateView.swift */; };
 		88804CCC2A7FFBBF00562E35 /* HC_chooseDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88804CCB2A7FFBBF00562E35 /* HC_chooseDateViewController.swift */; };
+		888BB6112A8DCE9A00669C99 /* makeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BB6102A8DCE9A00669C99 /* makeAlert.swift */; };
 		888FB2A62A84177100930987 /* FlowDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888FB2A52A84177100930987 /* FlowDataManager.swift */; };
 		88A64C0F2A7A733E00292ED6 /* CALayer+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */; };
 		88A64C112A7A8CA600292ED6 /* HabitDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A64C102A7A8CA600292ED6 /* HabitDescView.swift */; };
@@ -210,6 +211,7 @@
 		88804CC72A7FE3D900562E35 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		88804CC92A7FFACD00562E35 /* HC_chooseDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_chooseDateView.swift; sourceTree = "<group>"; };
 		88804CCB2A7FFBBF00562E35 /* HC_chooseDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_chooseDateViewController.swift; sourceTree = "<group>"; };
+		888BB6102A8DCE9A00669C99 /* makeAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeAlert.swift; sourceTree = "<group>"; };
 		888FB2A52A84177100930987 /* FlowDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowDataManager.swift; sourceTree = "<group>"; };
 		88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addBorder.swift"; sourceTree = "<group>"; };
 		88A64C102A7A8CA600292ED6 /* HabitDescView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDescView.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				882AC3BC2A78348A002AD232 /* UIImage+onlyColor.swift */,
 				88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */,
 				B6394E922A86A2F30040B8FF /* CamerManager.swift */,
+				888BB6102A8DCE9A00669C99 /* makeAlert.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				888BB6112A8DCE9A00669C99 /* makeAlert.swift in Sources */,
 				88DC8BB92A87A927000E242D /* LF_LoginViewController.swift in Sources */,
 				88804CCA2A7FFACD00562E35 /* HC_chooseDateView.swift in Sources */,
 				881C06052A6178F600184AFA /* HabitJoinVIewController.swift in Sources */,
