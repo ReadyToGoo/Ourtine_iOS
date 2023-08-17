@@ -13,6 +13,9 @@ class LF_LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white // 내가 추가한 부분
+        // 카카오 로그인으로부터 알림받을 옵저버 등록
+        NotificationCenter.default.addObserver(self, selector: #selector(doWhenLoginSucceed), name: NSNotification.Name("KakaoLoginSucceed"), object: nil)
+        
         let secondLabel = UILabel()
         secondLabel.text = "더 나은 습관을 위해,\n내게 맞는 습관을 찾으러 가볼까요?"
         secondLabel.font = UIFont.systemFont(ofSize: 21, weight: .semibold)
@@ -106,17 +109,16 @@ class LF_LoginViewController: UIViewController {
     @objc func tappedKaKaoLoginBtn() {
         let VC = KakaoLoginViewController()
         VC.modalPresentationStyle = .fullScreen
-        VC.didUserGetToken = { isTrue in
-            if isTrue == true {
-                // 상태 확인
-                guard let status = self.currentUserStatus() else {
-                    makeAlert(title: "Login Error", message: "인증되지 않은 상태입니다. 로그인을 다시 진행해주세요.", completion: nil)
-                    return }
-                // 회원가입 또는 홈화면 진행
-                self.presentVCbyStatus(status: status)
-            }
-        }
         self.present(VC, animated: true)
+    }
+    
+    @objc func doWhenLoginSucceed() {
+        // 상태 확인
+        guard let status = self.currentUserStatus() else {
+            makeAlert(title: "Login Error", message: "인증되지 않은 상태입니다. 로그인을 다시 진행해주세요.", completion: nil)
+            return }
+        // 회원가입 또는 홈화면 진행
+        self.presentVCbyStatus(status: status)
     }
     
     /// 현재 유저 정보에서 유저status를 반환합니다.
@@ -153,7 +155,7 @@ class LF_LoginViewController: UIViewController {
     func presentVCbyStatus(status: String) {
         switch status {
         case "SignUP" :
-            let VC = DarkStatusBar_NavigationController(rootViewController: LF_SetUsernameViewController())
+            let VC = LF_SetUsernameViewController()
             VC.modalPresentationStyle = .fullScreen
             self.present(VC, animated: false)
         case "Main" :
@@ -166,6 +168,11 @@ class LF_LoginViewController: UIViewController {
             return
         }
     
+    }
+    
+    deinit {
+        // NotificationCenter의 옵저버 등록을 해제합니다.
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

@@ -19,7 +19,7 @@ class PrimaryViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // 토큰을 영구저장소에서 가져오기
-        myInfo.getMyToken()
+        //myInfo.getMyToken()
         
         // 토큰이 존재할 때
         if myInfo.myToken != nil {
