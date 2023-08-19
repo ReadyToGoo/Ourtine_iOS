@@ -198,11 +198,8 @@ extension HabitAPI: TargetType {
             // 습관 개설 태스크    이미지 Data와, 습관 내용 구조체를 가져옵니다.
         case .postCreateHabit(let imageData, let content) :
             
-            // 이미지 데이터를 Base64로 인코딩
-            let base64ImageString = imageData.base64EncodedString()
-            
             // 이미지 data를 멀티파트폼 데이터로 지정
-            let image_formData = MultipartFormData(provider: .data(Data(base64ImageString.utf8)), name: "file", fileName: "test.png", mimeType: "image/png")
+            let image_formData = MultipartFormData(provider: .data(imageData), name: "file", fileName: "test.png", mimeType: "image/png")
             
             // 습관 내용 구조체(habitCreationContent)를 JSON 인코딩
             do {

@@ -14,16 +14,14 @@ import WebKit
 /// 카카오 로그인 화면 팝업 후 로그인 완료시 dismiss됩니다.
 class KakaoLoginViewController : UIViewController, WKNavigationDelegate {
     
-    /// KakaoLoginViewController의 didUserGetToken값을 반환하는 클로저입니다.
-    var didUserGetToken: ((Bool?) -> Void)?
+    // 토큰처리를 성공적으로 진행했는지 판단하는 변수입니다.
+    var isSucceed: Bool?
     
     var webView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
-        //clearWebViewCache()
         
         let configuration = WKWebViewConfiguration()
         webView = WKWebView(frame: view.bounds, configuration: configuration)
@@ -39,7 +37,8 @@ class KakaoLoginViewController : UIViewController, WKNavigationDelegate {
             webView.load(request)
         }
         
-//        clearWebViewCache()
+        // 테스트용 캐시 비우기
+        //clearWebViewCache()
     }
 }
 
@@ -54,9 +53,9 @@ extension KakaoLoginViewController {
                 // 토큰 값을 사용
                 if cookieString.contains("Auth") {
                     myInfo.setMyToken(cookieString: cookieString)
-                    // 토큰을 처리한 후에 웹 뷰를 닫기
-                    
-                    self.didUserGetToken?(true)
+                    // 토큰을 처리한 후에 isSucceed값 변경
+                    self.isSucceed = true
+                    // 웹 뷰를 닫기 + notify
                     self.dismissWebView()
                 }
                 //print("Received token value: \(cookieString)")
@@ -69,6 +68,14 @@ extension KakaoLoginViewController {
     func dismissWebView() {
         if let presentingViewController = presentingViewController {
             presentingViewController.dismiss(animated: true, completion: nil)
+        }
+        if let suc = isSucceed, suc == true {
+            // 서버 토큰을 성공적으로 받았음을 notify합니다
+            NotificationCenter.default.post(name: NSNotification.Name("KakaoLoginSucceed"), object: nil)
+        }
+        // 토큰 받기에 실패했을때, alert합니다.
+        else {
+            makeAlert(title: "Login Error", message: "로그인에 실패했습니다. 다시 시도해주세요", completion: nil)
         }
     }
 

@@ -10,8 +10,19 @@ import Foundation
 class SignUpFlowManager {
     static let shared = SignUpFlowManager()
     
+    var signUpInformation = CreatingSignUpInfo()
     
+    /// 디버깅용
+    func printself() {
+        print(self.signUpInformation)
+    }
+    
+    /// 구조체 초기화 함수 입니다. 구조체 내의 모든 구조체 내의 내용이 nil로 초기화됩니다.
+    func resetAll() {
+        signUpInformation.reset()
+    }
 }
+
 
 
 /// 습관 개설 플로우에서 생성되는 데이터를 저장하는 싱글톤 클래스입니다.
@@ -34,6 +45,24 @@ class HabitCreateFlowManager {
 }
 
 
+
+extension CreatingSignUpInfo {
+    /// 구조체 초기화 함수 입니다.
+     mutating func reset() {
+         nickName = nil
+         habitCategory = nil
+         resolutionString = nil
+         agreeList.reset()
+    }
+}
+
+extension CreatingSignUpInfo.AgreeList {
+    mutating func reset() {
+        self.marketingAgreed = nil
+        self.privacyAgreed = nil
+        self.termsAgreed = nil
+    }
+}
 
 
 extension HabitInfo {

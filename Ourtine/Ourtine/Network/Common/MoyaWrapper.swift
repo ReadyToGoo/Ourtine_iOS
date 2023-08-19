@@ -24,9 +24,10 @@ class MoyaWrapper<Provider : TargetType> : MoyaProvider<Provider> {
         
         var plugins: [PluginType] = []
         
-        if Provider.self != AuthAPI.self {
-            plugins = [TokenPlugin(token: myInfo.myToken)]
-        }
+//        if Provider.self != AuthAPI.self {
+//            plugins = [TokenPlugin(token: myInfo.myToken)]
+//        }
+        plugins = [TokenPlugin(token: myInfo.myToken)]
         
         super.init(endpointClosure: endPointClosure, stubClosure: stubClosure, session: session, plugins: plugins)
     }
@@ -59,7 +60,6 @@ class MoyaWrapper<Provider : TargetType> : MoyaProvider<Provider> {
                         print("response가 JSON 파일이 아닙니다")
                         print("String : \(stringData)")
                     }
-                    
                 }
                
                 // --- case .success의 본 내용입니다.

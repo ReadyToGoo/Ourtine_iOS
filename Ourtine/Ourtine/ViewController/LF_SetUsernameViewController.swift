@@ -43,6 +43,16 @@ class LF_SetUsernameViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
+    lazy var nickNameTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "닉네임을 입력해주세요"
+        textField.font = UIFont.systemFont(ofSize: 29)
+        textField.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
+        textField.clearButtonMode = .whileEditing
+        textField.delegate = self
+        return textField
+    }()
+    
     
     func isNicknameValid(_ nickname: String) -> Bool {
         if nickname.count < 2 {
@@ -73,6 +83,10 @@ class LF_SetUsernameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = .white
+        SignUpFlowManager.shared.printself()
+        nextBtn.addTarget(self, action: #selector(nextBtnTapped), for: .touchUpInside)
         
         let navigationBarHeight = navigationController?.navigationBar.frame.height ?? 0
         
@@ -105,15 +119,8 @@ class LF_SetUsernameViewController: UIViewController, UITextFieldDelegate {
         
         
         // 텍스트필드 설정
-        let textField = UITextField()
-        textField.placeholder = "닉네임을 입력해주세요"
-        textField.font = UIFont.systemFont(ofSize: 29)
-        textField.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
-        textField.clearButtonMode = .whileEditing
-        textField.delegate = self
-        self.view.addSubview(textField)
-        
-        textField.snp.makeConstraints { make in
+        self.view.addSubview(nickNameTextField)
+        nickNameTextField.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-navigationBarHeight - 233)
             make.leading.equalToSuperview().offset(25)
@@ -126,9 +133,9 @@ class LF_SetUsernameViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(indicatorTextField)
         
         indicatorTextField.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(5)
+            make.top.equalTo(nickNameTextField.snp.bottom).offset(5)
             make.centerX.equalToSuperview()
-            make.width.equalTo(textField)
+            make.width.equalTo(nickNameTextField)
             make.height.equalTo(2)
         }
         
@@ -150,12 +157,34 @@ class LF_SetUsernameViewController: UIViewController, UITextFieldDelegate {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(hexCode: "#FF4F17")
         button.layer.cornerRadius = 8
-        button.addTarget(LF_SetUsernameViewController.self, action: #selector(nextBtnTapped(_:)), for: .touchUpInside)
         return button
     }()
     
+    /// 해당 페이지에서 저장된 데이터를 flowdata로 보내고, 제대로 저장됐는지 확인합니다.
+    private func saveToFlowData() -> Bool {
+        
+        // 회원가입 플로우의 데이터를 저장
+        let nickName = self.nickNameTextField.text
+        SignUpFlowManager.shared.signUpInformation.nickName = nickName
+        
+        // 싱글톤 클래스 객체에 값이 저장되면 넘어가도록 guarding
+        guard (SignUpFlowManager.shared.signUpInformation.nickName != nil) else {
+            print("SignUpFlowManager.shared.signUpInformation.nickName에 값이 저장되지 않았습니다. 다시 시도해주세요")
+            return false
+        }
+        
+        print("저장 성공")
+        return true
+    }
+    
     @objc private func nextBtnTapped(_ sender: UIButton) {
         // 코드
+        // 데이터 저장 실패 시 push X
+        guard saveToFlowData() else { return }
+        
+        let viewController = LF_SelectionOfHBViewController()
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     override func viewDidLayoutSubviews() {

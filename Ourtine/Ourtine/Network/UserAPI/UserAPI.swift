@@ -129,7 +129,15 @@ extension UserAPI : TargetType {
             return .requestJSONEncodable(nickname)
             
         case .patchMyProfileImage(let imageData) :
-            return .requestData(imageData)
+            
+            // 이미지 data를 멀티파트폼 데이터로 지정
+            let image_formData = MultipartFormData(provider: .data(imageData), name: "file", fileName: "test.png", mimeType: "image/png")
+            
+            let formData: [MultipartFormData] = [
+                image_formData
+            ]
+            
+            return .uploadMultipart(formData)
             
         case .getSearchUserNickName(let keyword):
             let params = [

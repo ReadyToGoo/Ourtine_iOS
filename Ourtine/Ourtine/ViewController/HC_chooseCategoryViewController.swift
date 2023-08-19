@@ -91,6 +91,30 @@ class HabitCreate_chooseCategoryViewController: UIViewController {
     @objc func popVC() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    /// 셀의 텍스트 내용에서 카테고리 값으로 변환합니다.
+    func categoryValueFromCellText(text: String) -> String {
+        switch text {
+        case "운동" :
+            return "EXERCISE"
+        case "생활습관" :
+            return "LIFESTYLE"
+        case "독서" :
+            return "READING"
+        case "스터디" :
+            return "STUDY"
+        case "외국어" :
+            return "LANGUAGE"
+        case "취미생활" :
+            return "HOBBY"
+        case "돈관리" :
+            return "MONEY"
+        case "커리어" :
+            return "CAREER"
+        default :
+            return "noValue"
+        }
+    }
 }
 
 /// CollectionView의 Delegate와 DataSource 상속 내용입니다
@@ -120,11 +144,12 @@ extension HabitCreate_chooseCategoryViewController: UICollectionViewDelegate, UI
         
         // 선택한 카테고리를 리스트에 저장
         if let text = cell?.titleLabel.text {
-            if self.selectedCategorySet.contains(text) {
-                self.selectedCategorySet.remove(text) // 이미 선택된 경우 삭제
+            let value = categoryValueFromCellText(text: text)
+            if self.selectedCategorySet.contains(value) {
+                self.selectedCategorySet.remove(value) // 이미 선택된 경우 삭제
             }
             else {
-                self.selectedCategorySet.insert(text) // 선택되지 않은 경우 추가
+                self.selectedCategorySet.insert(value) // 선택되지 않은 경우 추가
             }
         }
         
