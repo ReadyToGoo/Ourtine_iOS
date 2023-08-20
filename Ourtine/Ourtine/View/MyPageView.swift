@@ -22,7 +22,7 @@ class MyPageView: UIView {
         return navBar
     }()
     
-    // 상단 바 닉네임 라벨
+    /// 상단 바 닉네임 라벨
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         let attributedText = NSMutableAttributedString(string: "Minseo_00 님")
@@ -37,7 +37,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 상단바 설정 버튼
+    /// 상단바 설정 버튼
     lazy var settingBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(systemName: "gearshape"), for: .normal)
@@ -45,13 +45,13 @@ class MyPageView: UIView {
         return btn
     }()
     
-    // 프로필 이미지
+    /// 프로필 이미지
     lazy var profileImage: UserProfileImageView = {
         let imgView = UserProfileImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         return imgView
     }()
     
-    // 팔로잉 수
+    /// 팔로잉 수
     lazy var followingNum: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .medium)
@@ -60,7 +60,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 팔로잉 라벨
+    /// 팔로잉 라벨
     lazy var followingLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .light)
@@ -69,7 +69,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 팔로워 수
+    /// 팔로워 수
     lazy var followerNum: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .medium)
@@ -78,7 +78,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 팔로워 라벨
+    /// 팔로워 라벨
     lazy var followerLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .light)
@@ -87,7 +87,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 다짐 라벨
+    /// 다짐 라벨
     lazy var contentLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .light)
@@ -97,7 +97,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 라벨 캡슐
+    /// 라벨 캡슐
     lazy var labelCapsule1: UIView = {
         let view = UIView()
         view.layer.borderColor = UIColor.app_PrimaryColor.cgColor
@@ -106,7 +106,7 @@ class MyPageView: UIView {
         return view
     }()
     
-    // "참여율" 라벨
+    /// "참여율" 라벨
     lazy var participateLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
@@ -115,7 +115,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 참여율 수치 라벨
+    /// 참여율 수치 라벨
     lazy var participateRateLabel: UILabel = {
         let label = UILabel()
         let attributedText = NSMutableAttributedString(string: "98 %")
@@ -133,7 +133,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 라벨 캡슐
+    /// 라벨 캡슐
     lazy var labelCapsule2: UIView = {
         let view = UIView()
         view.layer.borderColor = UIColor.app_PrimaryColor.cgColor
@@ -142,7 +142,7 @@ class MyPageView: UIView {
         return view
     }()
     
-    // 참여한 습관 라벨
+    /// 참여한 습관 라벨
     lazy var habitLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
@@ -151,7 +151,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 습관 개수 라벨
+    /// 습관 개수 라벨
     lazy var habitCountLabel: UILabel = {
         let label = UILabel()
         let attributedText = NSMutableAttributedString(string: "12 개")
@@ -169,14 +169,14 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 중간 라인
+    /// 중간 라인
     lazy var lineView: UIView = {
         let line = UIView()
         line.backgroundColor = .app_BrightnessColor40
         return line
     }()
     
-    // 중간 바 위클리 로그 라벨
+    /// 중간 바 위클리 로그 라벨
     lazy var weeklyLogLabel: UILabel = {
         let label = UILabel()
         let attributedText = NSMutableAttributedString(string: "Weekly-Log")
@@ -188,7 +188,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 인증 현황, 위클리 로그 작성 라벨
+    /// 인증 현황, 위클리 로그 작성 라벨
     lazy var statusLabel: UILabel = {
         let label = UILabel()
         let attributedText = NSMutableAttributedString(string: "인증 현황\n위클리로그 작성하기")
@@ -205,7 +205,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // > 버튼 이미지
+    /// > 버튼 이미지
     lazy var btnImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(systemName: "chevron.right")
@@ -213,10 +213,10 @@ class MyPageView: UIView {
         return view
     }()
     
-    // 탭 제스처가 적용되는 뷰
+    /// 탭 제스처가 적용되는 뷰
     lazy var logTapView = UIView()
     
-    // 요일별 습관 보이는 스택뷰
+    /// 요일별 습관 보이는 스택뷰
     lazy var logStackView: UIStackView = {
         let view = UIStackView()
         view.layer.borderColor = UIColor.app_PrimaryColor.cgColor
@@ -281,7 +281,7 @@ class MyPageView: UIView {
             return cell
         }()
     
-    // 이번주 감정 라벨
+    /// 이번주 감정 라벨
     lazy var feelingLabel: UILabel = {
         let label = UILabel()
         let attributedText = NSMutableAttributedString(string: "이번주 감정")
@@ -293,7 +293,7 @@ class MyPageView: UIView {
         return label
     }()
     
-    // 이번주 감정 보이는 스택뷰
+    /// 이번주 감정 보이는 스택뷰
     lazy var feelingStackView: UIStackView = {
         let view = UIStackView()
         view.layer.borderColor = UIColor.app_PrimaryColor.cgColor
@@ -412,28 +412,29 @@ class MyPageView: UIView {
             $0.size.equalTo(120)
         }
         
-        followingNum.snp.makeConstraints {
-            $0.leading.equalTo(profileImage.snp.trailing).offset(35)
-            $0.top.equalTo(profileImage).offset(10)
+        followingLabel.snp.makeConstraints {
+            $0.leading.equalTo(profileImage.snp.trailing).offset(25)
+//            $0.top.equalTo(profileImage).offset(10)
+            $0.centerY.equalTo(profileImage)
         }
         
-        followingLabel.snp.makeConstraints {
-            $0.centerX.equalTo(followingNum)
-            $0.top.equalTo(followingNum.snp.bottom).offset(3)
+        followingNum.snp.makeConstraints {
+            $0.centerX.equalTo(followingLabel)
+            $0.bottom.equalTo(followingLabel.snp.top).offset(-3)
         }
         
         followerNum.snp.makeConstraints {
-            $0.leading.equalTo(followingNum.snp.trailing).offset(25)
+            $0.centerX.equalTo(followerLabel)
             $0.top.equalTo(followingNum)
         }
-        
+
         followerLabel.snp.makeConstraints {
-            $0.centerX.equalTo(followerNum)
-            $0.top.equalTo(followerNum.snp.bottom).offset(3)
+            $0.leading.equalTo(followingLabel.snp.trailing).offset(25)
+            $0.centerY.equalTo(followingLabel)
         }
         
         contentLabel.snp.makeConstraints {
-            $0.leading.equalTo(followingNum).offset(-5)
+            $0.leading.equalTo(followingLabel).offset(-5)
             $0.trailing.equalToSuperview().offset(-20)
             $0.top.equalTo(followingLabel.snp.bottom).offset(10)
         }

@@ -64,8 +64,8 @@ struct data_getSearchUserNickName: Codable {
     let first, hasNext, last: Bool
     
     struct Content: Codable {
-        let nickname, profileImage: String
-        let userId: Int
+        let nickname, profileImage: String?
+        let userId: Int?
     }
 }
 

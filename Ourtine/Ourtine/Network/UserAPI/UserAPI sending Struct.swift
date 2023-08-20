@@ -10,7 +10,7 @@ import Foundation
 // MARK: - UserAPI에서 송신할 때 사용되는 struct입니다.
 
 //struct InterestingCategories: Codable {
-//    let 
+//    let ca
 //}
 
 struct MyGoal: Codable {
@@ -20,3 +20,4 @@ struct MyGoal: Codable {
 struct MyNickname: Codable {
     let nickname: String
 }
+

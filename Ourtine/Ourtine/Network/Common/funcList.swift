@@ -25,10 +25,10 @@ import UIKit
 //    }
 //}
 
-
 func usingWrapper() {
-    let wrapper = MoyaWrapper<UserAPI>()
-    wrapper.requestSuccessRes(target: .getSearchUserNickName(keyword: "7"), instance: data_getSearchUserNickName.self){ result in
+    let wrapper = MoyaWrapper<HabitAPI>()
+    wrapper.requestSuccessRes(target: .postCreateHabit(imageData: UIImage(named: "feeling1")!.pngData()!, content: habitCreationContent(category: "CAREER", days: ["FRI"], detail: "string", endDate: "2023-08-15", endTime: "string", followerLimit:  0, habitStatus: "PRIVATE", hashtags: ["string"], startDate: "2023-08-15", startTime: "string", title: "TEST")), instance: data_postCreateHabit.self)
+    { result in
         switch result {
         case .success(let result):
             print(result)

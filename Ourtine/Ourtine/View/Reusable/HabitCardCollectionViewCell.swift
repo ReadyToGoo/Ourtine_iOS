@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 /// HabitCardCollectionView에 표시될 cell입니다.
 /// ViewController : HabitDiscoverViewController
@@ -18,7 +19,7 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
     
     static let identifier:String = "HabitCardCollectionViewCell"
     
-    var cardData = HabitCardModel(nil, "카테고리", "습관명", "유저 닉네임")
+    var cardData = HabitCardModel(habitId: 9, image: nil, title: "카테고리", habitName: "습관명", userName: "유저 닉네임")
     
     // 셀 그림자 색 구현을 위한 전체 포함 뷰
     lazy var cellContentView: UIView = {
@@ -137,6 +138,7 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
         userImage.snp.makeConstraints {
             $0.centerY.equalTo(frontView.snp.top)
             $0.leading.equalToSuperview().offset(10)
+            $0.size.equalTo(50)
         }
 
         habitName.snp.makeConstraints {
@@ -172,11 +174,30 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
     
     /// 셀 컴포넌트 요소에 데이터 페칭
     private func fetchData() {
-        //self.frontImage.image = self.cardData.image
-        self.habitCategoryLabel.titleLabel.text = self.cardData.title
+        
+        let placeholderImage = createImageWithColor(color: .app_SecondaryColor, size: CGSize(width: 50, height: 50))
+        
+        if let imageURL = self.cardData.image {
+            self.frontImage.kf.setImage(with: URL(string: imageURL), placeholder: placeholderImage)
+        }
+        
+        self.habitCategoryLabel.titleLabel.text = categoryValueFromResponseData(text: self.cardData.title)
         self.habitName.text = self.cardData.habitName
         self.userName.text = self.cardData.userName
-       // self.userImage.setImage(image: <#T##UIImage?#>)
+        if let imageURL = self.cardData.userImage {
+            self.userImage.kf.setImage(with: URL(string: imageURL), placeholder: placeholderImage)
+        }
+       
+        if let dates = self.cardData.days {
+            self.habitDateLabel.titleLabel.text = dates[0]
+        }
+        
+        if let start = self.cardData.startTime, let end = self.cardData.endTime {
+            let s_time = extractHourMinFromDateString(start)
+            let e_time = extractHourMinFromDateString(end)
+            self.habitTimeLabel.titleLabel.text = "\(s_time)-\(e_time)"
+        }
+        
     }
     
     override init(frame: CGRect) {
@@ -205,7 +226,7 @@ struct HabitCardCollectionViewCell_Preview: PreviewProvider {
         UIViewPreview {
             let cell = HabitCardCollectionViewCell()
             //cell.getMemberData(data: MemberModel("Crown", nil, "Test"))
-            cell.getHabitsData(data:HabitCardModel(nil, "독서", "아침마다 책읽기", "minseo00"))
+            cell.getHabitsData(data:HabitCardModel(habitId: 0, image: nil, title: "독서", habitName: "아침마다 책읽기", userName: "minseo00"))
             return cell
         }
         .previewLayout(.fixed(width: HabitCardCollectionViewCell.cellWidth, height: CGFloat(HabitCardCollectionViewCell.cellHeight)))

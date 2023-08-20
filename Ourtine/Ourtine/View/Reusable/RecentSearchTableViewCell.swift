@@ -18,7 +18,7 @@ class RecentSearchTableViewCell: UITableViewCell {
     
     
     // searchedText  생성
-    private let searchedText: UILabel = {
+    let searchedText: UILabel = {
         let label = UILabel()
         label.text = "test용입니다"
         label.textColor = UIColor.black
@@ -26,7 +26,7 @@ class RecentSearchTableViewCell: UITableViewCell {
     }()
     
     // 우측 화살표 버튼 생성
-    private let deleteButton: UIButton = {
+    let deleteButton: UIButton = {
         let button = UIButton()
         
         button.frame.size = CGSize(width:30, height: 30)
@@ -41,8 +41,8 @@ class RecentSearchTableViewCell: UITableViewCell {
     // 셀에 컴포넌트 요소 등록
     private func addViews() {
         self.backgroundColor = .white // 셀 배경 흰색
-        self.addSubview(searchedText)
-        self.addSubview(deleteButton)
+        self.contentView.addSubview(searchedText)
+//        self.contentView.addSubview(deleteButton)
     }
     
     // 컴포넌트 Constraints
@@ -52,10 +52,10 @@ class RecentSearchTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
         }
         
-        deleteButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().offset(-15)
-            $0.centerY.equalToSuperview()
-        }
+//        deleteButton.snp.makeConstraints {
+//            $0.trailing.equalToSuperview().offset(-15)
+//            $0.centerY.equalToSuperview()
+//        }
     }
     
     /// TableViewController에서 Cell data 페칭을 위한 함수

@@ -18,7 +18,7 @@ class Custom_NavigationBar: UINavigationBar {
     
     lazy var dotsButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis")) // 네비게이션 점 3개 버튼
     
-    lazy var cancelButton = UIBarButtonItem(title: "취소") // 네비게이션 취소 버튼
+    lazy var cancelButton = UIBarButtonItem(title: "검색") // 네비게이션 취소 버튼
     
     lazy var alarmButton = UIBarButtonItem(image: UIImage(systemName: "bell")) // 네비게이션 알람 버튼
     

@@ -187,12 +187,14 @@ struct data_getSearchHabit: Codable {
     let content: [Content]
     let first, hasNext, last: Bool
     
-    struct Content: Codable {
-        let category: String
-        let hashtags: [String]
-        let id: Int
-        let isRecruiting: Bool
-        let title: String
+    struct Content: Codable {   
+        let category: String?
+        let days: [String]?
+        let endTime: String?
+        let followerCount, followerLimit, hostId: Int?
+        let hostImageUrl, hostName: String?
+        let id: Int?
+        let imageUrl, startTime, title: String?
     }
 
 }

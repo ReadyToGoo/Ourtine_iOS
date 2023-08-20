@@ -20,6 +20,15 @@ class SearchResultViewController: UIViewController, UISheetPresentationControlle
     /// 기본 값은 첫번째 값입니다.
     private var filterIndex: Int = 1
     
+    /// 검색어 입니다. 이전 VC 에서 받아옵니다. default = ""
+    var searchTargetName: String = ""
+    
+    /// 습관 찾기 결과 리스트 입니다. API로 받아옵니다.
+    private var habitResultList: [HabitCardModel] = []
+    
+    /// 유저닉네임 결과 리스트입니다. API로 받아옵니다.
+    private var userNameResultList: [UserModel] = []
+    
     // View 등록
     let searchResultView: SearchResultView = {
         let searchResultView = SearchResultView()
@@ -72,7 +81,7 @@ class SearchResultViewController: UIViewController, UISheetPresentationControlle
         // MARK: - 시작 시 테이블 뷰 안보이게, 콜렉션 뷰는 보이게
         self.searchResultView.searchResultTableView.isHidden = true
         
-        
+        fetchData()
         self.hidesBottomBarWhenPushed = true
     }
     
@@ -84,7 +93,7 @@ class SearchResultViewController: UIViewController, UISheetPresentationControlle
     /// 검색 결과 출력 (예정)
     @objc func Search() {
         print(self.searchResultView.navigationBar.searchBar.text!)
-        
+        fetchData()
         //검색 결과 나오게하면 될듯 -> Refresh
     }
     
@@ -134,10 +143,12 @@ class SearchResultViewController: UIViewController, UISheetPresentationControlle
             
             
             // 해당 내용은 콜렉션뷰 바꾸고, 테이블뷰 보이게
-            self.searchResultView.searchResultTableView.reloadData()
+//            self.searchResultView.searchResultTableView.reloadData()
             self.searchResultView.searchResultTableView.isHidden = false
             
         }
+        
+        fetchData()
     }
     
     /// 필터 버튼 눌러 바텀시트 팝업
@@ -164,6 +175,7 @@ class SearchResultViewController: UIViewController, UISheetPresentationControlle
                 print("error")
             }
             self.changeFilterBtnName(index: self.filterIndex)
+            self.fetchData()
         }
         
         // 바텀시트 컨트롤러 present
@@ -183,6 +195,64 @@ class SearchResultViewController: UIViewController, UISheetPresentationControlle
             return
         }
     }
+    
+    func getStringFromFilterIndex() -> String {
+        switch self.filterIndex {
+        case 1:
+            return searchFilter.CREATED_DATE.toString()
+        case 2:
+            return searchFilter.RECRUITING.toString()
+        case 3:
+            return searchFilter.START_DATE.toString()
+        default:
+            return searchFilter.CREATED_DATE.toString()
+        }
+    }
+    
+    func fetchData() {
+        let selectedIndex = self.tableViewIndex
+        let searchTarget = self.searchResultView.navigationBar.searchBar.text
+        let filterString = getStringFromFilterIndex()
+        
+        switch selectedIndex {
+        case 0:
+            var inputList:[HabitCardModel] = []
+            let habitAPI = MoyaWrapper<HabitAPI>()
+            habitAPI.requestSuccessRes(target:.getSearchHabit(sort_by: filterString, keyword: searchTarget ?? ""), instance: data_getSearchHabit.self){ result in
+                switch result {
+                case .success(let result):
+                    print(result)
+                    for item in result.content {
+                        print(item.id)
+                        inputList.append(HabitCardModel(habitId: item.id, image: item.imageUrl, title: item.category ?? "none", habitName: item.title ?? "none", userName: item.hostName ?? "none", userImage: item.hostImageUrl, days: item.days, startTime: item.startTime, endTime: item.endTime))
+                    }
+                    self.habitResultList = inputList
+                    self.searchResultView.searchResultCollectionView.reloadData()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        case 1:
+            var inputList:[UserModel] = []
+            let userAPI = MoyaWrapper<UserAPI>()
+            userAPI.requestSuccessRes(target: .getSearchUserNickName(keyword: searchTarget ?? ""), instance: data_getSearchUserNickName.self) { result in
+                switch result {
+                case .success(let result):
+                    print(result)
+                    for item in result.content {
+                        inputList.append(UserModel(item.userId ?? 0, item.profileImage, item.nickname ?? "", nil))
+                    }
+                    self.userNameResultList = inputList
+                    self.searchResultView.searchResultTableView.reloadData()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        default :
+            print("unexpected Error")
+            return
+        }
+    }
 }
 
 /// CollectionView의 Delegate와 DataSource 상속 내용입니다
@@ -190,7 +260,7 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     
     /// numberOfItemsInSection : cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Dummy_habitCards.count
+        return self.habitResultList.count
     }
     
     /// cellForItemAt : cell 내용 배정
@@ -200,14 +270,15 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
             withReuseIdentifier: HabitCardCollectionViewCell.identifier,
             for: indexPath
         ) as? HabitCardCollectionViewCell else { return UICollectionViewCell() }
-        cell.getHabitsData(data: Dummy_habitCards[indexPath.row])
+        //cell.getHabitsData(data: Dummy_habitCards[indexPath.row])
+        cell.getHabitsData(data: self.habitResultList[indexPath.row])
         return cell
     }
     
     /// didSelectItemAt : cell 선택했을 때
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        print("habit card \(indexPath.row) selected")
+        print(self.habitResultList[indexPath.row].habitName)
+        print("habitId : \(self.habitResultList[indexPath.row].habitId ?? -100)")
     }
 }
 
@@ -216,9 +287,9 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     
     // CollectionView의 좌우 여백 조정
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            var topBottomPadding: CGFloat = 20
-            var leftPadding: CGFloat = 16
-            var rightPadding: CGFloat = 16
+            let topBottomPadding: CGFloat = 20
+            let leftPadding: CGFloat = 16
+            let rightPadding: CGFloat = 16
 
             return UIEdgeInsets(top: topBottomPadding, left: leftPadding, bottom: topBottomPadding, right: rightPadding)
         }
@@ -248,7 +319,7 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     /// 테이블 뷰에 표시할 셀 개수 전달 (필수)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return Dummy_userList.count
+        return self.userNameResultList.count
     }
     
     /// 테이블 뷰에 표시할 셀 높이 전달
@@ -263,7 +334,7 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UserProfileTableViewCell.identifier, for: indexPath) as? UserProfileTableViewCell else { return UITableViewCell() }
         
         // 넘기기 전에 cell에 데이터 넘겨줍니다
-        cell.getUserData(data: Dummy_userList[indexPath.row])
+        cell.getUserData(data: self.userNameResultList[indexPath.row])
         // 셀 선택할 때의 색 없앱니다
         cell.selectionStyle = .none
         return cell
@@ -273,9 +344,15 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     /// tableViewIndex에 따라 표시 VC 다르게 전달
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print(indexPath.row)
-        
         tableView.deselectRow(at: indexPath, animated: true)
+        print("userID: \(self.userNameResultList[indexPath.row].userKey)")
+        
+        
     }
+}
+
+extension SearchResultViewController: UISearchBarDelegate {
+    
 }
 
 import SwiftUI
