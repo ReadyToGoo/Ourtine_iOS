@@ -403,6 +403,9 @@ extension HabitDiscoverViewController: UICollectionViewDelegateFlowLayout {
         if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
             return 20
         }
+        if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
+            return 10
+        }
         return 30
     }
 }

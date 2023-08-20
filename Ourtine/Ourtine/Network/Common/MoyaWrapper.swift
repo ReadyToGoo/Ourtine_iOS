@@ -58,7 +58,7 @@ class MoyaWrapper<Provider : TargetType> : MoyaProvider<Provider> {
                         print("String : \(stringData)")
                     }
                     else {
-                        let stringData = try? response.mapString()
+                        let stringData = try? response.mapString().utf8
                         print("response가 JSON 파일이 아닙니다")
                         print("String : \(stringData)")
                     }
@@ -83,6 +83,10 @@ class MoyaWrapper<Provider : TargetType> : MoyaProvider<Provider> {
                 }
                 // Status Code가 300~500인 경우
                 else{
+                    if response.statusCode == 403 {
+                        // 로그인 화면으로 보내기
+                    }
+                    
                     // response의 metadata를 출력합니다.
                     if let json = try? response.mapJSON() as? [String:Any] {
                         if let errorMSG = json["error"] as? String {

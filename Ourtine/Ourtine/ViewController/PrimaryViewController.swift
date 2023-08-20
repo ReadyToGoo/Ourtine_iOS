@@ -20,7 +20,7 @@ class PrimaryViewController: UIViewController {
         
         // 토큰을 영구저장소에서 가져오기
         myInfo.getMyToken()
-        usingWrapper()
+//        usingWrapper()
         // 토큰이 존재할 때
         if myInfo.myToken != nil {
             
