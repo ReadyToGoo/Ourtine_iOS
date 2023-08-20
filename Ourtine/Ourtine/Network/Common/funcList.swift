@@ -25,18 +25,17 @@ import UIKit
 //    }
 //}
 
-
 func usingWrapper() {
-    let wrapper = MoyaWrapper<HabitAPI>()
-    wrapper.requestSuccessRes(target: .postCreateHabit(imageData: UIImage(named: "feeling1")!.pngData()!, content: habitCreationContent(category: "CAREER", days: ["FRI"], detail: "string", endDate: "2023-10-15", endTime: "string", followerLimit:  6, habitStatus: "PRIVATE", hashtags: ["string"], startDate: "2023-08-15", startTime: "string", title: "TEST")), instance: data_postCreateHabit.self)
-    { result in
-        switch result {
-        case .success(let result):
-            print(result)
-        case .failure(let error):
-            print(error.localizedDescription)
-        }
-    }
+//    let wrapper = MoyaWrapper<UserAPI>()
+//    wrapper.requestSuccessRes(target: .patchInterestingCategories(categories: ["EXERCISE","LIFESTYLE","READING","STUDY","LANGUAGE","HOBBY","MONEY","CAREER"]), instance: data_patchInterestingCategories.self)
+//    { result in
+//        switch result {
+//        case .success(let result):
+//            print(result)
+//        case .failure(let error):
+//            print(error.localizedDescription)
+//        }
+//    }
 }
 
 //(target: .postCreateHabit(imageData: UIImage(named: "feeling1")!.pngData()!, content: habitCreationContent(category: "CAREER", days: ["FRI"], detail: "string", endDate: "2023-08-15", endTime: "string", followerLimit:  0, habitStatus: "PRIVATE", hashtags: ["string"], startDate: "2023-08-15", startTime: "string", title: "TEST")), instance: data_postCreateHabit.self)

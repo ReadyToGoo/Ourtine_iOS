@@ -119,8 +119,8 @@ extension UserAPI : TargetType {
     var task: Moya.Task {
         switch self {
         case .patchInterestingCategories(let categories):
-            let arrayData: Data = try! JSONSerialization.data(withJSONObject: categories, options: [])
-            return .requestData(arrayData)
+            //let arrayData: Data = try! JSONSerialization.data(withJSONObject: categories, options: [])
+            return .requestJSONEncodable(categories)
             
         case .patchMyGoal(let goal) :
             return .requestJSONEncodable(goal)

@@ -77,6 +77,56 @@ extension FollowAPI: TargetType {
         }
     }
     
+    var sampleData: Data {
+        switch self {
+        case .getMyFollowingsList:
+            // 모의 응답 데이터 생성
+            let dummyResponseData = """
+            {
+              "code": 0,
+              "isSuccess": true,
+              "message": "string",
+              "result": {
+                "content": [
+                  {
+                    "nickname": "User1",
+                    "profileImage": "profile_image_url_1",
+                    "userId": 1
+                  },
+                  {
+                    "nickname": "User2",
+                    "profileImage": "profile_image_url_2",
+                    "userId": 2
+                  },
+                  {
+                    "nickname": "User3",
+                    "profileImage": "profile_image_url_3",
+                    "userId": 3
+                  },
+                  {
+                    "nickname": "User4",
+                    "profileImage": "profile_image_url_4",
+                    "userId": 4
+                  },
+                  {
+                    "nickname": "User5",
+                    "profileImage": "profile_image_url_5",
+                    "userId": 5
+                  }
+                ],
+                "first": true,
+                "hasNext": true,
+                "last": true
+              }
+            }
+            """.data(using: .utf8)!
+            return dummyResponseData
+        // ... 다른 요청에 대한 sample data ...
+        default :
+            return .empty
+        }
+    }
+    
     var task: Moya.Task {
         switch self {
         case .postFollowUser(let target), .deleteUnfollowUser(let target) :

@@ -54,8 +54,8 @@ class MoyaWrapper<Provider : TargetType> : MoyaProvider<Provider> {
                             print("message : \(message)")
                             //print("response_result = \(jsonResult)")
                         }
-//                        let stringData = try? response.mapString()
-//                        print("String : \(stringData)")
+                        let stringData = try? response.mapString()
+                        print("String : \(stringData)")
                     }
                     else {
                         let stringData = try? response.mapString()

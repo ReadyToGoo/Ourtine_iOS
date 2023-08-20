@@ -22,6 +22,15 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
     // habitProfileView 등록
     lazy var habitProfileScrollView = HabitDiscoverScrollView()
     
+    /// 친구 목록 결과 리스트 입니다. API로 받아옵니다.
+    private var memberResultList: [MemberModel] = []
+    
+    /// 관심 카테고리  결과 리스트 입니다. API로 받아옵니다.
+    private var categoriesResultList: [String] = []
+    
+    /// 습관 찾기 결과 리스트 입니다. API로 받아옵니다.
+    private var habitResultList: [HabitCardModel] = []
+    
     // view 로드할 때 habitProfileView로 가져오기
     override func loadView() {
         super.loadView()
@@ -44,6 +53,8 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchMemberData()
         
         // 기본 네비게이션 바 보이지 않게
         self.navigationController?.navigationBar.isHidden = true
@@ -79,10 +90,13 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
         self.habitProfileScrollView.habitProfileView.habitCardCollectionView.delegate = self
         
         //MARK: - habitSegmentCollectionView 초기 설정
-        setUp_habitCV_Data()
-        DispatchQueue.main.async {
-            self.habitCV_select(row: 0)
+        fetchMyCategories {
+            DispatchQueue.main.async {
+                // fetchMyCategories 함수 내에서 데이터가 설정된 후에 호출
+                self.habitCV_select(row: 0)
+            }
         }
+
         
         //MARK: - backBTN
         self.habitProfileScrollView.habitProfileView.topBar.alarmButton.action = #selector(pushVC)
@@ -99,11 +113,11 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
     }
     
     /// habitSegmentCV의 데이터를 페칭합니다.
-    private func setUp_habitCV_Data() {
-        for habit in Dummy_habitCategories {
-            habitSegmentCV_data.append(habit.name)
-        }
-    }
+//    private func setUp_habitCV_Data() {
+//        for habit in Dummy_habitCategories {
+//            habitSegmentCV_data.append(habit.name)
+//        }
+//    }
     
     // 위로 가기 버튼 눌렀을 때 활성화됩니다.
     @objc func tappedResetBtn() {
@@ -140,6 +154,120 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
                 }
             }
         }
+    
+    // 상단 유저들의 프로필을 서버에서 갖고옵니다.
+    func fetchMemberData() {
+        let followAPI = MoyaWrapper<FollowAPI>(endPointClosure: MoyaProvider.defaultEndpointMapping,
+                                               stubClosure: MoyaProvider.immediatelyStub)
+        followAPI.requestSuccessRes(target: .getMyFollowingsList, instance: data_getMyFollowingsList.self) { result in
+            
+            var inputList:[MemberModel] = []
+            
+            switch result {
+            case .success(let result):
+                print(result)
+                for item in result.content {
+                    inputList.append(MemberModel(nil, item.profileImage, item.nickname, item.userId))
+                }
+                self.memberResultList = inputList
+                self.habitProfileScrollView.habitProfileView.memberCollectionView.reloadData()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchMyCategories(closure: @escaping () -> Void) {
+        let userAPI = MoyaWrapper<UserAPI>()
+        userAPI.requestSuccessRes(target: .getUserProfile(userId: myInfo.myID!), instance: data_getUserProfile.self)
+        { result in
+            switch result {
+            case .success(let result):
+                print(result)
+                var inputList:[String] = []
+                for item in result.userCategoryList {
+                    //print(categoryValueFromResponseData(text: item))
+                    inputList.append(item)
+                }
+                self.categoriesResultList = inputList
+                self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.reloadData()
+                
+                // 데이터 설정 완료 후 closure 호출
+                closure()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchHabitData() {
+        let selectedIndex = self.habitSegmentCV_selectedCellIndexPath
+        // Update selected cell
+        let cell = self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.cellForItem(at: selectedIndex ?? IndexPath()) as? HorizontalPickerViewCell
+        
+        if let selectedCategory = cell?.titleLabel.text  {
+            let convertedCategory = convertCategoryNameToEnglish(text: selectedCategory)
+            var inputList:[HabitCardModel] = []
+            let habitAPI = MoyaWrapper<HabitAPI>()
+            habitAPI.requestSuccessRes(target: .getDiscoverHabit(category: convertedCategory), instance: data_getDiscoverHabit.self)
+            { result in
+                switch result {
+                case .success(let result):
+                    print(result)
+                    for item in result.content {
+                        print(item.id)
+                        inputList.append(HabitCardModel(habitId: item.id, image: item.imageUrl, title: item.category , habitName: item.title , userName: item.hostName , userImage: item.hostImageUrl, days: item.days, startTime: item.startTime, endTime: item.endTime))
+                    }
+                    self.habitResultList = inputList
+                    self.habitProfileScrollView.habitProfileView.habitCardCollectionView.reloadData()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+        }
+        
+        
+        
+//        switch selectedIndex {
+//        case 0:
+//            var inputList:[HabitCardModel] = []
+//            let habitAPI = MoyaWrapper<HabitAPI>()
+//            habitAPI.requestSuccessRes(target:.getSearchHabit(sort_by: filterString, keyword: searchTarget ?? ""), instance: data_getSearchHabit.self){ result in
+//                switch result {
+//                case .success(let result):
+//                    print(result)
+//                    for item in result.content {
+//                        print(item.id)
+//                        inputList.append(HabitCardModel(habitId: item.id, image: item.imageUrl, title: item.category ?? "none", habitName: item.title ?? "none", userName: item.hostName ?? "none", userImage: item.hostImageUrl, days: item.days, startTime: item.startTime, endTime: item.endTime))
+//                    }
+//                    self.habitResultList = inputList
+//                    self.searchResultView.searchResultCollectionView.reloadData()
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        case 1:
+//            var inputList:[UserModel] = []
+//            let userAPI = MoyaWrapper<UserAPI>()
+//            userAPI.requestSuccessRes(target: .getSearchUserNickName(keyword: searchTarget ?? ""), instance: data_getSearchUserNickName.self) { result in
+//                switch result {
+//                case .success(let result):
+//                    print(result)
+//                    for item in result.content {
+//                        inputList.append(UserModel(item.userId ?? 0, item.profileImage, item.nickname ?? "", nil))
+//                    }
+//                    self.userNameResultList = inputList
+//                    self.searchResultView.searchResultTableView.reloadData()
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        default :
+//            print("unexpected Error")
+//            return
+//        }
+    }
 }
 
 /// CollectionView의 Delegate와 DataSource 상속 내용입니다
@@ -149,15 +277,15 @@ extension HabitDiscoverViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // memberCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.memberCollectionView {
-            return Dummy_memberList.count
+            return self.memberResultList.count
         }
         // habitSegmentCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
-            return habitSegmentCV_data.count
+            return self.categoriesResultList.count
         }
         // habitCardCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
-            return Dummy_habitCards.count
+            return self.habitResultList.count
         }
         // 예외 상황
         return 0
@@ -168,7 +296,7 @@ extension HabitDiscoverViewController: UICollectionViewDelegate, UICollectionVie
         // memberCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.memberCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionViewCell.identifier, for: indexPath) as? MemberCollectionViewCell else { return UICollectionViewCell() }
-            cell.getMemberData(data: Dummy_memberList[indexPath.row])
+            cell.getMemberData(data: self.memberResultList[indexPath.row])
             return cell
         }
         // habitSegmentCollectionView일 때
@@ -179,10 +307,10 @@ extension HabitDiscoverViewController: UICollectionViewDelegate, UICollectionVie
             ) as? HorizontalPickerViewCell else { return UICollectionViewCell() }
             
             if indexPath == self.habitSegmentCV_selectedCellIndexPath {
-                cell.configure(with: habitSegmentCV_data[indexPath.row], isSelected: true)
+                cell.configure(with: self.categoriesResultList[indexPath.row], isSelected: true)
             }
             else {
-                cell.configure(with: habitSegmentCV_data[indexPath.row])
+                cell.configure(with: self.categoriesResultList[indexPath.row])
             }
             return cell
         }
@@ -192,7 +320,7 @@ extension HabitDiscoverViewController: UICollectionViewDelegate, UICollectionVie
                 withReuseIdentifier: HabitCardCollectionViewCell.identifier,
                 for: indexPath
             ) as? HabitCardCollectionViewCell else { return UICollectionViewCell() }
-            cell.getHabitsData(data: Dummy_habitCards[indexPath.row])
+            cell.getHabitsData(data: self.habitResultList[indexPath.row])
             return cell
         }
         // 예외 상황
@@ -204,7 +332,8 @@ extension HabitDiscoverViewController: UICollectionViewDelegate, UICollectionVie
         // memberCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.memberCollectionView {
             // 멤버 셀 눌렀을 때 동작
-            print("member \(indexPath.row) selected")
+//            print("member \(indexPath.row) selected")
+            print("userId : \(self.memberResultList[indexPath.row].userId)")
         }
         // habitSegmentCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView {
@@ -213,7 +342,8 @@ extension HabitDiscoverViewController: UICollectionViewDelegate, UICollectionVie
         // habitCardCollectionView일 때
         if collectionView == self.habitProfileScrollView.habitProfileView.habitCardCollectionView {
             // 습관 카드 셀 눌렀을 때 동작
-            print("habit card \(indexPath.row) selected")
+            print(self.habitResultList[indexPath.row].habitName)
+            print("habitId : \(self.habitResultList[indexPath.row].habitId ?? -100)")
         }
         
         
@@ -287,7 +417,7 @@ extension HabitDiscoverViewController {
         animated: Bool = true
     ) {
         // Ensures selected row isnt more then data count
-        guard row < habitSegmentCV_data.count else { return }
+        guard row < self.categoriesResultList.count else { return }
         
         // removes any selected items
         self.cleanupSelection()
@@ -299,7 +429,7 @@ extension HabitDiscoverViewController {
         // Update selected cell
         let cell = self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.cellForItem(at: indexPath) as? HorizontalPickerViewCell
         cell?.configure(
-            with: self.habitSegmentCV_data[indexPath.row],
+            with: self.categoriesResultList[indexPath.row],
             isSelected: true
         )
         
@@ -307,14 +437,14 @@ extension HabitDiscoverViewController {
             at: indexPath,
             animated: animated,
             scrollPosition: .centeredHorizontally)
-        
+        fetchHabitData()
     }
     
     /// habitSegmentCollectionView의 SegmentCell을 선택할 때 이전 셀의 선택강조를 지웁니다.
     private func cleanupSelection() {
         guard let indexPath = habitSegmentCV_selectedCellIndexPath else { return }
         let cell = self.habitProfileScrollView.habitProfileView.habitSegmentCollectionView.cellForItem(at: indexPath) as? HorizontalPickerViewCell
-        cell?.configure(with: habitSegmentCV_data[indexPath.row])
+        cell?.configure(with: self.categoriesResultList[indexPath.row])
         habitSegmentCV_selectedCellIndexPath = nil
     }
 }
@@ -322,6 +452,7 @@ extension HabitDiscoverViewController {
 
 /// Preview 코드 -> ViewController
 import SwiftUI
+import Moya
 struct HabitDiscoverViewController_Preview: PreviewProvider {
     static var previews: some View {
         UIViewControllerPreview {

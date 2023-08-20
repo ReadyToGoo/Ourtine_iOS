@@ -199,29 +199,56 @@ extension HabitAPI: TargetType {
         case .postCreateHabit(let imageData, let content) :
             
             // 이미지 data를 멀티파트폼 데이터로 지정
-            let image_formData = MultipartFormData(provider: .data(imageData), name: "image", fileName: "test.png", mimeType: "image/png")
+            let image_formData = MultipartFormData(provider: .data(imageData), name: "profileImage", fileName: "test.png", mimeType: "image/png")
             
             // 습관 내용 구조체(habitCreationContent)를 JSON 인코딩
-            do {
-                let jsonEncoder = JSONEncoder()
-                let jsonData = try jsonEncoder.encode(content)
-
-                let json_formData = MultipartFormData(provider: .data(jsonData), name: "habitCreatePostRequestDto")
+//            do {
+//                let jsonEncoder = JSONEncoder()
+//                let jsonData = try jsonEncoder.encode(content)
+//
+//                let json_formData = MultipartFormData(provider: .data(jsonData), name: "habitCreatePostRequestDto")
+//
+//                let formData: [MultipartFormData] = [
+//                    image_formData,
+//                    json_formData
+//                ]
+//
+//                print(formData)
+//                return .uploadMultipart(formData)
+//
+//            } // 안되는 경우 에러처리
+//            catch let error {
+//                print("Error: \(error)")
+//                return .requestPlain
+//            }
+            
+            if let category = "CAREER".data(using: .utf8), let days = "MON,FRI".data(using: .utf8), let detail = "제발요".data(using: .utf8), let limit = "6".data(using: .utf8), let habitStatus = "PRIVATE".data(using: .utf8),  let startDate = "asdf".data(using: .utf8), let endDate = "asdf".data(using: .utf8), let title = "제발ㅠㅠ".data(using: .utf8){
+                let category_formData = MultipartFormData(provider: .data(category), name: "category")
+                let days_formData = MultipartFormData(provider: .data(days), name: "days")
+                let detail_formData = MultipartFormData(provider: .data(detail), name: "detail")
+                let followerLimit_formData = MultipartFormData(provider: .data(limit), name: "followerLimit")
+                let habitStatus_formData = MultipartFormData(provider: .data(habitStatus), name: "habitStatus")
+                let startDate_formData = MultipartFormData(provider: .data(startDate), name: "startDate")
+                let endDate_formData = MultipartFormData(provider: .data(endDate), name: "endDate")
+                let title_formData = MultipartFormData(provider: .data(title), name: "title")
                 
                 let formData: [MultipartFormData] = [
                     image_formData,
-                    json_formData
+                    category_formData,
+                    days_formData,
+                    detail_formData,
+                    followerLimit_formData,
+                    habitStatus_formData,
+                    startDate_formData,
+                    endDate_formData,
+                    title_formData
                 ]
                 
-                print(formData)
                 return .uploadMultipart(formData)
-                
-            } // 안되는 경우 에러처리
-            catch let error {
-                print("Error: \(error)")
-                return .requestPlain
             }
-        
+            print("이게 왜 아ㅣㄴ되냐고")
+            return .requestPlain
+            
             
             /// User 프로필 이미지 변경 케이스와 같이 변경하기
         case .patchHabitProfileImage(_, let imageData) :

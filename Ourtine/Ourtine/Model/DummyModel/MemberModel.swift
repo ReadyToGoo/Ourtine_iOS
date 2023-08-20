@@ -6,11 +6,13 @@
 //
 
 class MemberModel {
+    var userId: Int
     var badge: String?
     var image: String?
     var name: String
     
-    init(_ badge: String?, _ image: String?, _ name: String) {
+    init(_ badge: String?, _ image: String?, _ name: String, _ userId: Int = 9999) {
+        self.userId = userId
         self.badge = badge
         self.image = image
         self.name = name

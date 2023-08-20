@@ -82,7 +82,15 @@ class MemberCollectionViewCell: UICollectionViewCell {
     /// 셀 컴포넌트 요소에 데이터 페칭
     private func fetchData() {
         self.userName.text = self.memberData.name
-        self.userImage.setImage(image: nil) // 나중에 URL로 다시 작업
+        //self.userImage.setImage(image: nil) // 나중에 URL로 다시 작업
+        
+        let placeholderImage = createImageWithColor(color: .app_SecondaryColor, size: CGSize(width: 50, height: 50))
+        
+        if let imageURL = self.memberData.image {
+            self.userImage.kf.setImage(with: URL(string: imageURL), placeholder: placeholderImage)
+            self.userImage.kf.base.layer.cornerRadius = 40
+        }       
+            
         if self.memberData.badge != nil {
             //badge 이미지 설정해야함
             self.userBadge.isHidden = false

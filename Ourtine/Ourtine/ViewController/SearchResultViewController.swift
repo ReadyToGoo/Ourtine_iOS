@@ -21,7 +21,7 @@ class SearchResultViewController: UIViewController, UISheetPresentationControlle
     private var filterIndex: Int = 1
     
     /// 검색어 입니다. 이전 VC 에서 받아옵니다. default = ""
-    private var searchTargetName: String = ""
+    var searchTargetName: String = ""
     
     /// 습관 찾기 결과 리스트 입니다. API로 받아옵니다.
     private var habitResultList: [HabitCardModel] = []
@@ -211,21 +211,20 @@ class SearchResultViewController: UIViewController, UISheetPresentationControlle
     
     func fetchData() {
         let selectedIndex = self.tableViewIndex
-        let searchTarget = self.searchTargetName
+        let searchTarget = self.searchResultView.navigationBar.searchBar.text
         let filterString = getStringFromFilterIndex()
         
         switch selectedIndex {
         case 0:
             var inputList:[HabitCardModel] = []
             let habitAPI = MoyaWrapper<HabitAPI>()
-            habitAPI.requestSuccessRes(target:.getSearchHabit(sort_by: filterString, keyword: searchTarget), instance: data_getSearchHabit.self){ result in
+            habitAPI.requestSuccessRes(target:.getSearchHabit(sort_by: filterString, keyword: searchTarget ?? ""), instance: data_getSearchHabit.self){ result in
                 switch result {
                 case .success(let result):
                     print(result)
                     for item in result.content {
-                        inputList.append(HabitCardModel(item.id, nil, item.category, item.title, String(item.id))
-                                                    
-                        )
+                        print(item.id)
+                        inputList.append(HabitCardModel(habitId: item.id, image: item.imageUrl, title: item.category ?? "none", habitName: item.title ?? "none", userName: item.hostName ?? "none", userImage: item.hostImageUrl, days: item.days, startTime: item.startTime, endTime: item.endTime))
                     }
                     self.habitResultList = inputList
                     self.searchResultView.searchResultCollectionView.reloadData()
@@ -236,7 +235,7 @@ class SearchResultViewController: UIViewController, UISheetPresentationControlle
         case 1:
             var inputList:[UserModel] = []
             let userAPI = MoyaWrapper<UserAPI>()
-            userAPI.requestSuccessRes(target: .getSearchUserNickName(keyword: searchTarget), instance: data_getSearchUserNickName.self) { result in
+            userAPI.requestSuccessRes(target: .getSearchUserNickName(keyword: searchTarget ?? ""), instance: data_getSearchUserNickName.self) { result in
                 switch result {
                 case .success(let result):
                     print(result)
@@ -278,11 +277,8 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     
     /// didSelectItemAt : cell 선택했을 때
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: HabitCardCollectionViewCell.identifier,
-            for: indexPath
-        ) as? HabitCardCollectionViewCell else { return }
-        print("habitId : \(cell.cardData.habitId)")
+        print(self.habitResultList[indexPath.row].habitName)
+        print("habitId : \(self.habitResultList[indexPath.row].habitId ?? -100)")
     }
 }
 
@@ -291,9 +287,9 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     
     // CollectionView의 좌우 여백 조정
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            var topBottomPadding: CGFloat = 20
-            var leftPadding: CGFloat = 16
-            var rightPadding: CGFloat = 16
+            let topBottomPadding: CGFloat = 20
+            let leftPadding: CGFloat = 16
+            let rightPadding: CGFloat = 16
 
             return UIEdgeInsets(top: topBottomPadding, left: leftPadding, bottom: topBottomPadding, right: rightPadding)
         }
@@ -349,10 +345,14 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print(indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserProfileTableViewCell.identifier, for: indexPath) as? UserProfileTableViewCell else { return }
-        print("userID: \(cell.userData.userKey)")
+        print("userID: \(self.userNameResultList[indexPath.row].userKey)")
+        
         
     }
+}
+
+extension SearchResultViewController: UISearchBarDelegate {
+    
 }
 
 import SwiftUI

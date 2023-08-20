@@ -90,6 +90,8 @@
 		88BDD3302A82C3AD0082A961 /* HC_finalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD32F2A82C3AD0082A961 /* HC_finalViewController.swift */; };
 		88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */; };
 		88C885502A9218D9009174BC /* SearchFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C8854F2A9218D9009174BC /* SearchFilterModel.swift */; };
+		88C885552A927011009174BC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 88C885542A927011009174BC /* Kingfisher */; };
+		88C885572A927264009174BC /* valueNameSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C885562A927264009174BC /* valueNameSwitcher.swift */; };
 		88DA7EB12A6F6C300011AF43 /* HabitDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA7EB02A6F6C300011AF43 /* HabitDiscoverView.swift */; };
 		88DC8BB72A87A927000E242D /* LF_TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DC8BB12A87A927000E242D /* LF_TermsViewController.swift */; };
 		88DC8BB82A87A927000E242D /* LF_SetUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DC8BB22A87A927000E242D /* LF_SetUsernameViewController.swift */; };
@@ -228,6 +230,7 @@
 		88BDD32F2A82C3AD0082A961 /* HC_finalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_finalViewController.swift; sourceTree = "<group>"; };
 		88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControlView.swift; sourceTree = "<group>"; };
 		88C8854F2A9218D9009174BC /* SearchFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterModel.swift; sourceTree = "<group>"; };
+		88C885562A927264009174BC /* valueNameSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = valueNameSwitcher.swift; sourceTree = "<group>"; };
 		88DA7EB02A6F6C300011AF43 /* HabitDiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDiscoverView.swift; sourceTree = "<group>"; };
 		88DC8BB12A87A927000E242D /* LF_TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LF_TermsViewController.swift; sourceTree = "<group>"; };
 		88DC8BB22A87A927000E242D /* LF_SetUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LF_SetUsernameViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C885552A927011009174BC /* Kingfisher in Frameworks */,
 				B649932A2A5D41E40061C47E /* SnapKit in Frameworks */,
 				8800A4852A776886004714AD /* KakaoSDKAuth in Frameworks */,
 				8851EE002A8C22AC0062D3E4 /* Moya in Frameworks */,
@@ -311,6 +315,7 @@
 				882B75792A84EFFC000B3943 /* HabitInfoModel.swift */,
 				888BB6142A8DE06200669C99 /* SignUpInfoModel.swift */,
 				88C8854F2A9218D9009174BC /* SearchFilterModel.swift */,
+				88C885562A927264009174BC /* valueNameSwitcher.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -610,6 +615,7 @@
 				8800A4862A776886004714AD /* KakaoSDKUser */,
 				8851EDFF2A8C22AC0062D3E4 /* Moya */,
 				8851EE022A8C22C90062D3E4 /* SwiftJWT */,
+				88C885542A927011009174BC /* Kingfisher */,
 			);
 			productName = Ourtine;
 			productReference = B64993112A5D3EDC0061C47E /* Ourtine.app */;
@@ -644,6 +650,7 @@
 				8800A4832A776886004714AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				8851EDFE2A8C22AC0062D3E4 /* XCRemoteSwiftPackageReference "Moya" */,
 				8851EE012A8C22C90062D3E4 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
+				88C885532A927011009174BC /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = B64993122A5D3EDC0061C47E /* Products */;
 			projectDirPath = "";
@@ -792,6 +799,7 @@
 				88DA7EB12A6F6C300011AF43 /* HabitDiscoverView.swift in Sources */,
 				88DCCAF32A6AF0AD003C3F15 /* SheetPresentationController.swift in Sources */,
 				B6BEB58E2A87D7C300A311B8 /* VoteViewController.swift in Sources */,
+				88C885572A927264009174BC /* valueNameSwitcher.swift in Sources */,
 				B63C63B02A7B4ACB00AF09CA /* LetterSpacing.swift in Sources */,
 				88FE2D2D2A7ED44300C475A7 /* HabitCreateFlowButton.swift in Sources */,
 				8851EE362A8C22E30062D3E4 /* ExtractUserInfoFromToken.swift in Sources */,
@@ -1037,6 +1045,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		88C885532A927011009174BC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		B64993282A5D41E40061C47E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -1067,6 +1083,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8851EE012A8C22C90062D3E4 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
 			productName = SwiftJWT;
+		};
+		88C885542A927011009174BC /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88C885532A927011009174BC /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		B64993292A5D41E40061C47E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
