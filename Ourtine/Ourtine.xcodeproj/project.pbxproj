@@ -89,6 +89,7 @@
 		88BDD32E2A82C3760082A961 /* HC_finalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD32D2A82C3760082A961 /* HC_finalView.swift */; };
 		88BDD3302A82C3AD0082A961 /* HC_finalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD32F2A82C3AD0082A961 /* HC_finalViewController.swift */; };
 		88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */; };
+		88C885502A9218D9009174BC /* SearchFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C8854F2A9218D9009174BC /* SearchFilterModel.swift */; };
 		88DA7EB12A6F6C300011AF43 /* HabitDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA7EB02A6F6C300011AF43 /* HabitDiscoverView.swift */; };
 		88DC8BB72A87A927000E242D /* LF_TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DC8BB12A87A927000E242D /* LF_TermsViewController.swift */; };
 		88DC8BB82A87A927000E242D /* LF_SetUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DC8BB22A87A927000E242D /* LF_SetUsernameViewController.swift */; };
@@ -226,6 +227,7 @@
 		88BDD32D2A82C3760082A961 /* HC_finalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_finalView.swift; sourceTree = "<group>"; };
 		88BDD32F2A82C3AD0082A961 /* HC_finalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_finalViewController.swift; sourceTree = "<group>"; };
 		88BFEC0D2A66990F004F2C11 /* CustomSegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControlView.swift; sourceTree = "<group>"; };
+		88C8854F2A9218D9009174BC /* SearchFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterModel.swift; sourceTree = "<group>"; };
 		88DA7EB02A6F6C300011AF43 /* HabitDiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDiscoverView.swift; sourceTree = "<group>"; };
 		88DC8BB12A87A927000E242D /* LF_TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LF_TermsViewController.swift; sourceTree = "<group>"; };
 		88DC8BB22A87A927000E242D /* LF_SetUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LF_SetUsernameViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				888FB2A52A84177100930987 /* FlowDataManager.swift */,
 				882B75792A84EFFC000B3943 /* HabitInfoModel.swift */,
 				888BB6142A8DE06200669C99 /* SignUpInfoModel.swift */,
+				88C8854F2A9218D9009174BC /* SearchFilterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C885502A9218D9009174BC /* SearchFilterModel.swift in Sources */,
 				888BB6112A8DCE9A00669C99 /* makeAlert.swift in Sources */,
 				88DC8BB92A87A927000E242D /* LF_LoginViewController.swift in Sources */,
 				88804CCA2A7FFACD00562E35 /* HC_chooseDateView.swift in Sources */,

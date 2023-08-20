@@ -73,7 +73,7 @@ class SearchResultView: UIView {
         
         let btn = UIButton(configuration: config)
         btn.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
-        btn.setTitle("습관 개설 순", for: .normal)
+        btn.setTitle("모집 중", for: .normal)
         btn.setBackgroundColor(.app_SecondaryColor2, for: .normal)
         return btn
     }()

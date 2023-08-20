@@ -18,7 +18,7 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
     
     static let identifier:String = "HabitCardCollectionViewCell"
     
-    var cardData = HabitCardModel(nil, "카테고리", "습관명", "유저 닉네임")
+    var cardData = HabitCardModel(9, nil, "카테고리", "습관명", "유저 닉네임")
     
     // 셀 그림자 색 구현을 위한 전체 포함 뷰
     lazy var cellContentView: UIView = {
@@ -205,7 +205,7 @@ struct HabitCardCollectionViewCell_Preview: PreviewProvider {
         UIViewPreview {
             let cell = HabitCardCollectionViewCell()
             //cell.getMemberData(data: MemberModel("Crown", nil, "Test"))
-            cell.getHabitsData(data:HabitCardModel(nil, "독서", "아침마다 책읽기", "minseo00"))
+            cell.getHabitsData(data:HabitCardModel(0, nil, "독서", "아침마다 책읽기", "minseo00"))
             return cell
         }
         .previewLayout(.fixed(width: HabitCardCollectionViewCell.cellWidth, height: CGFloat(HabitCardCollectionViewCell.cellHeight)))

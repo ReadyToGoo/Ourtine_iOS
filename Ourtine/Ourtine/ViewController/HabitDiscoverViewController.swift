@@ -10,6 +10,9 @@ import SnapKit
 
 /// 습관 탐색 메인 페이지 뷰 컨트롤러입니다.
 /// AppTabBarController -> HabitDiscoverViewController
+/// + 친구 목록 불러오기 - FollowAPI - getMyFollwersList
+/// + 관심 카테고리 불러오기 - UserAPI - getUserProfile
+/// + 해당 카테고리의 습관 목록 불러오기 - HabitAPI - getDiscoverHabit
 class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
     
     // habitSegment를 위한 데이터

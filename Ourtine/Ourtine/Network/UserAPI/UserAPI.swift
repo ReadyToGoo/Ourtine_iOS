@@ -131,7 +131,7 @@ extension UserAPI : TargetType {
         case .patchMyProfileImage(let imageData) :
             
             // 이미지 data를 멀티파트폼 데이터로 지정
-            let image_formData = MultipartFormData(provider: .data(imageData), name: "file", fileName: "test.png", mimeType: "image/png")
+            let image_formData = MultipartFormData(provider: .data(imageData), name: "image", fileName: "test.png", mimeType: "image/png")
             
             let formData: [MultipartFormData] = [
                 image_formData

@@ -199,7 +199,7 @@ extension HabitAPI: TargetType {
         case .postCreateHabit(let imageData, let content) :
             
             // 이미지 data를 멀티파트폼 데이터로 지정
-            let image_formData = MultipartFormData(provider: .data(imageData), name: "file", fileName: "test.png", mimeType: "image/png")
+            let image_formData = MultipartFormData(provider: .data(imageData), name: "image", fileName: "test.png", mimeType: "image/png")
             
             // 습관 내용 구조체(habitCreationContent)를 JSON 인코딩
             do {
@@ -223,6 +223,7 @@ extension HabitAPI: TargetType {
             }
         
             
+            /// User 프로필 이미지 변경 케이스와 같이 변경하기
         case .patchHabitProfileImage(_, let imageData) :
             // 이미지 데이터를 Base64로 인코딩
             let base64ImageString = imageData.base64EncodedString()
@@ -256,12 +257,13 @@ extension HabitAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        switch self {
-        case .postCreateHabit:
-            return ["Content-Type" : "multipart/form-data"]
-        default :
-            return .none
-        }
+//        switch self {
+//        case .postCreateHabit:
+//            return ["Content-Type" : "multipart/form-data"]
+//        default :
+//            return .none
+//        }\
+        return .none
     }
 }
 
