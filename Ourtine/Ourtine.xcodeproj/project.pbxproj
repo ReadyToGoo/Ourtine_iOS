@@ -121,6 +121,7 @@
 		88FE2D3A2A7ED4AD00C475A7 /* HC_Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D392A7ED4AD00C475A7 /* HC_Category.swift */; };
 		B61D6AB52A9303020002295B /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D6AB42A9303020002295B /* OthersViewController.swift */; };
 		B61D6AB72A930CB70002295B /* VoteMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D6AB62A930CB70002295B /* VoteMemberViewController.swift */; };
+		B61D6AB92A93A80B0002295B /* WaitAfterVoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D6AB82A93A80B0002295B /* WaitAfterVoteViewController.swift */; };
 		B6394E932A86A2F30040B8FF /* CamerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6394E922A86A2F30040B8FF /* CamerManager.swift */; };
 		B63C63B02A7B4ACB00AF09CA /* LetterSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C63AF2A7B4ACB00AF09CA /* LetterSpacing.swift */; };
 		B63C63B22A7B5C0F00AF09CA /* FigmaShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C63B12A7B5C0E00AF09CA /* FigmaShadow.swift */; };
@@ -263,6 +264,7 @@
 		88FE2D392A7ED4AD00C475A7 /* HC_Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_Category.swift; sourceTree = "<group>"; usesTabs = 0; };
 		B61D6AB42A9303020002295B /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
 		B61D6AB62A930CB70002295B /* VoteMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteMemberViewController.swift; sourceTree = "<group>"; };
+		B61D6AB82A93A80B0002295B /* WaitAfterVoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitAfterVoteViewController.swift; sourceTree = "<group>"; };
 		B6394E922A86A2F30040B8FF /* CamerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerManager.swift; sourceTree = "<group>"; };
 		B63C63AF2A7B4ACB00AF09CA /* LetterSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterSpacing.swift; sourceTree = "<group>"; };
 		B63C63B12A7B5C0E00AF09CA /* FigmaShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaShadow.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				8851EE3A2A8CC4CB0062D3E4 /* PrimaryViewController.swift */,
 				B61D6AB42A9303020002295B /* OthersViewController.swift */,
 				B61D6AB62A930CB70002295B /* VoteMemberViewController.swift */,
+				B61D6AB82A93A80B0002295B /* WaitAfterVoteViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				88BDD32E2A82C3760082A961 /* HC_finalView.swift in Sources */,
 				B6BEB5942A892B9800A311B8 /* ReviewViewController.swift in Sources */,
 				88BDD3262A82B3180082A961 /* HC_selectFriendsViewController.swift in Sources */,
+				B61D6AB92A93A80B0002295B /* WaitAfterVoteViewController.swift in Sources */,
 				88E653972A80151A00ABF9D9 /* HC_memberCountView.swift in Sources */,
 				8851EE322A8C22E30062D3E4 /* FollowAPI sending Struct.swift in Sources */,
 				8851EE2B2A8C22E30062D3E4 /* UserAPI.swift in Sources */,

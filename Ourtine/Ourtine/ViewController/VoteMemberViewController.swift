@@ -29,8 +29,6 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
         
         let selectedUserIds = selectedMemberData.map {$0.userId}
         print("\(selectedUserIds)")
-        
-//        selectedCellCount = collectionView.selectedMemberData.count
         print(selectedCellCount)
         isSelectionMade = selectedCellCount > 0
     }
@@ -118,11 +116,16 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
     @objc private func voteBtnTapped() {
         // TODO: selectedMemberData API로 전송
         // TODO: 투표 종료 시간 되면 화면 이동.
-        let vc = ReviewViewController()
-        navigationController?.pushViewController(vc, animated: false)
+//        let vc = ReviewViewController()
+//        navigationController?.pushViewController(vc, animated: false)
+        let vc = WaitAfterVoteViewController()
+        vc.didVoted = isSelectionMade
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true)
     }
 
     override func viewDidLoad() {
+        view.backgroundColor = .white
         super.viewDidLoad()
         
         [
@@ -186,6 +189,8 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
         // voteBtn
         voteBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
+            make.trailing.equalTo(-31)
+            make.leading.equalTo(31)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-32)
         }
     }
