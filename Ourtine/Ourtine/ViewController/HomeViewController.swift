@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import Moya
+import Kingfisher
 
 class HomeViewController: UIViewController {
     
@@ -145,16 +147,22 @@ class HomeViewController: UIViewController {
         //
         timelineViewController.didMove(toParent: self)
         
-        fetchData()
+        fetchData { result in
+            self.timelineViewController.setupTimeline(result)
+        }
+        
     }
     
-    private func fetchData() {
-        let habitAPI = MoyaWrapper<HabitAPI>()
+    private func fetchData(completion: @escaping (data_getTodaysHabit) -> Void) {
+        let habitAPI = MoyaWrapper<HabitAPI>(endPointClosure: MoyaProvider.defaultEndpointMapping,
+                                             stubClosure: MoyaProvider.immediatelyStub)
         habitAPI.requestSuccessRes(target: .getTodaysHabit, instance: data_getTodaysHabit.self)
         { result in
             switch result {
             case .success(let result) :
                 print(result)
+                
+                completion(result)
             case .failure(let error) :
                 print(error.localizedDescription)
             }
@@ -221,6 +229,7 @@ func postPositionText(_ word: String)->String {
 }
 
 import SwiftUI
+import Moya
 struct HomeViewController_Preview: PreviewProvider {
     static var previews: some View {
         UIViewControllerPreview {
