@@ -149,6 +149,8 @@ class HomeViewController: UIViewController {
         
         fetchData { result in
             self.timelineViewController.setupTimeline(result)
+//            for item result
+//            self.carouselViewController.items = result
         }
         
     }
@@ -161,6 +163,12 @@ class HomeViewController: UIViewController {
             switch result {
             case .success(let result) :
                 print(result)
+                self.timelineViewController.setupTimeline(result)
+                
+                for item in result.today {
+                    self.carouselViewController.items.append(CarouselItem(image: item.imageUrl, title: item.title, badgeNum: item.mvp, habitId: item.habitId, participateRate: item.participationRate))
+                }
+                self.carouselViewController.collectionView.reloadData()
                 
                 completion(result)
             case .failure(let error) :

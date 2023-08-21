@@ -217,27 +217,57 @@ extension HabitAPI: TargetType {
                   }
                 ],
                 "today": [
-                  {
-                    "endTime": "13:45:00",
-                    "habitId": 4,
-                    "imageUrl": "https://example.com/image4.jpg",
-                    "mvp": 3,
-                    "participationRate": 60,
-                    "startTime": "12:30:00",
-                    "status": "COMPLETE",
-                    "title": "Walking"
-                  },
-                  {
-                    "endTime": "15:30:00",
-                    "habitId": 5,
-                    "imageUrl": "https://example.com/image5.jpg",
-                    "mvp": 1,
-                    "participationRate": 25,
-                    "startTime": "14:00:00",
-                    "status": "COMPLETE",
-                    "title": "Learning"
-                  }
-                ],
+                      {
+                        "endTime": "13:45:00",
+                        "habitId": 4,
+                        "imageUrl": "https://example.com/image4.jpg",
+                        "mvp": 3,
+                        "participationRate": 60,
+                        "startTime": "12:30:00",
+                        "status": "COMPLETE",
+                        "title": "Walking"
+                      },
+                      {
+                        "endTime": "15:30:00",
+                        "habitId": 5,
+                        "imageUrl": "https://example.com/image5.jpg",
+                        "mvp": 1,
+                        "participationRate": 25,
+                        "startTime": "14:00:00",
+                        "status": "COMPLETE",
+                        "title": "Learning"
+                      },
+                      {
+                        "endTime": "18:00:00",
+                        "habitId": 6,
+                        "imageUrl": "https://example.com/image6.jpg",
+                        "mvp": 4,
+                        "participationRate": 75,
+                        "startTime": "16:30:00",
+                        "status": "INCOMPLETE",
+                        "title": "Writing"
+                      },
+                      {
+                        "endTime": "21:00:00",
+                        "habitId": 7,
+                        "imageUrl": "https://example.com/image7.jpg",
+                        "mvp": 2,
+                        "participationRate": 40,
+                        "startTime": "19:30:00",
+                        "status": "INCOMPLETE",
+                        "title": "Drawing"
+                      },
+                      {
+                        "endTime": "10:00:00",
+                        "habitId": 8,
+                        "imageUrl": "https://example.com/image8.jpg",
+                        "mvp": 0,
+                        "participationRate": 10,
+                        "startTime": "08:30:00",
+                        "status": "INCOMPLETE",
+                        "title": "Stretching"
+                      }
+                    ],
                 "userWeeklyLogContents": "Sample weekly log contents...",
                 "userWeeklyLogPeriod": "2023-08-14 to 2023-08-20"
               }

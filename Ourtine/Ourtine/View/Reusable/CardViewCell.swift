@@ -7,11 +7,12 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class CardViewCell: UICollectionViewCell {
     static let id = "CardCell"
     
-    let badgeNum = 5
+    var badgeNum = 0
     
     private let cardView: UIView = {
         let view = UIView()
@@ -158,11 +159,26 @@ class CardViewCell: UICollectionViewCell {
         
         habitImageView.image = nil
         habitNameLabel.text = nil
+        badgeNum = 0
     }
     
-    func prepare(image: UIImage?, text: String?) {
-        habitImageView.image = image
+    func prepare(image: String?, text: String?, badgeNum: Int?, rate: Int?) {
+        habitImageView.kf.setImage(with: URL(string: image!), placeholder: createImageWithColor(color: .app_SecondaryColor, size: CGSize(width: 50, height: 50)))
         habitNameLabel.text = text
+        self.badgeNum = badgeNum ?? 0
+        
+        if let p_rate = rate {
+            let attributedString = NSMutableAttributedString(string: "\(p_rate)%")
+            let bigFont = UIFont.systemFont(ofSize: 22, weight: .medium)
+            attributedString.addAttribute(.font, value: bigFont, range: NSRange(location: 0, length: attributedString.length))
+            let smallFont = UIFont.systemFont(ofSize: 12, weight: .medium)
+            attributedString.addAttribute(.font, value: smallFont, range: NSRange(location: attributedString.length-1, length: 1))
+
+            self.circularProgressView.percentLabel.attributedText = attributedString
+            self.circularProgressView.percentLabel.textColor = .orange
+            self.circularProgressView.updateProgress(to: CGFloat(p_rate) * 0.01)
+        }
+        
     }
 }
 
