@@ -259,6 +259,10 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
             voteResultVC.modalPresentationStyle = .overCurrentContext
             self.present(voteResultVC, animated: true)
             
+            dismiss(animated: false) {
+                let newVC = ReviewViewController()
+                self.navigationController?.pushViewController(newVC, animated: false)
+            }
         }
     }
 

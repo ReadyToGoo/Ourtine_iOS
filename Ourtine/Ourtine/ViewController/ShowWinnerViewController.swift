@@ -79,6 +79,7 @@ class ShowWinnerViewController: UIViewController {
         updateWinners()
         updateEncouragePhrase()
         setConstraints()
+        updateView()
     }
 
     private func updateWinners() {
@@ -133,7 +134,6 @@ class ShowWinnerViewController: UIViewController {
             make.bottom.equalToSuperview().offset(-129.59)
             make.centerX.equalToSuperview()
         }
-        
     }
 }
 
