@@ -1,20 +1,51 @@
 //
-//  VoteViewController.swift
+//  VoteMemberViewController.swift
 //  Ourtine
 //
-//  Created by eunji on 2023/08/12.
+//  Created by eunji on 2023/08/21.
 //
 
 import UIKit
 import SnapKit
 
-// 팀원 습관 확인 View입니다.
-class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDelegate {
+class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionViewDelegate {
+    
+    weak var delegate: ParticipatingMemberCollectionViewDelegate?
+    
+    var selectedMemberData: [MemberModel] = []
+    var selectedCellCount: Int = 0
     
     func didSelectMember(_ memberData: MemberModel?) {
-        //
+        print("selected member data: ", memberData ?? "FAIL")
+        if let selectedData = memberData {
+            if selectedMemberData.contains(selectedData) {
+                selectedMemberData.removeAll { $0.userId == selectedData.userId }
+                selectedCellCount -= 1
+            } else {
+                selectedMemberData.append(selectedData)
+                selectedCellCount += 1
+            }
+        }
+        
+        let selectedUserIds = selectedMemberData.map {$0.userId}
+        print("\(selectedUserIds)")
+        
+//        selectedCellCount = collectionView.selectedMemberData.count
+        print(selectedCellCount)
+        isSelectionMade = selectedCellCount > 0
     }
     
+    func didChangeSelection(_ isSelected: Bool) {
+        isSelectionMade = isSelected
+        updateVoteButtonState()
+    }
+    
+    
+    private var isSelectionMade: Bool = false {
+        didSet {
+            updateVoteButtonState()
+        }
+    }
     
     private let bigPhraseLabel: UILabel = {
         let label = UILabel()
@@ -23,7 +54,7 @@ class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDel
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 28, weight: .semibold)
-        label.text = "팀원들의 습관을\n확인해보세요!"
+        label.text = "팀원들의 습관을\n골라주세요!"
         label.setLetterSpacing()
         return label
     }()
@@ -63,9 +94,10 @@ class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDel
         return label
     }()
     
-    private let memberView: ParticipatingMemberCollectionView = {
+    private let collectionView: ParticipatingMemberCollectionView = {
         let view = ParticipatingMemberCollectionView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.participantNum = 4
+        view.cellShouldShowSelectedImage = true
         return view
     }()
     
@@ -84,42 +116,37 @@ class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDel
     }()
     
     @objc private func voteBtnTapped() {
-        let vc = VoteMemberViewController()
+        // TODO: selectedMemberData API로 전송
+        // TODO: 투표 종료 시간 되면 화면 이동.
+        let vc = ReviewViewController()
         navigationController?.pushViewController(vc, animated: false)
     }
-    
-    
-    override func viewDidLoad() {
-        navigationController?.isNavigationBarHidden = true
 
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         [
             bigPhraseLabel,
             smallPhraseLabel,
             leftSecondLabel,
+            collectionView,
             unitLabel,
-            memberView,
             voteBtn
         ].forEach {view.addSubview($0)}
 
         setupUI()
         setConstraints()
-        
-        memberView.delegate = self
+        collectionView.delegate = self
     }
     
-    func didSelectMember(_ memberData: MemberModel) {
-        let vc = OthersViewController()
-        vc.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        present(vc, animated: true)
-    }
-    
+
     private func setupUI() {
         // TODO: Get Left Second
         leftSecondLabel.text = "23"
         
         voteBtn.addTarget(self, action: #selector(voteBtnTapped), for: .touchUpInside)
+        
+        updateVoteButtonState()
     }
 
     private func setConstraints() {
@@ -147,13 +174,13 @@ class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDel
             make.leading.equalTo(leftSecondLabel.snp.trailing).offset(4)
         }
         
-        // memberView
-        memberView.snp.makeConstraints { make in
-//            make.top.equalTo(unitLabel.snp.bottom).offset(83.16)
+        // collectionView
+        collectionView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(319.9)
             make.centerX.equalToSuperview()
             make.width.equalTo(272)
             make.height.equalTo(300)
+            
         }
         
         // voteBtn
@@ -162,14 +189,39 @@ class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDel
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-32)
         }
     }
+    
+    
+    
+    private func updateVoteButtonState() {
+        voteBtn.isEnabled = isSelectionMade
+        
+        if isSelectionMade {
+            // Enable the button and set the appropriate title
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 16, weight: .semibold),
+                .foregroundColor: UIColor.white
+            ]
+            let titleAttr = NSAttributedString(string: "투표 완료하기", attributes: attributes)
+            voteBtn.setAttributedTitle(titleAttr, for: .normal)
+        } else {
+            // Disable the button and set a disabled title
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 16, weight: .semibold),
+                .foregroundColor: UIColor.gray
+            ]
+            let titleAttr = NSAttributedString(string: "베스터 습관러 투표하러 가기", attributes: attributes)
+            voteBtn.setAttributedTitle(titleAttr, for: .normal)
+        }
+    }
 
 }
 
 import SwiftUI
-struct VoteViewController_Preview: PreviewProvider {
+
+struct VoteMemberViewController_Preview: PreviewProvider {
     static var previews: some View {
         UIViewControllerPreview {
-            let ViewController = VoteViewController()
+            let ViewController = VoteMemberViewController()
             return ViewController
         }
     }

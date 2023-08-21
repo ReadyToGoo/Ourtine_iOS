@@ -163,3 +163,12 @@ extension ReviewViewController: FeelingSelectViewDelegate {
     }
 }
 
+import SwiftUI
+struct ReviewViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        UIViewControllerPreview {
+            let ViewController = ReviewViewController()
+            return ViewController
+        }
+    }
+}

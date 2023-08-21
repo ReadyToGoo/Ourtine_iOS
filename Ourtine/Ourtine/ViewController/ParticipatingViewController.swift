@@ -176,7 +176,8 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         
         // memberView
         memberView.snp.makeConstraints { make in
-            make.top.equalTo(habitPhrase.snp.bottom).offset(228)
+//            make.top.equalTo(habitPhrase.snp.bottom).offset(228)
+            make.top.equalToSuperview().offset(319.9)
             make.centerX.equalToSuperview()
             make.width.equalTo(272)
             make.height.equalTo(300)

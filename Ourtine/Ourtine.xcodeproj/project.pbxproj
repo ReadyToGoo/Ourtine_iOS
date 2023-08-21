@@ -118,6 +118,8 @@
 		88FE2D372A7ED46600C475A7 /* HC_chooseCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D322A7ED46600C475A7 /* HC_chooseCategoryViewController.swift */; };
 		88FE2D382A7ED46600C475A7 /* HC_chooseTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D332A7ED46600C475A7 /* HC_chooseTimeViewController.swift */; };
 		88FE2D3A2A7ED4AD00C475A7 /* HC_Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE2D392A7ED4AD00C475A7 /* HC_Category.swift */; };
+		B61D6AB52A9303020002295B /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D6AB42A9303020002295B /* OthersViewController.swift */; };
+		B61D6AB72A930CB70002295B /* VoteMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D6AB62A930CB70002295B /* VoteMemberViewController.swift */; };
 		B6394E932A86A2F30040B8FF /* CamerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6394E922A86A2F30040B8FF /* CamerManager.swift */; };
 		B63C63B02A7B4ACB00AF09CA /* LetterSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C63AF2A7B4ACB00AF09CA /* LetterSpacing.swift */; };
 		B63C63B22A7B5C0F00AF09CA /* FigmaShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C63B12A7B5C0E00AF09CA /* FigmaShadow.swift */; };
@@ -257,6 +259,8 @@
 		88FE2D322A7ED46600C475A7 /* HC_chooseCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_chooseCategoryViewController.swift; sourceTree = "<group>"; };
 		88FE2D332A7ED46600C475A7 /* HC_chooseTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_chooseTimeViewController.swift; sourceTree = "<group>"; };
 		88FE2D392A7ED4AD00C475A7 /* HC_Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_Category.swift; sourceTree = "<group>"; usesTabs = 0; };
+		B61D6AB42A9303020002295B /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
+		B61D6AB62A930CB70002295B /* VoteMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteMemberViewController.swift; sourceTree = "<group>"; };
 		B6394E922A86A2F30040B8FF /* CamerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerManager.swift; sourceTree = "<group>"; };
 		B63C63AF2A7B4ACB00AF09CA /* LetterSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterSpacing.swift; sourceTree = "<group>"; };
 		B63C63B12A7B5C0E00AF09CA /* FigmaShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaShadow.swift; sourceTree = "<group>"; };
@@ -382,6 +386,8 @@
 				B6BEB5932A892B9800A311B8 /* ReviewViewController.swift */,
 				B6BEB59A2A89C85400A311B8 /* ReviewLastViewController.swift */,
 				8851EE3A2A8CC4CB0062D3E4 /* PrimaryViewController.swift */,
+				B61D6AB42A9303020002295B /* OthersViewController.swift */,
+				B61D6AB62A930CB70002295B /* VoteMemberViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -691,6 +697,7 @@
 				B6BEB59B2A89C85400A311B8 /* ReviewLastViewController.swift in Sources */,
 				88BDD3282A82B84D0082A961 /* HC_MemberCollectionViewCell.swift in Sources */,
 				881C061F2A62D94500184AFA /* UIComponents+setBackgroundColor.swift in Sources */,
+				B61D6AB52A9303020002295B /* OthersViewController.swift in Sources */,
 				88804CC82A7FE3D900562E35 /* Date + Extension.swift in Sources */,
 				8851EE2E2A8C22E30062D3E4 /* AuthAPI.swift in Sources */,
 				88371A742A702D4A0056BB5A /* MemberCollectionViewCell.swift in Sources */,
@@ -705,6 +712,7 @@
 				B6CAF8842A7CCFD200448673 /* TimelineViewController.swift in Sources */,
 				B6C283402A72C3AC007FE619 /* CardViewCell.swift in Sources */,
 				88BFEC0E2A66990F004F2C11 /* CustomSegmentControlView.swift in Sources */,
+				B61D6AB72A930CB70002295B /* VoteMemberViewController.swift in Sources */,
 				8851EE292A8C22E30062D3E4 /* HabitSessionAPI.swift in Sources */,
 				8851EE2D2A8C22E30062D3E4 /* UserAPI responding Struct.swift in Sources */,
 				8851EE242A8C22E30062D3E4 /* JWTVerifier.swift in Sources */,
