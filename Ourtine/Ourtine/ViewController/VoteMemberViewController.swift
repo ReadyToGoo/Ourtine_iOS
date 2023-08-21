@@ -10,6 +10,8 @@ import SnapKit
 
 class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionViewDelegate {
     
+    private var hasPresentedBefore: Bool = false
+    
     private var isVoteBtnTapped: Bool = false
     
     weak var delegate: ParticipatingMemberCollectionViewDelegate?
@@ -118,13 +120,14 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
     @objc private func voteBtnTapped() {
         // TODO: selectedMemberData API로 전송
         // TODO: 투표 종료 시간 되면 화면 이동.
-//        let vc = ReviewViewController()
-//        navigationController?.pushViewController(vc, animated: false)
         isVoteBtnTapped = true
         let vc = WaitAfterVoteViewController()
         vc.didVoted = isSelectionMade
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: true)
+        if (!hasPresentedBefore) {
+            vc.modalPresentationStyle = .overCurrentContext
+            present(vc, animated: true)
+            hasPresentedBefore = true
+        }
     }
 
     override func viewDidLoad() {
@@ -242,8 +245,21 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
     private func presentModal() {
         let vc = WaitAfterVoteViewController()
         vc.didVoted = isVoteBtnTapped ? isSelectionMade : false
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: true)
+        
+        if !hasPresentedBefore {
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true)
+            hasPresentedBefore = true
+        }
+        
+        dismiss(animated: true) { [weak self] in
+            guard let self = self else {return}
+            
+            let voteResultVC = ShowWinnerViewController()
+            voteResultVC.modalPresentationStyle = .overCurrentContext
+            self.present(voteResultVC, animated: true)
+            
+        }
     }
 
 }
