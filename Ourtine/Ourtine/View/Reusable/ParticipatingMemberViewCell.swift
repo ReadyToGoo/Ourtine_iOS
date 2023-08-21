@@ -10,7 +10,11 @@ import UIKit
 class ParticipatingMemberViewCell: UICollectionViewCell {
     static let id = "ParticipatingMemberCell"
     
-    var memberData = MemberModel("crown",nil,"what")
+    weak var delegate: ParticipatingMemberCollectionViewDelegate?
+    
+    var buttonAction: (() -> Void)?
+    
+    var memberData = MemberModel("crown", nil, "what")
     
     private let memberProfileBtn: UserProfileImageView = {
         let view = UserProfileImageView(frame: CGRect(x: 0, y: 0, width: 110, height: 110))
@@ -34,7 +38,7 @@ class ParticipatingMemberViewCell: UICollectionViewCell {
     }()
     
     required init?(coder: NSCoder) {
-        fatalError("iniit(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
     
     override init(frame: CGRect) {
@@ -44,6 +48,15 @@ class ParticipatingMemberViewCell: UICollectionViewCell {
         self.contentView.addSubview(self.memberName)
         
         setConstraints()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
+        contentView.addGestureRecognizer(tapGesture)
+        
+        isUserInteractionEnabled = true
+    }
+    
+    @objc private func cellTapped() {
+        delegate?.didSelectMember(memberData)
     }
     
     func getMemberData(data: MemberModel) {
@@ -57,14 +70,12 @@ class ParticipatingMemberViewCell: UICollectionViewCell {
     }
     
     private func setConstraints() {
-        // memberProfile
         memberProfileBtn.snp.makeConstraints { make in
             make.top.equalTo(self.contentView.snp.top)
             make.centerX.equalToSuperview()
             make.height.width.equalTo(110)
         }
         
-        // memberName
         memberName.snp.makeConstraints { make in
             make.top.equalTo(memberProfileBtn.snp.bottom).offset(4)
             make.centerX.equalTo(memberProfileBtn.snp.centerX)
