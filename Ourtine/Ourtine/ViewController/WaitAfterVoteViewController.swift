@@ -36,20 +36,33 @@ class WaitAfterVoteViewController: UIViewController {
         label.textColor = .white
         return label
     }()
+    
+    private let blurEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .dark)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     override func viewDidLoad() {
-        view.backgroundColor = .black.withAlphaComponent(0.6)
         super.viewDidLoad()
         
         setUI()
     }
     
     private func setUI() {
+        view.backgroundColor = .clear
+        updateBackground()
+        
         if didVoted {
             voted()
         } else {
             unVoted()
         }
+        
+        updateView()
+        
+        
     }
     
     private func unVoted() {
@@ -78,5 +91,31 @@ class WaitAfterVoteViewController: UIViewController {
         }
     }
     
+    private func updateView() {
+        // TODO: move to other view.
+        // TODO: if 현재시간 > 종료 예정 시간
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.dismiss(animated: false)
+        }
+    }
+    
+    private func updateBackground() {
+        view.addSubview(blurEffectView)
+        blurEffectView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
 
+}
+
+import SwiftUI
+
+struct WaitAfterVoteViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        UIViewControllerPreview {
+            let ViewController = WaitAfterVoteViewController()
+            return ViewController
+        }
+    }
 }

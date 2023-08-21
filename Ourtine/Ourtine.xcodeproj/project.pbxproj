@@ -122,6 +122,7 @@
 		B61D6AB52A9303020002295B /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D6AB42A9303020002295B /* OthersViewController.swift */; };
 		B61D6AB72A930CB70002295B /* VoteMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D6AB62A930CB70002295B /* VoteMemberViewController.swift */; };
 		B61D6AB92A93A80B0002295B /* WaitAfterVoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D6AB82A93A80B0002295B /* WaitAfterVoteViewController.swift */; };
+		B61D6ABB2A93BC550002295B /* ShowWinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D6ABA2A93BC550002295B /* ShowWinnerViewController.swift */; };
 		B6394E932A86A2F30040B8FF /* CamerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6394E922A86A2F30040B8FF /* CamerManager.swift */; };
 		B63C63B02A7B4ACB00AF09CA /* LetterSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C63AF2A7B4ACB00AF09CA /* LetterSpacing.swift */; };
 		B63C63B22A7B5C0F00AF09CA /* FigmaShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C63B12A7B5C0E00AF09CA /* FigmaShadow.swift */; };
@@ -265,6 +266,7 @@
 		B61D6AB42A9303020002295B /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
 		B61D6AB62A930CB70002295B /* VoteMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteMemberViewController.swift; sourceTree = "<group>"; };
 		B61D6AB82A93A80B0002295B /* WaitAfterVoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitAfterVoteViewController.swift; sourceTree = "<group>"; };
+		B61D6ABA2A93BC550002295B /* ShowWinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowWinnerViewController.swift; sourceTree = "<group>"; };
 		B6394E922A86A2F30040B8FF /* CamerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerManager.swift; sourceTree = "<group>"; };
 		B63C63AF2A7B4ACB00AF09CA /* LetterSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterSpacing.swift; sourceTree = "<group>"; };
 		B63C63B12A7B5C0E00AF09CA /* FigmaShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaShadow.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				B61D6AB42A9303020002295B /* OthersViewController.swift */,
 				B61D6AB62A930CB70002295B /* VoteMemberViewController.swift */,
 				B61D6AB82A93A80B0002295B /* WaitAfterVoteViewController.swift */,
+				B61D6ABA2A93BC550002295B /* ShowWinnerViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				8851EE222A8C22E30062D3E4 /* myUserInfo.swift in Sources */,
 				882B757E2A862A6A000B3943 /* UIImage + CircularCrop.swift in Sources */,
 				88FE2D352A7ED46600C475A7 /* HC_introduceViewController.swift in Sources */,
+				B61D6ABB2A93BC550002295B /* ShowWinnerViewController.swift in Sources */,
 				88BDD32E2A82C3760082A961 /* HC_finalView.swift in Sources */,
 				B6BEB5942A892B9800A311B8 /* ReviewViewController.swift in Sources */,
 				88BDD3262A82B3180082A961 /* HC_selectFriendsViewController.swift in Sources */,
