@@ -218,12 +218,12 @@ extension HabitAPI: TargetType {
                 ],
                 "today": [
                       {
-                        "endTime": "13:45:00",
+                        "endTime": "23:45:00",
                         "habitId": 4,
                         "imageUrl": "https://example.com/image4.jpg",
                         "mvp": 3,
                         "participationRate": 60,
-                        "startTime": "12:30:00",
+                        "startTime": "22:30:00",
                         "status": "COMPLETE",
                         "title": "Walking"
                       },
@@ -248,22 +248,22 @@ extension HabitAPI: TargetType {
                         "title": "Writing"
                       },
                       {
-                        "endTime": "21:00:00",
+                        "endTime": "23:00:00",
                         "habitId": 7,
                         "imageUrl": "https://example.com/image7.jpg",
                         "mvp": 2,
                         "participationRate": 40,
-                        "startTime": "19:30:00",
+                        "startTime": "20:00:00",
                         "status": "INCOMPLETE",
                         "title": "Drawing"
                       },
                       {
-                        "endTime": "10:00:00",
+                        "endTime": "23:00:00",
                         "habitId": 8,
                         "imageUrl": "https://example.com/image8.jpg",
                         "mvp": 0,
                         "participationRate": 10,
-                        "startTime": "08:30:00",
+                        "startTime": "21:30:00",
                         "status": "INCOMPLETE",
                         "title": "Stretching"
                       }

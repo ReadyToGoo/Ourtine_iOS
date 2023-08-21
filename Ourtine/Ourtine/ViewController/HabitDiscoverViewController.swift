@@ -179,7 +179,7 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
     
     func fetchMyCategories(closure: @escaping () -> Void) {
         let userAPI = MoyaWrapper<UserAPI>()
-        userAPI.requestSuccessRes(target: .getUserProfile(userId: myInfo.myID!), instance: data_getUserProfile.self)
+        userAPI.requestSuccessRes(target: .getUserProfile(userId: myInfo.myID ?? 0), instance: data_getUserProfile.self)
         { result in
             switch result {
             case .success(let result):
