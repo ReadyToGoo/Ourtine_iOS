@@ -8,7 +8,8 @@
 import UIKit
 import SnapKit
 
-class VoteViewController: UIViewController {
+// 팀원 습관 확인 View입니다.
+class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDelegate {
     
     private let bigPhraseLabel: UILabel = {
         let label = UILabel()
@@ -57,6 +58,12 @@ class VoteViewController: UIViewController {
         return label
     }()
     
+    private let memberView: ParticipatingMemberCollectionView = {
+        let view = ParticipatingMemberCollectionView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let voteBtn: UIButton = {
         var config = UIButton.Configuration.filled()
         config.baseBackgroundColor = .app_PrimaryColor
@@ -88,11 +95,20 @@ class VoteViewController: UIViewController {
             smallPhraseLabel,
             leftSecondLabel,
             unitLabel,
+            memberView,
             voteBtn
         ].forEach {view.addSubview($0)}
 
         setupUI()
         setConstraints()
+        
+        memberView.delegate = self
+    }
+    
+    func didSelectMember(_ memberData: MemberModel) {
+        let vc = OthersViewController()
+        vc.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        present(vc, animated: true)
     }
     
     private func setupUI() {
@@ -125,6 +141,15 @@ class VoteViewController: UIViewController {
         unitLabel.snp.makeConstraints { make in
             make.centerY.equalTo(smallPhraseLabel)
             make.leading.equalTo(leftSecondLabel.snp.trailing).offset(4)
+        }
+        
+        // memberView
+        memberView.snp.makeConstraints { make in
+//            make.top.equalTo(unitLabel.snp.bottom).offset(83.16)
+            make.top.equalToSuperview().offset(319.9)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(272)
+            make.height.equalTo(300)
         }
         
         // voteBtn
