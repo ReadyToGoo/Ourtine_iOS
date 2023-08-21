@@ -8,20 +8,39 @@
 import UIKit
 import SnapKit
 
-class ParticipatingMemberCollectionView: UIView {
+protocol ParticipatingMemberCollectionViewDelegate: AnyObject {
+    func didSelectMember(_ memberData: MemberModel?)
+}
 
+class ParticipatingMemberCollectionView: UIView {
+    
+    
+    var selectedMemberData: Set<MemberModel> = Set()
+    
+    var selectedCellIndex: Int? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    var cellShouldShowSelectedImage: Bool = false {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+        
+    weak var delegate: ParticipatingMemberCollectionViewDelegate?
+    
     private let reuseIdentifier = ParticipatingMemberViewCell.id
 
     var participantNum = Dummy_participatingMemberList.count
 
-    // layout
     private let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 110, height: 138)
         return layout
     }()
 
-    // collectionView
     private lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
         view.isScrollEnabled = true
@@ -53,32 +72,36 @@ class ParticipatingMemberCollectionView: UIView {
 
     private func setConstraints() {
         collectionView.snp.makeConstraints { make in
-                make.centerX.equalToSuperview()
-                make.height.equalTo(300)
-                make.width.equalToSuperview()
-            }
+            make.centerX.equalToSuperview()
+            make.height.equalTo(300)
+            make.width.equalToSuperview()
+        }
     }
-
-
+    
+    private func configureCell(_ cell: ParticipatingMemberViewCell, at indexPath: IndexPath, isSelected: Bool) {
+        cell.delegate = delegate
+        cell.shouldShowSelectedImage = cellShouldShowSelectedImage
+        cell.isSelectedCell = isSelected
+        cell.getMemberData(data: Dummy_participatingMemberList[indexPath.row])
+    }
+    
 }
 
 extension ParticipatingMemberCollectionView: UICollectionViewDataSource, UICollectionViewDelegate {
-    // numOfCell
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return participantNum
     }
     
-    // cellContent
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ParticipatingMemberViewCell else {
             return UICollectionViewCell()
         }
-        cell.getMemberData(data: Dummy_participatingMemberList[indexPath.row])
+
+        configureCell(cell, at: indexPath, isSelected: indexPath.item == selectedCellIndex)
         
         return cell
     }
     
-    // Top-Bottom Distance Between Cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         if participantNum < 5 {
             return 28
@@ -87,7 +110,6 @@ extension ParticipatingMemberCollectionView: UICollectionViewDataSource, UIColle
         }
     }
 
-    // Left-Right Distance Between Cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         if participantNum < 5 {
             return 52
@@ -95,5 +117,4 @@ extension ParticipatingMemberCollectionView: UICollectionViewDataSource, UIColle
             return 32
         }
     }
-    
 }
