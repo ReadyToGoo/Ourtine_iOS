@@ -12,8 +12,32 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
     
     weak var delegate: ParticipatingMemberCollectionViewDelegate?
     
+    var selectedMemberData: [MemberModel] = []
+    var selectedCellCount: Int = 0
+    
     func didSelectMember(_ memberData: MemberModel?) {
         print("selected member data: ", memberData ?? "FAIL")
+        if let selectedData = memberData {
+            if selectedMemberData.contains(selectedData) {
+                selectedMemberData.removeAll { $0.userId == selectedData.userId }
+                selectedCellCount -= 1
+            } else {
+                selectedMemberData.append(selectedData)
+                selectedCellCount += 1
+            }
+        }
+        
+        let selectedUserIds = selectedMemberData.map {$0.userId}
+        print("\(selectedUserIds)")
+        
+//        selectedCellCount = collectionView.selectedMemberData.count
+        print(selectedCellCount)
+        isSelectionMade = selectedCellCount > 0
+    }
+    
+    func didChangeSelection(_ isSelected: Bool) {
+        isSelectionMade = isSelected
+        updateVoteButtonState()
     }
     
     
@@ -92,7 +116,9 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
     }()
     
     @objc private func voteBtnTapped() {
-        let vc = VoteMemberViewController()
+        // TODO: selectedMemberData API로 전송
+        // TODO: 투표 종료 시간 되면 화면 이동.
+        let vc = ReviewViewController()
         navigationController?.pushViewController(vc, animated: false)
     }
 
@@ -163,6 +189,8 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-32)
         }
     }
+    
+    
     
     private func updateVoteButtonState() {
         voteBtn.isEnabled = isSelectionMade

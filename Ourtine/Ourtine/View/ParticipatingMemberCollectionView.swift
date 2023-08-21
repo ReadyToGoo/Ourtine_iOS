@@ -14,6 +14,9 @@ protocol ParticipatingMemberCollectionViewDelegate: AnyObject {
 
 class ParticipatingMemberCollectionView: UIView {
     
+    
+    var selectedMemberData: Set<MemberModel> = Set()
+    
     var selectedCellIndex: Int? {
         didSet {
             collectionView.reloadData()
@@ -77,7 +80,7 @@ class ParticipatingMemberCollectionView: UIView {
     
     private func configureCell(_ cell: ParticipatingMemberViewCell, at indexPath: IndexPath, isSelected: Bool) {
         cell.delegate = delegate
-        cell.shouldShowSelectedImage = cellShouldShowSelectedImage // Set the property here
+        cell.shouldShowSelectedImage = cellShouldShowSelectedImage
         cell.isSelectedCell = isSelected
         cell.getMemberData(data: Dummy_participatingMemberList[indexPath.row])
     }
