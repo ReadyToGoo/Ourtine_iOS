@@ -10,6 +10,8 @@ import SnapKit
 
 class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionViewDelegate {
     
+    private var isVoteBtnTapped: Bool = false
+    
     weak var delegate: ParticipatingMemberCollectionViewDelegate?
     
     var selectedMemberData: [MemberModel] = []
@@ -118,6 +120,7 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
         // TODO: 투표 종료 시간 되면 화면 이동.
 //        let vc = ReviewViewController()
 //        navigationController?.pushViewController(vc, animated: false)
+        isVoteBtnTapped = true
         let vc = WaitAfterVoteViewController()
         vc.didVoted = isSelectionMade
         vc.modalPresentationStyle = .overCurrentContext
@@ -140,11 +143,13 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
         setupUI()
         setConstraints()
         collectionView.delegate = self
+        startCountDown()
     }
     
 
     private func setupUI() {
         // TODO: Get Left Second
+        
         leftSecondLabel.text = "23"
         
         voteBtn.addTarget(self, action: #selector(voteBtnTapped), for: .touchUpInside)
@@ -217,6 +222,28 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
             let titleAttr = NSAttributedString(string: "베스터 습관러 투표하러 가기", attributes: attributes)
             voteBtn.setAttributedTitle(titleAttr, for: .normal)
         }
+    }
+    
+    private func startCountDown() {
+        var leftTime = 5
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            leftTime -= 1
+            
+            if leftTime > 0 {
+                self.leftSecondLabel.text = String(leftTime)
+            } else {
+                timer.invalidate()
+                self.presentModal()
+                self.leftSecondLabel.text = ""
+            }
+        }
+    }
+    
+    private func presentModal() {
+        let vc = WaitAfterVoteViewController()
+        vc.didVoted = isVoteBtnTapped ? isSelectionMade : false
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true)
     }
 
 }
