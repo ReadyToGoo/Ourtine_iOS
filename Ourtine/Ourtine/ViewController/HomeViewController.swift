@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     let tempUserHabit = "반려동물 물주기"
     
     // Habit Phrase Label
+    ///
     private let phraseLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -144,7 +145,20 @@ class HomeViewController: UIViewController {
         //
         timelineViewController.didMove(toParent: self)
         
-
+        fetchData()
+    }
+    
+    private func fetchData() {
+        let habitAPI = MoyaWrapper<HabitAPI>()
+        habitAPI.requestSuccessRes(target: .getTodaysHabit, instance: data_getTodaysHabit.self)
+        { result in
+            switch result {
+            case .success(let result) :
+                print(result)
+            case .failure(let error) :
+                print(error.localizedDescription)
+            }
+        }
     }
     
     
