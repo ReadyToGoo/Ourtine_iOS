@@ -11,6 +11,11 @@ import SnapKit
 // 팀원 습관 확인 View입니다.
 class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDelegate {
     
+    func didSelectMember(_ memberData: MemberModel?) {
+        //
+    }
+    
+    
     private let bigPhraseLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

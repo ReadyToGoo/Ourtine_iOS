@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol ParticipatingMemberCollectionViewDelegate: AnyObject {
-    func didSelectMember(_ memberData: MemberModel)
+    func didSelectMember(_ memberData: MemberModel?)
 }
 
 class ParticipatingMemberCollectionView: UIView {

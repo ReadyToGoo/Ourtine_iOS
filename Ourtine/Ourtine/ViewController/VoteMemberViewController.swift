@@ -12,8 +12,8 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
     
     weak var delegate: ParticipatingMemberCollectionViewDelegate?
     
-    func didSelectMember(_ memberData: MemberModel) {
-        //
+    func didSelectMember(_ memberData: MemberModel?) {
+        print("selected member data: ", memberData ?? "FAIL")
     }
     
     

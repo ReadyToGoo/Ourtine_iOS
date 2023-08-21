@@ -98,7 +98,8 @@ class ParticipatingMemberViewCell: UICollectionViewCell {
     
     @objc private func cellTapped() {
         isSelectedCell.toggle()
-        delegate?.didSelectMember(memberData)
+        let selectedmemberData = isSelectedCell ? memberData : nil
+        delegate?.didSelectMember(selectedmemberData)
         updateSelectedImageVisibility()
     }
     
