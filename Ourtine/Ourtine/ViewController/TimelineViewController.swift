@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TimelineViewController: UIViewController {
     var timelineProgress: UIView!
@@ -44,7 +45,7 @@ class TimelineViewController: UIViewController {
 //        return imageView
 //    }()
 
-    func setupTimeline() {
+    func setupTimeline(_ habitList: data_getTodaysHabit? = nil) {
         let timelineLine = UIView(frame: CGRect(x: 18, y: 58.91, width: 358, height: 4))
         timelineLine.backgroundColor = .orange.withAlphaComponent(0.4)
         view.addSubview(timelineLine)
@@ -56,6 +57,8 @@ class TimelineViewController: UIViewController {
         let currentDate = Date()
         let calendar = Calendar.current
         let currentHour = calendar.component(.hour, from: currentDate)
+        
+        let placeholderImage = createImageWithColor(color: .app_SecondaryColor, size: CGSize(width: 50, height: 50))
         
         let hourStep: CGFloat = 360 / 6.0
         for hour in currentHour - 3...currentHour + 3 {
@@ -75,6 +78,18 @@ class TimelineViewController: UIViewController {
                 imageView = UIImageView(frame: CGRect(x: hourStep * CGFloat(hour - (currentHour - 3)), y: 0, width: 28, height: 28))
             }
             
+            // 오늘 습관 리스트에서 해당 시간대에 해당하는 첫번째 습관 이미지만 페칭 후 반복문 빠져나갑니다
+            if let list = habitList {
+                for item in list.today {
+                    if hour == Int(item.startTime.prefix(2)) {
+                        imageView.kf.setImage(with: URL(string: item.imageUrl), placeholder: placeholderImage)
+                        break
+                    }
+                }
+            } else {
+                imageView.isHidden = true
+            }
+            
             label.textColor = .black
             label.textAlignment = .center
             label.text = "\(hour % 24)시" // To handle hours after 24
@@ -82,7 +97,7 @@ class TimelineViewController: UIViewController {
             view.addSubview(label)
             timeLabels.append(label)
             
-            imageView.image = UIImage(named: "habitBackgroundExample")
+            //imageView.image = UIImage(named: "habitBackgroundExample")
             imageView.layer.cornerRadius = imageView.frame.size.width / 2
             imageView.clipsToBounds = true
             view.addSubview(imageView)

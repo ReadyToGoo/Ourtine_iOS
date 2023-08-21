@@ -8,13 +8,13 @@
 import UIKit
 
 class CarouselViewController: UIViewController {
-    private var items = [
-        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "아침마다 책 읽기"),
-        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "아침마다 책 읽고 또 읽고"),
-        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "이불정리는 필수! 이불정리 꼭 합시당..!"),
-        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card4"),
-        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card5"),
-        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card6")
+    var items: [CarouselItem] = [
+//        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "아침마다 책 읽기"),
+//        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "아침마다 책 읽고 또 읽고"),
+//        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "이불정리는 필수! 이불정리 꼭 합시당..!"),
+//        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card4"),
+//        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card5"),
+//        CarouselItem(image: UIImage(named: "habitBackgroundExample"), title: "Card6")
     ]
     
     private enum Const {
@@ -40,7 +40,7 @@ class CarouselViewController: UIViewController {
         return layout
     }()
     
-    private lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewFlowLayout)
         view.isScrollEnabled = true
         view.showsVerticalScrollIndicator = true
@@ -87,9 +87,14 @@ extension CarouselViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardViewCell.id, for: indexPath) as! CardViewCell
         let item = self.items[indexPath.item]
-        cell.prepare(image: item.image, text: item.title)
+//        cell.prepare(image: item.image, text: item.title)
+        cell.prepare(image: item.image, text: item.title, badgeNum: item.badgeNum, rate: item.participateRate)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("habitid : \(self.items[indexPath.row].habitId)")
     }
 }
 

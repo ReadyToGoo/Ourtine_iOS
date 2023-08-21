@@ -79,6 +79,7 @@
 		888BB6112A8DCE9A00669C99 /* makeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BB6102A8DCE9A00669C99 /* makeAlert.swift */; };
 		888BB6152A8DE06200669C99 /* SignUpInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BB6142A8DE06200669C99 /* SignUpInfoModel.swift */; };
 		888FB2A62A84177100930987 /* FlowDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888FB2A52A84177100930987 /* FlowDataManager.swift */; };
+		88A3CE342A9356D7006BB235 /* Int + time Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3CE332A9356D7006BB235 /* Int + time Extension.swift */; };
 		88A64C0F2A7A733E00292ED6 /* CALayer+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */; };
 		88A64C112A7A8CA600292ED6 /* HabitDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A64C102A7A8CA600292ED6 /* HabitDescView.swift */; };
 		88BDD3242A82B27C0082A961 /* HC_selectFriednsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD3232A82B27C0082A961 /* HC_selectFriednsView.swift */; };
@@ -221,6 +222,7 @@
 		888BB6102A8DCE9A00669C99 /* makeAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeAlert.swift; sourceTree = "<group>"; };
 		888BB6142A8DE06200669C99 /* SignUpInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfoModel.swift; sourceTree = "<group>"; };
 		888FB2A52A84177100930987 /* FlowDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowDataManager.swift; sourceTree = "<group>"; };
+		88A3CE332A9356D7006BB235 /* Int + time Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + time Extension.swift"; sourceTree = "<group>"; };
 		88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addBorder.swift"; sourceTree = "<group>"; };
 		88A64C102A7A8CA600292ED6 /* HabitDescView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDescView.swift; sourceTree = "<group>"; };
 		88BDD3232A82B27C0082A961 /* HC_selectFriednsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HC_selectFriednsView.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				B6927E2F2A8534D500B8BC4F /* StringHalfColor.swift */,
 				B6927E352A8575D100B8BC4F /* PaddingLabel.swift */,
 				882B757D2A862A6A000B3943 /* UIImage + CircularCrop.swift */,
+				88A3CE332A9356D7006BB235 /* Int + time Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -796,6 +799,7 @@
 				881D5FC52A742CC100603548 /* HabitAlarmView.swift in Sources */,
 				8851EE332A8C22E30062D3E4 /* HabitAPI sending Struct.swift in Sources */,
 				88BDD32A2A82BE770082A961 /* HC_noFriendsView.swift in Sources */,
+				88A3CE342A9356D7006BB235 /* Int + time Extension.swift in Sources */,
 				88BDD3242A82B27C0082A961 /* HC_selectFriednsView.swift in Sources */,
 				88804CCC2A7FFBBF00562E35 /* HC_chooseDateViewController.swift in Sources */,
 				88DC8BB82A87A927000E242D /* LF_SetUsernameViewController.swift in Sources */,

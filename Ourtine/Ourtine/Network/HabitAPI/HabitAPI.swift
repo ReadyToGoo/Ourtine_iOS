@@ -174,6 +174,112 @@ extension HabitAPI: TargetType {
         }
     }
     
+    var sampleData: Data {
+        switch self {
+        case .getTodaysHabit:
+            // 모의 응답 데이터 생성
+            let dummyResponseData = """
+            {
+              "code": 0,
+              "isSuccess": true,
+              "message": "string",
+              "result": {
+                "others": [
+                  {
+                    "endTime": "13:30:00",
+                    "habitId": 1,
+                    "imageUrl": "https://example.com/image1.jpg",
+                    "mvp": 5,
+                    "participationRate": 85,
+                    "startTime": "12:00:00",
+                    "status": "COMPLETE",
+                    "title": "Exercise"
+                  },
+                  {
+                    "endTime": "16:45:00",
+                    "habitId": 2,
+                    "imageUrl": "https://example.com/image2.jpg",
+                    "mvp": 2,
+                    "participationRate": 50,
+                    "startTime": "14:30:00",
+                    "status": "COMPLETE",
+                    "title": "Reading"
+                  },
+                  {
+                    "endTime": "19:15:00",
+                    "habitId": 3,
+                    "imageUrl": "https://example.com/image3.jpg",
+                    "mvp": 7,
+                    "participationRate": 70,
+                    "startTime": "18:00:00",
+                    "status": "COMPLETE",
+                    "title": "Meditation"
+                  }
+                ],
+                "today": [
+                      {
+                        "endTime": "23:45:00",
+                        "habitId": 4,
+                        "imageUrl": "https://example.com/image4.jpg",
+                        "mvp": 3,
+                        "participationRate": 60,
+                        "startTime": "22:30:00",
+                        "status": "COMPLETE",
+                        "title": "Walking"
+                      },
+                      {
+                        "endTime": "15:30:00",
+                        "habitId": 5,
+                        "imageUrl": "https://example.com/image5.jpg",
+                        "mvp": 1,
+                        "participationRate": 25,
+                        "startTime": "14:00:00",
+                        "status": "COMPLETE",
+                        "title": "Learning"
+                      },
+                      {
+                        "endTime": "18:00:00",
+                        "habitId": 6,
+                        "imageUrl": "https://example.com/image6.jpg",
+                        "mvp": 4,
+                        "participationRate": 75,
+                        "startTime": "16:30:00",
+                        "status": "INCOMPLETE",
+                        "title": "Writing"
+                      },
+                      {
+                        "endTime": "23:00:00",
+                        "habitId": 7,
+                        "imageUrl": "https://example.com/image7.jpg",
+                        "mvp": 2,
+                        "participationRate": 40,
+                        "startTime": "20:00:00",
+                        "status": "INCOMPLETE",
+                        "title": "Drawing"
+                      },
+                      {
+                        "endTime": "23:00:00",
+                        "habitId": 8,
+                        "imageUrl": "https://example.com/image8.jpg",
+                        "mvp": 0,
+                        "participationRate": 10,
+                        "startTime": "21:30:00",
+                        "status": "INCOMPLETE",
+                        "title": "Stretching"
+                      }
+                    ],
+                "userWeeklyLogContents": "Sample weekly log contents...",
+                "userWeeklyLogPeriod": "2023-08-14 to 2023-08-20"
+              }
+            }
+            """.data(using: .utf8)!
+            return dummyResponseData
+        // ... 다른 요청에 대한 sample data ...
+        default :
+            return .empty
+        }
+    }
+    
     /**
      .requestPlain:
      요청 본문을 가지지 않는 단순한 GET 요청 등에 사용됩니다.

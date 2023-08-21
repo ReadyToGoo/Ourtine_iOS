@@ -61,6 +61,9 @@ extension KakaoLoginViewController {
                 //print("Received token value: \(cookieString)")
                 
             }
+            else {
+                self.dismissWebView()
+            }
         }
     }
     

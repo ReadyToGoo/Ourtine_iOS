@@ -144,14 +144,14 @@ struct data_postHabitInvitation: Codable {
 
 /// 오늘 유저의 습관 GET 구조체
 struct data_getTodaysHabit: Codable {
-    let content: [Content]
-    let first, hasNext, last: Bool
+    let others, today: [Other]
+    let userWeeklyLogContents, userWeeklyLogPeriod: String
     
-    struct Content: Codable {
+    struct Other: Codable {
         let endTime: String
         let habitId: Int
         let imageUrl: String
-        let mvp: Int
+        let mvp, participationRate: Int
         let startTime, status, title: String
     }
 }
