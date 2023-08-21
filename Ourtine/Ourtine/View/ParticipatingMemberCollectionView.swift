@@ -14,6 +14,18 @@ protocol ParticipatingMemberCollectionViewDelegate: AnyObject {
 
 class ParticipatingMemberCollectionView: UIView {
     
+    var selectedCellIndex: Int? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    var cellShouldShowSelectedImage: Bool = false {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+        
     weak var delegate: ParticipatingMemberCollectionViewDelegate?
     
     private let reuseIdentifier = ParticipatingMemberViewCell.id
@@ -62,6 +74,14 @@ class ParticipatingMemberCollectionView: UIView {
             make.width.equalToSuperview()
         }
     }
+    
+    private func configureCell(_ cell: ParticipatingMemberViewCell, at indexPath: IndexPath, isSelected: Bool) {
+        cell.delegate = delegate
+        cell.shouldShowSelectedImage = cellShouldShowSelectedImage // Set the property here
+        cell.isSelectedCell = isSelected
+        cell.getMemberData(data: Dummy_participatingMemberList[indexPath.row])
+    }
+    
 }
 
 extension ParticipatingMemberCollectionView: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -73,8 +93,8 @@ extension ParticipatingMemberCollectionView: UICollectionViewDataSource, UIColle
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ParticipatingMemberViewCell else {
             return UICollectionViewCell()
         }
-        cell.delegate = delegate
-        cell.getMemberData(data: Dummy_participatingMemberList[indexPath.row])
+
+        configureCell(cell, at: indexPath, isSelected: indexPath.item == selectedCellIndex)
         
         return cell
     }

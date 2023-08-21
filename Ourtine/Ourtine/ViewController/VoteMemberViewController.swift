@@ -8,7 +8,14 @@
 import UIKit
 import SnapKit
 
-class VoteMemberViewController: UIViewController {
+class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionViewDelegate {
+    
+    weak var delegate: ParticipatingMemberCollectionViewDelegate?
+    
+    func didSelectMember(_ memberData: MemberModel) {
+        //
+    }
+    
     
     private var isSelectionMade: Bool = false {
         didSet {
@@ -63,6 +70,13 @@ class VoteMemberViewController: UIViewController {
         return label
     }()
     
+    private let collectionView: ParticipatingMemberCollectionView = {
+        let view = ParticipatingMemberCollectionView()
+        view.participantNum = 4
+        view.cellShouldShowSelectedImage = true
+        return view
+    }()
+    
     private let voteBtn: UIButton = {
         var config = UIButton.Configuration.filled()
         config.baseBackgroundColor = .app_PrimaryColor
@@ -89,12 +103,14 @@ class VoteMemberViewController: UIViewController {
             bigPhraseLabel,
             smallPhraseLabel,
             leftSecondLabel,
+            collectionView,
             unitLabel,
             voteBtn
         ].forEach {view.addSubview($0)}
 
         setupUI()
         setConstraints()
+        collectionView.delegate = self
     }
     
 
@@ -130,6 +146,15 @@ class VoteMemberViewController: UIViewController {
         unitLabel.snp.makeConstraints { make in
             make.centerY.equalTo(smallPhraseLabel)
             make.leading.equalTo(leftSecondLabel.snp.trailing).offset(4)
+        }
+        
+        // collectionView
+        collectionView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(319.9)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(272)
+            make.height.equalTo(300)
+            
         }
         
         // voteBtn
