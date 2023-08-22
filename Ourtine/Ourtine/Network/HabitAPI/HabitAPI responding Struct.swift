@@ -26,7 +26,7 @@ struct data_getHabitProfile: Codable {
     
     struct FollowerList: Codable {
         let id: Int
-        let imageUrl, nickname: String
+        let imageUrl, nickname: String?
     }
     
     struct Following: Codable {
@@ -34,7 +34,7 @@ struct data_getHabitProfile: Codable {
         let followerList: [FollowerList]
         let hashtags: [String]
         let hostId, id: Int
-        let imageUrl: String
+        let imageUrl: String?
         let participateRate: Int
         let title: String
     }
@@ -47,7 +47,7 @@ struct data_getHabitProfile: Codable {
         let followerList: [FollowerList]
         let hashtags: [String]
         let hostId, id: Int
-        let imageUrl: String
+        let imageUrl: String?
         let isRecruiting: Bool
         let participateRate: Int
         let starRate: StarRate
@@ -97,9 +97,9 @@ struct data_getDiscoverHabit: Codable {
         let days: [String]
         let endTime: String
         let hostId: Int
-        let hostImageUrl, hostName: String
+        let hostImageUrl, hostName: String?
         let id: Int
-        let imageUrl, startTime, title: String
+        let imageUrl, startTime, title: String?
     }
 }
 
@@ -112,7 +112,7 @@ struct data_getFollowedUserHabit: Codable {
         let category: String
         let hashtags: [String]
         let id: Int
-        let imageUrl, title: String
+        let imageUrl, title: String?
     }
 }
 
@@ -130,7 +130,7 @@ struct data_getFollowingUserHabit: Codable {
     
     struct Content: Codable {
         let id: Int
-        let imageUrl: String
+        let imageUrl: String?
         let participateRate: Int
         let title: String
     }
@@ -150,8 +150,8 @@ struct data_getTodaysHabit: Codable {
     struct Other: Codable {
         let endTime: String
         let habitId: Int
-        let imageUrl: String
-        let mvp, participationRate: Int
+        let imageUrl: String?
+        let mvpCount, participationRate: Int
         let startTime, status, title: String
     }
 }
@@ -172,9 +172,9 @@ struct data_getRecommendedHabit: Codable {
         let id: Int
         let hostId: Int
         let hostName: String
-        let hostImageUrl: String
+        let hostImageUrl: String?
         let title: String
-        let imageUrl: String
+        let imageUrl: String?
         let category: String
         let days: [String]
         let startTime: [Int]

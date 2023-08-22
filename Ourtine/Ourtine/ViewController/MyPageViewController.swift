@@ -47,6 +47,7 @@ class MyPageViewController: UIViewController {
     
     @objc func goWeeklyLogVC() {
         print("위클리로그 화면 전환")
+        self.navigationController?.pushViewController(WeeklyLogViewController(), animated: true)
     }
     
     private func fetchData() {
@@ -97,7 +98,7 @@ class MyPageViewController: UIViewController {
                 
                 self.dummy_habitCounts = dayCountList
                 
-                var attributedText = NSMutableAttributedString(string: "\(result.nickname) 님")
+                var attributedText = NSMutableAttributedString(string: "\(result.nickname!) 님")
                 
                 var bigFont = UIFont.systemFont(ofSize: 22, weight: .medium)
                 attributedText.addAttribute(.font, value: bigFont, range: NSRange(location: 0, length: attributedText.length - 2))
@@ -107,12 +108,12 @@ class MyPageViewController: UIViewController {
                 
                 self.myPageView.nameLabel.attributedText = attributedText
                 
-                self.myPageView.profileImage.kf.setImage(with: URL(string: result.imageUrl))
-                self.myPageView.followingNum.text = String(result.followingCount)
-                self.myPageView.followerNum.text = String(result.followerCount)
+                self.myPageView.profileImage.kf.setImage(with: URL(string: result.imageUrl ?? ""))
+                self.myPageView.followingNum.text = String(result.followingCount!)
+                self.myPageView.followerNum.text = String(result.followerCount!)
                 self.myPageView.contentLabel.text = result.goal
                 
-                attributedText = NSMutableAttributedString(string: "\(result.participationRate) %")
+                attributedText = NSMutableAttributedString(string: "\(result.participationRate!) %")
                 
                 bigFont = UIFont.systemFont(ofSize: 30, weight: .bold)
                 attributedText.addAttribute(.font, value: bigFont, range: NSRange(location: 0, length: attributedText.length - 1))

@@ -17,13 +17,13 @@ struct data_getHabitSessionInfo: Codable {
     let startTime, title: String
 
     struct Follower: Codable {
-        let habitFollowerStatus, imageUrl, nickname: String
+        let habitFollowerStatus, imageUrl, nickname: String?
         let userId: Int
     }
 }
 
 struct data_getHabitSessionMVP: Codable {
-    let imageUrl, nickname: String
+    let imageUrl, nickname: String?
     let userId: Int
 }
 

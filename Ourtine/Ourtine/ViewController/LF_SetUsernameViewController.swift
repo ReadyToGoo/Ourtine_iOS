@@ -46,7 +46,7 @@ class LF_SetUsernameViewController: UIViewController, UITextFieldDelegate {
     lazy var nickNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "닉네임을 입력해주세요"
-        textField.font = UIFont.systemFont(ofSize: 29)
+        textField.font = UIFont.systemFont(ofSize: 20)
         textField.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
         textField.clearButtonMode = .whileEditing
         textField.delegate = self
@@ -84,6 +84,9 @@ class LF_SetUsernameViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboard()
+        setKeyboardObserver()
+        
         self.view.backgroundColor = .white
         SignUpFlowManager.shared.printself()
         nextBtn.addTarget(self, action: #selector(nextBtnTapped), for: .touchUpInside)
@@ -93,7 +96,8 @@ class LF_SetUsernameViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.isHidden = true
         view.addSubview(navigationBar)
         navigationBar.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(44)
         }
         
@@ -112,7 +116,8 @@ class LF_SetUsernameViewController: UIViewController, UITextFieldDelegate {
         
         nicknameLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(25)
-            make.centerY.equalToSuperview().offset(-navigationBarHeight - 280)
+//            make.centerY.equalToSuperview().offset(-navigationBarHeight - 280)
+            make.top.equalTo(navigationBar.snp.bottom).offset(50)
             make.width.equalTo(273)
             make.height.equalTo(25)
         }
@@ -122,7 +127,8 @@ class LF_SetUsernameViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(nickNameTextField)
         nickNameTextField.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-navigationBarHeight - 233)
+//            make.centerY.equalToSuperview().offset(-navigationBarHeight - 233)
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(25)
             make.width.equalTo(320)
             make.height.equalTo(30)

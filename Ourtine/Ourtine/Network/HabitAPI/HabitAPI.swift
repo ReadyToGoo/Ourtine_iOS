@@ -304,10 +304,12 @@ extension HabitAPI: TargetType {
             // 습관 개설 태스크    이미지 Data와, 습관 내용 구조체를 가져옵니다.
         case .postCreateHabit(let imageData, let content) :
             
+            return .requestJSONEncodable(content)
+            
             // 이미지 data를 멀티파트폼 데이터로 지정
             let image_formData = MultipartFormData(provider: .data(imageData), name: "profileImage", fileName: "test.png", mimeType: "image/png")
-            
-            // 습관 내용 구조체(habitCreationContent)를 JSON 인코딩
+//
+//            // 습관 내용 구조체(habitCreationContent)를 JSON 인코딩
 //            do {
 //                let jsonEncoder = JSONEncoder()
 //                let jsonData = try jsonEncoder.encode(content)
@@ -319,6 +321,7 @@ extension HabitAPI: TargetType {
 //                    json_formData
 //                ]
 //
+//
 //                print(formData)
 //                return .uploadMultipart(formData)
 //
@@ -328,7 +331,7 @@ extension HabitAPI: TargetType {
 //                return .requestPlain
 //            }
             
-            if let category = "CAREER".data(using: .utf8), let days = "MON,FRI".data(using: .utf8), let detail = "제발요".data(using: .utf8), let limit = "6".data(using: .utf8), let habitStatus = "PRIVATE".data(using: .utf8),  let startDate = "asdf".data(using: .utf8), let endDate = "asdf".data(using: .utf8), let title = "제발ㅠㅠ".data(using: .utf8){
+            if let category = "CAREER".data(using: .utf8), let days = "MON, FRI".data(using: .utf8), let detail = "테스트입니다".data(using: .utf8), let limit = "6".data(using: .utf8), let habitStatus = "PRIVATE".data(using: .utf8),  let startDate = "2023-08-15".data(using: .utf8), let endDate = "2023-08-25".data(using: .utf8), let title = "테스트입니다ㅠㅠ".data(using: .utf8){
                 let category_formData = MultipartFormData(provider: .data(category), name: "category")
                 let days_formData = MultipartFormData(provider: .data(days), name: "days")
                 let detail_formData = MultipartFormData(provider: .data(detail), name: "detail")
@@ -337,7 +340,7 @@ extension HabitAPI: TargetType {
                 let startDate_formData = MultipartFormData(provider: .data(startDate), name: "startDate")
                 let endDate_formData = MultipartFormData(provider: .data(endDate), name: "endDate")
                 let title_formData = MultipartFormData(provider: .data(title), name: "title")
-                
+
                 let formData: [MultipartFormData] = [
                     image_formData,
                     category_formData,
@@ -349,19 +352,27 @@ extension HabitAPI: TargetType {
                     endDate_formData,
                     title_formData
                 ]
-                
+
                 return .uploadMultipart(formData)
             }
-            print("이게 왜 아ㅣㄴ되냐고")
             return .requestPlain
             
             
             /// User 프로필 이미지 변경 케이스와 같이 변경하기
         case .patchHabitProfileImage(_, let imageData) :
-            // 이미지 데이터를 Base64로 인코딩
-            let base64ImageString = imageData.base64EncodedString()
+//            // 이미지 데이터를 Base64로 인코딩
+//            let base64ImageString = imageData.base64EncodedString()
+//
+//            return .requestData(Data(base64ImageString.utf8))
             
-            return .requestData(Data(base64ImageString.utf8))
+            // 이미지 data를 멀티파트폼 데이터로 지정
+            let image_formData = MultipartFormData(provider: .data(imageData), name: "image", fileName: "test.png", mimeType: "image/png")
+            
+            let formData: [MultipartFormData] = [
+                image_formData
+            ]
+            
+            return .uploadMultipart(formData)
             
             
         case .getDiscoverHabit(let category) :

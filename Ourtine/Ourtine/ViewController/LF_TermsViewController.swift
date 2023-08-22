@@ -50,7 +50,8 @@ class LF_TermsViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         view.addSubview(navigationBar)
         navigationBar.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.height.equalTo(44)
         }
         view.addSubview(allAgreeCheckbox)
@@ -143,10 +144,10 @@ class LF_TermsViewController: UIViewController {
         view.addSubview(nextButton)
         
         nextButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).multipliedBy(0.95)
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.height.equalTo(41)
             make.centerX.equalToSuperview()
+            make.width.equalTo(326)
+            make.height.equalTo(54)
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
     

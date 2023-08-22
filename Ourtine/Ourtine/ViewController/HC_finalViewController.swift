@@ -13,7 +13,7 @@ class HabitCreate_finalViewController: UIViewController {
     
     var isPrivate: Bool = true
     // 테스트용
-    let title_private = "[아침마다 운동하기]\n초대장을 발송했어요!"
+    let title_private = "[프랑스어 공부하기!]\n초대장을 발송했어요!"
     let bottom_private = "친구가 응답하면 알람을 드릴게요!"
     let title_public = "축하해요!\n2 번째 습관이 만들어졌어요!"
     let bottom_public = "팀원이 참여하면 알람을 드릴게요!"
@@ -81,6 +81,28 @@ class HabitCreate_finalViewController: UIViewController {
 //        self.navigationController?.pushViewController(HabitCreate_introduceViewController(), animated: true)
         print("습관 프로필 호출")
         self.navigationController?.popToRootViewController(animated: true)
+        let wrapper = MoyaWrapper<HabitAPI>()
+        
+        wrapper.requestSuccessRes(target: .postCreateHabit(imageData: UIImage(named: "feeling1")!.pngData()!, content: habitCreationContent(category: "LANGUAGE", days: ["WED"], detail: "수요일은 프랑스어 공부하기!", endDate: "2023-08-30", endTime: "23:00:00", followerLimit: 6, habitStatus: "PUBLIC", hashtags: ["프랑스어"], startDate: "2023-08-23", startTime: "18:00:00", title: "프랑스어 공부하기!")), instance: data_postCreateHabit.self)
+        { result in
+            switch result {
+            case .success(let result):
+                print(" 습관 개설 완료 -------------- : \(result)")
+                wrapper.requestSuccessRes(target: .patchHabitProfileImage(habitId: result.id, imageData: (HabitCreateFlowManager.shared.habitInformation.habitIntroduction.image?.pngData())!), instance: data_patchHabitProfileImage.self)
+                { result in
+                    switch result {
+                    case .success(let result):
+                        print(result)
+                        print(" 습관 이미지 패치 완료 ------------")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+            
     }
     
     /// Navigation Controller 스택에서 pop하기 -> 뒤로 돌아가기
