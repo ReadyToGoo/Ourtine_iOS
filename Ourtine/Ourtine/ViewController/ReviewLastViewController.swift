@@ -60,6 +60,7 @@ class ReviewLastViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        view.backgroundColor = .white
         super.viewDidLoad()
 
         setUI()

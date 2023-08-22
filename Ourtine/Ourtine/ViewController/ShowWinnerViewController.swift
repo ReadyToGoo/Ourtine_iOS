@@ -12,7 +12,7 @@ class ShowWinnerViewController: UIViewController {
     
     private var tempUserName: String = "성식"
     private var winnerNames: [String] = []
-
+    
     private let blurEffectView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .dark)
         let view = UIVisualEffectView(effect: blurEffect)
@@ -59,11 +59,11 @@ class ShowWinnerViewController: UIViewController {
         label.text = ""
         return label
     }()
-
+    
     override func viewDidLoad() {
         view.backgroundColor = .black.withAlphaComponent(0.6)
         super.viewDidLoad()
-
+        
         [
             blurEffectView,
             mainPhrase,
@@ -81,7 +81,7 @@ class ShowWinnerViewController: UIViewController {
         setConstraints()
         updateView()
     }
-
+    
     private func updateWinners() {
         // TODO: Get winner name by API
         var combinedString = ""
@@ -100,7 +100,7 @@ class ShowWinnerViewController: UIViewController {
     
     private func updateEncouragePhrase() {
         let changeText = "베스트 습관러"
-
+        
         if (winnerNames.contains(tempUserName)) {
             let text = "\(tempUserName)님,\n베스트 습관러로 선정된 것을\n축하드립니다!"
             encouragePhrase.halfTextColorChange(fullText: text, changeText: changeText, color: .app_SecondaryColor)
@@ -133,6 +133,12 @@ class ShowWinnerViewController: UIViewController {
         encouragePhrase.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-129.59)
             make.centerX.equalToSuperview()
+        }
+    }
+    
+    private func updateView() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.dismiss(animated: false)
         }
     }
 }

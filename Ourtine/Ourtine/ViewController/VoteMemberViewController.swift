@@ -252,6 +252,7 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
             hasPresentedBefore = true
         }
         
+        
         dismiss(animated: true) { [weak self] in
             guard let self = self else {return}
             
@@ -259,9 +260,11 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
             voteResultVC.modalPresentationStyle = .overCurrentContext
             self.present(voteResultVC, animated: true)
             
-            dismiss(animated: false) {
-                let newVC = ReviewViewController()
-                self.navigationController?.pushViewController(newVC, animated: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.dismiss(animated: false) {
+                    let newVC = ReviewViewController()
+                    self.navigationController?.pushViewController(newVC, animated: false)
+                }
             }
         }
     }

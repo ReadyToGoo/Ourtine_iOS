@@ -41,15 +41,17 @@ class ParticipatingMemberViewCell: UICollectionViewCell {
     
     private let nonCheckImage: UIImageView = {
         let view = UIImageView()
-        view.image = createImageWithColor(color: .app_PrimaryColor.withAlphaComponent(0.8), size: CGSize(width: 32, height: 32))
+        view.image = createImageWithColor(color: .app_PrimaryColor.withAlphaComponent(0.8), size: CGSize(width: 32, height: 32))?.circularCropped()
         view.layer.borderWidth = 1
+        view.layer.cornerRadius = 16
         view.layer.borderColor = UIColor.app_PrimaryColor.cgColor
         return view
     }()
     
     private let checkBackground: UIImageView = {
         let view = UIImageView()
-        view.image = createImageWithColor(color: .app_SecondaryColor.withAlphaComponent(0.8), size: CGSize(width: 32, height: 32))
+        view.image = createImageWithColor(color: .app_SecondaryColor2.withAlphaComponent(0.8), size: CGSize(width: 32, height: 32))?.circularCropped()
+        view.layer.cornerRadius = 16
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.app_PrimaryColor.cgColor
         return view
@@ -57,8 +59,7 @@ class ParticipatingMemberViewCell: UICollectionViewCell {
     
     private let checkImage: UIImageView = {
         let view = UIImageView()
-        // TODO: Change icon. (asset에 추가해서 사용해야함.)
-        view.image = UIImage(systemName: "checkmark")?.withTintColor(.white)
+        view.image = UIImage(named: "check")
         return view
     }()
     
