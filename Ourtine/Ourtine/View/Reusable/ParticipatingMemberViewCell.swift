@@ -71,6 +71,12 @@ class ParticipatingMemberViewCell: UICollectionViewCell {
         label.backgroundColor = .white.withAlphaComponent(0.35)
         label.layer.masksToBounds = true
         label.layer.cornerRadius = 13
+        
+        label.layer.shadowColor = UIColor.black.cgColor
+        label.layer.shadowOffset = CGSize(width: 2, height: 2)
+        label.layer.shadowOpacity = 0.25
+        label.layer.shadowRadius = 2
+        
         return label
     }()
     
