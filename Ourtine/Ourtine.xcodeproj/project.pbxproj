@@ -80,6 +80,7 @@
 		888BB6152A8DE06200669C99 /* SignUpInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BB6142A8DE06200669C99 /* SignUpInfoModel.swift */; };
 		888CAC7D2A950BD8000976A5 /* keyboard + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888CAC7C2A950BD8000976A5 /* keyboard + Extension.swift */; };
 		888CAC7F2A9512E2000976A5 /* LF_DajimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888CAC7E2A9512E2000976A5 /* LF_DajimViewController.swift */; };
+		888CAC812A9517EC000976A5 /* WeeklyLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888CAC802A9517EC000976A5 /* WeeklyLogViewController.swift */; };
 		888FB2A62A84177100930987 /* FlowDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888FB2A52A84177100930987 /* FlowDataManager.swift */; };
 		88A3CE342A9356D7006BB235 /* Int + time Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3CE332A9356D7006BB235 /* Int + time Extension.swift */; };
 		88A64C0F2A7A733E00292ED6 /* CALayer+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */; };
@@ -227,6 +228,7 @@
 		888BB6142A8DE06200669C99 /* SignUpInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfoModel.swift; sourceTree = "<group>"; };
 		888CAC7C2A950BD8000976A5 /* keyboard + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "keyboard + Extension.swift"; sourceTree = "<group>"; };
 		888CAC7E2A9512E2000976A5 /* LF_DajimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LF_DajimViewController.swift; sourceTree = "<group>"; };
+		888CAC802A9517EC000976A5 /* WeeklyLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyLogViewController.swift; sourceTree = "<group>"; };
 		888FB2A52A84177100930987 /* FlowDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowDataManager.swift; sourceTree = "<group>"; };
 		88A3CE332A9356D7006BB235 /* Int + time Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + time Extension.swift"; sourceTree = "<group>"; };
 		88A64C0E2A7A733E00292ED6 /* CALayer+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addBorder.swift"; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				B61D6AB62A930CB70002295B /* VoteMemberViewController.swift */,
 				B61D6AB82A93A80B0002295B /* WaitAfterVoteViewController.swift */,
 				B61D6ABA2A93BC550002295B /* ShowWinnerViewController.swift */,
+				888CAC802A9517EC000976A5 /* WeeklyLogViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				88E653972A80151A00ABF9D9 /* HC_memberCountView.swift in Sources */,
 				8851EE322A8C22E30062D3E4 /* FollowAPI sending Struct.swift in Sources */,
 				8851EE2B2A8C22E30062D3E4 /* UserAPI.swift in Sources */,
+				888CAC812A9517EC000976A5 /* WeeklyLogViewController.swift in Sources */,
 				8851EE3B2A8CC4CB0062D3E4 /* PrimaryViewController.swift in Sources */,
 				8851EE232A8C22E30062D3E4 /* MoyaWrapper.swift in Sources */,
 				B64993152A5D3EDC0061C47E /* AppDelegate.swift in Sources */,

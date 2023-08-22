@@ -54,6 +54,9 @@ enum UserAPI {
     ///     - keyword : 검색 단어입니다.
     case getSearchUserNickName(keyword: String)
     
+    
+    case patchMyWeeklyLog(log: String)
+    
    
     
     
@@ -98,7 +101,8 @@ extension UserAPI : TargetType {
         case .getSearchUserNickName :
             return "/search"
         
-        
+        case .patchMyWeeklyLog :
+            return "/weeklyLog"
         
        
             
@@ -110,7 +114,7 @@ extension UserAPI : TargetType {
         case .getUserProfile, .getMyPageInfo, .getSearchUserNickName, .getPushNotiSettings :
             return .get
         
-        case .patchInterestingCategories, .patchMyGoal, .patchMarketingPushNotiSetting, .patchMyNickname, .patchMyProfileImage, .patchPushNotiSetting :
+        case .patchInterestingCategories, .patchMyGoal, .patchMarketingPushNotiSetting, .patchMyNickname, .patchMyProfileImage, .patchPushNotiSetting, .patchMyWeeklyLog :
             return .patch
             
         }
@@ -144,6 +148,9 @@ extension UserAPI : TargetType {
                 "keyword" : keyword
             ]
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
+            
+        case .patchMyWeeklyLog(let log):
+            return .requestJSONEncodable(log)
           
             
         default:

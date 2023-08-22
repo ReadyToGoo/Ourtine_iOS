@@ -47,6 +47,7 @@ class MyPageViewController: UIViewController {
     
     @objc func goWeeklyLogVC() {
         print("위클리로그 화면 전환")
+        self.navigationController?.pushViewController(WeeklyLogViewController(), animated: true)
     }
     
     private func fetchData() {

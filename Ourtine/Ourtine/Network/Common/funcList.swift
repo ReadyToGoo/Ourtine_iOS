@@ -28,7 +28,7 @@ import UIKit
 
 func usingWrapper() {
 //    let wrapper = MoyaWrapper<UserAPI>()
-//    wrapper.requestSuccessRes(target: .patchInterestingCategories(categories: ["EXERCISE","LANGUAGE","CAREER"]), instance: data_patchInterestingCategories.self)
+//    wrapper.requestSuccessRes(target: .patchMyWeeklyLog(log: "test"), instance: data_patchInterestingCategories.self)
 //    { result in
 //        switch result {
 //        case .success(let result):

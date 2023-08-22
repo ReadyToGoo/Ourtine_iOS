@@ -1,4 +1,11 @@
 //
+//  WeeklyLogViewController.swift
+//  Ourtine
+//
+//  Created by 박민서 on 2023/08/23.
+//
+
+//
 //  LF_DajimViewController.swift
 //  Ourtine
 //
@@ -7,8 +14,10 @@
 
 import Foundation
 import UIKit
+import SnapKit
+import Moya
 
-class LF_DajimViewController: UIViewController {
+class WeeklyLogViewController: UIViewController {
     
     lazy var navigationBar : Custom_NavigationBar = {
         let nav = Custom_NavigationBar()
@@ -18,13 +27,21 @@ class LF_DajimViewController: UIViewController {
     // 타이틀
     lazy var topLabel : UILabel = {
         let label = UILabel()
-        label.text = "시작 전, 다짐을 적어주세요!"
+        label.text = "이번주 습관 진행하느라\n고생했어요!"
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 25, weight: .heavy)
+        label.font = .systemFont(ofSize: 22, weight: .bold)
         return label
     }()
     
+    lazy var secLabel : UILabel = {
+        let label = UILabel()
+        label.text = "다음주는 이번주 습관을 해보면 어떤 점을 목표로\n참여할 것 같으세요?"
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        return label
+    }()
     
     
     
@@ -53,7 +70,7 @@ class LF_DajimViewController: UIViewController {
     
     lazy var nextBtn: HabitCreateFlowButton = {
         let btn = HabitCreateFlowButton()
-        btn.setTitle("다음", for: .normal)
+        btn.setTitle("등록하기", for: .normal)
         return btn
     }()
 
@@ -62,6 +79,7 @@ class LF_DajimViewController: UIViewController {
         [
             navigationBar,
             topLabel,
+            secLabel,
             contentTextView,
             textCount3,
             nextBtn
@@ -79,10 +97,15 @@ class LF_DajimViewController: UIViewController {
             $0.leading.equalToSuperview().offset(30)
         }
         
+        secLabel.snp.makeConstraints {
+            $0.top.equalTo(topLabel.snp.bottom).offset(10)
+            $0.leading.equalTo(topLabel)
+        }
+        
         contentTextView.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.8)
+            $0.width.equalToSuperview().multipliedBy(0.9)
             $0.height.equalTo(150)
-            $0.top.equalTo(topLabel.snp.bottom).offset(30)
+            $0.top.equalTo(secLabel.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
         }
         
@@ -109,41 +132,52 @@ class LF_DajimViewController: UIViewController {
         self.nextBtn.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
     
-    /// 해당 페이지에서 저장된 데이터를 flowdata로 보내고, 제대로 저장됐는지 확인합니다.
-    private func saveToFlowData() -> Bool {
-        
-        // 회원가입 플로우의 데이터를 저장
-        SignUpFlowManager.shared.signUpInformation.resolutionString = self.contentTextView.text
-        
-        // 싱글톤 클래스 객체에 값이 저장되면 넘어가도록 guarding
-        guard (SignUpFlowManager.shared.signUpInformation.resolutionString != nil
-        ) else {
-            print("SignUpFlowManager.shared.signUpInformation.resolutionString에 값이 저장되지 않았습니다. 다시 시도해주세요")
-            return false
-        }
-        
-        print("저장 성공")
-        return true
-    }
+//    /// 해당 페이지에서 저장된 데이터를 flowdata로 보내고, 제대로 저장됐는지 확인합니다.
+//    private func saveToFlowData() -> Bool {
+//
+//        // 회원가입 플로우의 데이터를 저장
+//        SignUpFlowManager.shared.signUpInformation.resolutionString = self.contentTextView.text
+//
+//        // 싱글톤 클래스 객체에 값이 저장되면 넘어가도록 guarding
+//        guard (SignUpFlowManager.shared.signUpInformation.resolutionString != nil
+//        ) else {
+//            print("SignUpFlowManager.shared.signUpInformation.resolutionString에 값이 저장되지 않았습니다. 다시 시도해주세요")
+//            return false
+//        }
+//
+//        print("저장 성공")
+//        return true
+//    }
     
     @objc private func nextButtonTapped(_ sender: UIButton) {
         // 코드
         // 데이터 저장 실패 시 push X
-        guard saveToFlowData() else { return }
+//        guard saveToFlowData() else { return }
         
-        let viewController = LF_TermsViewController()
+//        let viewController = LF_TermsViewController()
         
-        self.navigationController?.pushViewController(viewController, animated: true)
+        let wrapper = MoyaWrapper<UserAPI>()
+        wrapper.requestSuccessRes(target: .patchMyWeeklyLog(log: self.contentTextView.text), instance: data_patchInterestingCategories.self)
+        { result in
+            switch result {
+            case .success(let result):
+                print("\(result)")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 
 
 import SwiftUI
-struct LF_DajimViewController_Preview: PreviewProvider {
+struct WeeklyLogViewController_Preview: PreviewProvider {
     static var previews: some View {
         UIViewControllerPreview {
             // Return whatever controller you want to preview
-            let ViewController = LF_DajimViewController()
+            let ViewController = WeeklyLogViewController()
             return ViewController
         }
     }
