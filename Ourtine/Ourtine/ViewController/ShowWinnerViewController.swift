@@ -10,7 +10,7 @@ import SnapKit
 
 class ShowWinnerViewController: UIViewController {
     
-    private var tempUserName: String = "성식"
+    private var tempUserName: String = "bunny"
     private var winnerNames: [String] = []
     
     private let blurEffectView: UIVisualEffectView = {
@@ -42,6 +42,7 @@ class ShowWinnerViewController: UIViewController {
     
     private let winnerImage: UserProfileImageView = {
         let view = UserProfileImageView(frame: CGRect(x: 0, y: 0, width: 299.03, height: 299.03))
+        view.setImage(imageName: "power")
         view.contentMode = .scaleAspectFill
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 2
@@ -85,7 +86,7 @@ class ShowWinnerViewController: UIViewController {
     private func updateWinners() {
         // TODO: Get winner name by API
         var combinedString = ""
-        let winnerName1 = "A"
+        let winnerName1 = "power"
         winnerNames.append(winnerName1)
         for (index, name) in winnerNames.enumerated() {
             if index == 0 {

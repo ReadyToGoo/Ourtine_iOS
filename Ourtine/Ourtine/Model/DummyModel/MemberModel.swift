@@ -39,9 +39,8 @@ let Dummy_memberList: [MemberModel] = [
 ]
 
 let Dummy_participatingMemberList: [MemberModel] = [
-    MemberModel("Crown", "habitBackgroundExample", "name1", 1),
-    MemberModel(nil, nil, "name2", 2),
-    MemberModel("Crown", nil, "name3", 3),
-    MemberModel(nil, nil, "name4", 4)
-
+    MemberModel("Crown", "bunny", "bunny", 1),
+    MemberModel(nil, "dear", "dear", 2),
+    MemberModel("Crown", "power", "power", 3),
+    MemberModel(nil, "princess", "princess", 4),
 ]

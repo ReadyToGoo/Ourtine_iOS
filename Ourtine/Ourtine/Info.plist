@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>동영상 촬영 및 음성인식을 위하 권한 필요</string>
+	<string>&apos;Ourtine&apos;이 사진 또는 동영상을 촬영하여 습관 인증 촬영 및 등록을 위해 동영상 촬영 및 음성인식을 위한 권한을 허용합니다.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>앨범에서 사진 선택</string>
+	<string>&apos;Ourtine&apos;이 사진 또는 동영상을 촬영하여 습관 인증 및 공유 또는 게시글에 첨부, 프로필 사진 등록 기능을 위해 사진 라이브러리에 접근하도록 허용합니다.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>카메라로 사진 찍기</string>
+	<string>&apos;Ourtine&apos;이 사진 또는 동영상을 촬영하여 습관 인증 및 공유 또는 게시글에 사진을 촬영 및 등록 기능을 위해 카메라에 접근하도록 허용합니다.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

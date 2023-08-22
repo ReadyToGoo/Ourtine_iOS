@@ -11,8 +11,8 @@ import SnapKit
 class WaitingViewController: UIViewController {
     
     // Dummy Data
-    let tempUserName = "은지"
-    let tempUserHabit = "반려동물 물주기"
+    let tempUserName = "bunny"
+    let tempUserHabit = "반려식물 물주기"
 
     // Habit Phrase Label: 습관 문구
     private let habitPhrase: UILabel = {
@@ -69,6 +69,13 @@ class WaitingViewController: UIViewController {
         return view
     }()
     
+    private let unionImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "WhiteEmptyUnion")
+        view.contentMode = .scaleAspectFill
+        return view
+    }()
+    
     
     // 카운트다운 함수
     func startCountDown() {
@@ -103,6 +110,7 @@ class WaitingViewController: UIViewController {
         super.viewDidLoad()
         
         [
+            unionImage,
             habitPhrase,
             leftSecond,
             memberCollectionView,
@@ -117,6 +125,7 @@ class WaitingViewController: UIViewController {
         
         // memberCollectionView
         self.memberCollectionView.dataSource = self
+        self.memberCollectionView.delegate = self
         
         // Setting
         startCountDown()
@@ -137,6 +146,13 @@ class WaitingViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
+        unionImage.snp.makeConstraints { make in
+            make.centerX.equalTo(leftSecond)
+            make.centerY.equalTo(leftSecond)
+            make.height.equalTo(280.71)
+            make.width.equalTo(240.58)
+        }
+        
         // memberCollectionView
         memberCollectionView.snp.makeConstraints { make in
             make.top.equalTo(leftSecond.snp.bottom).offset(223.02)
@@ -153,19 +169,26 @@ class WaitingViewController: UIViewController {
     
 }
 
-extension WaitingViewController: UICollectionViewDataSource {
+extension WaitingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     // numOfCell
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Dummy_memberList.count
+        return 4
     }
     
     // contentOfCell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WaitingMemberCollectionViewCell.id, for: indexPath) as? WaitingMemberCollectionViewCell else { return UICollectionViewCell() }
-        cell.getMemberData(data: Dummy_memberList[indexPath.row])
+        cell.getMemberData(data: Dummy_participatingMemberList[indexPath.row])
         
-//        cell.prepare(image: UIImage(named: ), text: <#T##String?#>)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 32
     }
 }
 

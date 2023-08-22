@@ -13,12 +13,12 @@ import Kingfisher
 class HomeViewController: UIViewController {
     
     // Dummy Data
-    let tempUserName = "은지"
-    let tempUserHabit = "반려동물 물주기"
+    let tempUserName = "bunny"
+    let tempUserHabit = "반려식물 물주기"
     
     var topHabitId: Int?
     var currentHabitIndex: Int?
-    var habitTime: String = "00:00:00" {
+    var habitTime: String = "00:00:30" {
         didSet {
             self.timeLabel.text = self.habitTime
         }

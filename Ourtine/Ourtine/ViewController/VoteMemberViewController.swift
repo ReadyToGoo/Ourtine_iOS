@@ -129,12 +129,20 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
             hasPresentedBefore = true
         }
     }
+    
+    private let unionImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "OrangeFilledUnion")
+        view.contentMode = .scaleAspectFill
+        return view
+    }()
 
     override func viewDidLoad() {
         view.backgroundColor = .white
         super.viewDidLoad()
         
         [
+            unionImage,
             bigPhraseLabel,
             smallPhraseLabel,
             leftSecondLabel,
@@ -153,7 +161,7 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
     private func setupUI() {
         // TODO: Get Left Second
         
-        leftSecondLabel.text = "23"
+        leftSecondLabel.text = "10"
         
         voteBtn.addTarget(self, action: #selector(voteBtnTapped), for: .touchUpInside)
         
@@ -201,6 +209,12 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
             make.leading.equalTo(31)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-32)
         }
+        
+        unionImage.snp.makeConstraints { make in
+            make.centerX.centerY.equalTo(collectionView)
+            make.height.equalTo(218.78)
+            make.width.equalTo(187.5)
+        }
     }
     
     
@@ -237,7 +251,7 @@ class VoteMemberViewController: UIViewController, ParticipatingMemberCollectionV
             } else {
                 timer.invalidate()
                 self.presentModal()
-                self.leftSecondLabel.text = ""
+                self.leftSecondLabel.text = "0"
             }
         }
     }

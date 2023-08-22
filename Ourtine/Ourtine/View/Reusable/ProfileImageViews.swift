@@ -17,6 +17,11 @@ class UserProfileImageView: UIImageView {
         self.image = image ?? UIImage(named: "habitBackgroundExample")?.circularCropped()
     }
     
+    func setImage(imageName: String?) {
+        print("OKOKOKOKOKO")
+        self.image = UIImage(named: imageName ?? "habitBackgroundExample")?.circularCropped()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -47,6 +52,11 @@ class HabitProfileImageView: UIImageView {
     /// 습관 프로필 이미지 설정
     func setImage(image: UIImage?) {
         self.image = image ?? defaultImage
+    }
+    
+    func setImage(imageName: String?) {
+        print("OKOKOKOKOKO")
+        self.image = UIImage(named: imageName ?? "habitBackgroundExample")?.circularCropped()
     }
     
     override init(frame: CGRect) {

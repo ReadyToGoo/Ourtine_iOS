@@ -11,7 +11,7 @@ import SnapKit
 class WaitingMemberCollectionViewCell: UICollectionViewCell {
     static let id = "WaitingMemberCell"
     
-    var memberData = MemberModel("crown",nil,"what")
+    var memberData = MemberModel("Crown", "bunny", "bunny", 1)
     
     private let memberProfile: UserProfileImageView = {
         let view = UserProfileImageView(frame: CGRect(x: 0, y: 0, width: 72, height: 72))
@@ -48,7 +48,7 @@ class WaitingMemberCollectionViewCell: UICollectionViewCell {
     
     private func fetchData() {
         self.memberName.text = self.memberData.name
-        self.memberProfile.setImage(image: nil)
+        self.memberProfile.setImage(image: UIImage(named: self.memberData.image ?? "bunny"))
     }
     
     private func setConstraints() {

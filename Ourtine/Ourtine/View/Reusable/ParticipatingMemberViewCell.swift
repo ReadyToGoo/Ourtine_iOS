@@ -117,7 +117,8 @@ class ParticipatingMemberViewCell: UICollectionViewCell {
     
     private func fetchData() {
         self.memberName.text = self.memberData.name
-        self.memberProfileBtn.setImage(image: nil)
+//        self.memberProfileBtn.setImage(image: nil)
+        self.memberProfileBtn.setImage(image: UIImage(named: self.memberData.image ?? "bunny"))
     }
     
     private func setConstraints() {

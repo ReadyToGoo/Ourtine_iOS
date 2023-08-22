@@ -9,7 +9,7 @@ import UIKit
 
 class ReviewLastViewController: UIViewController {
     
-    var tempUserName = "은지"
+    var tempUserName = "bunny"
     
     var selectedFeelingIndex: Int?
     var selectedStarNumber: Int? = 0

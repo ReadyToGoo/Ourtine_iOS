@@ -33,7 +33,7 @@ class ParticipatingMemberCollectionView: UIView {
     
     private let reuseIdentifier = ParticipatingMemberViewCell.id
 
-    var participantNum = Dummy_participatingMemberList.count
+    var participantNum = 4
 
     private let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -87,7 +87,7 @@ class ParticipatingMemberCollectionView: UIView {
     
 }
 
-extension ParticipatingMemberCollectionView: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ParticipatingMemberCollectionView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return participantNum
     }
@@ -103,18 +103,11 @@ extension ParticipatingMemberCollectionView: UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if participantNum < 5 {
-            return 28
-        } else {
-            return 24
-        }
+        return 24
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        if participantNum < 5 {
-            return 52
-        } else {
-            return 32
-        }
+        return 52
     }
+    
 }

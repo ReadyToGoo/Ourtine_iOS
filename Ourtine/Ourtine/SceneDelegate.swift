@@ -24,13 +24,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         // 첫 viewController 설정
-        let viewController = VoteMemberViewController()
+        let viewController = HomeViewController()
         
         // navigationController 사용시
-        //let navigationController = UINavigationController(rootViewController: viewController)
+        let navigationController = UINavigationController(rootViewController: viewController)
         
         // 일반 경우는 viewController, navigation으로 열면 navigationController
-        window?.rootViewController = viewController
+        window?.rootViewController = navigationController
         
         // 화면에 띄우기
         window?.makeKeyAndVisible()

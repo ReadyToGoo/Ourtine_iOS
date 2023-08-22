@@ -91,13 +91,23 @@ class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDel
         navigationController?.pushViewController(vc, animated: false)
     }
     
+    private let unionImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "OrangeFilledUnion")
+        view.contentMode = .scaleAspectFill
+        return view
+    }()
+    
     
     override func viewDidLoad() {
+        view.backgroundColor = .white
+
         navigationController?.isNavigationBarHidden = true
 
         super.viewDidLoad()
         
         [
+            unionImage,
             bigPhraseLabel,
             smallPhraseLabel,
             leftSecondLabel,
@@ -113,13 +123,30 @@ class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDel
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        startCountDown()
         
         // TODO: Get Left Second
-        leftSecondLabel.text = "23"
+        leftSecondLabel.text = "40"
         
         voteBtn.addTarget(self, action: #selector(voteBtnTapped), for: .touchUpInside)
     }
+    
+    // TODO: 임시
+    func startCountDown() {
+        var leftTime = 40
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            leftTime -= 1
+            
+            if leftTime > 0 {
+                self.leftSecondLabel.text = String(leftTime)
+            } else {
+                timer.invalidate()
+                self.leftSecondLabel.text = "0"
+            }
+        }
+    }
+    
 
     private func setConstraints() {
         // bigPhraseLabel
@@ -159,6 +186,12 @@ class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDel
         voteBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-32)
+        }
+        
+        unionImage.snp.makeConstraints { make in
+            make.centerX.centerY.equalTo(memberView)
+            make.height.equalTo(218.78)
+            make.width.equalTo(187.5)
         }
     }
 

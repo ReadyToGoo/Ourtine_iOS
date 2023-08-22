@@ -56,9 +56,17 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         label.textColor = .white
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 70, weight: .bold)
-        label.text = "00:00:00"
+        label.text = ""
         return label
     }()
+    
+    private let unionImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "WhiteFilledUnion")
+        view.contentMode = .scaleAspectFill
+        return view
+    }()
+    
     
     func startCountDown() {
         countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
@@ -70,7 +78,7 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         
         // TODO: get targetTime using API
         // TODO: Test시 -> 상황에 따라 TargetTime 변경
-        let targetTime = "00:00:00"// "20:10:59"
+        let targetTime = "04:06:30"// "20:10:59"
         
         if let targetTime = dateFormatter.date(from: targetTime) {
             let currentTime = Date()
@@ -137,13 +145,16 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         view.backgroundColor = .app_PrimaryColor
         
         [
+            unionImage,
             habitPhrase,
             countDownLabel,
             memberView,
             cameraBtn
         ].forEach {view.addSubview($0)}
         
-        startCountDown()
+//        startCountDown()
+        countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
+        
         setConstraints()
         setupUI()
         
@@ -187,6 +198,13 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         cameraBtn.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-26.81)
             make.centerX.equalToSuperview()
+        }
+        
+        unionImage.snp.makeConstraints { make in
+            make.centerX.equalTo(memberView)
+            make.centerY.equalTo(memberView)
+            make.height.equalTo(218.78)
+            make.width.equalTo(187.5)
         }
     }
     
