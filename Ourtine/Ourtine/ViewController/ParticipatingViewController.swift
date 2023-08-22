@@ -70,7 +70,7 @@ class ParticipatingViewController: UIViewController, CameraDelegate {
         
         // TODO: get targetTime using API
         // TODO: Test시 -> 상황에 따라 TargetTime 변경
-        let targetTime = "20:10:59"
+        let targetTime = "00:00:00"// "20:10:59"
         
         if let targetTime = dateFormatter.date(from: targetTime) {
             let currentTime = Date()

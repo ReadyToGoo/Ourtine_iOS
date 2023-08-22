@@ -28,6 +28,9 @@ class HabitCreate_introduceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboard()
+        setKeyboardObserver()
+        
         // 다음버튼 비활성화
         self.HC_introScrollView.HC_introduceView.nextBtn.isEnabled = false
         

@@ -144,6 +144,7 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
         habitName.snp.makeConstraints {
             $0.top.equalTo(userImage.snp.bottom).offset(5)
             $0.leading.equalTo(userImage)
+            $0.trailing.equalToSuperview().offset(-10)
         }
 
         userName.snp.makeConstraints {
@@ -211,6 +212,12 @@ class HabitCardCollectionViewCell: UICollectionViewCell {
         
         addViews()
         setConstraints()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.frontImage.image = nil
+        self.userImage.image = createImageWithColor(color: .app_SecondaryColor, size: CGSize(width: 50, height: 50))
     }
     
     required init?(coder: NSCoder) {

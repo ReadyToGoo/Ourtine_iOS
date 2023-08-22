@@ -68,7 +68,7 @@ class DummyViewController: UIViewController {
     }
     
     @objc func testGo() {
-        usingWrapper()
+//        usingWrapper()
     }
     
 }

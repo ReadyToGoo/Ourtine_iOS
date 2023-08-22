@@ -157,8 +157,9 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
     
     // 상단 유저들의 프로필을 서버에서 갖고옵니다.
     func fetchMemberData() {
-        let followAPI = MoyaWrapper<FollowAPI>(endPointClosure: MoyaProvider.defaultEndpointMapping,
-                                               stubClosure: MoyaProvider.immediatelyStub)
+        let followAPI = MoyaWrapper<FollowAPI>()
+//        (endPointClosure: MoyaProvider.defaultEndpointMapping,
+//                                               stubClosure: MoyaProvider.immediatelyStub)
         followAPI.requestSuccessRes(target: .getMyFollowingsList, instance: data_getMyFollowingsList.self) { result in
             
             var inputList:[MemberModel] = []
@@ -216,7 +217,7 @@ class HabitDiscoverViewController: UIViewController, UISearchBarDelegate, UIGest
                     print(result)
                     for item in result.content {
                         print(item.id)
-                        inputList.append(HabitCardModel(habitId: item.id, image: item.imageUrl, title: item.category , habitName: item.title , userName: item.hostName , userImage: item.hostImageUrl, days: item.days, startTime: item.startTime, endTime: item.endTime))
+                        inputList.append(HabitCardModel(habitId: item.id, image: item.imageUrl, title: item.category , habitName: item.title! , userName: item.hostName! , userImage: item.hostImageUrl, days: item.days, startTime: item.startTime, endTime: item.endTime))
                     }
                     self.habitResultList = inputList
                     self.habitProfileScrollView.habitProfileView.habitCardCollectionView.reloadData()

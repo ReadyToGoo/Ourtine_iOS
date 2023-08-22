@@ -148,7 +148,7 @@ extension HabitCreate_selectFriednsViewController: UICollectionViewDelegate, UIC
     /// numberOfItemsInSection : cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
-        return Dummy_HC_Categories.count
+        return Dummy_memberList.count
     }
     
     /// cellForItemAt : cell 내용 배정

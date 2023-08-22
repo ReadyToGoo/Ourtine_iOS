@@ -59,7 +59,7 @@ class HomeViewController: UIViewController {
     
     lazy var topBoxText: UILabel = {
         let label = UILabel()
-        label.text = "이번 주는 매일 미라클 모닝 후 책을 읽을거에요!\n이번 주 까지 책 두권을 읽는게 목표입니다!"
+        label.text = "참여하시는 습관이 없네요..\n재밌는 습관을 찾아보시는건 어떤가요?"
         label.numberOfLines = 0
         return label
     }()
@@ -82,7 +82,7 @@ class HomeViewController: UIViewController {
     
     lazy var habitBoxLabel: UILabel = {
         let label = UILabel()
-        label.text = "반려식물 물주기"
+        label.text = ""
         label.textColor = UIColor.app_BrightnessColor80
         label.font = .systemFont(ofSize: 16, weight: .bold)
         return label
@@ -196,7 +196,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
-        
+        self.navigationController?.navigationBar.isHidden = true
         // addSubview, addChild
         addChild(carouselViewController)
         addChild(timelineViewController)
@@ -239,22 +239,24 @@ class HomeViewController: UIViewController {
 //            for item result
 //            self.carouselViewController.items = result
 //            self.currentHabitIndex = self.getTodaysClosestHabit(list: result)
-            let index = self.getTodaysClosestHabit(list: result)
-            self.habitBoxImage.kf.setImage(with: URL(string: result.today[index ?? 0].imageUrl))
-            self.habitBoxLabel.text = result.today[index ?? 0].title
-            self.topBoxText.text = result.userWeeklyLogContents
+            if let index = self.getTodaysClosestHabit(list: result) {
+                self.habitBoxImage.kf.setImage(with: URL(string: result.today[index ].imageUrl!))
+                self.habitBoxLabel.text = result.today[index ].title
+                self.topBoxText.text = result.userWeeklyLogContents
+                
+                self.startTimer()
+            }
             
-            self.startTimer()
 //            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
                                          
 //            self.updateTimeLabel(list: result)
         }
         
-    }
+    }//(endPointClosure: MoyaProvider.defaultEndpointMapping,
+    //stubClosure: MoyaProvider.immediatelyStub)
     
     private func fetchData(completion: @escaping (data_getTodaysHabit) -> Void) {
-        let habitAPI = MoyaWrapper<HabitAPI>(endPointClosure: MoyaProvider.defaultEndpointMapping,
-                                             stubClosure: MoyaProvider.immediatelyStub)
+        let habitAPI = MoyaWrapper<HabitAPI>()
         habitAPI.requestSuccessRes(target: .getTodaysHabit, instance: data_getTodaysHabit.self)
         { result in
             switch result {
@@ -263,7 +265,7 @@ class HomeViewController: UIViewController {
                 self.timelineViewController.setupTimeline(result)
                 
                 for item in result.today {
-                    self.carouselViewController.items.append(CarouselItem(image: item.imageUrl, title: item.title, badgeNum: item.mvp, habitId: item.habitId, participateRate: item.participationRate))
+                    self.carouselViewController.items.append(CarouselItem(image: item.imageUrl, title: item.title, badgeNum: item.mvpCount, habitId: item.habitId, participateRate: item.participationRate))
                 }
                 self.carouselViewController.collectionView.reloadData()
                 
@@ -356,7 +358,7 @@ class HomeViewController: UIViewController {
         topBox.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(-30)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)//.offset(-30)
             $0.bottom.equalTo(topBoxText.snp.bottom).offset(10)
         }
         

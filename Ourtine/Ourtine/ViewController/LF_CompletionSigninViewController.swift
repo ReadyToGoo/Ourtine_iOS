@@ -22,6 +22,7 @@ class LF_CompletionSigninViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         
         SignUpFlowManager.shared.printself()
         
@@ -102,7 +103,7 @@ class LF_CompletionSigninViewController: UIViewController {
     
     func signUpRequest(_ data : CreatingSignUpInfo) {
         
-        let inputData = SignUpInfo(favoriteCategoryList: data.habitCategory!, goal: data.resolutionString ?? "...ㅠ", introduce: "", marketingAgreed: data.agreeList.marketingAgreed!, nickname: data.nickName!, privacyAgreed: data.agreeList.privacyAgreed!, termsAgreed: data.agreeList.termsAgreed!)
+        let inputData = SignUpInfo(favoriteCategoryList: data.habitCategory!, goal: data.resolutionString ?? "...ㅠ", marketingAgreed: data.agreeList.marketingAgreed!, nickname: data.nickName!, privacyAgreed: data.agreeList.privacyAgreed!, termsAgreed: data.agreeList.termsAgreed!)
         
         let wrapper = MoyaWrapper<AuthAPI>()
         wrapper.requestSuccessRes(target: .postSignUp(info: inputData), instance: data_postSignUp.self){ result in

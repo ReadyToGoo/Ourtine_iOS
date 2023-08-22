@@ -82,7 +82,7 @@ class TimelineViewController: UIViewController {
             if let list = habitList {
                 for item in list.today {
                     if hour == Int(item.startTime.prefix(2)) {
-                        imageView.kf.setImage(with: URL(string: item.imageUrl), placeholder: placeholderImage)
+                        imageView.kf.setImage(with: URL(string: item.imageUrl!), placeholder: placeholderImage)
                         break
                     }
                 }

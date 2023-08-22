@@ -79,7 +79,7 @@ class ShowWinnerViewController: UIViewController {
         updateWinners()
         updateEncouragePhrase()
         setConstraints()
-        updateView()
+//        updateView()
     }
 
     private func updateWinners() {

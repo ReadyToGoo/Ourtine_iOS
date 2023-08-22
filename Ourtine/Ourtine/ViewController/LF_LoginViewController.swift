@@ -27,12 +27,7 @@ class LF_LoginViewController: UIViewController {
         self.view.addSubview(secondLabel)
         
         
-        secondLabel.snp.makeConstraints { make in
-            make.width.equalTo(410)
-            make.height.equalTo(91)
-            make.top.equalToSuperview().offset(72)
-            make.left.equalToSuperview().offset(-5.5)
-        }
+        
         
         
         let imageView = UIImageView()
@@ -44,8 +39,19 @@ class LF_LoginViewController: UIViewController {
         imageView.snp.makeConstraints { make in
             make.width.equalTo(260)
             make.height.equalTo(250)
-            make.top.equalToSuperview().offset(190)
-            make.left.equalToSuperview().offset(71)
+//            make.top.equalToSuperview().offset(190)
+//            make.left.equalToSuperview().offset(71)
+            make.center.equalToSuperview()
+        }
+        
+        secondLabel.snp.makeConstraints { make in
+            make.width.equalTo(410)
+            make.height.equalTo(91)
+//            make.top.equalToSuperview().offset(72)
+            make.bottom.equalTo(imageView.snp.top).offset(-30)
+//            make.top.equalToSuperview().offset(70)
+            make.centerX.equalToSuperview()
+//            make.left.equalToSuperview().offset(-5.5)
         }
         
         
@@ -63,8 +69,10 @@ class LF_LoginViewController: UIViewController {
         kakaoBtn.snp.makeConstraints { make in
             make.width.equalTo(277)
             make.height.equalTo(40.49)
-            make.top.equalToSuperview().offset(470)
-            make.left.equalToSuperview().offset(58)
+//            make.top.equalToSuperview().offset(470)
+//            make.left.equalToSuperview().offset(58)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(imageView.snp.bottom).offset(40)
         }
         
         let appleBtn = UIButton()
@@ -76,12 +84,14 @@ class LF_LoginViewController: UIViewController {
         
         
         self.view.addSubview(appleBtn)
+//        appleBtn.isHidden = true
         
         appleBtn.snp.makeConstraints { make in
             make.width.equalTo(277)
             make.height.equalTo(40.49)
-            make.top.equalToSuperview().offset(519)
-            make.left.equalToSuperview().offset(58)
+//            make.top.equalToSuperview().offset(519)
+            make.top.equalTo(kakaoBtn.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
         }
         
         let termsTextView = UITextView()
@@ -98,7 +108,8 @@ class LF_LoginViewController: UIViewController {
         
         termsTextView.snp.makeConstraints { make in
             make.centerX.equalTo(appleBtn)
-            make.top.equalToSuperview().offset(700)
+            make.top.equalTo(appleBtn.snp.bottom).offset(10)
+//            make.top.equalToSuperview().offset(700)
             make.width.equalTo(375)
         }
         
