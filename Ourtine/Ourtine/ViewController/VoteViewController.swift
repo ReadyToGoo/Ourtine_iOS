@@ -12,7 +12,10 @@ import SnapKit
 class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDelegate {
     
     func didSelectMember(_ memberData: MemberModel?) {
-        //
+        let vc = OthersViewController()
+        vc.selectedMember = memberData
+        vc.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        present(vc, animated: true)
     }
     
     
@@ -109,13 +112,9 @@ class VoteViewController: UIViewController, ParticipatingMemberCollectionViewDel
         memberView.delegate = self
     }
     
-    func didSelectMember(_ memberData: MemberModel) {
-        let vc = OthersViewController()
-        vc.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        present(vc, animated: true)
-    }
-    
     private func setupUI() {
+        view.backgroundColor = .white
+        
         // TODO: Get Left Second
         leftSecondLabel.text = "23"
         
