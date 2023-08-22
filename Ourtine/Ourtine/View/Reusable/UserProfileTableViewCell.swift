@@ -59,7 +59,10 @@ class UserProfileTableViewCell: UITableViewCell {
     /// 셀 컴포넌트 요소에 데이터 페칭
     private func fetchData() {
         self.userName.text = self.userData.nickName
-        self.userImage.setImage(image: nil) // 나중에 URL로 다시 작업
+        self.userImage.setImage(image: createImageWithColor(color: .app_SecondaryColor, size: CGSize(width: 50, height: 50))) // 나중에 URL로 다시 작업
+        if let imageUrl = self.userData.profileImage {
+            self.userImage.kf.setImage(with: URL(string: imageUrl), placeholder: createImageWithColor(color: .app_SecondaryColor, size: CGSize(width: 50, height: 50)))
+        }
         self.followLabel.text = self.userData.isFollowing ? "v 팔로잉" : "x 팔로잉"
     }
     
@@ -115,6 +118,7 @@ class UserProfileTableViewCell: UITableViewCell {
 
 
 import SwiftUI // -> View 컴포넌트 하나만 볼 때
+import Kingfisher
 struct UserProfileTableViewCell_Preview: PreviewProvider {
     static var previews: some View {
         UIViewPreview {

@@ -36,10 +36,15 @@ class HabitCreate_finalView: UIView {
     
     /// 축하이미지
     lazy var celebrationImage: UIImageView = {
-        let view = UIImageView()
-        //view.image = ""ASDF
-        view.backgroundColor = .app_PrimaryColor2
-        return view
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "logo2")
+        imageView.layer.shadowColor = UIColor.lightGray.cgColor
+        imageView.layer.shadowOpacity = 1
+        imageView.layer.shadowOffset = CGSize(width: 3, height: 2)
+        imageView.layer.shadowRadius = 4
+//        view.backgroundColor = .app_PrimaryColor2
+        return imageView
     }()
     
     

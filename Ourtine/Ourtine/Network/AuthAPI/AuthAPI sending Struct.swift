@@ -11,7 +11,7 @@ import Foundation
 
 struct SignUpInfo: Encodable {
     let favoriteCategoryList: [String]
-    let goal, introduce: String
+    let goal: String
     let marketingAgreed: Bool
     let nickname: String
     let privacyAgreed, termsAgreed: Bool

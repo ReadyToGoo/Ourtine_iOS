@@ -42,7 +42,7 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
     lazy var categoryView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .app_SecondaryColor
-        view.contentMode = .scaleAspectFill
+        view.contentMode = .center
         view.layer.cornerRadius = 8.0
         return view
     }()
@@ -90,7 +90,7 @@ class HabitCreateCategoryCVCell: UICollectionViewCell {
     
     /// 셀 컴포넌트 요소에 데이터 페칭
     private func fetchData() {
-        //self.frontImage.image = self.cardData.image
+        self.categoryView.image = UIImage(named: "\(self.cellData.image)")
         self.titleLabel.text = self.cellData.name
     }
     

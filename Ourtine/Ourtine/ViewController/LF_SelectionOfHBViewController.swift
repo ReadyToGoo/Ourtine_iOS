@@ -52,11 +52,11 @@ class LF_SelectionOfHBViewController: UIViewController, UICollectionViewDelegate
     lazy var categoryCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        let itemWidth: CGFloat = HabitCreateCategoryCVCell.cellWidth
-        let itemHeight: CGFloat = HabitCreateCategoryCVCell.cellHeight
+        let itemWidth: CGFloat = self.view.frame.width/2 - 20
+        let itemHeight: CGFloat = 100
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-        flowLayout.minimumInteritemSpacing = 2.0
-        flowLayout.minimumLineSpacing = 14.0
+        flowLayout.minimumInteritemSpacing = 5
+        flowLayout.minimumLineSpacing = 15
         
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +79,8 @@ class LF_SelectionOfHBViewController: UIViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
+        
         self.view.backgroundColor = .white
         SignUpFlowManager.shared.printself()
         nextBtn.addTarget(self, action: #selector(nextBtnTapped), for: .touchUpInside)
@@ -131,7 +133,7 @@ class LF_SelectionOfHBViewController: UIViewController, UICollectionViewDelegate
         // 데이터 저장 실패 시 push X
         guard saveToFlowData() else { return }
         
-        let viewController = LF_TermsViewController()
+        let viewController = LF_DajimViewController()
         
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -169,17 +171,17 @@ class LF_SelectionOfHBViewController: UIViewController, UICollectionViewDelegate
         
         categoryCollectionView.snp.makeConstraints {
             $0.top.equalTo(secondLabel.snp.bottom).offset(30)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(-10)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
         }
         
         
-        nextBtn.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).multipliedBy(0.95)
-            $0.width.equalToSuperview().multipliedBy(0.8)
-            $0.height.equalTo(40)
-            $0.centerX.equalToSuperview()
+        nextBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(326)
+            make.height.equalTo(54)
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
     

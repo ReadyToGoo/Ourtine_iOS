@@ -17,7 +17,7 @@ struct data_getUserProfile: Codable {
     let followingCount: Int
     let goal: String
     let habitCount: Int
-    let imageUrl, nickname: String
+    let imageUrl, nickname: String?
     let participationRate: Int
     let userCategoryList: [String]
 }
@@ -39,15 +39,15 @@ struct data_patchMarketingPushNotiSetting: Codable {
 }
 
 struct data_getMyPageInfo: Codable {
-    let followerCount, followingCount: Int
-    let goal: String
+    let followerCount, followingCount: Int?
+    let goal: String?
     let habitCount: Int
-    let imageUrl, nickname: String
-    let participationRate: Int
+    let imageUrl, nickname: String?
+    let participationRate: Int?
     let weeklyLog: [WeeklyLog]
     
     struct WeeklyLog: Codable {
-        let day, emotion, videoUrl: String
+        let day, emotion, videoUrl: String?
     }
 }
 

@@ -56,7 +56,10 @@ class ReviewLastViewController: UIViewController {
     
     @objc private func homeBtnTapped() {
         let vc = HomeViewController()
-        navigationController?.pushViewController(vc, animated: false)
+//        navigationController?.pushViewController(vc, animated: false)
+        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidLoad() {
