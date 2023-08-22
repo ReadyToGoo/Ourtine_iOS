@@ -81,6 +81,7 @@ class ReviewViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        view.backgroundColor = .white
         navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
         
