@@ -8,7 +8,24 @@
 import UIKit
 import SnapKit
 
-class ProfileOfUserViewController: UIViewController {
+class ProfileOfUserViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return 8
+        }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardViewCell", for: indexPath) as! CardViewCell
+        
+        let Image = "reading"
+        let habitText = "아침마다 책 읽기"
+        let habitBadgeNum = 8
+        let habitRate = 75
+        
+        cell.prepare(image: Image, text: habitText, badgeNum: habitBadgeNum, rate: habitRate)
+        
+        return cell
+    }
     
     lazy var navigationBar: Custom_NavigationBar = {
         let nav = Custom_NavigationBar()
@@ -16,10 +33,10 @@ class ProfileOfUserViewController: UIViewController {
     }()
     
     lazy var scrollView: UIScrollView = {
-           let scrollView = UIScrollView()
-           scrollView.translatesAutoresizingMaskIntoConstraints = false
-           return scrollView
-       }()
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
     
     lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
@@ -239,12 +256,19 @@ class ProfileOfUserViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         return label
     }()
-
-    // 2개 해야해서 carousel말고 collectionView로 하라고 하셨는데 수정하겠습니다
-    private lazy var carouselViewController: CarouselViewController = {
-        let carouselVC = CarouselViewController()
-        carouselVC.view.translatesAutoresizingMaskIntoConstraints = false
-        return carouselVC
+    
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = true
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(CardViewCell.self, forCellWithReuseIdentifier: "CardViewCell")
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
     }()
     
     lazy var subscribedHabit: UILabel = {
@@ -259,9 +283,8 @@ class ProfileOfUserViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         setConstraints()
-        addChild(carouselViewController)
+        self.view.addSubview(collectionView)
         
-        carouselViewController.didMove(toParent: self)
     }
     
     func addSubviews() {
@@ -284,11 +307,19 @@ class ProfileOfUserViewController: UIViewController {
             numberOfHBLabel2,
             habitOfInterest,
             participatingHabit,
-            (carouselViewController.view),
+            collectionView,
             subscribedHabit
         ].forEach { self.view.addSubview($0) }
-
+        
         self.view.addSubview(scrollView)
+    }
+    
+    func setupCollectionViewConstraints() {
+        collectionView.snp.makeConstraints {
+            $0.width.equalToSuperview().offset(collectionView as! ConstraintOffsetTarget)
+            $0.height.equalToSuperview().offset(collectionView as! ConstraintOffsetTarget)
+            $0.top.equalTo(participatingHabit.snp.bottom).offset(5)
+        }
     }
     
     func setConstraints() {
@@ -388,23 +419,81 @@ class ProfileOfUserViewController: UIViewController {
             $0.top.equalTo(profileImage.snp.bottom).offset(130)
         }
         
+        
         participatingHabit.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(20)
             $0.top.equalTo(habitOfInterest.snp.bottom).offset(80)
-        }
-        
-        carouselViewController.view.snp.makeConstraints {
-            $0.top.equalTo(participatingHabit.snp.bottom).offset(5)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(152)
         }
         
         subscribedHabit.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(20)
             $0.top.equalTo(participatingHabit.snp.bottom).offset(198)
         }
+        
+        subscribedHabit.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(20)
+            $0.top.equalTo(participatingHabit.snp.bottom).offset(198)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let viewWidth: CGFloat = 63.65
+            let viewHeight: CGFloat = 63.65
+            return CGSize(width: viewWidth, height: viewHeight)
+        }
     }
 }
+
+
+func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 8
+}
+
+extension ProfileOfUserViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.alpha = 0.0
+        UIView.animate(withDuration: 0.5) {
+            cell.alpha = 1.0
+        }
+    }
+}
+
+import UIKit
+
+class HabitOfUserCell: UICollectionViewCell {
+    lazy var habitOfUser: UIView = {
+        let btn = UIButton()
+        btn.setTitle("얼리버드", for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        btn.setTitleColor(.app_SecondaryColor2, for: .normal)
+        btn.backgroundColor = .white
+        btn.layer.borderWidth = 1.0
+        btn.layer.borderColor = UIColor.app_SecondaryColor2.cgColor
+        btn.layer.cornerRadius = 10
+        btn.clipsToBounds = true
+        
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        btn.widthAnchor.constraint(equalToConstant: 88).isActive = true
+        btn.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        return btn
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI() {
+        addSubview(habitOfUser)
+    }
+}
+
+
 
 
 import SwiftUI
