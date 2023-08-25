@@ -8,10 +8,7 @@
 import UIKit
 import SnapKit
 
-/// 검색 뷰
-/// ! MVC 구현은 Model / View / ViewController로 분리해서 구현했습니다.
-/// ! 해당 뷰는 View에 해당하며 레이아웃에 해당하는 것들만 설정했습니다.
-/// ! ViewController : SearchViewController
+
 class MyPageView: UIView {
     
     // 상단 커스텀 네비게이션바 (예비용)
